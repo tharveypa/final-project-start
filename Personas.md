@@ -1,4 +1,4 @@
-#Personas 
+
 Person 1: 
   - Student who likes to look at fish 
   - Learn about fish while playing a game 
