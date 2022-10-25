@@ -1,0 +1,22 @@
+Team 12 Patrick Harris, Alex Daley, Robert Reardon
+Ideas:	1. robert's idea Pokemon - each one has multiple stats to filter with and you get to select 6
+		2. patrick's ides Sports - basketball stats and you can choose who you want on your team
+
+Idea choosen is number 1 Pokemon
+
+People who like to build their ultimate dream team in pokemon
+
+Type: Pokemon [
+	Attribute: string
+	Attack: int
+	Defense: int
+	Speed: int
+	HP: int
+	Mega: boolean
+	SP.Atk: int
+	SP.Def: int
+	Index: int
+	img: img || string
+	Weight: int
+]
+
