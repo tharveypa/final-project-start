@@ -24,7 +24,7 @@ B. What is their main goal?
   a. To visually create projects for classes and attach to resumes.
   b. To create/change their style to fit the trends and within their community.
   c. To see their clothes before they purchase them and stay on budget.
-  d. To plan their model' outfits before they begin.
+  d. To plan their model's outfits before they begin.
   e. To create new sketches of possible creations, quick-paced designing for efficiency.
   
 C. What is their main barrier to achieving this goal?
