@@ -22,14 +22,14 @@ A. Who are you?
   
 B. What is their main goal?
   a. To visually create projects for classes and attach to resumes.
-  b. To create/change their style to fit the trends.
-  c. To see their clothes before they purchase them and stay on budget
+  b. To create/change their style to fit the trends and within their community.
+  c. To see their clothes before they purchase them and stay on budget.
   d. To plan their model' outfits before they begin.
-  e. To create new sketches/designs of possible creations, quick-paced designing for efficiency.
+  e. To create new sketches of possible creations, quick-paced designing for efficiency.
   
 C. What is their main barrier to achieving this goal?
-  a. They struggle to visually see how their projects will play out and need a faster way than paper/drawing.
-  b. They don’t have the style that they want and before doing anything different, they want to see it put together.
-  c. They are on a tight budget in terms of buying clothes for themselves and for their children so before they buy something, they want to make sure it looks good with what they already have.
-  d. They want to plan their photos (models) before they begin shooting.
-  e. Professional designers generally sketch their designs out on paper, but it takes more time and effort. A program such as this can reduce the time they spend and are able to visualize their design more clearly. 
+  a. Students tend to struggle to visually seeing how their projects will play out and need a faster way than paper/drawing.
+  b. Style trends are changing everyday and in order to keep up, being able to style the mannequin to their desire helps them not make a change they may dislike.
+  c. Parents are almost always on a tight budget in terms of buying clothes for themselves and for their children, so before they buy something, they want to make sure it looks good with items they may already have. Also reduces the hassle of going back and forth buying and returning
+  d. Photographers want to plan their photos (models) before they begin shooting.
+  e. Professional graphic/fashion designers are similar to students, they generally sketch their designs out on paper, but it takes more time and effort. A program such as this can reduce the time they spend and are able to visualize their design more clearly. 
