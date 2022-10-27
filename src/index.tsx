@@ -8,6 +8,17 @@ import reportWebVitals from "./reportWebVitals";
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
         <React.StrictMode>
+            <h1
+                style={{
+                    position: "relative",
+                    top: "20px",
+                    left: "650px",
+                    fontStyle: "Bold",
+                    fontFamily: "Impact"
+                }}
+            >
+                FISHDOM
+            </h1>
             <div
                 style={{
                     position: "relative",
@@ -22,7 +33,7 @@ observe((picPosition: [number, number]) => {
                     picPosition={picPosition}
                     width={25}
                     height={25}
-                    numSquares={3}
+                    numSquares={9}
                 />
             </div>
         </React.StrictMode>,

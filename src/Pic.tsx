@@ -24,7 +24,7 @@ const Pic: React.FC = () => {
             >
                 {/*♘*/}
                 <img
-                    src={require("./bosun_tally.jpg")}
+                    src={require("./images/pixelFish.jpeg")}
                     width="80"
                     height="80"
                 />
