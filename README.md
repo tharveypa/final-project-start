@@ -4,4 +4,6 @@ Hello! This repository has been pre-configured with eslint and gh-pages to autom
 
 Fork, and execute necessary setup steps.
 
-Watch this space for additional project requirements.
+Watch this space for additional project requirements. For some example requirements from a previous project, see garden_designer_reqs.txt
+
+For more information and tutorials about react-dnd see https://react-dnd.github.io/react-dnd/examples/tutorial. Remember that all code for these examples is available on GitHub.
