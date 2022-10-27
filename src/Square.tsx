@@ -9,7 +9,7 @@ const Square: React.FC<SquareProps> = (props) => {
     return (
         <div
             style={{
-                backgroundImage: tankPic,
+                opacity: "0.8",
                 width: "100%",
                 height: "100%"
             }}

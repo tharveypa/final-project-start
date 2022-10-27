@@ -15,11 +15,11 @@ const Pic: React.FC = () => {
             <div
                 ref={drag}
                 style={{
+                    position: "absolute",
                     opacity: isDragging ? 1 : 0.5,
-                    fontSize: 50,
+                    fontSize: 0,
                     fontWeight: "bold",
-                    cursor: "move",
-                    textAlign: "center"
+                    cursor: "move"
                 }}
             >
                 {/*♘*/}

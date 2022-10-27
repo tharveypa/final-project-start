@@ -23,10 +23,10 @@ observe((picPosition: [number, number]) => {
                 style={{
                     position: "relative",
                     top: "100px",
-                    left: "500px",
+                    left: "415px",
                     width: "1000px",
                     height: "600px",
-                    border: "1px solid gray"
+                    border: "4px solid black"
                 }}
             >
                 <Board
