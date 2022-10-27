@@ -6,4 +6,4 @@
 
 ## Application Sketch
 
-![Application Sketch](C:\Users\jeana\Dropbox\CISC275\final-project\ChemPAL\images\appsketch.jpg)
+![Application Sketch](https://github.com/JeanaeClark/ChemPAL/blob/images/appsketch.jpg?raw=true))
