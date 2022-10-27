@@ -10,12 +10,20 @@ observe((picPosition: [number, number]) => {
         <React.StrictMode>
             <div
                 style={{
-                    width: "500px",
-                    height: "500px",
+                    position: "relative",
+                    top: "100px",
+                    left: "500px",
+                    width: "1000px",
+                    height: "600px",
                     border: "1px solid gray"
                 }}
             >
-                <Board picPosition={picPosition} width={50} height={50} />
+                <Board
+                    picPosition={picPosition}
+                    width={25}
+                    height={25}
+                    numSquares={3}
+                />
             </div>
         </React.StrictMode>,
         document.getElementById("root")

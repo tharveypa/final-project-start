@@ -38,12 +38,13 @@ type BoardProps = {
     picPosition: [number, number];
     width: number;
     height: number;
+    numSquares: number;
 };
 
 const Board: React.FC<BoardProps> = (props) => {
-    const { picPosition, height, width } = props;
+    const { picPosition, height, width, numSquares } = props;
     const squares = [];
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < numSquares; i++) {
         squares.push(renderSquare(i, picPosition, width, height));
     }
     return (
