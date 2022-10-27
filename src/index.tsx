@@ -15,7 +15,7 @@ observe((picPosition: [number, number]) => {
                     border: "1px solid gray"
                 }}
             >
-                <Board picPosition={picPosition} width={100} height={50} />
+                <Board picPosition={picPosition} width={50} height={50} />
             </div>
         </React.StrictMode>,
         document.getElementById("root")

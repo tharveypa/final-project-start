@@ -1,22 +1,20 @@
 import React from "react";
+import tankPic from "/Users/jasonhensley/Desktop/Class/CISC275/aquarium/final-project-start/src/images/tank.png";
 
 type SquareProps = {
     black: boolean;
 };
 
 const Square: React.FC<SquareProps> = (props) => {
-    const fill = props.black ? "black" : "white";
-    const stroke = props.black ? "white" : "black";
-
     return (
         <div
             style={{
-                backgroundColor: fill,
-                color: stroke,
+                backgroundImage: tankPic,
                 width: "100%",
                 height: "100%"
             }}
         >
+            <img src={tankPic} alt="tankPic" width="100%" height="100%" />
             {props.children}
         </div>
     );
