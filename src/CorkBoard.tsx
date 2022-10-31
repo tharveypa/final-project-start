@@ -65,6 +65,7 @@ export function CorkBoard({
         ]);
     }
 
+    //deletes a note and position data associated with that note based on the id
     function deleteNoteAndPosition(noteId: number) {
         setNotesAndPositionInfo(
             notesAndPositionInfo.filter(
@@ -98,7 +99,10 @@ export function CorkBoard({
                             left: noteData.left + "%",
                             zIndex: noteData.zIndex + "%"
                         }}
-                    ></div>
+                    >
+                        {/*FIXME: INSERT NOTE HERE WHEN NOTE IS DONE
+                           noteData.task SHOULD BE THE INPUT TASK FOR NOTE*/}
+                    </div>
                 );
             })}
         </div>
