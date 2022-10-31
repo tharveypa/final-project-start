@@ -12,6 +12,10 @@ export function CorkBoard({
         noteData[]
     >(startingNotesAndPositionInfo);
 
+    const [currentId, setCurrentId] = useState<number>(
+        notesAndPositionInfo.length
+    );
+
     //edits a note and position data associated with that note based on the parameters passed in
     //see noteData.ts for what these parameters are
     function editNoteData(
@@ -51,11 +55,12 @@ export function CorkBoard({
         left: number,
         zIndex: number
     ) {
+        setCurrentId(currentId + 1);
         setNotesAndPositionInfo([
             ...notesAndPositionInfo,
             {
                 task: newTask,
-                id: notesAndPositionInfo.length + 1,
+                id: currentId,
                 height: height,
                 width: width,
                 top: top,
@@ -89,7 +94,7 @@ export function CorkBoard({
             {notesAndPositionInfo.map((noteData: noteData) => {
                 return (
                     <div
-                        key={1}
+                        key={noteData.id}
                         style={{
                             height: noteData.height + "%",
                             width: noteData.width + "%",
