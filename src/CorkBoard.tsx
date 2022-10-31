@@ -1,71 +1,76 @@
 import React, { useState } from "react";
-import { NotEmittedStatement } from "typescript";
+import { noteData } from "./interfaces/noteData";
+import { Task } from "./interfaces/task";
 
 export function CorkBoard({
     startingNotesAndPositionInfo
 }: {
-    startingNotesAndPositionInfo: [
-        Note,
-        number,
-        number,
-        number,
-        number,
-        number
-    ][];
+    startingNotesAndPositionInfo: noteData[];
 }): JSX.Element {
-    //state for holding our note and pos info
-    const [notesAndPositionInfo, setnotesAndPositionInfo] = useState<
-        [Note, number, number, number, number, number][]
+    //state for holding our note and position info
+    const [notesAndPositionInfo, setNotesAndPositionInfo] = useState<
+        noteData[]
     >(startingNotesAndPositionInfo);
 
-    //edits a note and position info using the Notes id
-    function editNoteAndPosition(
+    //edits a note and position data associated with that note based on the parameters passed in
+    //see noteData.ts for what these parameters are
+    function editNoteData(
         noteId: number,
-        newNote: Note,
+        newTask: Task,
         height: number,
         width: number,
         top: number,
         left: number,
         zIndex: number
     ) {
-        setnotesAndPositionInfo(
-            notesAndPositionInfo.map(
-                (
-                    noteAndPosition: [
-                        Note,
-                        number,
-                        number,
-                        number,
-                        number,
-                        number
-                    ]
-                ): [Note, number, number, number, number, number] =>
-                    noteAndPosition[0].id === noteId
-                        ? [newNote, height, width, top, left, zIndex]
-                        : noteAndPosition
-            )
+        setNotesAndPositionInfo(
+            notesAndPositionInfo.map((noteAndPosition: noteData): noteData => {
+                // DO NOT TURN THIS INTO A TERNARY PRETTIER AND ESLINT WILL HAVE AN ENDLESS WAR IF YOU DO
+                if (noteAndPosition.id === noteId)
+                    return {
+                        ...noteAndPosition,
+                        task: newTask,
+                        height: height,
+                        width: width,
+                        top: top,
+                        left: left,
+                        zIndex: zIndex
+                    };
+                return noteAndPosition;
+            })
         );
     }
 
-    function addNote(
-        newNote: Note,
+    //adds a note and position data associuated with that note based on the parameters passed in
+    //see noteData.ts for what these parameters mean
+    function addNoteData(
+        newTask: Task,
         height: number,
         width: number,
         top: number,
         left: number,
         zIndex: number
     ) {
-        setnotesAndPositionInfo([
+        setNotesAndPositionInfo([
             ...notesAndPositionInfo,
-            [
-                { ...newNote, id: notesAndPositionInfo.length + 1 },
-                height,
-                width,
-                top,
-                left,
-                zIndex
-            ]
+            {
+                task: newTask,
+                id: notesAndPositionInfo.length + 1,
+                height: height,
+                width: width,
+                top: top,
+                left: left,
+                zIndex: zIndex
+            }
         ]);
+    }
+
+    function deleteNoteAndPosition(noteId: number) {
+        setNotesAndPositionInfo(
+            notesAndPositionInfo.filter(
+                (noteData: noteData): boolean => noteId !== noteData.id
+            )
+        );
     }
 
     return (
@@ -80,33 +85,22 @@ export function CorkBoard({
             }}
         >
             {/* This is the part that puts every note in the list of notes onto the corkboard*/}
-            {notesAndPositionInfo.map(
-                (
-                    noteAndPosition: [
-                        Note,
-                        number,
-                        number,
-                        number,
-                        number,
-                        number
-                    ]
-                ) => {
-                    return (
-                        <div
-                            key={1}
-                            style={{
-                                height: noteAndPosition[1] + "%",
-                                width: noteAndPosition[2] + "%",
-                                backgroundColor: "yellow",
-                                position: "absolute",
-                                top: noteAndPosition[3] + "%",
-                                left: noteAndPosition[4] + "%",
-                                zIndex: noteAndPosition[5] + "%"
-                            }}
-                        ></div>
-                    );
-                }
-            )}
+            {notesAndPositionInfo.map((noteData: noteData) => {
+                return (
+                    <div
+                        key={1}
+                        style={{
+                            height: noteData.height + "%",
+                            width: noteData.width + "%",
+                            backgroundColor: "yellow",
+                            position: "absolute",
+                            top: noteData.top + "%",
+                            left: noteData.left + "%",
+                            zIndex: noteData.zIndex + "%"
+                        }}
+                    ></div>
+                );
+            })}
         </div>
     );
 }
