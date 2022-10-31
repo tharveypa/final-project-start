@@ -3,7 +3,7 @@ import React from "react";
 const Destroy = () => {
     return (
         <div>
-            <h1>Destroy</h1>
+            <h1>Destroy Mode</h1>
             <p>
                 Pimp Mode Options:
                 <ul>

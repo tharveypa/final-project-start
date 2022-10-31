@@ -3,7 +3,7 @@ import React from "react";
 const Pimp = () => {
     return (
         <div>
-            <h1>Pimp</h1>
+            <h1>Pimp Mode</h1>
             <p>
                 Pimp Mode Options:
                 <ul>
