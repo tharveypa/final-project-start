@@ -1,10 +1,51 @@
 import React, { useState } from "react";
 
 export function CorkBoard({
-    notesAndPositionInfo
+    startingNotesAndPositionInfo
 }: {
-    notesAndPositionInfo: [number, number, number, number, number][];
+    startingNotesAndPositionInfo: [
+        Note,
+        number,
+        number,
+        number,
+        number,
+        number
+    ][];
 }): JSX.Element {
+    //state for holding our note and pos info
+    const [notesAndPositionInfo, setnotesAndPositionInfo] = useState<
+        [Note, number, number, number, number, number][]
+    >(startingNotesAndPositionInfo);
+
+    //edits a note and position info using the Notes id
+    function editNoteAndPosition(
+        noteId: number,
+        newNote: Note,
+        height: number,
+        width: number,
+        top: number,
+        left: number,
+        zIndex: number
+    ) {
+        setnotesAndPositionInfo(
+            notesAndPositionInfo.map(
+                (
+                    noteAndPosition: [
+                        Note,
+                        number,
+                        number,
+                        number,
+                        number,
+                        number
+                    ]
+                ): [Note, number, number, number, number, number] =>
+                    noteAndPosition[0].id === noteId
+                        ? [newNote, height, width, top, left, zIndex]
+                        : noteAndPosition
+            )
+        );
+    }
+
     return (
         <div
             style={{
@@ -18,18 +59,27 @@ export function CorkBoard({
         >
             {/* This is the part that puts every note in the list of notes onto the corkboard*/}
             {notesAndPositionInfo.map(
-                (noteAndPosition: [number, number, number, number, number]) => {
+                (
+                    noteAndPosition: [
+                        Note,
+                        number,
+                        number,
+                        number,
+                        number,
+                        number
+                    ]
+                ) => {
                     return (
                         <div
                             key={1}
                             style={{
-                                height: noteAndPosition[0] + "%",
-                                width: noteAndPosition[1] + "%",
+                                height: noteAndPosition[1] + "%",
+                                width: noteAndPosition[2] + "%",
                                 backgroundColor: "yellow",
                                 position: "absolute",
-                                top: noteAndPosition[2] + "%",
-                                left: noteAndPosition[3] + "%",
-                                zIndex: noteAndPosition[4] + "%"
+                                top: noteAndPosition[3] + "%",
+                                left: noteAndPosition[4] + "%",
+                                zIndex: noteAndPosition[5] + "%"
                             }}
                         ></div>
                     );
