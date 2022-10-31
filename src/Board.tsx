@@ -19,6 +19,12 @@ const renderSquare = (i: number, picPosition: [number, number]) => {
             <BoardSquare x={x} y={y}>
                 {renderPiece(x, y, picPosition)}
             </BoardSquare>
+            <BoardSquare x={x} y={y}>
+                {renderPiece(x, y, picPosition)}
+            </BoardSquare>
+            <BoardSquare x={x} y={y}>
+                {renderPiece(x, y, picPosition)}
+            </BoardSquare>
         </div>
     );
 };

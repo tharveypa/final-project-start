@@ -4,6 +4,7 @@ import Board from "./Board";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
+import App from "./App";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
@@ -15,6 +16,7 @@ observe((picPosition: [number, number]) => {
                     border: "1px solid gray"
                 }}
             >
+                <App />
                 <Board picPosition={picPosition} />
             </div>
         </React.StrictMode>,
