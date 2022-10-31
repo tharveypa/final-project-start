@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NotEmittedStatement } from "typescript";
 
 export function CorkBoard({
     startingNotesAndPositionInfo
@@ -44,6 +45,27 @@ export function CorkBoard({
                         : noteAndPosition
             )
         );
+    }
+
+    function addNote(
+        newNote: Note,
+        height: number,
+        width: number,
+        top: number,
+        left: number,
+        zIndex: number
+    ) {
+        setnotesAndPositionInfo([
+            ...notesAndPositionInfo,
+            [
+                { ...newNote, id: notesAndPositionInfo.length + 1 },
+                height,
+                width,
+                top,
+                left,
+                zIndex
+            ]
+        ]);
     }
 
     return (
