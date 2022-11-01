@@ -19,12 +19,12 @@ const renderSquare = (i: number, picPosition: [number, number]) => {
             <BoardSquare x={x} y={y}>
                 {renderPiece(x, y, picPosition)}
             </BoardSquare>
-            <BoardSquare x={x} y={y}>
+            {/* <BoardSquare x={x} y={y}>
                 {renderPiece(x, y, picPosition)}
             </BoardSquare>
             <BoardSquare x={x} y={y}>
                 {renderPiece(x, y, picPosition)}
-            </BoardSquare>
+            </BoardSquare> */}
         </div>
     );
 };
@@ -43,7 +43,7 @@ const Board: React.FC<BoardProps> = (props) => {
         <DndProvider backend={HTML5Backend}>
             <div
                 style={{
-                    width: "100%",
+                    width: "200%",
                     height: "100%",
                     display: "flex",
                     flexWrap: "wrap"
