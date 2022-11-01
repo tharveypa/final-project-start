@@ -25,3 +25,4 @@ export const canMovePic = (toX: number, toY: number) => {
 
     return Math.abs(dx) === 1;
 };
+//add comment
