@@ -15,7 +15,7 @@ const Pic: React.FC = () => {
             <div
                 ref={drag}
                 style={{
-                    position: "absolute",
+                    position: "relative",
                     opacity: isDragging ? 1 : 0.5,
                     fontSize: 0,
                     fontWeight: "bold",
