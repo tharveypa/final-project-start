@@ -1,11 +1,11 @@
-let picPosition: number[] = [0, 0];
-let observer: ((arg0: number[]) => void) | null = null;
+let picPosition = [0, 0];
+let observer: ((arg0: [number, number]) => void) | null = null;
 
 const emitChange = () => {
     observer && observer(picPosition);
 };
 
-export const observe = (o: ((arg0: number[]) => void) | null) => {
+export const observe = (o: ((arg0: [number, number]) => void) | null) => {
     if (observer) {
         throw new Error("Multiple observers not implemented.");
     }
