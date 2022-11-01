@@ -4,7 +4,6 @@ import "./index.css";
 import { observe } from "./game";
 import Layout from "./Layout";
 import reportWebVitals from "./reportWebVitals";
-import App from "./App";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
