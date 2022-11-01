@@ -1,4 +1,4 @@
-let picPosition = [0, 0];
+let picPosition: number[] = [0, 0];
 let observer: ((arg0: number[]) => void) | null = null;
 
 const emitChange = () => {
