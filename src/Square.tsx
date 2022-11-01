@@ -3,7 +3,7 @@ import tankPic from "./images/tank.png";
 //import tankPic from "/Users/jasonhensley/Desktop/Class/CISC275/aquarium/final-project-start/src/images/tank.png";
 
 type SquareProps = {
-    black: boolean;
+    salt: boolean;
 };
 
 const Square: React.FC<SquareProps> = (props) => {

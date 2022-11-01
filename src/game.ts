@@ -1,3 +1,5 @@
+import Board from "./Board";
+
 let picPosition = [0, 0];
 let observer: ((arg0: number[]) => void) | null = null;
 
