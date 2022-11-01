@@ -12,8 +12,8 @@ observe((picPosition: [number, number]) => {
         <React.StrictMode>
             <div
                 style={{
-                    width: "500px",
-                    height: "500px",
+                    width: window.innerWidth, //originally "500px"
+                    height: window.innerHeight,
                     border: "1px solid gray"
                 }}
             >
