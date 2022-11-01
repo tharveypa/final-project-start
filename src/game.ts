@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 let picPosition = [0, 0];
 let observer: ((arg0: number[]) => void) | null = null;
 
@@ -20,7 +22,7 @@ export const movePic = (toX: number, toY: number) => {
 };
 
 export const canMovePic = (toX: number, toY: number) => {
-    const [x, y] = picPosition;
+    const [x] = picPosition;
     const dx = toX - x;
 
     return Math.abs(dx) === 1;
