@@ -4,7 +4,7 @@ import Board from "./Board";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
-import dndarr from "./components/dndarr";
+import Dndarr from "./components/dndarr";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
@@ -16,7 +16,7 @@ observe((picPosition: [number, number]) => {
                     border: "1px solid gray"
                 }}
             >
-                {/*<dndarr picPosition={picPosition} />*/}
+                <Dndarr picPosition={picPosition} />
                 <Board picPosition={picPosition} />
             </div>
         </React.StrictMode>,

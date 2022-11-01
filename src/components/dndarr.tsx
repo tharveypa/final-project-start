@@ -27,7 +27,7 @@ type ArrProps = {
     picPosition: [number, number];
 };
 
-const dndarr: React.FC<ArrProps> = (props) => {
+const Dndarr: React.FC<ArrProps> = (props) => {
     const { picPosition } = props;
     const squares = [];
     for (let i = 0; i < 2; i++) {
@@ -49,4 +49,4 @@ const dndarr: React.FC<ArrProps> = (props) => {
     );
 };
 
-export default dndarr;
+export default Dndarr;
