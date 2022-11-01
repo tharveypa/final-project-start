@@ -22,7 +22,6 @@ const Pic: React.FC = () => {
                     cursor: "move"
                 }}
             >
-                {/*♘*/}
                 <img
                     src={require("./images/pixelFish.jpeg")}
                     width="80"

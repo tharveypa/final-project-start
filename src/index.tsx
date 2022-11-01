@@ -33,7 +33,7 @@ observe((picPosition: [number, number]) => {
                     picPosition={picPosition}
                     width={25}
                     height={25}
-                    numSquares={9}
+                    numSquares={12}
                 />
             </div>
         </React.StrictMode>,
