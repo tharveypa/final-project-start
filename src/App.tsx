@@ -16,18 +16,8 @@ const App: React.FC<BoardProps> = (props): JSX.Element => {
 
     return (
         <div className="App">
-            <header className="App-header">
-                UD CISC275 with React Hooks and TypeScript
-            </header>
-            <ul>
-                <li>Justin Clavette</li>
-                <li>Wenhan Ying</li>
-                <li>Junnan Bai</li>
-            </ul>
-            <p>
-                Edit <code>src/App.tsx</code> and save. This page will
-                automatically reload.
-            </p>
+            <header className="App-header">Table Top Map Editor</header>
+            <GridEdit changeX={changeXSize} changeY={changeYSize}></GridEdit>
             <div
                 style={{
                     width: "1000px",
@@ -35,10 +25,6 @@ const App: React.FC<BoardProps> = (props): JSX.Element => {
                     border: "1px solid gray"
                 }}
             >
-                <GridEdit
-                    changeX={changeXSize}
-                    changeY={changeYSize}
-                ></GridEdit>
                 <Board picPosition={props.picPosition} x={xSize} y={ySize} />
             </div>
         </div>
