@@ -82,12 +82,10 @@ export function CorkBoard({
     return (
         <div
             style={{
-                height: "600px",
-                width: "600px",
+                height: "100%",
+                width: "100%",
                 backgroundColor: "#7E481C",
-                position: "absolute",
-                top: "100px",
-                left: "100px"
+                position: "relative"
             }}
         >
             {/* This is the part that puts every note in the list of notes onto the corkboard*/}
@@ -96,8 +94,8 @@ export function CorkBoard({
                     <div
                         key={noteData.id}
                         style={{
-                            height: noteData.height + "%",
-                            width: noteData.width + "%",
+                            height: noteData.height + "px",
+                            width: noteData.width + "px",
                             backgroundColor: "yellow",
                             position: "absolute",
                             top: noteData.top + "%",
@@ -105,8 +103,10 @@ export function CorkBoard({
                             zIndex: noteData.zIndex + "%"
                         }}
                     >
+                        {noteData.task.title}
                         {/*FIXME: INSERT NOTE HERE WHEN NOTE IS DONE
-                           noteData.task SHOULD BE THE INPUT TASK FOR NOTE*/}
+                           noteData.task SHOULD BE THE INPUT TASK FOR NOTE
+                           SHOULD LOOK LIKE THIS <NOTE task={nodeData.task}></NOTE>*/}
                     </div>
                 );
             })}
