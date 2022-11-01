@@ -16,6 +16,5 @@ function App(): JSX.Element {
         </div>
     );
 }
-//HHEEHHEHEHEHE
 
 export default App;
