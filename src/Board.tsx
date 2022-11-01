@@ -15,7 +15,7 @@ const renderSquare = (i: number, picPosition: [number, number]) => {
     const y = 0;
 
     return (
-        <div key={i} style={{ width: "50%", height: "100%" }}>
+        <div key={i} style={{ width: "100%", height: "100%" }}>
             <BoardSquare x={x} y={y}>
                 {renderPiece(x, y, picPosition)}
             </BoardSquare>
@@ -30,7 +30,7 @@ type BoardProps = {
 const Board: React.FC<BoardProps> = (props) => {
     const { picPosition } = props;
     const squares = [];
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 1; i++) {
         squares.push(renderSquare(i, picPosition));
     }
     return (
