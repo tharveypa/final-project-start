@@ -3,12 +3,13 @@ import ReactDOM from "react-dom";
 import Board from "./Board";
 import "./index.css";
 import { observe } from "./game";
+import Layout from "./Layout";
 import reportWebVitals from "./reportWebVitals";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
         <React.StrictMode>
-            <div
+            {/* <div
                 style={{
                     width: "500px",
                     height: "500px",
@@ -16,7 +17,8 @@ observe((picPosition: [number, number]) => {
                 }}
             >
                 <Board picPosition={picPosition} />
-            </div>
+            </div> */}
+            <Layout />
         </React.StrictMode>,
         document.getElementById("root")
     );
