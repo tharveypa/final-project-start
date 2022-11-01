@@ -30,7 +30,7 @@ type BoardProps = {
 const Board: React.FC<BoardProps> = (props) => {
     const { picPosition } = props;
     const squares = [];
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 6; i++) {
         squares.push(renderSquare(i, picPosition));
     }
     return (
@@ -39,12 +39,13 @@ const Board: React.FC<BoardProps> = (props) => {
                 style={{
                     width: "100%",
                     height: "100%",
-                    display: "flex",
-                    flexWrap: "wrap"
+                    display: "flex"
+                    //   flexWrap: "wrap"
                 }}
             >
                 {squares}
             </div>
+            <p>Welcome to Jurasic Park</p>
         </DndProvider>
     );
 };
