@@ -4,6 +4,7 @@ import Board from "./Board";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
+import { Dropdown } from "./components/dropdown";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
@@ -16,6 +17,11 @@ observe((picPosition: [number, number]) => {
                 }}
             >
                 <Board picPosition={picPosition} />
+                <hr></hr>
+                <Dropdown
+                    filterOptions={["Kitchen", "Bathroom", "Bedroom"]}
+                ></Dropdown>
+                <hr></hr>
             </div>
         </React.StrictMode>,
         document.getElementById("root")
