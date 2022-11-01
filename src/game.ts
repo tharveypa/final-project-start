@@ -5,7 +5,7 @@ const emitChange = () => {
     observer && observer(picPosition);
 };
 
-export const observe = (o: any) => {
+export const observe = (o: ((arg0: number[]) => void) | null) => {
     if (observer) {
         throw new Error("Multiple observers not implemented.");
     }
