@@ -30,17 +30,16 @@ type BoardProps = {
 const Board: React.FC<BoardProps> = (props) => {
     const { picPosition } = props;
     const squares = [];
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 6; i++) {
         squares.push(renderSquare(i, picPosition));
     }
     return (
         <DndProvider backend={HTML5Backend}>
             <div
                 style={{
-                    width: "100%",
-                    height: "100%",
-                    display: "flex",
-                    flexWrap: "wrap"
+                    width: "200%",
+                    height: "200%",
+                    display: "flex"
                 }}
             >
                 {squares}
