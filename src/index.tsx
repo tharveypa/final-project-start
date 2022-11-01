@@ -4,6 +4,7 @@ import Board from "./Board";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
+import { MakeNote } from "./components/MakeNote";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
@@ -17,6 +18,8 @@ observe((picPosition: [number, number]) => {
             >
                 <Board picPosition={picPosition} />
             </div>
+
+            <MakeNote></MakeNote>
         </React.StrictMode>,
         document.getElementById("root")
     );
