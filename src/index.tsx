@@ -4,7 +4,8 @@ import Board from "./Board";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
-import { Dropdown } from "./components/dropdown";
+import { FilterDropdown, SortDropdown } from "./components/dropdown";
+import { Row, Col } from "react-bootstrap";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
@@ -18,9 +19,22 @@ observe((picPosition: [number, number]) => {
             >
                 <Board picPosition={picPosition} />
                 <hr></hr>
-                <Dropdown
-                    filterOptions={["Kitchen", "Bathroom", "Bedroom"]}
-                ></Dropdown>
+                <Row>
+                    <Col>
+                        <FilterDropdown
+                            filterOptions={["Kitchen", "Bathroom", "Bedroom"]}
+                        ></FilterDropdown>
+                    </Col>
+                    <Col>
+                        <SortDropdown
+                            sortOptions={[
+                                "Alphabetical",
+                                "Tile Type",
+                                "Design Type"
+                            ]}
+                        ></SortDropdown>
+                    </Col>
+                </Row>
                 <hr></hr>
             </div>
         </React.StrictMode>,
