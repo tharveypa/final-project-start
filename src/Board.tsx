@@ -4,40 +4,44 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import BoardSquare from "./BoardSquare";
 
-const renderPiece = (x: number, y: number, [picX, picY]: [number, number]) => {
+const renderPiece = (
+    x: number,
+    y: number,
+    [picX, picY]: [number, number],
+    pic: string
+) => {
     if (x === picX && y === picY) {
-        return <Pic />;
+        return <Pic pic={pic} />;
     }
 };
 
-const renderSquare = (i: number, picPosition: [number, number]) => {
+const renderSquare = (i: number, picPosition: [number, number], p: string) => {
     const x = i;
     const y = 0;
 
     return (
         <div key={i} style={{ width: "50%", height: "100%" }}>
             <BoardSquare x={x} y={y}>
-                {renderPiece(x, y, picPosition)}
-            </BoardSquare>
-            <BoardSquare x={x} y={y}>
-                {renderPiece(x, y, picPosition)}
-            </BoardSquare>
-            <BoardSquare x={x} y={y}>
-                {renderPiece(x, y, picPosition)}
+                {renderPiece(x, y, picPosition, p)}
             </BoardSquare>
         </div>
     );
 };
 
 type BoardProps = {
+    pics: string[];
     picPosition: [number, number];
 };
 
 const Board: React.FC<BoardProps> = (props) => {
     const { picPosition } = props;
+    const { pics } = props;
     const squares = [];
-    for (let i = 0; i < 2; i++) {
-        squares.push(renderSquare(i, picPosition));
+    //let i=0;
+    //pics.map((p:string)=>(
+    //));
+    for (let i = 0; i < 4; i++) {
+        squares.push(renderSquare(i, picPosition, pics[i]));
     }
     return (
         <DndProvider backend={HTML5Backend}>
