@@ -1,5 +1,6 @@
 Hobby Tabletop GM
 To make custom tabletop maps
+Customizable map sizes
 Existing applications are expensive and overly artistic. They are not confident in hand-crafting these maps
 
 Beginner in Indoor Design
