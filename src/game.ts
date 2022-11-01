@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 let picPosition = [0, 0];
 let observer: ((arg0: number[]) => void) | null = null;
 
@@ -5,6 +6,7 @@ const emitChange = () => {
     observer && observer(picPosition);
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const observe = (o: any) => {
     if (observer) {
         throw new Error("Multiple observers not implemented.");
