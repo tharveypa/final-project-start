@@ -4,6 +4,7 @@ import Board from "./Board";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
+import map from "./worldmap2.png";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
@@ -24,6 +25,9 @@ observe((picPosition: [number, number]) => {
                 }}
             >
                 <span>Zachariah Barraza, Tavon Gage, Michael King</span>
+            </div>
+            <div style={{ position: "absolute", left: "25%", top: "50px" }}>
+                <img src={map} alt="World Map" height={750} width={1000} />
             </div>
             <div
                 style={{
