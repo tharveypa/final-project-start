@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { noteData } from "./interfaces/noteData";
-import { Task } from "./interfaces/task";
+import { noteData } from "../interfaces/noteData";
+import { Task } from "../interfaces/task";
 
 export function CorkBoard({
     startingNotesAndPositionInfo
