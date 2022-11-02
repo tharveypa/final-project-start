@@ -23,7 +23,7 @@ observe((picPosition: [number, number]) => {
                     top: "20px"
                 }}
             >
-                <span>Zachariah Barraza, Tavon Gage, Micheal King</span>
+                <span>Zachariah Barraza, Tavon Gage, Michael King</span>
             </div>
             <div
                 style={{
