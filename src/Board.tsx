@@ -15,7 +15,7 @@ const renderSquare = (x: number, y: number, picPosition: [number, number]) => {
         <div
             className="square"
             key={((x + y) * (x + y + 1)) / 2 + x}
-            style={{ width: "10%", height: "10%" }}
+            style={{ width: "20%", height: "20%" }}
         >
             <BoardSquare x={x} y={y}>
                 {renderPiece(x, y, picPosition)}
