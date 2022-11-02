@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Task } from "./interfaces/task";
+import { Task } from "../interfaces/task";
 import { Button, Form } from "react-bootstrap";
 export function CardList(): JSX.Element {
     const [currList, modList] = useState<Task[]>([]); // going to use as a buffer to store the card before adding it (this way it should rerender after being given a new card)

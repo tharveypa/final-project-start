@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Task } from "./interfaces/task";
+import { Task } from "../interfaces/task";
 import { Button } from "react-bootstrap";
 export function Card(): JSX.Element {
     const [currTask, setTask] = useState<Task>({
