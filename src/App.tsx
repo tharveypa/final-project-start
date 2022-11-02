@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Board from "./Board";
 import GridEdit from "./GridEdit";
+import ImageDownload from "./ImageDownload";
 
 type BoardProps = {
     picPosition: [number, number];
@@ -17,8 +18,10 @@ const App: React.FC<BoardProps> = (props): JSX.Element => {
     return (
         <div className="App">
             <header className="App-header">Table Top Map Editor</header>
+            <ImageDownload></ImageDownload>
             <GridEdit changeX={changeXSize} changeY={changeYSize}></GridEdit>
             <div
+                id="map"
                 style={{
                     width: "1000px",
                     height: "1000px",
