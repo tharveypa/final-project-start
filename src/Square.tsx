@@ -1,18 +1,11 @@
 import React from "react";
 
-type SquareProps = {
-    black: boolean;
-};
-
-const Square: React.FC<SquareProps> = (props) => {
-    const fill = props.black ? "black" : "white";
-    const stroke = props.black ? "white" : "black";
-
+const Square: React.FC = (props) => {
     return (
         <div
             style={{
-                backgroundColor: fill,
-                color: stroke,
+                backgroundColor: "white",
+                color: "black",
                 width: "100%",
                 height: "100%"
             }}

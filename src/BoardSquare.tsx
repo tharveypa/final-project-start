@@ -1,7 +1,7 @@
 import React from "react";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "./constants";
-import { canMovePic, movePic } from "./game";
+import { movePic } from "./game";
 import Overlay from "./Overlay";
 import Square from "./Square";
 
@@ -12,10 +12,9 @@ type BoardSquareProps = {
 
 const BoardSquare: React.FC<BoardSquareProps> = (props) => {
     const { x, y, children } = props;
-    const black = false; /*(x + y) % 2 === 1;*/
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.PIC,
-        canDrop: () => canMovePic(x, y),
+        canDrop: () => true,
         drop: () => movePic(x, y),
         collect: (monitor) => ({
             isOver: !!monitor.isOver(),
@@ -33,10 +32,8 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                 border: "1px solid gray"
             }}
         >
-            <Square black={black}>{children}</Square>
-            {isOver && !canDrop && <Overlay color="red" />}
-            {!isOver && canDrop && <Overlay color="yellow" />}
-            {isOver && canDrop && <Overlay color="green" />}
+            <Square>{children}</Square>
+            {isOver && canDrop && <Overlay color="grey" />}
         </div>
     );
 };
