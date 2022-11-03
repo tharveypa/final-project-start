@@ -12,20 +12,21 @@ observe((picPosition: [number, number]) => {
         <React.StrictMode>
             <div
                 style={{
+                    //position: "absolute",
                     width: window.innerWidth, //originally "500px"
-                    height: window.innerHeight,
+                    height: window.outerHeight,
                     border: "1px solid gray"
                 }}
             >
-                <Board picPosition={picPosition} />
                 <hr></hr>
-                <Row>
+                <Row style={{ height: "700px" }}>
+                    <Col>
+                        <Board picPosition={picPosition} />
+                    </Col>
                     <Col>
                         <FilterDropdown
                             filterOptions={["Kitchen", "Bathroom", "Bedroom"]}
                         ></FilterDropdown>
-                    </Col>
-                    <Col>
                         <SortDropdown
                             sortOptions={[
                                 "Alphabetical",

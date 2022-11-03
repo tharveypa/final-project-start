@@ -19,11 +19,11 @@ export function FilterDropdown({
             <div>
                 <Form.Group controlId="formChoice">
                     <Form.Select value={choice} onChange={updateChoice}>
-                        {filterOptions.map((option1: string) => (
+                        {filterOptions.map((option1: string) => {
                             <option key={option1} value={option1}>
                                 {option1}
-                            </option>
-                        ))}
+                            </option>;
+                        })}
                     </Form.Select>
                 </Form.Group>
             </div>
@@ -49,11 +49,11 @@ export function SortDropdown({
             <div>
                 <Form.Group controlId="formChoice">
                     <Form.Select value={choice} onChange={updateChoice}>
-                        {sortOptions.map((option1: string) => (
+                        {sortOptions.map((option1: string) => {
                             <option key={option1} value={option1}>
                                 {option1}
-                            </option>
-                        ))}
+                            </option>;
+                        })}
                     </Form.Select>
                 </Form.Group>
             </div>
