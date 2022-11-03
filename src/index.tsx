@@ -12,12 +12,11 @@ observe((picPosition: [number, number]) => {
         <React.StrictMode>
             <div
                 style={{
-                    width: window.innerWidth, //originally "500px"
+                    width: window.innerWidth,
                     height: window.innerHeight,
                     border: "1px solid gray"
                 }}
             >
-                <Board picPosition={picPosition} />
                 <hr></hr>
                 <Row>
                     <Col>
@@ -33,6 +32,9 @@ observe((picPosition: [number, number]) => {
                                 "Design Type"
                             ]}
                         ></SortDropdown>
+                    </Col>
+                    <Col>
+                        <Board picPosition={picPosition} />
                     </Col>
                 </Row>
                 <hr></hr>
