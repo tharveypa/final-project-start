@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Task } from "../interfaces/task";
 import { Button, Form } from "react-bootstrap";
+//import { Card } from "./Card";
 export function CardList(): JSX.Element {
     const [currList, modList] = useState<Task[]>([]); // going to use as a buffer to store the card before adding it (this way it should rerender after being given a new card)
-    // need to use modList and currList to modify the array so it has state
+    //FIXME make this be useState<Card[]>([]), just waiting to do so until I understand state
     const [sort, setSort] = useState<boolean>(true); // two modes for two types of sorts, sorts invoked by checkbox
 
     function comparePriority(a: Task, b: Task): number {
@@ -59,6 +60,7 @@ export function CardList(): JSX.Element {
     }
 
     function removeCard(inTask: Task): void {
+        //need to make it so that arg is a Card
         const newNotes: Task[] = currList.filter(
             (task: Task) =>
                 task.title !== inTask.title &&
@@ -76,7 +78,8 @@ export function CardList(): JSX.Element {
     }
 
     function listIt(): void {
-        // code to make a list out of an array, just using task.title for right now but can expand upon this
+        // code to make a list out of an array, just using task.title for right now
+        //FIXME make this work for Cards (need to access their underlying interface / fields)
         let str = "<ul>";
         currList.forEach(function (task) {
             str += "<li>" + task.title + "</li>";
