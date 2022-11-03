@@ -34,10 +34,12 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                 border: "2px solid black"
             }}
         >
-            <Square>{children}</Square>
-            {isOver && !canDrop && <Overlay color="red" />}
-            {!isOver && canDrop && <Overlay color="yellow" />}
-            {isOver && canDrop && <Overlay color="green" />}
+            <Square salt={salt} pred={pred}>
+                {children}
+            </Square>
+            {isOver && !canDrop && <Overlay color="red" opacity={0.5} />}
+            {!isOver && canDrop && <Overlay color="yellow" opacity={0.5} />}
+            {isOver && canDrop && <Overlay color="green" opacity={0.5} />}
         </div>
     );
 };

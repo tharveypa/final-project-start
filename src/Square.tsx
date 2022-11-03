@@ -1,7 +1,19 @@
 import React from "react";
-import tankPic from "./images/tank.png";
+import Overlay from "./Overlay";
 
-const Square: React.FC = (props) => {
+type SquareProps = {
+    salt: boolean;
+    pred: boolean;
+};
+
+const Square: React.FC<SquareProps> = (props) => {
+    const { salt, pred } = props;
+    let tankPic = "";
+    if (salt) {
+        tankPic = "salt.png";
+    } else {
+        tankPic = "fresh.png";
+    }
     return (
         <div
             style={{
@@ -12,7 +24,15 @@ const Square: React.FC = (props) => {
                 height: "100%"
             }}
         >
-            <img src={tankPic} alt="tankPic" width="100%" height="100%" />
+            {
+                <img
+                    src={require("./images/" + tankPic)}
+                    alt="tankPic"
+                    width="100%"
+                    height="100%"
+                />
+            }
+            {pred && <Overlay color="red" opacity={0.25} />}
             {props.children}
         </div>
     );
