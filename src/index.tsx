@@ -4,11 +4,8 @@ import Board from "./Board";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
-<<<<<<< HEAD
 import Dndarr from "./components/dndarr";
-=======
 import { Dropdown } from "./components/dropdown";
->>>>>>> 19d8a0b866deb9a19290ef38ee4189a23dab37fb
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
