@@ -29,7 +29,7 @@ observe((picPosition: [number, number]) => {
                     backgroundColor: "gray"
                 }}
             >
-                <Board picPosition={picPosition} numSquares={12} />
+                <Board picPosition={picPosition} numSquares={1200} />
             </div>
         </React.StrictMode>,
         document.getElementById("root")
