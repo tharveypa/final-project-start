@@ -5,6 +5,7 @@ const emitChange = () => {
     observer && observer(picPosition);
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const observe = (o: any) => {
     if (observer) {
         throw new Error("Multiple observers not implemented.");
