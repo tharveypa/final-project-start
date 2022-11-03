@@ -4,8 +4,7 @@ import Board from "./Board";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
-import Dndarr from "./components/dndarr";
-import { Dropdown } from "./components/dropdown";
+//import Dndarr from "./components/dndarr";
 import { FilterDropdown, SortDropdown } from "./components/dropdown";
 import { Row, Col } from "react-bootstrap";
 
@@ -20,8 +19,6 @@ observe((picPosition: [number, number]) => {
                     border: "1px solid gray"
                 }}
             >
-                <Dndarr picPosition={picPosition} />
-                <Board picPosition={picPosition} />
                 <hr></hr>
                 <Row style={{ height: "700px" }}>
                     <Col>
