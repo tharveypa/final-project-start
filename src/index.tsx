@@ -20,7 +20,7 @@ observe((picPosition: [number, number]) => {
             >
                 <hr></hr>
                 <Row style={{ height: "700px" }}>
-                    <Col>
+                    <Col style={{ width: "700px" }}>
                         <Board picPosition={picPosition} />
                     </Col>
                     <Col>
