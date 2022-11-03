@@ -1,40 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Board from "./Board";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
+import NumSquareForm from "./NumSquareForm";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
         <React.StrictMode>
             <h1
+                className="text-center"
                 style={{
-                    position: "relative",
-                    top: "20px",
-                    left: "650px",
                     fontStyle: "Bold",
-                    fontFamily: "Impact"
+                    fontFamily: "Impact",
+                    fontSize: "80px"
                 }}
             >
                 FISHDOM
             </h1>
-            <div
-                style={{
-                    position: "relative",
-                    top: "100px",
-                    left: "415px",
-                    width: "1000px",
-                    height: "600px",
-                    border: "4px solid black"
-                }}
-            >
-                <Board
-                    picPosition={picPosition}
-                    width={25}
-                    height={25}
-                    numSquares={12}
-                />
+            <div>
+                <NumSquareForm picPosition={picPosition}></NumSquareForm>
             </div>
         </React.StrictMode>,
         document.getElementById("root")

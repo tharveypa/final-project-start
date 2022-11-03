@@ -1,21 +1,38 @@
 import React from "react";
-import tankPic from "./images/tank.png";
-//import tankPic from "/Users/jasonhensley/Desktop/Class/CISC275/aquarium/final-project-start/src/images/tank.png";
+import Overlay from "./Overlay";
 
 type SquareProps = {
     salt: boolean;
+    pred: boolean;
 };
 
 const Square: React.FC<SquareProps> = (props) => {
+    const { salt, pred } = props;
+    let tankPic = "";
+    if (salt) {
+        tankPic = "salt.png";
+    } else {
+        tankPic = "fresh.png";
+    }
     return (
         <div
             style={{
-                opacity: "0.8",
+                position: "absolute",
+                zIndex: 0,
+                opacity: "0.85",
                 width: "100%",
                 height: "100%"
             }}
         >
-            <img src={tankPic} alt="tankPic" width="100%" height="100%" />
+            {
+                <img
+                    src={require("./images/" + tankPic)}
+                    alt="tankPic"
+                    width="100%"
+                    height="100%"
+                />
+            }
+            {pred && <Overlay color="red" opacity={0.25} />}
             {props.children}
         </div>
     );

@@ -36,13 +36,14 @@ const renderSquare = (
 
 type BoardProps = {
     picPosition: [number, number];
-    width: number;
-    height: number;
     numSquares: number;
 };
 
 const Board: React.FC<BoardProps> = (props) => {
-    const { picPosition, height, width, numSquares } = props;
+    const { picPosition, numSquares } = props;
+    const numCol = Math.ceil(Math.sqrt(numSquares));
+    const width = 100 / numCol;
+    const height = 100 / Math.ceil(numSquares / numCol);
     const squares = [];
     for (let i = 0; i < numSquares; i++) {
         squares.push(renderSquare(i, picPosition, width, height));

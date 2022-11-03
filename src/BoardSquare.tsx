@@ -12,10 +12,11 @@ type BoardSquareProps = {
 
 const BoardSquare: React.FC<BoardSquareProps> = (props) => {
     const { x, y, children } = props;
-    const salt = (x + y) % 2 === 1;
+    const salt = x % 2 === 1;
+    const pred = x % 3 === 0;
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.PIC,
-        canDrop: () => canMovePic(x, y),
+        canDrop: () => canMovePic(x, y, salt, pred),
         drop: () => movePic(x, y),
         collect: (monitor) => ({
             isOver: !!monitor.isOver(),
@@ -29,13 +30,16 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
             style={{
                 position: "relative",
                 width: "100%",
-                height: "100%"
+                height: "100%",
+                border: "2px solid black"
             }}
         >
-            <Square salt={salt}>{children}</Square>
-            {isOver && !canDrop && <Overlay color="red" />}
-            {!isOver && canDrop && <Overlay color="yellow" />}
-            {isOver && canDrop && <Overlay color="green" />}
+            <Square salt={salt} pred={pred}>
+                {children}
+            </Square>
+            {isOver && !canDrop && <Overlay color="red" opacity={0.5} />}
+            {!isOver && canDrop && <Overlay color="yellow" opacity={0.5} />}
+            {isOver && canDrop && <Overlay color="green" opacity={0.5} />}
         </div>
     );
 };
