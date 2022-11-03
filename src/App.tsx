@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Note } from "./components/Note";
+import { MakeNote } from "./components/MakeNote";
 import { CorkBoard } from "./CorkBoard";
 
 const sampleCorkBoard = [
@@ -49,6 +49,7 @@ function App(): JSX.Element {
                 <CorkBoard
                     startingNotesAndPositionInfo={sampleCorkBoard}
                 ></CorkBoard>
+                <MakeNote></MakeNote>
             </div>
         </div>
     );
