@@ -11,8 +11,8 @@ observe((picPosition: [number, number]) => {
         <React.StrictMode>
             <div
                 style={{
-                    width: "500px",
-                    height: "500px",
+                    width: "750px",
+                    height: "100px",
                     border: "1px solid gray"
                 }}
             >
@@ -23,7 +23,7 @@ observe((picPosition: [number, number]) => {
         document.getElementById("root")
     );
 });
-
+//vic was here
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
