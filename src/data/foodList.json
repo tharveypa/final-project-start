@@ -3,37 +3,31 @@
         {
             "name": "Apple",
             "calories": 95,
-            "spoiling rate": 14,
             "healthy": true
         },
         {
             "name": "Banana",
             "calories": 105,
-            "spoiling rate": 5,
             "healthy": true
         },
         {
             "name": "Broccoli",
             "calories": 50,
-            "spoiling rate": 5,
             "healthy": true
         },
         {
             "name": "Hot Dog",
             "calories": 151,
-            "spoiling rate": 1,
             "healthy": false
         },
         {
             "name": "Spaghetti",
             "calories": 221,
-            "spoiling rate": 5,
             "healthy": true
         },
         {
             "name": "Meatballs",
             "calories": 284,
-            "spoiling rate": 4,
             "healthy": true
         }
     ]
