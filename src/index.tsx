@@ -26,8 +26,8 @@ observe((picPosition: [number, number]) => {
             >
                 <span>Zachariah Barraza, Tavon Gage, Michael King</span>
             </div>
-            <div style={{ position: "absolute", left: "25%", top: "50px" }}>
-                <img src={map} alt="World Map" height={750} width={1000} />
+            <div style={{ position: "absolute", left: "23%", top: "50px" }}>
+                <img src={map} alt="World Map" height={750} width={1200} />
             </div>
             <div
                 style={{
