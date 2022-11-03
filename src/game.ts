@@ -15,7 +15,7 @@ export const observe = (o: any) => {
     observer = o;
     emitChange();
 };
-
+/**test */
 export const movePic = (toX: number, toY: number) => {
     picPosition = [toX, toY];
     emitChange();

@@ -5,4 +5,5 @@ export interface Food {
     spoiling_rate: number;
     image_link: string;
     healthy: boolean;
+    /** ingredients: string[] */
 }
