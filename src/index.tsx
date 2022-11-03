@@ -5,7 +5,7 @@ import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
 import map from "./worldmap2.png";
-
+//testing with this comment
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
         <React.StrictMode>
