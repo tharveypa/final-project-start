@@ -16,16 +16,19 @@ const Pic: React.FC = () => {
                 ref={drag}
                 style={{
                     position: "relative",
+                    bottom: "80%",
+                    zIndex: 1,
                     opacity: isDragging ? 1 : 0.5,
                     fontSize: 0,
                     fontWeight: "bold",
-                    cursor: "move"
+                    cursor: "move",
+                    width: "30%"
                 }}
             >
                 <img
-                    src={require("./images/pixelFish.jpeg")}
-                    width="80"
-                    height="80"
+                    src={require("./images/pixelFish.png")}
+                    width="100%"
+                    height="100%"
                 />
             </div>
         </Fragment>
