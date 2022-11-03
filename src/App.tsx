@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 
 import { MakeNote } from "./components/MakeNote";
-import { CorkBoard } from "./CorkBoard";
+import { CorkBoard } from "./components/CorkBoard";
 
 const sampleCorkBoard = [
     {
