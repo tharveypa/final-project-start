@@ -35,9 +35,6 @@ observe((picPosition: [number, number]) => {
                             ]}
                         ></SortDropdown>
                     </Col>
-                    <Col>
-                        <Board picPosition={picPosition} />
-                    </Col>
                 </Row>
                 <hr></hr>
             </div>
