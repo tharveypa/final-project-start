@@ -1,18 +1,32 @@
 import React from "react";
+import Dirt from "./dirt.png";
+import BirdPoop from "./bird poop.png";
+import Slash from "./slash.png";
+import Hammer from "./hammer.png";
 
 const Destroy = () => {
     return (
         <div>
             <h1>Destroy Mode</h1>
             <p>
-                Pimp Mode Options:
-                <ul>
-                    <li>Dirty Car</li>
-                    <li>Bird Poop</li>
-                    <li>Slash Tires</li>
-                    <li>Break Windows</li>
-                    <li>etc</li>
-                </ul>
+                Destroy Mode Options:
+                <div>
+                    <img src={Dirt} alt="dirt" />
+                    Dirty Car
+                </div>
+                <div>
+                    <img src={BirdPoop} alt="bird poop" />
+                    Bird Poop
+                </div>
+                <div>
+                    <img src={Slash} alt="slash tires" />
+                    Slash Tires
+                </div>
+                <div>
+                    <img src={Hammer} alt="break windows" />
+                    Break Windows
+                </div>
+                <div>etc</div>
             </p>
         </div>
     );
