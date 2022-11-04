@@ -5,7 +5,7 @@ const Destroy = () => {
         <div>
             <h1>Destroy Mode</h1>
             <p>
-                Pimp Mode Options:
+                Destroy Mode Options:
                 <ul>
                     <li>Dirty Car</li>
                     <li>Bird Poop</li>
