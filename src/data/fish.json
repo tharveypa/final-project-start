@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "freshwater": true,
+        "name": "fish1",
+        "predator": false,
+        "size": 1,
+        "position": [0, 0],
+        "image": "../images/pixelFish.png"
+    },
+    {
+        "id": 1,
+        "freshwater": true,
+        "name": "fish1",
+        "predator": false,
+        "size": 1,
+        "position": [0, 0],
+        "image": "../images/squid.png"
+    }
+]
