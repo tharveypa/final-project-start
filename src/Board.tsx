@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Pic from "./Pic";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -7,24 +7,45 @@ import BoardSquare from "./BoardSquare";
 const renderPiece = (
     x: number,
     y: number,
-    [picX, picY]: [number, number],
-    pic: string
+    //addTool: () => void,
+    [picX, picY]: [number, number]
 ) => {
+    // pic: string
     if (x === picX && y === picY) {
-        return <Pic pic={pic} />;
+        //addTool();
+        return <Pic pic={"Yeet"} />;
     }
 };
 
-const renderSquare = (i: number, picPosition: [number, number], p: string) => {
-    const x = i;
-    const y = 0;
+const renderSquare = (
+    i: number,
+    picPosition: [number, number],
+    ps: string[]
+) => {
+    const x = 0;
+    const y = i;
+
+    // const [tool, setTool] = useState<number>(0);
+
+    // function moreTools(): void {
+    //     setTool(tool + 1);
+    //     // tool;
+    // }
 
     return (
-        <div key={i} style={{ width: "50%", height: "50%" }}>
-            <BoardSquare x={x} y={y}>
-                {renderPiece(x, y, picPosition, p)}
-            </BoardSquare>
-        </div>
+        <>
+            <div>
+                | board squares x={x}-{picPosition[0]}, y={y}-{picPosition[1]}
+                <div key={i} style={{ width: "50%", height: "50%" }}>
+                    <BoardSquare x={x} y={y}>
+                        {
+                            //
+                            renderPiece(x, y, picPosition)
+                        }
+                    </BoardSquare>
+                </div>
+            </div>
+        </>
     );
 };
 
@@ -40,9 +61,11 @@ const Board: React.FC<BoardProps> = (props) => {
     //let i=0;
     //pics.map((p:string)=>(
     //));
-    for (let i = 0; i < 4; i++) {
-        squares.push(renderSquare(i, picPosition, pics[i]));
+    //squares.push(renderSquare(0, picPosition, pics));
+    for (let i = 0; i < 2; i++) {
+        squares.push(renderSquare(i, picPosition, pics));
     }
+
     return (
         <DndProvider backend={HTML5Backend}>
             <div
@@ -53,7 +76,20 @@ const Board: React.FC<BoardProps> = (props) => {
                     flexWrap: "wrap"
                 }}
             >
+                hey
                 {squares}
+            </div>
+            <div>
+                Choose a pic
+                <ul>
+                    {pics.map(
+                        (p: string): JSX.Element => (
+                            <li key={p}>
+                                <Pic pic={p} />
+                            </li>
+                        )
+                    )}
+                </ul>
             </div>
         </DndProvider>
     );
