@@ -30,8 +30,8 @@ type BoardProps = {
 const Board: React.FC<BoardProps> = (props) => {
     const { picPosition } = props;
     const squares = [];
-    for (let i = 0; i < 2; i++) {
-        squares.push(renderSquare(i, picPosition));
+    for (let j = 0; j < 2; j++) {
+        squares.push(renderSquare(j, picPosition));
     }
     return (
         <DndProvider backend={HTML5Backend}>
