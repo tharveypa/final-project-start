@@ -18,7 +18,13 @@ observe((picPosition: [number, number]) => {
             >
                 FISHDOM
             </h1>
-            <h2>Shreeya, , </h2>
+            <h2
+                style={{
+                    fontSize: "5px"
+                }}
+            >
+                Shreeya, Daniel , Jason
+            </h2>
             <div>
                 <NumSquareForm picPosition={picPosition}></NumSquareForm>
             </div>
