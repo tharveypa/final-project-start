@@ -4,7 +4,7 @@ import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
 import NumSquareForm from "./NumSquareForm";
-//import Menu from "./Menu";
+import Menu from "./Components/Menu";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
@@ -20,6 +20,9 @@ observe((picPosition: [number, number]) => {
                 FISHDOM
             </h1>
             <h2>Shreeya, , </h2>
+            <div>
+                <Menu />
+            </div>
             <div>
                 <NumSquareForm picPosition={picPosition}></NumSquareForm>
             </div>
