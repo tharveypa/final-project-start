@@ -38,6 +38,10 @@ const sampleCorkBoard = [
 function App(): JSX.Element {
     return (
         <div className="App">
+            <div>
+                <h3>CREATED BY: </h3>
+                <p>Blade Tyrrell, Brandon Branson, Michael Snead</p>
+            </div>
             <div
                 style={{
                     height: "600px",
