@@ -20,12 +20,12 @@ observe((picPosition: [number, number]) => {
                     border: "1px solid gray"
                 }}
             >
-                <h1> Harleen Chahal, Sean OSullivan </h1>
+                <h1> Harleen Chahal, Sean OSullivan, Matthew Hansen </h1>
                 <Dndarr picPosition={picPosition} />
                 <Board picPosition={picPosition} />
                 <hr></hr>
                 <Row style={{ height: "700px" }}>
-                    <Col style={{ width: "100px" }}>
+                    <Col>
                         <Board picPosition={picPosition} />
                     </Col>
                     <Col>
