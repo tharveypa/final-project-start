@@ -25,8 +25,8 @@ const Pic: React.FC = () => {
                 {/*♘*/}
                 <img
                     src={require("./bosun_tally.jpg")}
-                    width="80"
-                    height="80"
+                    width="20"
+                    height="20"
                 />
             </div>
         </Fragment>
