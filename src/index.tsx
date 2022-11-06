@@ -20,6 +20,7 @@ observe((picPosition: [number, number]) => {
                     border: "1px solid gray"
                 }}
             >
+                <h1> Harleen Chahal </h1>
                 <Dndarr picPosition={picPosition} />
                 <Board picPosition={picPosition} />
                 <hr>Sean OSullivan</hr>
