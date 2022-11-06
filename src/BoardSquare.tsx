@@ -32,7 +32,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
             {isOver && !canDrop && <Overlay color="red" />}
             {!isOver && canDrop && <Overlay color="yellow" />}
             {isOver && canDrop && <Overlay color="green" />}
-            <header> Kristina Balta github:kbalta-udel</header>
+            <header> Kristina Balta github: kbalta-udel</header>
         </div>
     );
 };
