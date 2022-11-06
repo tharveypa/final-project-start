@@ -4,9 +4,11 @@ import Board from "./Board";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
-
 import Dndarr from "./components/dndarr";
 import { Dropdown } from "./components/dropdown";
+//import Dndarr from "./components/dndarr";
+import { FilterDropdown, SortDropdown } from "./components/dropdown";
+import { Row, Col } from "react-bootstrap";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
@@ -24,6 +26,27 @@ observe((picPosition: [number, number]) => {
                 <Dropdown
                     filterOptions={["Kitchen", "Bathroom", "Bedroom"]}
                 ></Dropdown>
+                <hr></hr>
+                <Row style={{ height: "700px" }}>
+                    <Col style={{ width: "100px" }}>
+                        <Board picPosition={picPosition} />
+                    </Col>
+                    <Col>
+                        <FilterDropdown
+                            filterOptions={["Kitchen", "Bathroom", "Bedroom"]}
+                        ></FilterDropdown>
+                        <SortDropdown
+                            sortOptions={[
+                                "Alphabetical",
+                                "Tile Type",
+                                "Design Type"
+                            ]}
+                        ></SortDropdown>
+                    </Col>
+                    <Col>
+                        <Board picPosition={picPosition} />
+                    </Col>
+                </Row>
                 <hr></hr>
             </div>
         </React.StrictMode>,
