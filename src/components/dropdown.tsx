@@ -53,8 +53,8 @@ export function SortDropdown({
                             //Matt, if you change this to a (, I will be very upset
                             <option key={option1} value={option1}>
                                 {option1}
-                            </option>
-                        ))}
+                            </option>;
+                        })}
                     </Form.Select>
                 </Form.Group>
             </div>
