@@ -18,6 +18,7 @@ observe((picPosition: [number, number]) => {
                     border: "1px solid gray"
                 }}
             >
+                <h1> Harleen Chahal </h1>
                 <hr></hr>
                 <Row style={{ height: "700px" }}>
                     <Col>
