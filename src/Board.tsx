@@ -4,8 +4,8 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import BoardSquare from "./BoardSquare";
 
-const renderPiece = (x: number, y: number, [picX, picY]: [number, number]) => {
-    if (x === picX && y === picY) {
+const renderPiece = (x: number, z: number, [picX, picY]: [number, number]) => {
+    if (x === picX && z === picY) {
         return <Pic />;
     }
 };
@@ -30,8 +30,8 @@ type BoardProps = {
 const Board: React.FC<BoardProps> = (props) => {
     const { picPosition } = props;
     const squares = [];
-    for (let i = 0; i < 2; i++) {
-        squares.push(renderSquare(i, picPosition));
+    for (let j = 0; j < 2; j++) {
+        squares.push(renderSquare(j, picPosition));
     }
     return (
         <DndProvider backend={HTML5Backend}>
