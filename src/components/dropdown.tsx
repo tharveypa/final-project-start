@@ -50,6 +50,7 @@ export function SortDropdown({
                 <Form.Group controlId="formChoice">
                     <Form.Select value={choice} onChange={updateChoice}>
                         {sortOptions.map((option1: string) => {
+                            //Matt, if you change this to a (, I will be very upset
                             <option key={option1} value={option1}>
                                 {option1}
                             </option>;
