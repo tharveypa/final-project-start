@@ -5,7 +5,7 @@ import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
 import Dndarr from "./components/dndarr";
-import { Dropdown } from "./components/dropdown";
+//import { Dropdown } from "./components/dropdown";
 //import Dndarr from "./components/dndarr";
 import { FilterDropdown, SortDropdown } from "./components/dropdown";
 import { Row, Col } from "react-bootstrap";
@@ -20,13 +20,9 @@ observe((picPosition: [number, number]) => {
                     border: "1px solid gray"
                 }}
             >
-                <h1> Harleen Chahal </h1>
+                <h1> Harleen Chahal, Sean OSullivan </h1>
                 <Dndarr picPosition={picPosition} />
                 <Board picPosition={picPosition} />
-                <hr>Sean OSullivan</hr>
-                <Dropdown
-                    filterOptions={["Kitchen", "Bathroom", "Bedroom"]}
-                ></Dropdown>
                 <hr></hr>
                 <Row style={{ height: "700px" }}>
                     <Col style={{ width: "100px" }}>
