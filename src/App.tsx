@@ -1,7 +1,8 @@
 import React from "react";
 import "./App.css";
 import PimpVsDestroy from "./components/PimpVsDestroy";
-import Car from "./components/Car";
+//import Car from "./components/Car";
+import CarSpace from "./components/CarSpace";
 
 function App(): JSX.Element {
     return (
@@ -11,7 +12,7 @@ function App(): JSX.Element {
             </header>
             <PimpVsDestroy></PimpVsDestroy>
             <div>
-                <Car></Car>
+                <CarSpace color={"red"} clean={true} tirefill={true}></CarSpace>
             </div>
         </div>
     );
