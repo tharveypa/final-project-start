@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Board from "./Board";
 import GridEdit from "./GridEdit";
+import "./background.css";
 
 type BoardProps = {
     picPosition: [number, number];
@@ -29,6 +30,7 @@ const App: React.FC<BoardProps> = (props): JSX.Element => {
                 automatically reload.
             </p>
             <div
+                className="container"
                 style={{
                     width: "1000px",
                     height: "1000px",
