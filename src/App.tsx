@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Board from "./Board";
 import GridEdit from "./GridEdit";
+import "./background.css";
 import ImageDownload from "./ImageDownload";
 
 type BoardProps = {
@@ -21,6 +22,7 @@ const App: React.FC<BoardProps> = (props): JSX.Element => {
             <ImageDownload></ImageDownload>
             <GridEdit changeX={changeXSize} changeY={changeYSize}></GridEdit>
             <div
+                className="container"
                 id="map"
                 style={{
                     width: "1000px",
