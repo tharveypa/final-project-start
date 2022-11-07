@@ -4,7 +4,6 @@ import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
 import NumSquareForm from "./NumSquareForm";
-import Menu from "./Components/Menu";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
@@ -21,14 +20,11 @@ observe((picPosition: [number, number]) => {
             </h1>
             <h2
                 style={{
-                    fontSize: "5px"
+                    fontSize: "45px"
                 }}
             >
-                Shreeya, Daniel , Jason
+                Shreeya, Daniel, Jason
             </h2>
-            <div>
-                <Menu />
-            </div>
             <div>
                 <NumSquareForm picPosition={picPosition}></NumSquareForm>
             </div>
