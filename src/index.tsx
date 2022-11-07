@@ -17,7 +17,7 @@ observe((picPosition: [number, number]) => {
             >
                 <Board picPosition={picPosition} />
                 <div>Matt Whalen</div>
-                <div>Joshua Artis</div>
+                <div>Joshua Artis </div>
             </div>
         </React.StrictMode>,
         document.getElementById("root")
