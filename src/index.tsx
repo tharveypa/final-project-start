@@ -15,6 +15,7 @@ observe((picPosition: [number, number]) => {
                     border: "1px solid gray"
                 }}
             >
+                Eric Merritt
                 <Board picPosition={picPosition} />
             </div>
         </React.StrictMode>,
