@@ -47,6 +47,7 @@ const Layout = ({ picPosition }: Props) => {
                 >
                     <Board picPosition={picPosition} />
                 </div>
+                <p>Group Members: Jackson Gunn Pack</p>
             </div>
         </div>
     );
