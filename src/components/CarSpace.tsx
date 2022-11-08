@@ -1,5 +1,5 @@
 import React from "react";
-import bluecar from "./bluecar.png";
+import bluecar from "./blue car.png";
 
 type CarSpaceProps = {
     color: string;
