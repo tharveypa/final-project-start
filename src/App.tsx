@@ -4,13 +4,7 @@ import Board from "./Board";
 import GridEdit from "./GridEdit";
 import "./background.css";
 import ImageDownload from "./ImageDownload";
-import { Color } from "./components/color";
-import { Orientation } from "./components/orientation";
-import { Position } from "./components/position";
-import { Size } from "./components/size";
-import { Tages } from "./components/tages";
-import { Texture } from "./components/texture";
-import { Type } from "./components/type";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 type BoardProps = {
     picPosition: [number, number];
@@ -28,24 +22,24 @@ const App: React.FC<BoardProps> = (props): JSX.Element => {
             <header className="App-header">Table Top Map Editor</header>
             <ImageDownload></ImageDownload>
             <GridEdit changeX={changeXSize} changeY={changeYSize}></GridEdit>
-            <div
-                className="container"
-                id="map"
-                style={{
-                    width: "1000px",
-                    height: "1000px",
-                    border: "1px solid gray"
-                }}
-            >
-                <Board picPosition={props.picPosition} x={xSize} y={ySize} />
-            </div>
-            <Color></Color>
-            <Orientation></Orientation>
-            <Position></Position>
-            <Size></Size>
-            <Tages></Tages>
-            <Texture></Texture>
-            <Type></Type>
+            <TransformWrapper panning={{ activationKeys: ["z"] }}>
+                <TransformComponent>
+                    <div
+                        id="map"
+                        style={{
+                            width: "1000px",
+                            height: "1000px",
+                            border: "1px solid gray"
+                        }}
+                    >
+                        <Board
+                            picPosition={props.picPosition}
+                            x={xSize}
+                            y={ySize}
+                        />
+                    </div>
+                </TransformComponent>
+            </TransformWrapper>
         </div>
     );
 };
