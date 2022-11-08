@@ -20,21 +20,40 @@ const Layout = ({ picPosition }: Props) => {
                     height="100"
                 />
             </div>
-
             <div id="left-menu-container">Menu Left</div>
             <div id="top-menu-container">
                 <Container>
                     <Row>
                         <Col>
-                            <Button>Home</Button>
+                            <Button>
+                                <img
+                                    src={require("./homeButton.png")}
+                                    width="75"
+                                    height="30"
+                                />
+                            </Button>
                         </Col>
                         <Col>
-                            <Button>Create New Room</Button>
+                            <Button>
+                                <img
+                                    src={require("./newRoomButton.png")}
+                                    width="150"
+                                    height="40"
+                                />
+                            </Button>
                         </Col>
                         <Col>
-                            <Button>View My Rooms</Button>
+                            <Button>
+                                {" "}
+                                <img
+                                    src={require("./viewRoomsButton.png")}
+                                    width="120"
+                                    height="40"
+                                />
+                            </Button>
                         </Col>
                     </Row>
+                    <div>Maxyne Watkins</div>
                 </Container>
             </div>
             <div id="main-board-container">
