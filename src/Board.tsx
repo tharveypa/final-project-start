@@ -44,6 +44,8 @@ const Board: React.FC<BoardProps> = (props) => {
                 }}
             >
                 {squares}
+                <p>Zachary England</p>
+                {/*Put our names here*/}
             </div>
         </DndProvider>
     );
