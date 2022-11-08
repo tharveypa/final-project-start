@@ -28,6 +28,10 @@ const Pic: React.FC = () => {
                     width="80"
                     height="80"
                 />
+                <p>
+                    Team Members are : Nafisa Maryam , Jeanae Clark & Sara
+                    Heintzelman
+                </p>
             </div>
         </Fragment>
     );
