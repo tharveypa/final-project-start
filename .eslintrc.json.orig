@@ -38,12 +38,14 @@
             {
                 "nestedBinaryExpressions": false,
                 "returnAssign": false,
+<<<<<<< HEAD
                 "enforceForArrowConditionals": false
             }
         ],
         "brace-style": ["error", "1tbs"],
-        "indent": ["error", 4], { "SwitchCase": 1 }],
+        "indent": ["error", 4],
         "quotes": ["error", "double"],
+=======
                 "enforceForArrowConditionals": false,
                 "ignoreJSX": "all"
             }
@@ -51,6 +53,7 @@
         "brace-style": ["error", "1tbs"],
         "indent": ["error", 4, { "SwitchCase": 1 }],
         "quotes": ["error", "double", { "avoidEscape": true }],
+>>>>>>> ad6c400 (Initial commit)
         "semi": ["error", "always"]
     }
 }
