@@ -25,6 +25,7 @@ const App: React.FC<BoardProps> = (props): JSX.Element => {
             <TransformWrapper panning={{ activationKeys: ["z"] }}>
                 <TransformComponent>
                     <div
+                        className="container"
                         id="map"
                         style={{
                             width: "1000px",
