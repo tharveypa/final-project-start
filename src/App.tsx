@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Board from "./Board";
 import GridEdit from "./GridEdit";
+import "./background.css";
 import ImageDownload from "./ImageDownload";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
