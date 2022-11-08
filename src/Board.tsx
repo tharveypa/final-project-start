@@ -5,7 +5,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import BoardSquare from "./BoardSquare";
 const renderPiece = (x: number, y: number, [picX, picY]: [number, number]) => {
     if (x === picX && y === picY) {
-        return <Pic />;
+        return <Pic color={"red"} />;
     }
 };
 
