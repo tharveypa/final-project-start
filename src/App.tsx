@@ -4,6 +4,13 @@ import Board from "./Board";
 import GridEdit from "./GridEdit";
 import "./background.css";
 import ImageDownload from "./ImageDownload";
+import { Color } from "./components/color";
+import { Orientation } from "./components/orientation";
+import { Position } from "./components/position";
+import { Size } from "./components/size";
+import { Tages } from "./components/tages";
+import { Texture } from "./components/texture";
+import { Type } from "./components/type";
 
 type BoardProps = {
     picPosition: [number, number];
@@ -32,6 +39,13 @@ const App: React.FC<BoardProps> = (props): JSX.Element => {
             >
                 <Board picPosition={props.picPosition} x={xSize} y={ySize} />
             </div>
+            <Color></Color>
+            <Orientation></Orientation>
+            <Position></Position>
+            <Size></Size>
+            <Tages></Tages>
+            <Texture></Texture>
+            <Type></Type>
         </div>
     );
 };
