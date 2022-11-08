@@ -1,3 +1,5 @@
 Images of places will go in this folder.
 
 Then the link to this folder and file will be placed into the Places.JSON
+
+
