@@ -4,7 +4,7 @@ const Square: React.FC = (props) => {
     return (
         <div
             style={{
-                backgroundColor: "white",
+                //backgroundColor: "white",
                 color: "black",
                 width: "100%",
                 height: "100%"
