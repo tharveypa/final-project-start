@@ -16,7 +16,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.PIC,
         canDrop: () => canMovePic(x, y),
-        drop: () => movePic(x, y),
+        drop: () => movePic(x, y), //Function that gets called when you drop something. In this case, it calls movePic, but you can make it do whatever
         collect: (monitor) => ({
             isOver: !!monitor.isOver(),
             canDrop: !!monitor.canDrop()
