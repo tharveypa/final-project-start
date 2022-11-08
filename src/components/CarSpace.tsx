@@ -6,9 +6,11 @@ import { Button } from "react-bootstrap";
 
 type CarProps = {
     color: string;
+    clean: boolean;
+    tirefill: boolean;
 };
 
-const Car: React.FC<CarProps> = (props) => {
+const Car: React.FC<CarProps> = () => {
     const [colorNum, setColorNum] = useState(0);
     return (
         <div>
