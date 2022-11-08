@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Pic from "../Pic";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { DragTile } from "../Interfaces/DragTile";
 import BoardSquare from "../BoardSquare";
 
 const renderPiece = (x: number, y: number, [picX, picY]: [number, number]) => {
@@ -11,7 +12,7 @@ const renderPiece = (x: number, y: number, [picX, picY]: [number, number]) => {
 };
 
 const renderSquare = (i: number, picPosition: [number, number]) => {
-    const x = i;
+    const x: number = i;
     const y = 0;
 
     return (
@@ -28,22 +29,49 @@ type ArrProps = {
 };
 
 const Dndarr: React.FC<ArrProps> = (props) => {
-    const { picPosition } = props;
-    const squares = [];
-    for (let i = 0; i < 2; i++) {
-        squares.push(renderSquare(i, picPosition));
-    }
+    const test: DragTile = {
+        type: "string",
+        design: "string",
+        pos: [0, 0],
+        graphic: "string", //file name
+        name: "string",
+        size: [0, 0],
+        id: 0,
+        hasFurniture: false,
+        hasPainting: false,
+        placeOnWall: false,
+        isFill: false
+    };
+    const test2: DragTile = {
+        type: "string",
+        design: "string",
+        pos: [0.5, 0.5],
+        graphic: "string", //file name
+        name: "string",
+        size: [0, 0],
+        id: 0,
+        hasFurniture: false,
+        hasPainting: false,
+        placeOnWall: false,
+        isFill: false
+    };
+    const [dragarr, setarr] = useState<DragTile[]>([test, test2]); //, test2]);
+    //we will likely have this be in a higher component that will pass down the filled array
     return (
         <DndProvider backend={HTML5Backend}>
             <div
                 style={{
-                    width: "10%",
-                    height: "10%",
+                    width: "100%",
+                    height: "100%",
                     display: "flex",
                     flexWrap: "wrap"
                 }}
             >
-                {squares}
+                {dragarr.map((dnd: DragTile, i: number) => {
+                    // eslint-disable-next-line react/jsx-key
+                    return <Pic />;
+                    renderSquare(i, dnd.pos);
+                })}
             </div>
         </DndProvider>
     );
