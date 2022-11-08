@@ -4,21 +4,31 @@ import Board from "./Board";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
+import PieceBank from "./PieceBank";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
         <React.StrictMode>
             <div
                 style={{
-                    width: "500px",
-                    height: "500px",
-                    border: "1px solid gray"
+                    paddingTop: "500px",
+                    width: "100%",
+                    height: "500px"
+                    //border: "1px solid gray"
                 }}
             >
-                <Board picPosition={picPosition} />
                 <p>Zachary England</p>
                 <p>Matt Gwin</p>
                 <p>Blair Felker</p>
+                <div
+                    style={{
+                        width: "100%",
+                        height: "250px",
+                        border: "1px solid gray"
+                    }}
+                >
+                    <PieceBank picPosition={picPosition} />
+                </div>
             </div>
         </React.StrictMode>,
         document.getElementById("root")
