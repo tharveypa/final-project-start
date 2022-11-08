@@ -11,6 +11,7 @@ const renderPiece = (x: number, y: number, [picX, picY]: [number, number]) => {
     }
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const renderSquare = (i: number, picPosition: [number, number]) => {
     const x: number = i;
     const y = 0;
@@ -28,7 +29,7 @@ type ArrProps = {
     picPosition: [number, number];
 };
 
-const Dndarr: React.FC<ArrProps> = (props) => {
+const Dndarr: React.FC<ArrProps> = (_props) => {
     const test: DragTile = {
         type: "string",
         design: "string",
@@ -55,6 +56,7 @@ const Dndarr: React.FC<ArrProps> = (props) => {
         placeOnWall: false,
         isFill: false
     };
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [dragarr, setarr] = useState<DragTile[]>([test, test2]); //, test2]);
     //we will likely have this be in a higher component that will pass down the filled array
     return (
@@ -67,10 +69,10 @@ const Dndarr: React.FC<ArrProps> = (props) => {
                     flexWrap: "wrap"
                 }}
             >
-                {dragarr.map((dnd: DragTile, i: number) => {
+                {/* eslint-disable-next-line @typescript-eslint/no-unused-vars*/}
+                {dragarr.map((_dnd: DragTile, _i: number) => {
                     // eslint-disable-next-line react/jsx-key
                     return <Pic />;
-                    renderSquare(i, dnd.pos);
                 })}
             </div>
         </DndProvider>
