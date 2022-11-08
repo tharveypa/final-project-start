@@ -65,7 +65,10 @@ const Layout = ({ picPosition }: Props) => {
                 >
                     <Board picPosition={picPosition} />
                 </div>
-                <p>Group Members: Jackson Gunn Pack, Maxyne Watkins</p>
+                <p>
+                    Group Members: Jackson Gunn Pack, Maxyne Watkins, Ethan
+                    Hogan
+                </p>
             </div>
         </div>
     );
