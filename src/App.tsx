@@ -21,7 +21,7 @@ const App: React.FC<BoardProps> = (props): JSX.Element => {
             <header className="App-header">Table Top Map Editor</header>
             <ImageDownload></ImageDownload>
             <GridEdit changeX={changeXSize} changeY={changeYSize}></GridEdit>
-            <TransformWrapper panning={{ activationKeys: ["a"] }}>
+            <TransformWrapper panning={{ activationKeys: ["z"] }}>
                 <TransformComponent>
                     <div
                         id="map"
