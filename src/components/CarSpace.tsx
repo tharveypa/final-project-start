@@ -1,14 +1,16 @@
 import React from "react";
 import CarPic from "./car.png";
 
-type CarProps = {
+type CarSpaceProps = {
     color: string;
     clean: boolean;
     tirefill: boolean;
+    windowstate: boolean;
+    shine: boolean;
 };
 
-const Car: React.FC<CarProps> = (props) => {
+const CarSpace: React.FC<CarSpaceProps> = () => {
     return <img src={CarPic} alt="car" />;
 };
 
-export default Car;
+export default CarSpace;
