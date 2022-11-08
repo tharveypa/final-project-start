@@ -53,7 +53,6 @@ const Layout = ({ picPosition }: Props) => {
                             </Button>
                         </Col>
                     </Row>
-                    <div>Maxyne Watkins</div>
                 </Container>
             </div>
             <div id="main-board-container">
@@ -66,7 +65,7 @@ const Layout = ({ picPosition }: Props) => {
                 >
                     <Board picPosition={picPosition} />
                 </div>
-                <p>Group Members: Jackson Gunn Pack</p>
+                <p>Group Members: Jackson Gunn Pack, Maxyne</p>
             </div>
         </div>
     );
