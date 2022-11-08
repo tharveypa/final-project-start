@@ -1,5 +1,5 @@
 import React from "react";
-import CarPic from "./car.png";
+import bluecar from "./bluecar.png";
 
 type CarSpaceProps = {
     color: string;
@@ -10,7 +10,7 @@ type CarSpaceProps = {
 };
 
 const CarSpace: React.FC<CarSpaceProps> = () => {
-    return <img src={CarPic} alt="car" />;
+    return <img src={bluecar} alt="car" />;
 };
 
 export default CarSpace;
