@@ -1,27 +1,25 @@
-import React, { useState } from "react";
-import RedCar from "./red car.png";
-import BlueCar from "./blue car.png";
-import GreenCar from "./green car.png";
-import { Button } from "react-bootstrap";
+import React from "react";
+//import RedCar from "./red car.png";
+//import BlueCar from "./blue car.png";
+//import GreenCar from "./green car.png";
+//import { Button } from "react-bootstrap";
+import Car from "./Car";
+import DirtTool from "./Destroy Tools/DirtTool";
 
-type CarProps = {
-    color: string;
-    clean: boolean;
-    tirefill: boolean;
+type CarSpaceProps = {
+    DirtPosition: number[];
 };
 
-const Car: React.FC<CarProps> = () => {
-    const [colorNum, setColorNum] = useState(0);
+function renderDestroy(x: number, y: number, [dirtX, dirtY]: number[]) {
+    const isDirtHere = dirtX === x && dirtY === y;
+    const piece = isDirtHere ? <DirtTool /> : null;
     return (
-        <div>
-            {colorNum == 0 && <img src={RedCar} alt="red car" />}
-            {colorNum == 1 && <img src={BlueCar} alt="blue car" />}
-            {colorNum == 2 && <img src={GreenCar} alt="green car" />}
-            <Button onClick={() => setColorNum((colorNum + 1) % 3)}>
-                Change Color (Red/Blue/Green)
-            </Button>
-        </div>
+        <Car color={0} clean={true} window={true} tirefill={true}>
+            {piece}
+        </Car>
     );
+}
+const CarSpace: React.FC<CarSpaceProps> = (props) => {
+    return <div>{renderDestroy(0, 0, props.DirtPosition)}</div>;
 };
-
-export default Car;
+export default CarSpace;

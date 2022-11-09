@@ -4,7 +4,14 @@ import GreenCar from "./green car.png";
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
-export function Car(): JSX.Element {
+type CarProps = {
+    color: number;
+    clean: boolean;
+    tirefill: boolean;
+    window: boolean;
+};
+
+const Car: React.FC<CarProps> = (props) => {
     const [colorNum, setColorNum] = useState(0);
     return (
         <div>
@@ -14,8 +21,9 @@ export function Car(): JSX.Element {
             <Button onClick={() => setColorNum((colorNum + 1) % 3)}>
                 Change Color (Red/Blue/Green)
             </Button>
+            {props.children}
         </div>
     );
-}
+};
 
 export default Car;
