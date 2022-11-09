@@ -1,7 +1,7 @@
 /* eslint-disable no-extra-parens */
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Modal, Table } from "react-bootstrap";
-import { allList } from "../interfaces/fishpics";
+import { allList } from "./interfaces/fishpics";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
@@ -89,7 +89,7 @@ export function Menu() {
                         <tr key={s}>
                             <td>
                                 <img
-                                    src={require("../images/pixelFish.png")}
+                                    src={require(s + "")}
                                     width="25%"
                                     height="25%"
                                 />
