@@ -9,7 +9,7 @@ type CarProps = {
     clean: boolean;
     tirefill: boolean;
 };
-
+//woah
 const Car: React.FC<CarProps> = (props) => {
     const [colorNum, setColorNum] = useState(0);
     return (
