@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Modal, Table } from "react-bootstrap";
 import { allList } from "../interfaces/fishpics";
-import pixelFish from "../images/pixelFish.png";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
@@ -32,7 +31,13 @@ export function Menu() {
         setView(event.target.value);
     };
     return (
-        <div className="bg-grey border m-2 p-2">
+        <div
+            className="bg-grey border m-2 p-2"
+            style={{
+                height: "100%",
+                width: "25%"
+            }}
+        >
             <Container>
                 <h4>
                     <b>Menu</b>
@@ -84,8 +89,8 @@ export function Menu() {
                             <td>
                                 <img
                                     src={require("../images/pixelFish.png")}
-                                    width="5%"
-                                    height="5%"
+                                    width="25%"
+                                    height="25%"
                                 />
                             </td>
                         </tr>
