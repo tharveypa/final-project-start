@@ -15,10 +15,10 @@ observe((picPosition: [number, number]) => {
                     border: "1px solid gray"
                 }}
             >
-                Eric Merritt
                 <Board picPosition={picPosition} />
                 <div>Matt Whalen</div>
                 <div>Joshua Artis </div>
+                <div>Eric Merritt</div>
             </div>
         </React.StrictMode>,
         document.getElementById("root")
