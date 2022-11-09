@@ -1,11 +1,14 @@
-let picPosition: [number, number] = [0, 0];
-let observer: ((arg0: [number, number]) => void) | null = null;
+import { observeItem } from "./interfaces";
+
+let picPosition: observeItem[];
+let observer: ((arg0: observeItem[]) => void) | null = null;
+let objectCount = 0;
 
 const emitChange = () => {
     observer && observer(picPosition);
 };
 
-export const observe = (o: (t: [number, number]) => void) => {
+export const observe = (o: (t: observeItem[]) => void) => {
     if (observer) {
         throw new Error("Multiple observers not implemented.");
     }
@@ -14,7 +17,15 @@ export const observe = (o: (t: [number, number]) => void) => {
     emitChange();
 };
 
-export const movePic = (toX: number, toY: number) => {
-    picPosition = [toX, toY];
+export const movePic = (index: number, toX: number, toY: number) => {
+    const itemChange: observeItem = { position: [toX, toY] };
+
+    if (objectCount < index) {
+        picPosition.push(itemChange);
+    } else {
+        picPosition[index] = itemChange;
+        objectCount++;
+    }
+
     emitChange();
 };

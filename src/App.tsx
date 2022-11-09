@@ -1,11 +1,11 @@
-import React, { MouseEvent, MouseEventHandler, useState } from "react";
+import React, { /*MouseEvent,*/ useState } from "react";
 import "./App.css";
 import Board from "./Board";
 import GridEdit from "./GridEdit";
 import "./background.css";
 import ImageDownload from "./ImageDownload";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import Pic from "./Pic";
+import { observeItem } from "./interfaces";
 
 type BoardProps = {
     picPosition: [number, number];
@@ -14,7 +14,10 @@ type BoardProps = {
 const App: React.FC<BoardProps> = (props): JSX.Element => {
     const [xSize, setXSize] = useState<number>(5);
     const [ySize, setYSize] = useState<number>(5);
-    const [pan, setPan] = useState<boolean>(false);
+    const [objects, setObjects] = useState<observeItem[]>([
+        { position: [0, 0] }
+    ]);
+    //const [pan, setPan] = useState<boolean>(false);
 
     const changeXSize = (x: number) => setXSize(x);
     const changeYSize = (y: number) => setYSize(y);
