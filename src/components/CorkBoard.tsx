@@ -1,21 +1,48 @@
 import React, { useState } from "react";
+import { useDrop } from "react-dnd";
+import { ItemTypes } from "../constants";
 import { noteData } from "../interfaces/noteData";
-//import { Task } from "../interfaces/task";
+import { Task } from "../interfaces/task";
 
 export function CorkBoard({
     startingNotesAndPositionInfo
 }: {
     startingNotesAndPositionInfo: noteData[];
 }): JSX.Element {
+    //Handles the dropping of things onto the corkboard
+    const [{ isOver }, drop] = useDrop({
+        accept: ItemTypes.PIC,
+        drop: () =>
+            addNoteData(
+                {
+                    title: "fred",
+                    description: "also fred",
+                    pritority: "high",
+                    thumbColor: "red"
+                },
+                50,
+                75,
+                30,
+                70,
+                1
+            ),
+        collect: (monitor) => ({
+            isOver: !!monitor.isOver()
+        })
+    });
+
     //state for holding our note and position info
-    const [notesAndPositionInfo /*setNotesAndPositionInfo*/] = useState<
+    const [notesAndPositionInfo, setNotesAndPositionInfo] = useState<
         noteData[]
     >(startingNotesAndPositionInfo);
-    /*
+
+    ///*
+    //maintains the id of noteDatas as they get added to the list of notesAndPositionInfo
     const [currentId, setCurrentId] = useState<number>(
         notesAndPositionInfo.length
     );
-*/
+
+    //*/
     //edits a note and position data associated with that note based on the parameters passed in
     //see noteData.ts for what these parameters are
     // function editNoteData(
@@ -47,28 +74,28 @@ export function CorkBoard({
 
     //adds a note and position data associuated with that note based on the parameters passed in
     //see noteData.ts for what these parameters mean
-    // function addNoteData(
-    //     newTask: Task,
-    //     height: number,
-    //     width: number,
-    //     top: number,
-    //     left: number,
-    //     zIndex: number
-    // ) {
-    //     setCurrentId(currentId + 1);
-    //     setNotesAndPositionInfo([
-    //         ...notesAndPositionInfo,
-    //         {
-    //             task: newTask,
-    //             id: currentId,
-    //             height: height,
-    //             width: width,
-    //             top: top,
-    //             left: left,
-    //             zIndex: zIndex
-    //         }
-    //     ]);
-    // }
+    function addNoteData(
+        newTask: Task,
+        height: number,
+        width: number,
+        top: number,
+        left: number,
+        zIndex: number
+    ) {
+        setCurrentId(currentId + 1);
+        setNotesAndPositionInfo([
+            ...notesAndPositionInfo,
+            {
+                task: newTask,
+                id: currentId,
+                height: height,
+                width: width,
+                top: top,
+                left: left,
+                zIndex: zIndex
+            }
+        ]);
+    }
 
     //deletes a note and position data associated with that note based on the id
     // function deleteNoteAndPosition(noteId: number) {
@@ -81,6 +108,7 @@ export function CorkBoard({
 
     return (
         <div
+            ref={drop}
             style={{
                 height: "100%",
                 width: "100%",
