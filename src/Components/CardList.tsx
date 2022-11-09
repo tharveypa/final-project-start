@@ -92,6 +92,7 @@ export function CardList(): JSX.Element {
     }
 
     // FIXME double check that the listIt script works and re-renders (ensure state is correctly used and modifies by CardList and Card)
+    // FIXME Part 2: Electric Boogalo, modify the CSS to have overflow-y: auto rule for this div
     return (
         <div>
             <Button onClick={resetList}>Clear the list</Button>
