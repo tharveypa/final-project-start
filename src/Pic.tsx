@@ -4,7 +4,7 @@ import { ItemTypes } from "./constants";
 
 type ObjectProp = {
     color: string;
-    position: [number, number];
+    //position: [number, number];
     //orientation: number;
     //size: number;
     //texture: string;

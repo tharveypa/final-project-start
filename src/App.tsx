@@ -7,16 +7,31 @@ import ImageDownload from "./ImageDownload";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { observeItem } from "./interfaces";
 
-type BoardProps = {
-    picPosition: [number, number];
-};
-
-const App: React.FC<BoardProps> = (props): JSX.Element => {
+const App: React.FC = (): JSX.Element => {
     const [xSize, setXSize] = useState<number>(5);
     const [ySize, setYSize] = useState<number>(5);
     const [objects, setObjects] = useState<observeItem[]>([
-        { position: [0, 0] }
+        { id: 0, position: [0, 0] }
     ]);
+
+    const changeObject = (index: number, location: [number, number]) => {
+        if (index > objects.length - 1) {
+            setObjects((oldArray) => [
+                ...oldArray,
+                { id: index, position: location }
+            ]);
+        } else {
+            setObjects(
+                objects.map((o: observeItem): observeItem => {
+                    if (o.id === index) {
+                        return { ...o, position: location };
+                    } else {
+                        return o;
+                    }
+                })
+            );
+        }
+    };
     //const [pan, setPan] = useState<boolean>(false);
 
     const changeXSize = (x: number) => setXSize(x);
@@ -57,7 +72,8 @@ const App: React.FC<BoardProps> = (props): JSX.Element => {
                         }}
                     >
                         <Board
-                            picPosition={props.picPosition}
+                            object={objects}
+                            changeObject={changeObject}
                             x={xSize}
                             y={ySize}
                         />
