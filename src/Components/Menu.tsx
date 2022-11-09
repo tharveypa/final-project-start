@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-parens */
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Modal, Table } from "react-bootstrap";
 import { allList } from "../interfaces/fishpics";
