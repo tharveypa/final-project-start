@@ -4,7 +4,7 @@ import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
 import NumSquareForm from "./NumSquareForm";
-import { Menu } from "./Components/Menu";
+import { Menu } from "./Menu";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
