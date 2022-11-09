@@ -91,9 +91,8 @@ export function CardList(): JSX.Element {
         currList.map((task: Task) => Card(task));
     }
 
-    // MAKE SURE that it can display a list, even if incorrect
+    // FIXME double check that the listIt script works and re-renders (ensure state is correctly used and modifies by CardList and Card)
     return (
-        // need to alter style, was not sure if we should make a Board.css to format the board (i.e, allocate a container of x% for each are of application)
         <div>
             <Button onClick={resetList}>Clear the list</Button>
             <Button onClick={() => sortIt(true)}>Sort by Priority</Button>
