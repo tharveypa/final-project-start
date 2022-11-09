@@ -17,12 +17,12 @@ export function CardList(): JSX.Element {
         return 0;
     }
 
-    function compareTitle(a: Task, b: Task): number {
+    function compareColor(a: Task, b: Task): number {
         // can make this compare color too since both are strings and it will sort the same
-        if (a.title > b.title) {
+        if (a.thumbColor > b.thumbColor) {
             return -1;
         }
-        if (a.title < b.title) {
+        if (a.thumbColor < b.thumbColor) {
             return 1;
         }
         return 0;
@@ -37,8 +37,8 @@ export function CardList(): JSX.Element {
             modList(tmp);
             listIt();
         } else {
-            // alphabetically by title
-            const sorted: Task[] = currList.sort(compareTitle);
+            // alphabetically by color
+            const sorted: Task[] = currList.sort(compareColor);
             const tmp: Task[] = sorted.map((task: Task): Task => ({ ...task }));
             modList(tmp);
             listIt();
@@ -97,7 +97,7 @@ export function CardList(): JSX.Element {
         <div>
             <Button onClick={resetList}>Clear the list</Button>
             <Button onClick={() => sortIt(true)}>Sort by Priority</Button>
-            <Button onClick={() => sortIt(false)}>Sort by Title</Button>
+            <Button onClick={() => sortIt(false)}>Sort by Color</Button>
             <div id="taskList">
                 <script>listIt();</script>
             </div>
