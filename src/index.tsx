@@ -2,12 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Board from "./Board";
 import "./index.css";
+import "./App.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
         <React.StrictMode>
+            <header className="App-header">Dress Up!</header>
             <div
                 style={{
                     width: "500px",
