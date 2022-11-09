@@ -18,7 +18,7 @@
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": ""
+        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Colosseo_2020.jpeg"
     },
     {
         "Name": "Statue Of Liberty",
@@ -29,7 +29,7 @@
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": ""
+        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Lady_Liberty_under_a_blue_sky_(cropped).jpeg"
     },
     {
         "Name": "Machu Picchu",
@@ -40,7 +40,7 @@
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": ""
+        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Before_Machu_Picchu.jpeg"
     },
     {
         "Name": "The Acropolis",
@@ -51,7 +51,7 @@
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": ""
+        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/greece-attica-athens-acropolis-listed-as-world-heritage-by-unesco-2.jpeg"
     },
     {
         "Name": "The Taj Mahal",
@@ -62,7 +62,7 @@
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": ""
+        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Taj Mahal.jpeg"
     },
     {
         "Name": "Pyramids of Giza",
@@ -73,7 +73,7 @@
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": ""
+        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Giza.jpeg"
     },
     {
         "Name": "Great Wall of China",
@@ -84,7 +84,7 @@
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": ""
+        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/The_Great_Wall_of_China_at_Jinshanling-edit.jpeg"
     },
     {
         "Name": "Grand Canyon",
@@ -95,7 +95,7 @@
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": ""
+        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Grand Canyon.jpeg"
     },
     {
         "Name": "Niagara Falls",
@@ -106,7 +106,7 @@
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": ""
+        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/3Falls_Niagara.jpeg"
     },
     {
         "Name": "Central Park",
@@ -117,7 +117,7 @@
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": ""
+        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Central Park.jpeg"
     },
     {
         "Name": "Lincoln Memorial",
@@ -128,7 +128,7 @@
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": ""
+        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Aerial_view_of_Lincoln_Memorial_-_east_side_EDIT.jpeg"
     },
     {
         "Name": "Sydney Opera House",
@@ -139,7 +139,7 @@
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": ""
+        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/sydney-opera-house-concert-hall-renewal-arm-architecture-susan-kuriakose_dezeen_2364_col_0.webp"
     },
     {
         "Name": "Disney World",
@@ -150,7 +150,7 @@
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": ""
+        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Disney World.webp"
     },
     {
         "Name": "Forbidden City",
@@ -161,7 +161,7 @@
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": ""
+        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Forbidden City.webp"
     },
     {
         "Name": "Notre Dame Cathedral",
@@ -172,7 +172,7 @@
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": ""
+        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Notre-Dame-de-Paris-France.webp"
     },
     {
         "Name": "British Museum",
@@ -183,7 +183,7 @@
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": ""
+        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/British Museum.jpeg"
     },
     {
         "Name": "The Louvre",
@@ -194,6 +194,6 @@
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": ""
+        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Louvre.webp"
     }
 ]
