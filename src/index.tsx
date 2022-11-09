@@ -8,6 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
         <React.StrictMode>
+            <h1> Dress Up! </h1>
             <div
                 style={{
                     width: "500px",
