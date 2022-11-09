@@ -9,7 +9,12 @@ function App(): JSX.Element {
     return (
         <div>
             <CardList></CardList>
-            <Card></Card>
+            <Card
+                title="TestTitle"
+                description="TestDes"
+                priority="1"
+                thumbColor="blue"
+            ></Card>
         </div>
     );
 }

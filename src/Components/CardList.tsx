@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Task } from "../interfaces/task";
-import { Button, Form } from "react-bootstrap";
-//import { Card } from "./Card";
+import { Button } from "react-bootstrap";
+import { Card } from "./Card";
+
+// MAKE IT SO THAT CARDS ARE MADE HERE, SO TAKE IN AN ARRAY OF TASK AND MAKE CARDS FROM THEM
 export function CardList(): JSX.Element {
     const [currList, modList] = useState<Task[]>([]); // going to use as a buffer to store the card before adding it (this way it should rerender after being given a new card)
-    //FIXME make this be useState<Card[]>([]), just waiting to do so until I understand state
-    const [sort, setSort] = useState<boolean>(true); // two modes for two types of sorts, sorts invoked by checkbox
 
     function comparePriority(a: Task, b: Task): number {
         if (parseInt(a.priority) > parseInt(b.priority)) {
@@ -18,6 +18,7 @@ export function CardList(): JSX.Element {
     }
 
     function compareTitle(a: Task, b: Task): number {
+        // can make this compare color too since both are strings and it will sort the same
         if (a.title > b.title) {
             return -1;
         }
@@ -27,10 +28,9 @@ export function CardList(): JSX.Element {
         return 0;
     }
 
-    function sortIt(event: React.ChangeEvent<HTMLInputElement>): void {
-        // from a checkbox
-        setSort(event.target.checked);
-        if (sort) {
+    function sortIt(howTo: boolean): void {
+        // going to just make two buttons, sounds more user friendly
+        if (howTo) {
             // by priority
             const sorted: Task[] = currList.sort(comparePriority); // should compare based on priority
             const tmp: Task[] = sorted.map((task: Task): Task => ({ ...task }));
@@ -56,7 +56,7 @@ export function CardList(): JSX.Element {
         const tmp: Task[] = currList.map((task: Task): Task => ({ ...task }));
         tmp.push(newTask);
         modList(tmp);
-        listIt();
+        //listIt();
     }
 
     function removeCard(inTask: Task): void {
@@ -69,17 +69,17 @@ export function CardList(): JSX.Element {
                 task.thumbColor != inTask.thumbColor
         );
         modList(newNotes);
-        listIt();
+        //listIt();
     }
 
     function resetList(): void {
         modList([]);
-        listIt();
+        //listIt();
     }
 
     function listIt(): void {
         // code to make a list out of an array, just using task.title for right now
-        //FIXME make this work for Cards (need to access their underlying interface / fields)
+        /*
         let str = "<ul>";
         currList.forEach(function (task) {
             str += "<li>" + task.title + "</li>";
@@ -87,6 +87,8 @@ export function CardList(): JSX.Element {
         str += "</ul>";
         const element = document.getElementById("taskList");
         if (element != null) element.innerHTML = str; // want to ensure this runs
+        */
+        currList.map((task: Task) => Card(task));
     }
 
     // MAKE SURE that it can display a list, even if incorrect
@@ -94,14 +96,11 @@ export function CardList(): JSX.Element {
         // need to alter style, was not sure if we should make a Board.css to format the board (i.e, allocate a container of x% for each are of application)
         <div>
             <Button onClick={resetList}>Clear the list</Button>
-            <Form.Check
-                type="checkbox"
-                id="sortingType"
-                label="Check for priority, otherwise alphabetical"
-                checked={sort}
-                onChange={sortIt}
-            />
-            <div id="taskList"></div>
+            <Button onClick={() => sortIt(true)}>Sort by Priority</Button>
+            <Button onClick={() => sortIt(false)}>Sort by Title</Button>
+            <div id="taskList">
+                <script>listIt();</script>
+            </div>
             <Button
                 onClick={() =>
                     addCard({
@@ -128,4 +127,5 @@ export function CardList(): JSX.Element {
             </Button>
         </div>
     );
+    // FIXME need to make adding and removing based on events, namely creation of one from MakeNote and delete from however we delete
 }
