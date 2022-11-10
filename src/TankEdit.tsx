@@ -29,9 +29,7 @@ export const TankEdit = ({ tank, swapEdit, editTank }: tankEditProps) => {
                             label="Freshwater"
                             data-testid="Tank Freshwater"
                             checked={!newTank.salt}
-                            onChange={(
-                                e: React.ChangeEvent<HTMLInputElement>
-                            ) => {
+                            onChange={() => {
                                 setNewTank({
                                     ...newTank,
                                     salt: !newTank.salt
@@ -47,9 +45,7 @@ export const TankEdit = ({ tank, swapEdit, editTank }: tankEditProps) => {
                             label="Predator"
                             data-testid="Tank Freshwater"
                             checked={newTank.pred}
-                            onChange={(
-                                e: React.ChangeEvent<HTMLInputElement>
-                            ) => {
+                            onChange={() => {
                                 setNewTank({
                                     ...newTank,
                                     pred: !newTank.pred
