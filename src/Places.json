@@ -2,198 +2,198 @@
         "Name": "Eiffel Tower",
         "Country": "France",
         "Description": "",
-        "Continent": "",
+        "Continent": "Europe",
         "Population_Country": 0,
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/640px-Tour_Eiffel_Wikimedia_Commons_(cropped).jpeg"
+        "Image": "./PLACEIMAGES/640px-Tour_Eiffel_Wikimedia_Commons_(cropped).jpeg"
     },
     {
         "Name": "The Colosseum",
         "Country": "Rome",
         "Description": "",
-        "Continent": "",
+        "Continent": "Europe",
         "Population_Country": 0,
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Colosseo_2020.jpeg"
+        "Image": "./PLACEIMAGES/Colosseo_2020.jpeg"
     },
     {
         "Name": "Statue Of Liberty",
         "Country": "United States of America",
         "Description": "",
-        "Continent": "",
+        "Continent": "North America",
         "Population_Country": 0,
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Lady_Liberty_under_a_blue_sky_(cropped).jpeg"
+        "Image": "./PLACEIMAGES/Lady_Liberty_under_a_blue_sky_(cropped).jpeg"
     },
     {
         "Name": "Machu Picchu",
         "Country": "Peru",
         "Description": "",
-        "Continent": "",
+        "Continent": "South America",
         "Population_Country": 0,
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Before_Machu_Picchu.jpeg"
+        "Image": "./PLACEIMAGES/Before_Machu_Picchu.jpeg"
     },
     {
         "Name": "The Acropolis",
         "Country": "Greece",
         "Description": "",
-        "Continent": "",
+        "Continent": "Europe",
         "Population_Country": 0,
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/greece-attica-athens-acropolis-listed-as-world-heritage-by-unesco-2.jpeg"
+        "Image": "./PLACEIMAGES/greece-attica-athens-acropolis-listed-as-world-heritage-by-unesco-2.jpeg"
     },
     {
         "Name": "The Taj Mahal",
         "Country": "India",
         "Description": "",
-        "Continent": "",
+        "Continent": "Asia",
         "Population_Country": 0,
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Taj Mahal.jpeg"
+        "Image": "./PLACEIMAGES/Taj Mahal.jpeg"
     },
     {
         "Name": "Pyramids of Giza",
         "Country": "Egypt",
         "Description": "",
-        "Continent": "",
+        "Continent": "Africa",
         "Population_Country": 0,
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Giza.jpeg"
+        "Image": "./PLACEIMAGES/Giza.jpeg"
     },
     {
         "Name": "Great Wall of China",
         "Country": "China",
-        "Description": "",
+        "Description": "Asia",
         "Continent": "",
         "Population_Country": 0,
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/The_Great_Wall_of_China_at_Jinshanling-edit.jpeg"
+        "Image": "./PLACEIMAGES/The_Great_Wall_of_China_at_Jinshanling-edit.jpeg"
     },
     {
         "Name": "Grand Canyon",
         "Country": "United States of America",
         "Description": "",
-        "Continent": "",
+        "Continent": "North America",
         "Population_Country": 0,
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Grand Canyon.jpeg"
+        "Image": "./PLACEIMAGES/Grand Canyon.jpeg"
     },
     {
         "Name": "Niagara Falls",
         "Country": "Canada",
         "Description": "",
-        "Continent": "",
+        "Continent": "North America",
         "Population_Country": 0,
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/3Falls_Niagara.jpeg"
+        "Image": "./PLACEIMAGES/3Falls_Niagara.jpeg"
     },
     {
         "Name": "Central Park",
         "Country": "United States of America",
         "Description": "",
-        "Continent": "",
+        "Continent": "North America",
         "Population_Country": 0,
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Central Park.jpeg"
+        "Image": "./PLACEIMAGES/Central Park.jpeg"
     },
     {
         "Name": "Lincoln Memorial",
         "Country": "United States of America",
         "Description": "",
-        "Continent": "",
+        "Continent": "North America",
         "Population_Country": 0,
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Aerial_view_of_Lincoln_Memorial_-_east_side_EDIT.jpeg"
+        "Image": "./PLACEIMAGES/Aerial_view_of_Lincoln_Memorial_-_east_side_EDIT.jpeg"
     },
     {
         "Name": "Sydney Opera House",
         "Country": "Australia",
         "Description": "",
-        "Continent": "",
+        "Continent": "Oceanic",
         "Population_Country": 0,
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/sydney-opera-house-concert-hall-renewal-arm-architecture-susan-kuriakose_dezeen_2364_col_0.webp"
+        "Image": "./PLACEIMAGES/sydney-opera-house-concert-hall-renewal-arm-architecture-susan-kuriakose_dezeen_2364_col_0.webp"
     },
     {
         "Name": "Disney World",
         "Country": "United States of America",
         "Description": "",
-        "Continent": "",
+        "Continent": "North America",
         "Population_Country": 0,
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Disney World.webp"
+        "Image": "./PLACEIMAGES/Disney World.webp"
     },
     {
         "Name": "Forbidden City",
         "Country": "China",
         "Description": "",
-        "Continent": "",
+        "Continent": "Asia",
         "Population_Country": 0,
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Forbidden City.webp"
+        "Image": "./PLACEIMAGES/Forbidden City.webp"
     },
     {
         "Name": "Notre Dame Cathedral",
         "Country": "France",
         "Description": "",
-        "Continent": "",
+        "Continent": "Europe",
         "Population_Country": 0,
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Notre-Dame-de-Paris-France.webp"
+        "Image": "./PLACEIMAGES/Notre-Dame-de-Paris-France.webp"
     },
     {
         "Name": "British Museum",
         "Country": "England",
         "Description": "",
-        "Continent": "",
+        "Continent": "Europe",
         "Population_Country": 0,
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/British Museum.jpeg"
+        "Image": "./PLACEIMAGES/British Museum.jpeg"
     },
     {
         "Name": "The Louvre",
         "Country": "France",
         "Description": "",
-        "Continent": "",
+        "Continent": "Europe",
         "Population_Country": 0,
         "Average_Tourist": 0,
         "onMap": false,
         "priority": 0,
-        "Image": "/Users/taybanko/tasks/src/final-project-start/src/PLACEIMAGES/Louvre.webp"
+        "Image": "./PLACEIMAGES/Louvre.webp"
     }
 ]
