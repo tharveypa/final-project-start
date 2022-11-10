@@ -29,6 +29,7 @@ type ArrProps = {
     picPosition: [number, number];
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Dndarr: React.FC<ArrProps> = (_props) => {
     const test: DragTile = {
         type: "string",
