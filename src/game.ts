@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import { PROTEIN_LIST, FRUIT_LIST } from "./data/foodList";
+import { PROTEIN_LIST } from "./data/foodList";
 /* eslint-disable @typescript-eslint/no-unused-vars */
 let picPosition = [0, 0];
 
