@@ -3,5 +3,4 @@ export interface Food {
     calories: number;
     image_link: string;
     serving_size: number;
-    /** ingredients: string[] */
 }
