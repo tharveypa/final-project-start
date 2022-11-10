@@ -1,7 +1,6 @@
-import { render } from "@testing-library/react";
+/* eslint-disable no-extra-parens */
 import React, { useState } from "react";
 import { useDrop } from "react-dnd";
-import { idText } from "typescript";
 import { ItemTypes } from "./constants";
 import { canMovePic, movePic } from "./game";
 import Tank from "./interfaces/Tank";

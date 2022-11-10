@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Tank from "./interfaces/Tank";
 import Overlay from "./Overlay";
-import { TankEdit } from "./TankEdit";
 
 type SquareProps = {
     thisTank: Tank;
