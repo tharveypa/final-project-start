@@ -11,7 +11,8 @@ const App: React.FC = (): JSX.Element => {
     const [xSize, setXSize] = useState<number>(5);
     const [ySize, setYSize] = useState<number>(5);
     const [objects, setObjects] = useState<observeItem[]>([
-        { id: 0, position: [0, 0] }
+        { id: 0, position: [0, 0] },
+        { id: 1, position: [1, 0] }
     ]);
 
     const changeObject = (index: number, location: [number, number]) => {

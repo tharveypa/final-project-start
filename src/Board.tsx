@@ -10,18 +10,23 @@ const renderPiece = (x: number, y: number, object: observeItem[]) => {
         (o: observeItem): boolean => x === o.position[0] && y === o.position[1]
     );
     if (location.length > 0) {
-        return <Pic color={"red"} />;
+        return <Pic color={"red"} id={location[0].id} />;
     }
 };
 
-const renderSquare = (x: number, y: number, object: observeItem[]) => {
+const renderSquare = (
+    x: number,
+    y: number,
+    object: observeItem[],
+    changeObject: (index: number, location: [number, number]) => void
+) => {
     return (
         <div
             className="square"
             key={((x + y) * (x + y + 1)) / 2 + x}
             style={{ width: "20%", height: "20%" }}
         >
-            <BoardSquare x={x} y={y}>
+            <BoardSquare x={x} y={y} changeObject={changeObject}>
                 {renderPiece(x, y, object)}
             </BoardSquare>
         </div>
@@ -40,7 +45,7 @@ const Board: React.FC<BoardProps> = (props) => {
 
     for (let i = 0; i < props.y; i++) {
         for (let j = 0; j < props.x; j++) {
-            squares.push(renderSquare(j, i, props.object));
+            squares.push(renderSquare(j, i, props.object, props.changeObject));
         }
     }
     const square = document.querySelectorAll<HTMLElement>(".square");

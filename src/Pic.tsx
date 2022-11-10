@@ -1,9 +1,11 @@
 import React, { Fragment } from "react";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "./constants";
+import { observeItem } from "./interfaces";
 
 type ObjectProp = {
     color: string;
+    id: number;
     //position: [number, number];
     //orientation: number;
     //size: number;
@@ -13,7 +15,7 @@ type ObjectProp = {
 
 const Pic: React.FC<ObjectProp> = (props) => {
     const [{ isDragging }, drag] = useDrag({
-        item: { type: ItemTypes.PIC },
+        item: { type: ItemTypes.PIC, id: props.id },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging
         })
