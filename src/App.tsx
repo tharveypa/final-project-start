@@ -1,5 +1,7 @@
 import React from "react";
 import "./App.css";
+import { CardList } from "./Components/CardList";
+import { Card } from "./Components/Card";
 
 import { MakeNote } from "./components/MakeNote";
 import { CorkBoard } from "./components/CorkBoard";
@@ -40,6 +42,15 @@ const sampleCorkBoard = [
 
 function App(): JSX.Element {
     return (
+        <div>
+            <CardList></CardList>
+            <Card
+                title="Title0"
+                description="Title0 is a test card!"
+                priority="1"
+                thumbColor="red"
+            ></Card>
+        </div>
         <DndProvider backend={HTML5Backend}>
             <div className="App">
                 <div>

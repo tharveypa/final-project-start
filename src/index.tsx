@@ -28,7 +28,6 @@ observe((picPosition: [number, number]) => {
             >
                 <Board picPosition={picPosition} />
             </div>
-
             <MakeNote></MakeNote>
         </React.StrictMode>,
         document.getElementById("root")
