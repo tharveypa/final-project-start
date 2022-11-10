@@ -11,9 +11,3 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
 }
-
-.index-Row {
-    height: 50px;
-    width: 100px;
-    background-color: rgb(255, 34, 34);
-}
