@@ -3,8 +3,8 @@ import { Container, Row, Button, Col } from "react-bootstrap";
 
 import Board from "./Board";
 
-import "./Layout.css";
-import "./index.css";
+import "./styles/Layout.css";
+import "./styles/index.css";
 
 interface Props {
     picPosition: [number, number];
@@ -15,7 +15,7 @@ const Layout = ({ picPosition }: Props) => {
         <div id="grid">
             <div id="logo-container">
                 <img
-                    src={require("./UDormLogo.png")}
+                    src={require("./images/UDormLogo.png")}
                     width="150"
                     height="100"
                 />
@@ -42,7 +42,7 @@ const Layout = ({ picPosition }: Props) => {
                         <Col>
                             <Button style={{ backgroundColor: "transparent" }}>
                                 <img
-                                    src={require("./homeButton.png")}
+                                    src={require("./images/homeButton.png")}
                                     width="75"
                                     height="30"
                                 />
@@ -51,7 +51,7 @@ const Layout = ({ picPosition }: Props) => {
                         <Col>
                             <Button style={{ backgroundColor: "transparent" }}>
                                 <img
-                                    src={require("./newRoomButton.png")}
+                                    src={require("./images/newRoomButton.png")}
                                     width="150"
                                     height="40"
                                 />
@@ -60,7 +60,7 @@ const Layout = ({ picPosition }: Props) => {
                         <Col>
                             <Button style={{ backgroundColor: "transparent" }}>
                                 <img
-                                    src={require("./viewRoomsButton.png")}
+                                    src={require("./images/viewRoomsButton.png")}
                                     width="120"
                                     height="40"
                                 />
