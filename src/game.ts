@@ -1,3 +1,5 @@
+import Tank from "./interfaces/Tank";
+
 let picPosition = [0, 0];
 let observer: ((arg0: number[]) => void) | null = null;
 
@@ -20,11 +22,6 @@ export const movePic = (toX: number, toY: number) => {
     emitChange();
 };
 
-export const canMovePic = (
-    toX: number,
-    toY: number,
-    salt: boolean,
-    pred: boolean
-) => {
-    return salt === false && pred === false;
+export const canMovePic = (toX: number, toY: number, tank: Tank) => {
+    return tank.salt === false && tank.pred === false;
 };
