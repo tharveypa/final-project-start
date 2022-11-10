@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import Tank from "./interfaces/Tank";
 import Overlay from "./Overlay";
+import { TankEdit } from "./TankEdit";
 
 type SquareProps = {
-    salt: boolean;
-    pred: boolean;
+    thisTank: Tank;
+    turnOnEdit: () => void;
 };
 
 const Square: React.FC<SquareProps> = (props) => {
-    const { salt, pred } = props;
+    const { thisTank, turnOnEdit } = props;
     let tankPic = "";
-    if (salt) {
+    if (thisTank.salt) {
         tankPic = "salt.png";
     } else {
         tankPic = "fresh.png";
@@ -23,6 +25,7 @@ const Square: React.FC<SquareProps> = (props) => {
                 width: "100%",
                 height: "100%"
             }}
+            onClick={() => turnOnEdit()}
         >
             {
                 <img
@@ -32,7 +35,7 @@ const Square: React.FC<SquareProps> = (props) => {
                     height="100%"
                 />
             }
-            {pred && <Overlay color="red" opacity={0.25} />}
+            {thisTank.pred && <Overlay color="red" opacity={0.25} />}
             {props.children}
         </div>
     );
