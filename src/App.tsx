@@ -12,7 +12,10 @@ const App: React.FC = (): JSX.Element => {
     const [ySize, setYSize] = useState<number>(5);
     const [objects, setObjects] = useState<observeItem[]>([
         { id: 0, position: [0, 0] },
-        { id: 1, position: [1, 0] }
+        { id: 1, position: [1, 0] },
+        { id: 2, position: [2, 0] },
+        { id: 3, position: [3, 0] },
+        { id: 4, position: [4, 0] }
     ]);
 
     const changeObject = (index: number, location: [number, number]) => {
@@ -58,7 +61,9 @@ const App: React.FC = (): JSX.Element => {
     */
     return (
         <div className="App">
-            <header className="App-header">Table Top Map Editor</header>
+            <header className="App-header">
+                Table Top Map Editor for CISC275
+            </header>
             <ImageDownload></ImageDownload>
             <GridEdit changeX={changeXSize} changeY={changeYSize}></GridEdit>
             <TransformWrapper panning={{ activationKeys: ["Shift"] }}>

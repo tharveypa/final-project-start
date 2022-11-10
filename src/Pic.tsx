@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "./constants";
-import { observeItem } from "./interfaces";
 
 type ObjectProp = {
     color: string;
