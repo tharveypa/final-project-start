@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.css";
-import { CardList } from "./Components/CardList";
-import { Card } from "./Components/Card";
-
+import { CardList } from "./components/CardList";
 import { MakeNote } from "./components/MakeNote";
 import { CorkBoard } from "./components/CorkBoard";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Pic from "./Pic";
+import { Card } from "./components/Card";
+import { DeleteNote } from "./components/DeleteNote";
 
 const sampleCorkBoard = [
     {
@@ -42,49 +42,52 @@ const sampleCorkBoard = [
 
 function App(): JSX.Element {
     return (
-        <div>
-            <CardList></CardList>
-            <Card
-                title="Title0"
-                description="Title0 is a test card!"
-                priority="1"
-                thumbColor="red"
-            ></Card>
-        </div>
-        <DndProvider backend={HTML5Backend}>
-            <div className="App">
-                <div>
-                    <h3>CREATED BY: </h3>
-                    <p>Blade Tyrrell, Brandon Branson, Michael Snead</p>
-                </div>
-                <div
-                    style={{
-                        height: "50px",
-                        width: "50px",
-                        left: "500px",
-                        top: "50px",
-                        position: "absolute"
-                    }}
-                >
-                    <Pic></Pic>
-                </div>
-                {/* CORKBOARD DIV : SIZE AND POSITION OF THE DIV DEFINES THAT OF THE CORKBOARD*/}
-                <div
-                    style={{
-                        height: "600px",
-                        width: "800px",
-                        left: "800px",
-                        top: "50px",
-                        position: "absolute"
-                    }}
-                >
-                    <CorkBoard
-                        startingNotesAndPositionInfo={sampleCorkBoard}
-                    ></CorkBoard>
-                    <MakeNote></MakeNote>
-                </div>
+        <>
+            <div>
+                <CardList></CardList>
+                <Card
+                    title="Title0"
+                    description="Title0 is a test card!"
+                    priority="1"
+                    thumbColor="red"
+                ></Card>
             </div>
-        </DndProvider>
+            <DndProvider backend={HTML5Backend}>
+                <div className="App">
+                    <div>
+                        <h3>CREATED BY: </h3>
+                        <p>Blade Tyrrell, Brandon Branson, Michael Snead</p>
+                    </div>
+                    <div
+                        style={{
+                            height: "50px",
+                            width: "50px",
+                            left: "500px",
+                            top: "50px",
+                            position: "absolute"
+                        }}
+                    >
+                        <Pic></Pic>
+                    </div>
+                    {/* CORKBOARD DIV : SIZE AND POSITION OF THE DIV DEFINES THAT OF THE CORKBOARD*/}
+                    <div
+                        style={{
+                            height: "600px",
+                            width: "800px",
+                            left: "800px",
+                            top: "50px",
+                            position: "absolute"
+                        }}
+                    >
+                        <CorkBoard
+                            startingNotesAndPositionInfo={sampleCorkBoard}
+                        ></CorkBoard>
+                        <MakeNote></MakeNote>
+                        <DeleteNote></DeleteNote>
+                    </div>
+                </div>
+            </DndProvider>
+        </>
     );
 }
 
