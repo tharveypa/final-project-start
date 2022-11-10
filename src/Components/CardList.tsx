@@ -5,7 +5,26 @@ import { Card } from "./Card";
 
 // MAKE IT SO THAT CARDS ARE MADE HERE, SO TAKE IN AN ARRAY OF TASK AND MAKE CARDS FROM THEM
 export function CardList(): JSX.Element {
-    const [currList, modList] = useState<Task[]>([]); // going to use as a buffer to store the card before adding it (this way it should rerender after being given a new card)
+    const [currList, modList] = useState<Task[]>([
+        {
+            title: "Title0",
+            description: "Title0 is a test card!",
+            priority: "1",
+            thumbColor: "red"
+        },
+        {
+            title: "Title1",
+            description: "Title0 is also a test card!",
+            priority: "2",
+            thumbColor: "blue"
+        },
+        {
+            title: "Title2",
+            description: "Title2 is a test card as well!",
+            priority: "3",
+            thumbColor: "green"
+        }
+    ]); // will be [] in final (empty list, currently giving a dumby list)
 
     function comparePriority(a: Task, b: Task): number {
         if (parseInt(a.priority) > parseInt(b.priority)) {
@@ -93,13 +112,17 @@ export function CardList(): JSX.Element {
 
     // FIXME double check that the listIt script works and re-renders (ensure state is correctly used and modifies by CardList and Card)
     // FIXME Part 2: Electric Boogalo, modify the CSS to have overflow-y: auto rule for this div
+    console.log(currList.length);
+    console.log(currList[0]);
+    console.log(currList[1]);
+    console.log(currList[2]);
     return (
         <div>
             <Button onClick={resetList}>Clear the list</Button>
             <Button onClick={() => sortIt(true)}>Sort by Priority</Button>
             <Button onClick={() => sortIt(false)}>Sort by Color</Button>
             <div id="taskList">
-                <script>listIt();</script>
+                <script>listIt</script>
             </div>
             <Button
                 onClick={() =>

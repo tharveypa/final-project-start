@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Task } from "../interfaces/task";
 import { Button } from "react-bootstrap";
-import { CardListProps } from "../interfaces/CardListProps.ts";
+//import { CardListProps } from "../interfaces/CardListProps.ts";
 export function Card(inputTask: Task): JSX.Element {
     const [currTask, setTask] = useState<Task>(inputTask);
     //default, does not really matter, just that it is initialized. Need to either make this meaningful or call updateTask as soon as it is created and pass in a new task
@@ -12,10 +12,10 @@ export function Card(inputTask: Task): JSX.Element {
         // CardList Task[]
         const tmp: Task = { ...newTask };
         setTask(tmp);
-        const arrTmp: Task[] = [...currTaskArr];
+        /*const arrTmp: Task[] = [...currTaskArr];
         if (arrTmp.indexOf(inputTask) !== -1)
             arrTmp[arrTmp.indexOf(inputTask)] = { ...tmp };
-        modList(arrTmp);
+        modList(arrTmp);*/
         // I think these errors are caused because they are not in the same file (like how they were in Task 9)
         // If no workaround I can move some of this stuff to App.tsx
     }
@@ -33,10 +33,11 @@ export function Card(inputTask: Task): JSX.Element {
             <Button
                 onClick={() =>
                     updateTask({
-                        title: "Testing Title",
-                        description: "Testing Description",
-                        priority: "1",
-                        thumbColor: "red"
+                        title: "Testing Changing Task",
+                        description:
+                            "This is to show that we can change a full task! This could be input from the user!",
+                        priority: "4",
+                        thumbColor: "yellow"
                     })
                 }
             >
@@ -46,6 +47,6 @@ export function Card(inputTask: Task): JSX.Element {
     );
     // FIXME the actual "Make it new!" button is going to onClick pop up a Modal like how Blade's MakeNote does but instead of a MakeNote
     // component, it will actually just be the HTML of the return and will instead modify the current Task in the Card
-    // This code will have some problems for unused functions as of now, but adding that in should be fairly simple, at which point I will 
+    // This code will have some problems for unused functions as of now, but adding that in should be fairly simple, at which point I will
     // remoe this silly 4 comments for a single block (just came out of Notepad so didn't even register /**/)
 }

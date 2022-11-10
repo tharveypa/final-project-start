@@ -3,17 +3,15 @@ import "./App.css";
 import { CardList } from "./Components/CardList";
 import { Card } from "./Components/Card";
 
-//import { CardList } from "./CardList"
-
 function App(): JSX.Element {
     return (
         <div>
             <CardList></CardList>
             <Card
-                title="TestTitle"
-                description="TestDes"
+                title="Title0"
+                description="Title0 is a test card!"
                 priority="1"
-                thumbColor="blue"
+                thumbColor="red"
             ></Card>
         </div>
     );
