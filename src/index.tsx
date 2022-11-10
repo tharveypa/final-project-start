@@ -5,7 +5,7 @@ import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
 import { DropDown } from "./DropDown";
-import { Form, Row } from "react-bootstrap";
+// import { Form, Row } from "react-bootstrap";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
