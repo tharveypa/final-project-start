@@ -1,5 +1,5 @@
 import React from "react";
-import Pic from "./Pic";
+import Pic from "./bed1";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import BoardSquare from "./BoardSquare";
