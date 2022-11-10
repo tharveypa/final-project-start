@@ -1,9 +1,13 @@
-import React from "react";
+import { render } from "@testing-library/react";
+import React, { useState } from "react";
 import { useDrop } from "react-dnd";
+import { idText } from "typescript";
 import { ItemTypes } from "./constants";
 import { canMovePic, movePic } from "./game";
+import Tank from "./interfaces/Tank";
 import Overlay from "./Overlay";
 import Square from "./Square";
+import { TankEdit } from "./TankEdit";
 
 type BoardSquareProps = {
     x: number;
@@ -14,6 +18,13 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
     const { x, y, children } = props;
     const salt = x % 2 === 1;
     const pred = x % 3 === 0;
+    const [newTank, setNewTank] = useState<Tank>({
+        id: x,
+        x: x,
+        y: y,
+        salt: salt,
+        pred: pred
+    });
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.PIC,
         canDrop: () => canMovePic(x, y, salt, pred),
@@ -23,6 +34,19 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
             canDrop: !!monitor.canDrop()
         })
     });
+    const [edit, setEdit] = useState<boolean>(false);
+
+    function swapEdit() {
+        setEdit(!edit);
+    }
+
+    function turnOnEdit() {
+        setEdit(true);
+    }
+
+    function editTank(thisTank: Tank) {
+        setNewTank({ ...thisTank });
+    }
 
     return (
         <div
@@ -34,9 +58,18 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                 border: "2px solid black"
             }}
         >
-            <Square salt={salt} pred={pred}>
-                {children}
-            </Square>
+            {!edit && (
+                <Square thisTank={newTank} turnOnEdit={turnOnEdit}>
+                    {children}
+                </Square>
+            )}
+            {edit && (
+                <TankEdit
+                    tank={newTank}
+                    swapEdit={swapEdit}
+                    editTank={editTank}
+                ></TankEdit>
+            )}
             {isOver && !canDrop && <Overlay color="red" opacity={0.5} />}
             {!isOver && canDrop && <Overlay color="yellow" opacity={0.5} />}
             {isOver && canDrop && <Overlay color="green" opacity={0.5} />}
