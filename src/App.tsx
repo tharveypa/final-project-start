@@ -1,28 +1,72 @@
-import React, { useState } from "react";
+import React, { /*MouseEvent,*/ useState } from "react";
 import "./App.css";
 import Board from "./Board";
 import GridEdit from "./GridEdit";
 import "./background.css";
 import ImageDownload from "./ImageDownload";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import { observeItem } from "./interfaces";
 
-type BoardProps = {
-    picPosition: [number, number];
-};
-
-const App: React.FC<BoardProps> = (props): JSX.Element => {
+const App: React.FC = (): JSX.Element => {
     const [xSize, setXSize] = useState<number>(5);
     const [ySize, setYSize] = useState<number>(5);
+    const [objects, setObjects] = useState<observeItem[]>([
+        { id: 0, position: [0, 0] },
+        { id: 1, position: [1, 0] },
+        { id: 2, position: [2, 0] },
+        { id: 3, position: [3, 0] },
+        { id: 4, position: [4, 0] }
+    ]);
+
+    const changeObject = (index: number, location: [number, number]) => {
+        if (index > objects.length - 1) {
+            setObjects((oldArray) => [
+                ...oldArray,
+                { id: index, position: location }
+            ]);
+        } else {
+            setObjects(
+                objects.map((o: observeItem): observeItem => {
+                    if (o.id === index) {
+                        return { ...o, position: location };
+                    } else {
+                        return o;
+                    }
+                })
+            );
+        }
+    };
+    //const [pan, setPan] = useState<boolean>(false);
 
     const changeXSize = (x: number) => setXSize(x);
     const changeYSize = (y: number) => setYSize(y);
 
+    /* Working on middle mouse panning
+    const handleMiddleDown = (event: React.MouseEvent) => {
+        if (event.button === 1) {
+            setPan(true);
+        }
+    };
+
+    const handleMiddleUp = (event: React.MouseEvent) => {
+        if (event.button === 1) {
+            setPan(false);
+        }
+    };
+
+     disabled: !pan, 
+
+    onMouseDown={handleMiddleDown}
+    onMouseUp={handleMiddleUp}
+    */
     return (
         <div className="App">
-            <header className="App-header">Table Top Map Editor</header>
+            <header className="App-header">
+                Table Top Map Editor for CISC275
+            </header>
             <ImageDownload></ImageDownload>
             <GridEdit changeX={changeXSize} changeY={changeYSize}></GridEdit>
-            <TransformWrapper panning={{ activationKeys: ["z"] }}>
+            <TransformWrapper panning={{ activationKeys: ["Shift"] }}>
                 <TransformComponent>
                     <div
                         className="container"
@@ -34,7 +78,8 @@ const App: React.FC<BoardProps> = (props): JSX.Element => {
                         }}
                     >
                         <Board
-                            picPosition={props.picPosition}
+                            object={objects}
+                            changeObject={changeObject}
                             x={xSize}
                             y={ySize}
                         />
