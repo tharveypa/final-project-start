@@ -25,7 +25,7 @@ const Layout = ({ picPosition }: Props) => {
                 <Container>
                     <Row>
                         <Col>
-                            <Button>
+                            <Button style={{ backgroundColor: "transparent" }}>
                                 <img
                                     src={require("./homeButton.png")}
                                     width="75"
@@ -34,7 +34,7 @@ const Layout = ({ picPosition }: Props) => {
                             </Button>
                         </Col>
                         <Col>
-                            <Button>
+                            <Button style={{ backgroundColor: "transparent" }}>
                                 <img
                                     src={require("./newRoomButton.png")}
                                     width="150"
@@ -43,8 +43,7 @@ const Layout = ({ picPosition }: Props) => {
                             </Button>
                         </Col>
                         <Col>
-                            <Button>
-                                {" "}
+                            <Button style={{ backgroundColor: "transparent" }}>
                                 <img
                                     src={require("./viewRoomsButton.png")}
                                     width="120"
