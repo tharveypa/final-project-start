@@ -5,7 +5,7 @@ export interface Task {
     description: string;
     //set as a string, but should be chosen from a pre-made list of "high", "medium", or "low"
     //priority level of the task
-    pritority: string;
+    priority: string;
     //set as a string, but should be chosen from a pre-made list of colors (the default HTML/CSS colors)
     //color of the thumbtack when it's stuck to the corkboard
     thumbColor: string;
