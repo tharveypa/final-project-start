@@ -2,6 +2,6 @@ export interface Food {
     name: string;
     calories: number;
     image_link: string;
-    healthy: boolean;
+    serving_size: string;
     /** ingredients: string[] */
 }
