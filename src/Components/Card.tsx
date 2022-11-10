@@ -25,7 +25,7 @@ export function Card(inputTask: Task): JSX.Element {
             Title: {currTask.title} <br></br>
             Description: {currTask.description} <br></br>
             Priority: {currTask.priority} <br></br>
-            Thumbtack Color:{currTask.thumbColor}
+            Thumbtack Color:{""}
             <span style={{ color: currTask.thumbColor }}>
                 {currTask.thumbColor}
             </span>
