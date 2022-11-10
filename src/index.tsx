@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 //import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
+//import { MakeNote } from "./components/MakeNote";
 //import { CorkBoard } from "./CorkBoard";
 import App from "./App";
 
