@@ -7,7 +7,7 @@ const testNote = [
         task: {
             title: "Complete CISC 275 Project",
             description: "Just do it",
-            pritority: "medium",
+            priority: "medium",
             thumbColor: "purple"
         },
         id: 1,
@@ -24,7 +24,7 @@ const testNotes = [
         task: {
             title: "Complete CISC 275 Project",
             description: "Just do it",
-            pritority: "medium",
+            priority: "medium",
             thumbColor: "purple"
         },
         id: 1,
@@ -39,7 +39,7 @@ const testNotes = [
             title: "Walk the Dog",
             description:
                 "I need to walk my dog if I don't walk him he will be sad so I should do that",
-            pritority: "high",
+            priority: "high",
             thumbColor: "yellow"
         },
         id: 2,
@@ -53,7 +53,7 @@ const testNotes = [
         task: {
             title: "Perform open heart surgery",
             description: "It's filthy in there",
-            pritority: "low",
+            priority: "low",
             thumbColor: "red"
         },
         id: 3,

@@ -12,7 +12,7 @@ const sampleCorkBoard = [
         task: {
             title: "fred",
             description: "also fred",
-            pritority: "high",
+            priority: "high",
             thumbColor: "red"
         },
         id: 1,
@@ -26,7 +26,7 @@ const sampleCorkBoard = [
         task: {
             title: "burt",
             description: "also burt",
-            pritority: "low",
+            priority: "low",
             thumbColor: "green"
         },
         id: 2,
