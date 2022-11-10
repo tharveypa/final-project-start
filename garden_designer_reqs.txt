@@ -5,6 +5,8 @@ Objective: GUI software to allow the user to create and view garden designs usin
 
 - User is given a menu of plants from which to drag onto the garden area (top view); menu can be sorted/filtered
 
+- Top down view by default
+
 - To begin, use circles/ovals for plant images; plants will be scaled to match garden dimensions
 
 - Land surrounding garden can be labeled (e.g. woods, lawn)
