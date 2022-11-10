@@ -30,7 +30,7 @@ type BoardProps = {
 const Board: React.FC<BoardProps> = (props) => {
     const { picPosition } = props;
     const squares = [];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 1; i++) {
         squares.push(renderSquare(i, picPosition));
     }
     return (
