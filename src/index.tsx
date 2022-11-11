@@ -46,6 +46,7 @@ observe((picPosition: [number, number]) => {
                 >
                     <Board picPosition={picPosition} />
                 </div>
+                <p>hi</p>
             </React.StrictMode>
         </>,
         document.getElementById("root")

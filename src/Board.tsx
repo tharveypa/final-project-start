@@ -44,6 +44,7 @@ const Board: React.FC<BoardProps> = (props) => {
             >
                 {squares}
             </div>
+            <p>test</p>
             <p>Welcome to Jurasic Park</p>
         </DndProvider>
     );
