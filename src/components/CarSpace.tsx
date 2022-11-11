@@ -13,7 +13,7 @@ type CarProps = {
     tirefill: boolean;
 };
 
-const Car: React.FC<CarProps> = (props) => {
+const Car: React.FC<CarProps> = () => {
     const backgrounds = [Street, City, Forest];
     const [colorNum, setColorNum] = useState(0);
     const [backgroundIndex, setBackgroundIndex] = useState(0);
