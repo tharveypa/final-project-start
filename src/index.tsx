@@ -17,7 +17,7 @@ observe((picPosition: [number, number]) => {
                 }}
             >
                 <DropDown
-                    options={["Charzaird", "Bulbausar", "chactar"]}
+                    options={["", "Charzaird", "Bulbausar", "chactar"]}
                 ></DropDown>
                 <DropDown
                     options={["", "Charzaird", "Bulbausar", "chactar"]}
