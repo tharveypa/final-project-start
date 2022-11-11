@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import RedCar from "./red car.png";
-import BlueCar from "./blue car.png";
-import GreenCar from "./green car.png";
-import Street from "./street.jpg";
-import City from "./city.jpg";
-import Forest from "./forest.jpg";
+import RedCar from "./images/red car.png";
+import BlueCar from "./images/blue car.png";
+import GreenCar from "./images/green car.png";
+import Street from "./images/street.jpg";
+import City from "./images/city.jpg";
+import Forest from "./images/forest.jpg";
 import { Button } from "react-bootstrap";
 
 type CarProps = {
