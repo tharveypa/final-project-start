@@ -18,13 +18,13 @@ const Pic: React.FC = () => {
                     opacity: isDragging ? 1 : 0.5,
                     fontSize: 50,
                     fontWeight: "bold",
-                    cursor: "move"
-                    //textAlign: "center"
+                    cursor: "move",
+                    textAlign: "center"
                 }}
             >
                 {/*♘*/}
                 <img
-                    src={require("./Furniture/bed 1.jpg")}
+                    src={require("./Furniture/bed 2.jpg")}
                     width="80"
                     height="80"
                 />
