@@ -1,16 +1,21 @@
-// import React, { useState } from "react";
-// import { Button } from "react-bootstrap";
-// import { QuestionType } from "../interfaces/question";
-//import { render } from "@testing-library/react";
 import React from "react";
-//import { Task } from "../interfaces/task";
+import { Task } from "../interfaces/task";
 
-export function Note(): JSX.Element {
-    //const [note, setNote] = useState<Task>();
-
-    // function makeNote(): void {
-
-    // }
-
-    return <div>placehold</div>;
+export function Note({ task, id }: { task: Task; id: number }): JSX.Element {
+    return (
+        <div
+            style={{
+                height: "100%",
+                width: "100%",
+                backgroundColor: "yellow"
+                //position: "relative"
+            }}
+        >
+            Title: {task.title}
+            <br />
+            Description: {task.description}
+            <br />
+            Priortity: {task.priority}
+        </div>
+    );
 }
