@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-parens */
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 
@@ -9,6 +10,7 @@ export function DropDown({ options }: { options: string[] }): JSX.Element {
     function updateChoice(event: ChangeEvent) {
         setChoice(event.target.value);
     }
+
     return (
         <span style={{ display: "inline-flex", margin: "auto" }}>
             <Form.Check inline>
