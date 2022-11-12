@@ -26,7 +26,7 @@ export const DraggableLayer = () => {
                     style={{
                         width: "100%",
                         height: "100%",
-                        display: "center",
+                        display: "flex",
                         flexWrap: "wrap"
                     }}
                 >
