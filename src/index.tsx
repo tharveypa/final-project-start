@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import ReactDOM from "react-dom";
 import Board from "./Board";
@@ -5,6 +6,7 @@ import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
 import map from "./worldmap2.png";
+import { DraggableLayer } from "./DraggableLayer";
 //testing with this comment
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
@@ -35,10 +37,22 @@ observe((picPosition: [number, number]) => {
                     top: "20px",
                     width: "350px",
                     height: "900px",
-                    border: "1px solid gray"
+                    border: "2px solid black"
                 }}
             >
                 <Board picPosition={picPosition} />
+            </div>
+            <div
+                style={{
+                    position: "absolute",
+                    top: "50px",
+                    left: "23%",
+                    width: "1200px",
+                    height: "750px",
+                    border: "2px solid black"
+                }}
+            >
+                <DraggableLayer />
             </div>
         </React.StrictMode>,
         document.getElementById("root")
