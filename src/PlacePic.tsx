@@ -46,8 +46,7 @@ export const PlacePic: React.FC<PlacePicProps> = (props) => {
                     ...style,
                     opacity: isDragging ? 1 : 0.5,
                     fontWeight: "bold",
-                    cursor: "move",
-                    textAlign: "center"
+                    cursor: "move"
                 }}
             >
                 <img src={objectPlace.Image} width="60" height="60" />
