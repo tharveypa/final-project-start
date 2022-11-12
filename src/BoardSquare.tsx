@@ -4,18 +4,20 @@ import { ItemTypes } from "./constants";
 import { canMovePic } from "./game";
 import Overlay from "./Overlay";
 import Square from "./Square";
+import { Food } from "./Interfaces/food";
 
 type BoardSquareProps = {
     x: number;
     y: number;
+    currentFoodList: Food[];
 };
 
 const BoardSquare: React.FC<BoardSquareProps> = (props) => {
-    const { x, y, children } = props;
+    const { x, y, currentFoodList, children } = props;
     const black = false; /*(x + y) % 2 === 1;*/
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.PIC,
-        canDrop: () => canMovePic(x, y),
+        canDrop: () => canMovePic(x, y, currentFoodList),
         //drop: () => alert(foodName),
         collect: (monitor) => ({
             isOver: !!monitor.isOver(),

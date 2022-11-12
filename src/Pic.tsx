@@ -28,7 +28,6 @@ const Pic: React.FC<{ foodItem: Food }> = ({ foodItem }) => {
                     textAlign: "center"
                 }}
             >
-                {/*♘*/}
                 <img src={foodItem.image_link} width="80" height="80" />
             </div>
         </Fragment>
