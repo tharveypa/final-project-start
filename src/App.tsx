@@ -6,23 +6,20 @@ import "./background.css";
 import ImageDownload from "./ImageDownload";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { observeItem } from "./interfaces";
+import ListOb from "./ListOb";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { DndProvider } from "react-dnd";
 
 const App: React.FC = (): JSX.Element => {
     const [xSize, setXSize] = useState<number>(5);
     const [ySize, setYSize] = useState<number>(5);
-    const [objects, setObjects] = useState<observeItem[]>([
-        { id: 0, position: [0, 0] },
-        { id: 1, position: [1, 0] },
-        { id: 2, position: [2, 0] },
-        { id: 3, position: [3, 0] },
-        { id: 4, position: [4, 0] }
-    ]);
+    const [objects, setObjects] = useState<observeItem[]>([]);
 
     const changeObject = (index: number, location: [number, number]) => {
-        if (index > objects.length - 1) {
+        if (index < 0) {
             setObjects((oldArray) => [
                 ...oldArray,
-                { id: index, position: location }
+                { id: oldArray.length, position: location }
             ]);
         } else {
             setObjects(
@@ -64,28 +61,37 @@ const App: React.FC = (): JSX.Element => {
             <header className="App-header">
                 Table Top Map Editor for CISC275
             </header>
+            <div>Justin Clavette</div>
             <ImageDownload></ImageDownload>
             <GridEdit changeX={changeXSize} changeY={changeYSize}></GridEdit>
-            <TransformWrapper panning={{ activationKeys: ["Shift"] }}>
-                <TransformComponent>
-                    <div
-                        className="container"
-                        id="map"
-                        style={{
-                            width: "1000px",
-                            height: "1000px",
-                            border: "1px solid gray"
-                        }}
+            <div className="fullgridpage">
+                <DndProvider backend={HTML5Backend}>
+                    <TransformWrapper
+                        wheel={{ activationKeys: ["Shift"] }}
+                        panning={{ activationKeys: ["Shift"] }}
                     >
-                        <Board
-                            object={objects}
-                            changeObject={changeObject}
-                            x={xSize}
-                            y={ySize}
-                        />
+                        <TransformComponent>
+                            <div
+                                className="grid"
+                                id="map"
+                                style={{
+                                    border: "1px solid gray"
+                                }}
+                            >
+                                <Board
+                                    object={objects}
+                                    changeObject={changeObject}
+                                    x={xSize}
+                                    y={ySize}
+                                />
+                            </div>
+                        </TransformComponent>
+                    </TransformWrapper>
+                    <div>
+                        <ListOb></ListOb>
                     </div>
-                </TransformComponent>
-            </TransformWrapper>
+                </DndProvider>
+            </div>
         </div>
     );
 };

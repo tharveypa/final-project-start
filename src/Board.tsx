@@ -55,19 +55,19 @@ const Board: React.FC<BoardProps> = (props) => {
     });
 
     return (
-        <DndProvider backend={HTML5Backend}>
-            <div
-                style={{
-                    width: "100%",
-                    height: "100%",
-                    display: "flex",
-                    flexWrap: "wrap"
-                }}
-            >
-                {squares}
-            </div>
-        </DndProvider>
+        <div
+            style={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                flexWrap: "wrap"
+            }}
+        >
+            {squares}
+        </div>
     );
 };
 
 export default Board;
+
+//<Pic color={"red"} id={10}></Pic>

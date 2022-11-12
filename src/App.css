@@ -37,3 +37,21 @@
         transform: rotate(360deg);
     }
 }
+
+.fullgridpage {
+    display: flex;
+}
+
+.grid {
+    background-image: url(./bosun_tally.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+    width: 1000px;
+    height: 1000px;
+}
+
+.grid:after {
+    content: "";
+    display: block;
+}
