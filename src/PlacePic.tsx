@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { CSSProperties, Fragment } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { ItemTypes } from "./constants";
