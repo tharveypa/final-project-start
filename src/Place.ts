@@ -8,4 +8,6 @@ export interface Place {
     onMap: boolean;
     priority: number;
     Image: string;
+    top: number;
+    left: number;
 }
