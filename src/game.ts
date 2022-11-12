@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import { PROTEIN_LIST } from "./data/foodList";
+import { Food } from "./Interfaces/food";
 /* eslint-disable @typescript-eslint/no-unused-vars */
 let picPosition = [0, 0];
 
@@ -25,12 +25,16 @@ export const movePic = (toX: number, toY: number) => {
     emitChange();
 };
 
-export const canMovePic = (toX: number, toY: number) => {
+export const canMovePic = (
+    toX: number,
+    toY: number,
+    currentFoodList: Food[]
+) => {
     // const [x, y] = picPosition;
     // const dx = toX - x;
 
     // return Math.abs(dx) === 1;
-    if (toX === PROTEIN_LIST.length) {
+    if (toX === currentFoodList.length) {
         return true;
     } else {
         return false;

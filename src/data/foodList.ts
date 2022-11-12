@@ -4,7 +4,7 @@ import broccoli from "../pictures/broccoli.jpeg";
 import banana from "../pictures/banana.jpeg";
 import hot_dog from "../pictures/hot_dog.jpeg";
 import meatballs from "../pictures/meatballs.jpeg";
-import spaghetti from "../pictures/broccoli.jpeg";
+import spaghetti from "../pictures/spaghetti.jpeg";
 import grape from "../pictures/grape.jpg";
 import orange from "../pictures/orange.jpg";
 import strawberry from "../pictures/strawberry.jpg";
@@ -16,7 +16,7 @@ import pepper from "../pictures/pepper.jpeg";
 import cucumber from "../pictures/cucumber.jpeg";
 import potato from "../pictures/potato.jpeg";
 import bread from "../pictures/bread.jpeg";
-import beans from "../pictures/bread.jpeg";
+import beans from "../pictures/beans.jpeg";
 import cookies from "../pictures/cookies.jpeg";
 import rice from "../pictures/rice.jpeg";
 
