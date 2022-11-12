@@ -4,20 +4,51 @@ import Board from "./Board";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
+import { DropDown } from "./DropDown";
+//  import { Form, Row } from "react-bootstrap";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
-        <React.StrictMode>
+        <>
             <div
                 style={{
-                    width: "500px",
-                    height: "500px",
-                    border: "1px solid gray"
+                    whiteSpace: "nowrap",
+                    justifyContent: "space-between"
                 }}
             >
-                <Board picPosition={picPosition} />
+                <DropDown
+                    options={["", "Charzaird", "Bulbausar", "chactar"]}
+                ></DropDown>
+                <DropDown
+                    options={["", "Charzaird", "Bulbausar", "chactar"]}
+                ></DropDown>
+                <DropDown
+                    options={["", "Charzaird", "Bulbausar", "chactar"]}
+                ></DropDown>
+                <DropDown
+                    options={["", "Charzaird", "Bulbausar", "chactar"]}
+                ></DropDown>
+                <DropDown
+                    options={["", "Charzaird", "Bulbausar", "chactar"]}
+                ></DropDown>
+                <DropDown
+                    options={["", "Charzaird", "Bulbausar", "chactar"]}
+                ></DropDown>
             </div>
-        </React.StrictMode>,
+            <hr></hr>
+            <React.StrictMode>
+                <div
+                    style={{
+                        width: "1500px",
+                        height: "500px",
+                        border: "1px solid gray"
+                    }}
+                >
+                    <Board picPosition={picPosition} />
+                </div>
+                <p>hi</p>
+            </React.StrictMode>
+        </>,
         document.getElementById("root")
     );
 });

@@ -30,7 +30,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
         >
             <Square black={black}>{children}</Square>
             {isOver && !canDrop && <Overlay color="red" />}
-            {!isOver && canDrop && <Overlay color="yellow" />}
+            {!isOver && canDrop && <Overlay color="blue" />}
             {isOver && canDrop && <Overlay color="green" />}
         </div>
     );
