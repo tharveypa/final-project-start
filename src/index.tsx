@@ -4,36 +4,18 @@ import Board from "./Board";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
-import { DropDown } from "./DropDown";
+// import { DropDown } from "./DropDown";
 //  import { Form, Row } from "react-bootstrap";
+import { EditMode } from "./PopUpSlider";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
         <>
-            <div
-                style={{
-                    whiteSpace: "nowrap",
-                    justifyContent: "space-between"
-                }}
-            >
-                <DropDown
-                    options={["", "Charzaird", "Bulbausar", "chactar"]}
-                ></DropDown>
-                <DropDown
-                    options={["", "Charzaird", "Bulbausar", "chactar"]}
-                ></DropDown>
-                <DropDown
-                    options={["", "Charzaird", "Bulbausar", "chactar"]}
-                ></DropDown>
-                <DropDown
-                    options={["", "Charzaird", "Bulbausar", "chactar"]}
-                ></DropDown>
-                <DropDown
-                    options={["", "Charzaird", "Bulbausar", "chactar"]}
-                ></DropDown>
-                <DropDown
-                    options={["", "Charzaird", "Bulbausar", "chactar"]}
-                ></DropDown>
+            <div>
+                <h3 style={{ textAlign: "center" }}>
+                    Welcome to Poke Team Design
+                </h3>
+                <EditMode></EditMode>
             </div>
             <hr></hr>
             <React.StrictMode>
