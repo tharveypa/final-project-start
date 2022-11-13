@@ -28,22 +28,52 @@ export function EditMode(): JSX.Element {
                         }}
                     >
                         <DropDown
-                            options={["", "Charzaird", "Bulbausar", "chactar"]}
+                            options={[
+                                "",
+                                "Charzaird",
+                                "Bulbausar",
+                                "Wartortle"
+                            ]}
                         ></DropDown>
                         <DropDown
-                            options={["", "Charzaird", "Bulbausar", "chactar"]}
+                            options={[
+                                "",
+                                "Charzaird",
+                                "Bulbausar",
+                                "Wartortle"
+                            ]}
                         ></DropDown>
                         <DropDown
-                            options={["", "Charzaird", "Bulbausar", "chactar"]}
+                            options={[
+                                "",
+                                "Charzaird",
+                                "Bulbausar",
+                                "Wartortle"
+                            ]}
                         ></DropDown>
                         <DropDown
-                            options={["", "Charzaird", "Bulbausar", "chactar"]}
+                            options={[
+                                "",
+                                "Charzaird",
+                                "Bulbausar",
+                                "Wartortle"
+                            ]}
                         ></DropDown>
                         <DropDown
-                            options={["", "Charzaird", "Bulbausar", "chactar"]}
+                            options={[
+                                "",
+                                "Charzaird",
+                                "Bulbausar",
+                                "Wartortle"
+                            ]}
                         ></DropDown>
                         <DropDown
-                            options={["", "Charzaird", "Bulbausar", "chactar"]}
+                            options={[
+                                "",
+                                "Charzaird",
+                                "Bulbausar",
+                                "Wartortle"
+                            ]}
                         ></DropDown>
                     </div>
                 )}
