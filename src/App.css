@@ -38,7 +38,13 @@
     }
 }
 
-.fullgridpage {
+.fullgrid {
+    display: inline-block;
+}
+
+.dndpage {
+    width: 100%;
+    height: 100%;
     display: flex;
 }
 
@@ -47,11 +53,9 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
     display: inline-block;
-    width: 1000px;
-    height: 1000px;
 }
 
-.grid:after {
-    content: "";
-    display: block;
+.list {
+    width: 20vw;
+    display: inline-block;
 }

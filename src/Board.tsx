@@ -1,7 +1,5 @@
 import React from "react";
 import Pic from "./Pic";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
 import BoardSquare from "./BoardSquare";
 import { observeItem } from "./interfaces";
 
@@ -18,13 +16,15 @@ const renderSquare = (
     x: number,
     y: number,
     object: observeItem[],
-    changeObject: (index: number, location: [number, number]) => void
+    changeObject: (index: number, location: [number, number]) => void,
+    width: number,
+    height: number
 ) => {
     return (
         <div
             className="square"
             key={((x + y) * (x + y + 1)) / 2 + x}
-            style={{ width: "20%", height: "20%" }}
+            style={{ width: 100 / width + "%", height: 100 / height + "%" }}
         >
             <BoardSquare x={x} y={y} changeObject={changeObject}>
                 {renderPiece(x, y, object)}
@@ -45,14 +45,18 @@ const Board: React.FC<BoardProps> = (props) => {
 
     for (let i = 0; i < props.y; i++) {
         for (let j = 0; j < props.x; j++) {
-            squares.push(renderSquare(j, i, props.object, props.changeObject));
+            squares.push(
+                renderSquare(
+                    j,
+                    i,
+                    props.object,
+                    props.changeObject,
+                    props.x,
+                    props.y
+                )
+            );
         }
     }
-    const square = document.querySelectorAll<HTMLElement>(".square");
-    square.forEach((ele) => {
-        ele.style.width = 100 / props.x + "%";
-        ele.style.height = 100 / props.y + "%";
-    });
 
     return (
         <div
@@ -69,5 +73,3 @@ const Board: React.FC<BoardProps> = (props) => {
 };
 
 export default Board;
-
-//<Pic color={"red"} id={10}></Pic>

@@ -64,30 +64,34 @@ const App: React.FC = (): JSX.Element => {
             <div>Justin Clavette</div>
             <ImageDownload></ImageDownload>
             <GridEdit changeX={changeXSize} changeY={changeYSize}></GridEdit>
-            <div className="fullgridpage">
+            <div className="dndpage">
                 <DndProvider backend={HTML5Backend}>
-                    <TransformWrapper
-                        wheel={{ activationKeys: ["Shift"] }}
-                        panning={{ activationKeys: ["Shift"] }}
-                    >
-                        <TransformComponent>
-                            <div
-                                className="grid"
-                                id="map"
-                                style={{
-                                    border: "1px solid gray"
-                                }}
-                            >
-                                <Board
-                                    object={objects}
-                                    changeObject={changeObject}
-                                    x={xSize}
-                                    y={ySize}
-                                />
-                            </div>
-                        </TransformComponent>
-                    </TransformWrapper>
-                    <div>
+                    <div className="fullgrid">
+                        <TransformWrapper
+                            wheel={{ activationKeys: ["Shift"] }}
+                            panning={{ activationKeys: ["Shift"] }}
+                        >
+                            <TransformComponent>
+                                <div
+                                    className="grid"
+                                    id="map"
+                                    style={{
+                                        border: "1px solid gray",
+                                        width: 80 + "vw",
+                                        height: 80 * (ySize / xSize) + "vw"
+                                    }}
+                                >
+                                    <Board
+                                        object={objects}
+                                        changeObject={changeObject}
+                                        x={xSize}
+                                        y={ySize}
+                                    />
+                                </div>
+                            </TransformComponent>
+                        </TransformWrapper>
+                    </div>
+                    <div className="list">
                         <ListOb></ListOb>
                     </div>
                 </DndProvider>
