@@ -17,7 +17,7 @@ const style: CSSProperties = {
     float: "left"
 };
 
-export const Dropper: React.FC = () => {
+export const Dropper: FC = () => {
     const [top, setTop] = useState<number>(150);
     const [left, setLeft] = useState<number>(100);
 

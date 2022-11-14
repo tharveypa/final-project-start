@@ -1,7 +1,6 @@
-import React, { CSSProperties, FC, Fragment, ReactNode } from "react";
+import React, { CSSProperties, FC } from "react";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "./constants";
-import type { XYCoord } from "react-dnd";
 
 export interface BoxProps {
     left: number;
