@@ -4,6 +4,7 @@ import { useDrop, XYCoord } from "react-dnd";
 import Pic from "./Pic";
 import { ItemTypes } from "./constants";
 import { Button } from "react-bootstrap";
+import { Piece } from "./interfaces/piece";
 
 const style: CSSProperties = {
     height: "20rem",
@@ -17,6 +18,20 @@ const style: CSSProperties = {
     lineHeight: "normal",
     float: "left"
 };
+
+const PieceBank: Piece[] = [
+    {
+        id: "F",
+        angle: 0,
+        width: 100,
+        height: 100,
+        top: 150,
+        left: 100,
+        onBoard: false,
+        reflected: false,
+        image: "./src/images/F.png"
+    }
+];
 
 export const Dropper: FC = () => {
     const [top, setTop] = useState<number>(150);
