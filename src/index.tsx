@@ -1,10 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
 //import Board from "./Board";
 import "./index.css";
-import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
-import PieceBank from "./PieceBank";
 import { render } from "react-dom";
 import { Dropper } from "./Dropper";
 import { DndProvider } from "react-dnd";
@@ -14,6 +11,9 @@ function App() {
     return (
         <div className="App">
             <DndProvider backend={HTML5Backend}>
+                <p>Zachary England</p>
+                <p>Blair Felker</p>
+                <p>Matt Gwin</p>
                 <Dropper />
             </DndProvider>
         </div>

@@ -18,7 +18,7 @@ const style: CSSProperties = {
 };
 
 export const Dropper: React.FC = () => {
-    const [top, setTop] = useState<number>(100);
+    const [top, setTop] = useState<number>(150);
     const [left, setLeft] = useState<number>(100);
 
     const [{ canDrop, isOver }, drop] = useDrop({
