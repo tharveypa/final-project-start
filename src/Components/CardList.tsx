@@ -107,7 +107,7 @@ export function CardList(): JSX.Element {
         const element = document.getElementById("taskList");
         if (element != null) element.innerHTML = str; // want to ensure this runs
         */
-        currList.map((task: Task) => Card(task));
+        // Most recently tried, does not work currList.map((task: Task) => Card(task));
     }
 
     // FIXME double check that the listIt script works and re-renders (ensure state is correctly used and modifies by CardList and Card)
@@ -116,38 +116,21 @@ export function CardList(): JSX.Element {
     console.log(currList[0]);
     console.log(currList[1]);
     console.log(currList[2]);
+    const renderList = currList.map((task: Task) => (
+        <Card
+            key={1}
+            title={task.title}
+            description={task.description}
+            priority={task.priority}
+            thumbColor={task.thumbColor}
+        ></Card>
+    ));
     return (
         <div>
             <Button onClick={resetList}>Clear the list</Button>
             <Button onClick={() => sortIt(true)}>Sort by Priority</Button>
             <Button onClick={() => sortIt(false)}>Sort by Color</Button>
-            <div id="taskList">
-                <script>listIt</script>
-            </div>
-            <Button
-                onClick={() =>
-                    addCard({
-                        title: "test",
-                        description: "test",
-                        priority: "1",
-                        thumbColor: "red"
-                    })
-                }
-            >
-                Add Card
-            </Button>
-            <Button
-                onClick={() =>
-                    removeCard({
-                        title: "test",
-                        description: "test",
-                        priority: "1",
-                        thumbColor: "red"
-                    })
-                }
-            >
-                Remove Card
-            </Button>
+            <div id="taskList">{renderList}</div>
         </div>
     );
     // FIXME need to make adding and removing based on events, namely creation of one from MakeNote and delete from however we delete
