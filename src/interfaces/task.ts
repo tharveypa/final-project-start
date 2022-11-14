@@ -9,7 +9,4 @@ export interface Task {
     //set as a string, but should be chosen from a pre-made list of colors (the default HTML/CSS colors)
     //color of the thumbtack when it's stuck to the corkboard
     thumbColor: string;
-    //NOTE adding this to try a trik with listing the Cards in the Cardlist, may need to remove this if issues, otherwise let's keep it 
-    // as a behind the scenes sort of thing. I will keep it out of renders
-    id: number;
 }

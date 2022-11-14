@@ -9,13 +9,13 @@ export function CardList(): JSX.Element {
         {
             title: "Title0",
             description: "Title0 is a test card!",
-            priority: "1",
+            priority: "2",
             thumbColor: "red"
         },
         {
             title: "Title1",
             description: "Title0 is also a test card!",
-            priority: "2",
+            priority: "1",
             thumbColor: "blue"
         },
         {
@@ -26,11 +26,22 @@ export function CardList(): JSX.Element {
         }
     ]); // will be [] in final (empty list, currently giving a dumby list)
 
+    let renderList = currList.map((task: Task) => (
+        <Card
+            key={1}
+            title={task.title}
+            description={task.description}
+            priority={task.priority}
+            thumbColor={task.thumbColor}
+        ></Card>
+    )); // FIXME? going to make a let instead of const to see if I can change it in sort so that when the component re-renders
+    // it will be the modified list
+
     function comparePriority(a: Task, b: Task): number {
-        if (parseInt(a.priority) > parseInt(b.priority)) {
+        if (parseInt(a.priority) < parseInt(b.priority)) {
             return -1;
         }
-        if (parseInt(a.priority) < parseInt(b.priority)) {
+        if (parseInt(a.priority) > parseInt(b.priority)) {
             return 1;
         }
         return 0;
@@ -38,10 +49,10 @@ export function CardList(): JSX.Element {
 
     function compareColor(a: Task, b: Task): number {
         // can make this compare color too since both are strings and it will sort the same
-        if (a.thumbColor > b.thumbColor) {
+        if (a.thumbColor < b.thumbColor) {
             return -1;
         }
-        if (a.thumbColor < b.thumbColor) {
+        if (a.thumbColor > b.thumbColor) {
             return 1;
         }
         return 0;
@@ -53,15 +64,51 @@ export function CardList(): JSX.Element {
             // by priority
             const sorted: Task[] = currList.sort(comparePriority); // should compare based on priority
             const tmp: Task[] = sorted.map((task: Task): Task => ({ ...task }));
+            console.log(
+                "First, Checking output with what should be expected: [0]=" +
+                    currList[0].title +
+                    ", [1]=" +
+                    currList[1].title +
+                    ", [2]=" +
+                    currList[2].title +
+                    ""
+            );
             modList(tmp);
-            listIt();
+            //listIt();
         } else {
             // alphabetically by color
             const sorted: Task[] = currList.sort(compareColor);
             const tmp: Task[] = sorted.map((task: Task): Task => ({ ...task }));
+            console.log(
+                "First, Checking output with what should be expected: [0]=" +
+                    currList[0].title +
+                    ", [1]=" +
+                    currList[1].title +
+                    ", [2]=" +
+                    currList[2].title +
+                    ""
+            );
             modList(tmp);
-            listIt();
+            //listIt();
         }
+        renderList = currList.map((task: Task) => (
+            <Card
+                key={1}
+                title={task.title}
+                description={task.description}
+                priority={task.priority}
+                thumbColor={task.thumbColor}
+            ></Card>
+        ));
+        console.log(
+            "Second, Checking output with what should be expected: [0]=" +
+                currList[0].title +
+                ", [1]=" +
+                currList[1].title +
+                ", [2]=" +
+                currList[2].title +
+                ""
+        );
     }
 
     function addCard(inTask: Task): void {
@@ -93,6 +140,15 @@ export function CardList(): JSX.Element {
 
     function resetList(): void {
         modList([]);
+        renderList = currList.map((task: Task) => (
+            <Card
+                key={1}
+                title={task.title}
+                description={task.description}
+                priority={task.priority}
+                thumbColor={task.thumbColor}
+            ></Card>
+        ));
         //listIt();
     }
 
@@ -116,15 +172,7 @@ export function CardList(): JSX.Element {
     console.log(currList[0]);
     console.log(currList[1]);
     console.log(currList[2]);
-    const renderList = currList.map((task: Task) => (
-        <Card
-            key={1}
-            title={task.title}
-            description={task.description}
-            priority={task.priority}
-            thumbColor={task.thumbColor}
-        ></Card>
-    ));
+
     return (
         <div>
             <Button onClick={resetList}>Clear the list</Button>

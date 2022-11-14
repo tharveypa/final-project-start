@@ -37,8 +37,7 @@ export function Card(inputTask: Task): JSX.Element {
                         description:
                             "This is to show that we can change a full task! This could be input from the user!",
                         priority: "4",
-                        thumbColor: "yellow",
-                        id: currTask.id
+                        thumbColor: "yellow"
                     })
                 }
             >
