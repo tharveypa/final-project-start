@@ -3,6 +3,7 @@ import type { CSSProperties, FC } from "react";
 import { useDrop, XYCoord } from "react-dnd";
 import Pic from "./Pic";
 import { ItemTypes } from "./constants";
+import { Button } from "react-bootstrap";
 
 const style: CSSProperties = {
     height: "20rem",
@@ -17,7 +18,7 @@ const style: CSSProperties = {
     float: "left"
 };
 
-export const Dropper: React.FC = () => {
+export const Dropper: FC = () => {
     const [top, setTop] = useState<number>(150);
     const [left, setLeft] = useState<number>(100);
 
@@ -40,12 +41,17 @@ export const Dropper: React.FC = () => {
         backgroundColor = "darkgreen";
     }
 
+    function resetPiece() {
+        setTop(150);
+        setLeft(100);
+    }
     return (
         <div
             ref={drop}
             style={{ ...style, backgroundColor }}
             data-testid="dustbin"
         >
+            <Button onClick={resetPiece}>Reset</Button>
             <Pic top={top} left={left} />
         </div>
     );
