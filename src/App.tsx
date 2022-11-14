@@ -45,12 +45,6 @@ function App(): JSX.Element {
         <>
             <div>
                 <CardList></CardList>
-                <Card
-                    title="Title0"
-                    description="Title0 is a test card!"
-                    priority="1"
-                    thumbColor="red"
-                ></Card>
             </div>
             <DndProvider backend={HTML5Backend}>
                 <div className="App">
