@@ -10,7 +10,7 @@ export function CorkBoard({
     startingNotesAndPositionInfo: noteData[];
 }): JSX.Element {
     //Handles the dropping of things onto the corkboard
-    const [{ isOver }, drop] = useDrop({
+    const [, drop] = useDrop({
         accept: ItemTypes.PIC,
         drop: () =>
             addNoteData(
@@ -25,10 +25,7 @@ export function CorkBoard({
                 30,
                 70,
                 1
-            ),
-        collect: (monitor) => ({
-            isOver: !!monitor.isOver()
-        })
+            )
     });
 
     //state for holding our note and position info
