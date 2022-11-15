@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Task } from "../interfaces/task";
 import { Button } from "react-bootstrap";
 import { Card } from "./Card";
+import CardComp from "./CardComp";
 
 // MAKE IT SO THAT CARDS ARE MADE HERE, SO TAKE IN AN ARRAY OF TASK AND MAKE CARDS FROM THEM
 export function CardList(): JSX.Element {
@@ -122,7 +123,14 @@ export function CardList(): JSX.Element {
             <Button onClick={() => sortIt(true)}>Sort by Priority</Button>
             <Button onClick={() => sortIt(false)}>Sort by Color</Button>
             <div id="taskList">
-                <script>listIt</script>
+                {currList.map((task: Task) => {
+                    return (
+                        //FIXME ADD A PROPER KEY ID SYSTEM
+                        <div key={1}>
+                            <CardComp></CardComp>
+                        </div>
+                    );
+                })}
             </div>
             <Button
                 onClick={() =>
