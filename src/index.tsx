@@ -4,9 +4,9 @@ import Board from "./Board";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
-// import { DropDown } from "./DropDown";
+//import { BDropDown } from "./BackgroundDD";
 //  import { Form, Row } from "react-bootstrap";
-import { EditMode } from "./PopUpSlider";
+import { PopUpSlider } from "./PopUpSlider";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
@@ -15,7 +15,7 @@ observe((picPosition: [number, number]) => {
                 <h3 style={{ textAlign: "center" }}>
                     Welcome to Poke Team Design
                 </h3>
-                <EditMode></EditMode>
+                <PopUpSlider></PopUpSlider>
             </div>
             <hr></hr>
             <React.StrictMode>
