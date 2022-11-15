@@ -66,6 +66,7 @@ const App: React.FC = (): JSX.Element => {
             </header>
             <div>Justin Clavette</div>
             <div>Wenhan Ying</div>
+            <div>Junnan Bai</div>
             <ImageDownload></ImageDownload>
             <GridEdit changeX={changeXSize} changeY={changeYSize}></GridEdit>
             <TransformWrapper panning={{ activationKeys: ["Shift"] }}>
