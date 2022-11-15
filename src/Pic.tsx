@@ -19,7 +19,7 @@ const Pic: React.FC<ObjectProp> = (props) => {
             isDragging: !!monitor.isDragging
         })
     });
-
+    //fix
     return (
         <Fragment>
             <div

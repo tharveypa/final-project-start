@@ -6,7 +6,7 @@ import Pic from "./Pic";
 type listProps = {
     tiles: tileItem[];
 };
-
+//fix
 const ListOb: React.FC<listProps> = (props) => {
     return (
         <div>

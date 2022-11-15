@@ -14,7 +14,7 @@ type BoardSquareProps = {
         color: string
     ) => void;
 };
-
+//fix
 const BoardSquare: React.FC<BoardSquareProps> = (props) => {
     const { x, y, children } = props;
     const [{ isOver, canDrop }, drop] = useDrop({

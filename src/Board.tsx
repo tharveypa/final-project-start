@@ -47,7 +47,7 @@ type BoardProps = {
     x: number;
     y: number;
 };
-
+//fix
 const Board: React.FC<BoardProps> = (props) => {
     const squares = [];
 
