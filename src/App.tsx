@@ -14,15 +14,11 @@ const App: React.FC = (): JSX.Element => {
     const [xSize, setXSize] = useState<number>(5);
     const [ySize, setYSize] = useState<number>(5);
     const [tiles, setTiles] = useState<tileItem[]>([]);
-    const [sourceTile, setSourceTile] = useState<tileItem[]>([
+    const [sourceTile /*setSourceTile*/] = useState<tileItem[]>([
         { id: -1, position: [0, 0], color: "red" },
         { id: -2, position: [0, 0], color: "green" },
         { id: -3, position: [0, 0], color: "yellow" },
         { id: -4, position: [0, 0], color: "blue" }
-    ]);
-    setSourceTile([
-        ...sourceTile,
-        { id: -5, position: [0, 0], color: "purple" }
     ]);
 
     const changeTile = (
