@@ -24,10 +24,53 @@ const Pic: React.FC = () => {
             >
                 {/*♘*/}
                 <img
-                    src={require("./bosun_tally.jpg")}
-                    width="80"
-                    height="80"
+                    src={require("./crop_top1.png")}
+                    width="100"
+                    height="100"
                 />
+            </div>
+            <div
+                ref={drag}
+                style={{
+                    opacity: isDragging ? 1 : 0.5,
+                    fontSize: 50,
+                    fontWeight: "bold",
+                    cursor: "move",
+                    textAlign: "center"
+                }}
+            >
+                {/*♘*/}
+                <img
+                    src={require("./sweatshirt1.png")}
+                    width="100"
+                    height="100"
+                />
+            </div>
+            <div
+                ref={drag}
+                style={{
+                    opacity: isDragging ? 1 : 0.5,
+                    fontSize: 50,
+                    fontWeight: "bold",
+                    cursor: "move",
+                    textAlign: "center"
+                }}
+            >
+                {/*♘*/}
+                <img src={require("./skirt1.png")} width="100" height="130" />
+            </div>
+            <div
+                ref={drag}
+                style={{
+                    opacity: isDragging ? 1 : 0.5,
+                    fontSize: 50,
+                    fontWeight: "bold",
+                    cursor: "move",
+                    textAlign: "center"
+                }}
+            >
+                {/*♘*/}
+                <img src={require("./pants1.png")} width="100" height="140" />
             </div>
         </Fragment>
     );
