@@ -20,12 +20,27 @@ const Layout = ({ picPosition }: Props) => {
                     height="100"
                 />
             </div>
-            <div id="left-menu-container">Menu Left</div>
+            <div
+                id="left-menu-container"
+                style={{ backgroundColor: "#2e57b8" }}
+            >
+                <Container>
+                    <Row>
+                        <Button>Clear Room</Button>
+                    </Row>
+                    <Row>
+                        <Button>Select Different Room Type</Button>
+                    </Row>
+                    <Row>
+                        <Button>Default Room Layout</Button>
+                    </Row>
+                </Container>
+            </div>
             <div id="top-menu-container">
                 <Container>
                     <Row>
                         <Col>
-                            <Button>
+                            <Button style={{ backgroundColor: "transparent" }}>
                                 <img
                                     src={require("./homeButton.png")}
                                     width="75"
@@ -34,7 +49,7 @@ const Layout = ({ picPosition }: Props) => {
                             </Button>
                         </Col>
                         <Col>
-                            <Button>
+                            <Button style={{ backgroundColor: "transparent" }}>
                                 <img
                                     src={require("./newRoomButton.png")}
                                     width="150"
@@ -43,8 +58,7 @@ const Layout = ({ picPosition }: Props) => {
                             </Button>
                         </Col>
                         <Col>
-                            <Button>
-                                {" "}
+                            <Button style={{ backgroundColor: "transparent" }}>
                                 <img
                                     src={require("./viewRoomsButton.png")}
                                     width="120"
