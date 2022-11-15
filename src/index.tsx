@@ -302,7 +302,7 @@ observe((picPosition: [number, number]) => {
                     </Container>
                 </div>
             </div>
-            {/* <div
+            <div
                 style={{
                     width: "500px",
                     height: "500px",
@@ -310,7 +310,7 @@ observe((picPosition: [number, number]) => {
                 }}
             >
                 <Board picPosition={picPosition} />
-            </div> */}
+            </div>
         </React.StrictMode>,
         document.getElementById("root")
     );
