@@ -79,7 +79,6 @@ function App(): JSX.Element {
                         ></CorkBoard>
                         <MakeNote></MakeNote>
                         <DeleteNote></DeleteNote>
-                        <CardComp></CardComp>
                     </div>
                 </div>
             </DndProvider>

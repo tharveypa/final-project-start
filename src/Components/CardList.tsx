@@ -15,7 +15,7 @@ export function CardList(): JSX.Element {
         },
         {
             title: "Title1",
-            description: "Title0 is also a test card!",
+            description: "Title1 is also a test card!",
             priority: "2",
             thumbColor: "blue"
         },
@@ -127,7 +127,7 @@ export function CardList(): JSX.Element {
                     return (
                         //FIXME ADD A PROPER KEY ID SYSTEM
                         <div key={1}>
-                            <CardComp></CardComp>
+                            <CardComp task={task} id={0}></CardComp>
                         </div>
                     );
                 })}
