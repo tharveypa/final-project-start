@@ -1,5 +1,25 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
+import { arrayBuffer } from "stream/consumers";
+import { DragTile } from "../Interfaces/DragTile";
+
+function alphasort(arr: DragTile[]): DragTile[] {
+    arr.sort((a, b) => {
+        if (a.name > b.name) return 1;
+        if (b.name < b.name) return -1;
+        return 0;
+    });
+    return arr;
+}
+
+function typesort(arr: DragTile[]): DragTile[] {
+    arr.sort((a, b) => {
+        if (a.type > b.type) return 1;
+        if (b.type < b.type) return -1;
+        return 0;
+    });
+    return arr;
+}
 
 export function FilterDropdown({
     filterOptions
