@@ -5,13 +5,15 @@ import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
+import BlueCar from "./components/images/blue car.png";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
         <React.StrictMode>
             <div
                 style={{
-                    width: "750px",
+                    backgroundImage: BlueCar,
+                    width: "1250px",
                     height: "100px",
                     border: "1px solid gray"
                 }}
