@@ -5,37 +5,35 @@ import GridEdit from "./GridEdit";
 import "./background.css";
 import ImageDownload from "./ImageDownload";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { observeItem } from "./interfaces";
+import { tileItem } from "./interfaces";
+import ListOb from "./ListOb";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { DndProvider } from "react-dnd";
 
 const App: React.FC = (): JSX.Element => {
     const [xSize, setXSize] = useState<number>(5);
     const [ySize, setYSize] = useState<number>(5);
-<<<<<<< HEAD
     const [tiles, setTiles] = useState<tileItem[]>([]);
     const [sourceTile /*setSourceTile*/] = useState<tileItem[]>([
         { id: -1, position: [0, 0], color: "red" },
         { id: -2, position: [0, 0], color: "green" },
         { id: -3, position: [0, 0], color: "yellow" },
         { id: -4, position: [0, 0], color: "blue" }
-=======
-    const [objects, setObjects] = useState<observeItem[]>([
-        { id: 0, position: [0, 0] },
-        { id: 1, position: [1, 0] },
-        { id: 2, position: [2, 0] },
-        { id: 3, position: [3, 0] },
-        { id: 4, position: [4, 0] }
->>>>>>> main
     ]);
 
-    const changeObject = (index: number, location: [number, number]) => {
-        if (index > objects.length - 1) {
-            setObjects((oldArray) => [
+    const changeTile = (
+        index: number,
+        location: [number, number],
+        color: string
+    ) => {
+        if (index < 0) {
+            setTiles((oldArray) => [
                 ...oldArray,
-                { id: index, position: location }
+                { id: oldArray.length, position: location, color: color }
             ]);
         } else {
-            setObjects(
-                objects.map((o: observeItem): observeItem => {
+            setTiles(
+                tiles.map((o: tileItem): tileItem => {
                     if (o.id === index) {
                         return { ...o, position: location };
                     } else {
@@ -71,31 +69,43 @@ const App: React.FC = (): JSX.Element => {
     return (
         <div className="App">
             <header className="App-header">
-                Tabletop Map Editor for CISC275
+                Table Top Map Editor for CISC275
             </header>
             <div>Justin Clavette</div>
             <ImageDownload></ImageDownload>
             <GridEdit changeX={changeXSize} changeY={changeYSize}></GridEdit>
-            <TransformWrapper panning={{ activationKeys: ["Shift"] }}>
-                <TransformComponent>
-                    <div
-                        className="container"
-                        id="map"
-                        style={{
-                            width: "1000px",
-                            height: "1000px",
-                            border: "1px solid gray"
-                        }}
-                    >
-                        <Board
-                            object={objects}
-                            changeObject={changeObject}
-                            x={xSize}
-                            y={ySize}
-                        />
+            <div className="dndpage">
+                <DndProvider backend={HTML5Backend}>
+                    <div className="fullgrid">
+                        <TransformWrapper
+                            wheel={{ activationKeys: ["Shift"] }}
+                            panning={{ activationKeys: ["Shift"] }}
+                        >
+                            <TransformComponent>
+                                <div
+                                    className="grid"
+                                    id="map"
+                                    style={{
+                                        border: "1px solid gray",
+                                        width: 80 + "vw",
+                                        height: 80 * (ySize / xSize) + "vw"
+                                    }}
+                                >
+                                    <Board
+                                        tile={tiles}
+                                        changeTile={changeTile}
+                                        x={xSize}
+                                        y={ySize}
+                                    />
+                                </div>
+                            </TransformComponent>
+                        </TransformWrapper>
                     </div>
-                </TransformComponent>
-            </TransformWrapper>
+                    <div className="list">
+                        <ListOb tiles={sourceTile}></ListOb>
+                    </div>
+                </DndProvider>
+            </div>
         </div>
     );
 };
