@@ -1,0 +1,39 @@
+General Requirements Fall 2022
+
+A 2d DnD app where dragging an object to a specific x,y has semantics in the domain beyond adding the object to a list. For example, placing a plant in a garden plan on screen models placing a real plant in a real world location. In contrast, dragging an object to a place that assigns it a category is simply adding it to a list and is not acceptable.
+
+Significant back-end logic is not desirable (e.g. games, simulations)
+
+The objects being moved should have attributes:
+
+    an object representing position x, y
+
+    of multiple different types (string, object, bool)
+
+    at least one attribute is a list
+
+    meaningfully sortable, filterable (a list of colors is probably not
+    		 meaningfully sortable; a list of flower colors in a garden design
+    		 app *is* meaningfully filterable. Ask yourself *why* the user wants to filter)
+
+Required Features:
+View previous 2d views of object arrangements and edit
+Top down view by default
+2d space can change virtual size (e.g. it can be 5 feet or 50 feet; both use screen appropriately)
+Filter objects to facilitate customer process
+Sort objects to facilitate customer process
+Drag objects from selection area to x,y destination (not to a box or list; not snap to grid)
+Able to remove objects from selection area or 2d area
+Select object in list rep (selection area) or 2d rep and edit attributes (especially list attribute)
+Object images scale as 2d space changes virtual size.
+30 or more objects with varying attributes in selection area
+
+Optional features:
+Multiple characteristics can be specified in increase/relax filter
+Add new objects during run
+Side view or orthographic view
+Hover to see some or all attributes
+2d space has facility to upload/change background image
+Show user aggregate category information from 2d, e.g. "76 percent of the plants are native."
+Objects in 2d change over time (e.g. plants have seasons, or plants grow over time)
+Zoom/unZoom
