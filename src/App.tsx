@@ -8,6 +8,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import Pic from "./Pic";
 import { Card } from "./components/Card";
 import { DeleteNote } from "./components/DeleteNote";
+import CardComp from "./components/CardComp";
 
 const sampleCorkBoard = [
     {
@@ -84,6 +85,7 @@ function App(): JSX.Element {
                         ></CorkBoard>
                         <MakeNote></MakeNote>
                         <DeleteNote></DeleteNote>
+                        <CardComp></CardComp>
                     </div>
                 </div>
             </DndProvider>

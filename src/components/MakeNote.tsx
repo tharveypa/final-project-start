@@ -1,7 +1,15 @@
 import React, { useState } from "react";
+import { Task } from "../interfaces/task";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+
+export let globalNote: Task = {
+    title: "p",
+    description: "",
+    priority: "",
+    thumbColor: ""
+};
 
 export function MakeNote() {
     const [show, setShow] = useState(false);
@@ -48,6 +56,7 @@ export function MakeNote() {
         });
         handleClose();
         console.log(newNote);
+        globalNote = newNote;
     };
 
     return (
