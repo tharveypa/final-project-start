@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Button, Col } from "react-bootstrap";
 
 import Board from "./Board";
@@ -10,7 +10,12 @@ interface Props {
     picPosition: [number, number];
 }
 
+const roomImages: string[] = ["empty", "z-style", "suite-style"];
+
 const Layout = ({ picPosition }: Props) => {
+    const [roomChoicesShown, setRoomChoiceVisibility] = useState(false);
+    const [roomChoice, setRoomChoice] = useState("empty");
+
     return (
         <div id="grid">
             <div id="logo-container">
@@ -29,10 +34,20 @@ const Layout = ({ picPosition }: Props) => {
                         <Button>Clear Room</Button>
                     </Row>
                     <Row>
-                        <Button>Select Different Room Type</Button>
+                        <div
+                            onMouseEnter={() => setRoomChoiceVisibility(true)}
+                            onMouseLeave={() => setRoomChoiceVisibility(false)}
+                        >
+                            Select Different Room Type
+                            {roomChoicesShown && (
+                                <div>
+                                    <Button>Suite Style</Button>
+                                </div>
+                            )}
+                        </div>
                     </Row>
                     <Row>
-                        <Button>Default Room Layout</Button>
+                        <Button>Save Room</Button>
                     </Row>
                 </Container>
             </div>
