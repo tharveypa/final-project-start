@@ -5,6 +5,10 @@ import { Place } from "./Place";
 import sample from "./Places.json";
 import { PlacePic } from "./PlacePic";
 //import { Containers } from "./Containers";
+//RENDER ALL BUT IF PIC POSIION IS EQUAL TO THE VALUE OF LEFT AND TOP THEN UPDATE THE POSITION?
+type BoardProps = {
+    picPosition: [number, number];
+};
 
 const PLACES = sample.map((place): Place => ({ ...place }));
 
@@ -13,7 +17,8 @@ const renderPiece = (i: Place) => {
 };
 
 //const renderSquare = (i: Place, picPosition: [number, number]) => {};
-export const DraggableLayer = () => {
+export const DraggableLayer: React.FC<BoardProps> = (props) => {
+    const { picPosition } = props;
     const [placeArry] = useState<Place[]>(PLACES);
     const renderPlaces = [];
     for (let i = 0; i < placeArry.length; i++) {

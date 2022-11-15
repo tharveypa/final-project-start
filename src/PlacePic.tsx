@@ -22,8 +22,9 @@ type PlacePicProps = {
 
 export const PlacePic: React.FC<PlacePicProps> = (props) => {
     const { objectPlace } = props;
+    const picPosition = [objectPlace.left, objectPlace.top];
     console.log(objectPlace.Name, ",", objectPlace.top, ",", objectPlace.left);
-    const [, drop] = useDrop({
+    const [canDrop, drop] = useDrop({
         accept: ItemTypes.PIC,
         canDrop: () => canMovePic(objectPlace.top, objectPlace.left),
         drop: () => movePic(objectPlace.top, objectPlace.left),
@@ -32,12 +33,14 @@ export const PlacePic: React.FC<PlacePicProps> = (props) => {
             canDrop: !!monitor.canDrop()
         })
     });
+    console.log(objectPlace.Name, ",", objectPlace.top, ",", objectPlace.left);
     const [{ isDragging }, drag] = useDrag({
         item: { type: ItemTypes.PIC },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging
         })
     });
+
     return (
         <Fragment>
             <div
