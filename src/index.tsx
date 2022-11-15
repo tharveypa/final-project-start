@@ -8,6 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 import map from "./worldmap2.png";
 import { DraggableLayer } from "./DraggableLayer";
 //testing with this comment
+//PASS picPosition and check within a function to then update the position like if the position is the image then update the position
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
         <React.StrictMode>
@@ -35,8 +36,8 @@ observe((picPosition: [number, number]) => {
                 style={{
                     position: "absolute",
                     top: "20px",
-                    width: "350px",
-                    height: "900px",
+                    width: "20%",
+                    height: "40%",
                     border: "2px solid black"
                 }}
             >
@@ -52,7 +53,7 @@ observe((picPosition: [number, number]) => {
                     border: "2px solid black"
                 }}
             >
-                <DraggableLayer />
+                <DraggableLayer picPosition={picPosition} />
             </div>
         </React.StrictMode>,
         document.getElementById("root")
