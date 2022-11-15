@@ -83,6 +83,8 @@ const Pic: React.FC = () => {
                 <img src={require("./pants1.png")} width="130" height="170" />
                 {/*♘*/}
                 <img src={require("./sweats1.png")} width="150" height="180" />
+                {/*♘*/}
+                <img src={require("./pants2.png")} width="130" height="170" />
             </div>
         </Fragment>
     );

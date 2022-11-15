@@ -13,8 +13,7 @@ observe((picPosition: [number, number]) => {
             <div
                 style={{
                     width: "500px",
-                    height: "500px",
-                    border: "1px solid gray"
+                    height: "500px"
                 }}
             >
                 <Board picPosition={picPosition} />
