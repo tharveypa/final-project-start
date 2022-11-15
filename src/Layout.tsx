@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-parens */
 import React, { useState } from "react";
 import { Container, Row, Button, Col } from "react-bootstrap";
 import { DndProvider } from "react-dnd";
@@ -9,11 +10,11 @@ import "./styles/Layout.css";
 import "./styles/index.css";
 import RoomBoard from "./components/RoomBoard";
 
-const roomImages: string[] = ["empty", "z-style", "suite-style"];
+// const roomImages: string[] = ["empty", "z-style", "suite-style"];
 
 const Layout = () => {
     const [roomChoicesShown, setRoomChoiceVisibility] = useState(false);
-    const [roomChoice, setRoomChoice] = useState("empty");
+    // const [roomChoice, setRoomChoice] = useState("empty");
 
     return (
         <DndProvider backend={HTML5Backend}>

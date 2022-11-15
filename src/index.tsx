@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./styles/index.css";
-import { observe } from "./game";
 import Layout from "./Layout";
 import reportWebVitals from "./reportWebVitals";
 
