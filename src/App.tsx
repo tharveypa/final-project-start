@@ -16,9 +16,13 @@ const App: React.FC = (): JSX.Element => {
     const [tiles, setTiles] = useState<tileItem[]>([]);
     const [sourceTile, setSourceTile] = useState<tileItem[]>([
         { id: -1, position: [0, 0], color: "red" },
-        { id: -1, position: [0, 0], color: "green" },
-        { id: -1, position: [0, 0], color: "yellow" },
-        { id: -2, position: [0, 0], color: "blue" }
+        { id: -2, position: [0, 0], color: "green" },
+        { id: -3, position: [0, 0], color: "yellow" },
+        { id: -4, position: [0, 0], color: "blue" }
+    ]);
+    setSourceTile([
+        ...sourceTile,
+        { id: -5, position: [0, 0], color: "purple" }
     ]);
 
     const changeTile = (
