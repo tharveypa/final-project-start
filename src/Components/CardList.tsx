@@ -182,4 +182,5 @@ export function CardList(): JSX.Element {
         </div>
     );
     // FIXME need to make adding and removing based on events, namely creation of one from MakeNote and delete from however we delete
+    // do we need to have Card in the CardList file to to be able to share the useState for the Task[]?
 }
