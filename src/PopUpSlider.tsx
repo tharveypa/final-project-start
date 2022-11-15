@@ -1,13 +1,14 @@
 /* eslint-disable no-extra-parens */
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
+import { BDropDown } from "./BackgroundDD";
 import { DropDown } from "./DropDown";
 
-export function EditMode(): JSX.Element {
+export function PopUpSlider(): JSX.Element {
     // type ChangeEvent = React.ChangeEvent<
     //     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
     // >;
-    const [editMode, setEditMode] = useState<boolean>(false);
+    const [Pop, setPop] = useState<boolean>(false);
     return (
         <div>
             <div>
@@ -16,66 +17,71 @@ export function EditMode(): JSX.Element {
                     type="switch"
                     id="hider-check"
                     label="Show Selections"
-                    checked={editMode}
-                    onChange={() => setEditMode(!editMode)}
+                    checked={Pop}
+                    onChange={() => setPop(!Pop)}
                 />
-                {editMode && (
-                    <div
-                        style={{
-                            whiteSpace: "nowrap",
-                            justifyContent: "space-between",
-                            textAlign: "center"
-                        }}
-                    >
-                        <DropDown
-                            options={[
-                                "",
-                                "Charzaird",
-                                "Bulbausar",
-                                "Wartortle"
-                            ]}
-                        ></DropDown>
-                        <DropDown
-                            options={[
-                                "",
-                                "Charzaird",
-                                "Bulbausar",
-                                "Wartortle"
-                            ]}
-                        ></DropDown>
-                        <DropDown
-                            options={[
-                                "",
-                                "Charzaird",
-                                "Bulbausar",
-                                "Wartortle"
-                            ]}
-                        ></DropDown>
-                        <DropDown
-                            options={[
-                                "",
-                                "Charzaird",
-                                "Bulbausar",
-                                "Wartortle"
-                            ]}
-                        ></DropDown>
-                        <DropDown
-                            options={[
-                                "",
-                                "Charzaird",
-                                "Bulbausar",
-                                "Wartortle"
-                            ]}
-                        ></DropDown>
-                        <DropDown
-                            options={[
-                                "",
-                                "Charzaird",
-                                "Bulbausar",
-                                "Wartortle"
-                            ]}
-                        ></DropDown>
-                    </div>
+                {Pop && (
+                    <>
+                        <div
+                            style={{
+                                whiteSpace: "nowrap",
+                                justifyContent: "space-between",
+                                textAlign: "center"
+                            }}
+                        >
+                            <DropDown
+                                options={[
+                                    "",
+                                    "Charzaird",
+                                    "Bulbausar",
+                                    "Wartortle"
+                                ]}
+                            ></DropDown>
+                            <DropDown
+                                options={[
+                                    "",
+                                    "Charzaird",
+                                    "Bulbausar",
+                                    "Wartortle"
+                                ]}
+                            ></DropDown>
+                            <DropDown
+                                options={[
+                                    "",
+                                    "Charzaird",
+                                    "Bulbausar",
+                                    "Wartortle"
+                                ]}
+                            ></DropDown>
+                            <DropDown
+                                options={[
+                                    "",
+                                    "Charzaird",
+                                    "Bulbausar",
+                                    "Wartortle"
+                                ]}
+                            ></DropDown>
+                            <DropDown
+                                options={[
+                                    "",
+                                    "Charzaird",
+                                    "Bulbausar",
+                                    "Wartortle"
+                                ]}
+                            ></DropDown>
+                            <DropDown
+                                options={[
+                                    "",
+                                    "Charzaird",
+                                    "Bulbausar",
+                                    "Wartortle"
+                                ]}
+                            ></DropDown>
+                        </div>
+                        <BDropDown
+                            options={["", "Forest", "Volcano", "Waterfall"]}
+                        ></BDropDown>
+                    </>
                 )}
             </div>
         </div>
