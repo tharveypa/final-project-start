@@ -42,7 +42,8 @@ const Dndarr: React.FC<ArrProps> = (_props) => {
         hasFurniture: false,
         hasPainting: false,
         placeOnWall: false,
-        isFill: false
+        isFill: false,
+        comments: ["hi"]
     };
     const test2: DragTile = {
         type: "string",
@@ -55,7 +56,8 @@ const Dndarr: React.FC<ArrProps> = (_props) => {
         hasFurniture: false,
         hasPainting: false,
         placeOnWall: false,
-        isFill: false
+        isFill: false,
+        comments: ["hi"]
     };
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [dragarr, setarr] = useState<DragTile[]>([test, test2]); //, test2]);
