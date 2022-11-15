@@ -11,17 +11,25 @@ type BoardSquareProps = {
     changeTile: (
         index: number,
         location: [number, number],
-        color: string
+        color: string,
+        tags: string[],
+        snap: string
     ) => void;
 };
 
 const BoardSquare: React.FC<BoardSquareProps> = (props) => {
     const { x, y, children } = props;
     const [{ isOver, canDrop }, drop] = useDrop({
-        accept: ItemTypes.PIC,
+        accept: ItemTypes.snap,
         canDrop: () => true,
         drop: (item: { type: string; tile: tileItem }) =>
-            props.changeTile(item.tile.id, [x, y], item.tile.color),
+            props.changeTile(
+                item.tile.id,
+                [x, y],
+                item.tile.color,
+                item.tile.tags,
+                item.tile.snap
+            ),
         collect: (monitor) => ({
             isOver: !!monitor.isOver(),
             canDrop: !!monitor.canDrop()

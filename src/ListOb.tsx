@@ -10,6 +10,15 @@ type listProps = {
 const ListOb: React.FC<listProps> = (props) => {
     return (
         <div>
+            <div
+                style={{
+                    display: "inline-block",
+                    width: "100%"
+                }}
+            >
+                trash!!!!
+            </div>
+
             {props.tiles.map((tile: tileItem, i: number) => (
                 <div
                     key={i}

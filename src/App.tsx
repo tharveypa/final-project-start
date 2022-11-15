@@ -15,21 +15,30 @@ const App: React.FC = (): JSX.Element => {
     const [ySize, setYSize] = useState<number>(5);
     const [tiles, setTiles] = useState<tileItem[]>([]);
     const [sourceTile /*setSourceTile*/] = useState<tileItem[]>([
-        { id: -1, position: [0, 0], color: "red" },
-        { id: -2, position: [0, 0], color: "green" },
-        { id: -3, position: [0, 0], color: "yellow" },
-        { id: -4, position: [0, 0], color: "blue" }
+        { id: -1, position: [0, 0], color: "red", tags: [], snap: "snap" },
+        { id: -2, position: [0, 0], color: "green", tags: [], snap: "snap" },
+        { id: -3, position: [0, 0], color: "yellow", tags: [], snap: "snap" },
+        { id: -4, position: [0, 0], color: "blue", tags: [], snap: "snap" },
+        { id: -5, position: [0, 0], color: "cyan", tags: [], snap: "nonsnap" }
     ]);
 
     const changeTile = (
         index: number,
         location: [number, number],
-        color: string
+        color: string,
+        tags: string[],
+        snap: string
     ) => {
         if (index < 0) {
             setTiles((oldArray) => [
                 ...oldArray,
-                { id: oldArray.length, position: location, color: color }
+                {
+                    id: oldArray.length,
+                    position: location,
+                    color: color,
+                    tags: tags,
+                    snap: snap
+                }
             ]);
         } else {
             setTiles(

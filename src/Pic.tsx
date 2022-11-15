@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { useDrag } from "react-dnd";
-import { ItemTypes } from "./constants";
 import { tileItem } from "./interfaces";
 
 type ObjectProp = {
@@ -14,7 +13,7 @@ type ObjectProp = {
 
 const Pic: React.FC<ObjectProp> = (props) => {
     const [{ isDragging }, drag] = useDrag({
-        item: { type: ItemTypes.PIC, tile: props.tile },
+        item: { type: props.tile.snap, tile: props.tile },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging
         })

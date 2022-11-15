@@ -19,7 +19,9 @@ const renderSquare = (
     changeTile: (
         index: number,
         location: [number, number],
-        color: string
+        color: string,
+        tags: string[],
+        snap: string
     ) => void,
     width: number,
     height: number
@@ -42,7 +44,9 @@ type BoardProps = {
     changeTile: (
         index: number,
         location: [number, number],
-        color: string
+        color: string,
+        tags: string[],
+        snap: string
     ) => void;
     x: number;
     y: number;
