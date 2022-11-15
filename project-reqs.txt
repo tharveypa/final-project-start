@@ -1,3 +1,4 @@
+General Requirements Fall 2022
 
 A 2d DnD app where dragging an object to a specific x,y has semantics in the domain beyond adding the object to a list. For example, placing a plant in a garden plan on screen models placing a real plant in a real world location. In contrast, dragging an object to a place that assigns it a category is simply adding it to a list and is not acceptable.
 
