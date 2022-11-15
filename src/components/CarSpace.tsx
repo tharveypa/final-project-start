@@ -4,6 +4,7 @@ import React from "react";
 //import GreenCar from "./green car.png";
 //import { Button } from "react-bootstrap";
 import Car from "./Car";
+import CarSquare from "./CarSquare";
 import DirtTool from "./Destroy Tools/DirtTool";
 
 type CarSpaceProps = {
@@ -20,6 +21,6 @@ function renderDestroy(x: number, y: number, [dirtX, dirtY]: number[]) {
     );
 }
 const CarSpace: React.FC<CarSpaceProps> = (props) => {
-    return <div>{renderDestroy(0, 0, props.DirtPosition)}</div>;
+    return <div>{renderDestroy(1000, 1000, props.DirtPosition)}</div>;
 };
 export default CarSpace;

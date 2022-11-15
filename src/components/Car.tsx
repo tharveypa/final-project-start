@@ -14,14 +14,13 @@ type CarProps = {
 const Car: React.FC<CarProps> = (props) => {
     const [colorNum, setColorNum] = useState(0);
     return (
-        <div>
+        <div className="toolncar">
             {colorNum == 0 && <img src={RedCar} alt="red car" />}
             {colorNum == 1 && <img src={BlueCar} alt="blue car" />}
             {colorNum == 2 && <img src={GreenCar} alt="green car" />}
             <Button onClick={() => setColorNum((colorNum + 1) % 3)}>
                 Change Color (Red/Blue/Green)
             </Button>
-            {props.children}
         </div>
     );
 };

@@ -28,7 +28,6 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
             ref={drop}
             style={{ position: "relative", width: "90%", height: "90%" }}
         >
-            yo
             <Square black={black}>{children}</Square>
             {isOver && !canDrop && <Overlay color="red" />}
             {!isOver && canDrop && <Overlay color="yellow" />}
