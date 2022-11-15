@@ -1,8 +1,8 @@
 import React from "react";
-import Towel from "./towel.png";
-import Shine from "./shine.png";
-import Pump from "./pump.png";
-import GlassRepair from "./glass repair.png";
+import Towel from "./images/towel.png";
+import Shine from "./images/shine.png";
+import Pump from "./images/pump.png";
+import GlassRepair from "./images/glass repair.png";
 
 const Pimp = () => {
     return (
