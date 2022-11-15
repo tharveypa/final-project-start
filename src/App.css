@@ -37,3 +37,25 @@
         transform: rotate(360deg);
     }
 }
+
+.fullgrid {
+    display: inline-block;
+}
+
+.dndpage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.grid {
+    background-image: url(./bosun_tally.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+}
+
+.list {
+    width: 20vw;
+    display: inline-block;
+}

@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "./constants";
+import { tileItem } from "./interfaces";
 
 type ObjectProp = {
-    color: string;
-    id: number;
+    tile: tileItem;
     //position: [number, number];
     //orientation: number;
     //size: number;
@@ -14,7 +14,7 @@ type ObjectProp = {
 
 const Pic: React.FC<ObjectProp> = (props) => {
     const [{ isDragging }, drag] = useDrag({
-        item: { type: ItemTypes.PIC, id: props.id },
+        item: { type: ItemTypes.PIC, tile: props.tile },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging
         })
@@ -32,7 +32,7 @@ const Pic: React.FC<ObjectProp> = (props) => {
                     textAlign: "center"
                 }}
             >
-                {props.color}
+                {props.tile.color}
                 <img
                     src={require("./bosun_tally.jpg")}
                     width="100%"
