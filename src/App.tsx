@@ -5,10 +5,7 @@ import GridEdit from "./GridEdit";
 import "./background.css";
 import ImageDownload from "./ImageDownload";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { tileItem } from "./interfaces";
-import ListOb from "./ListOb";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import { DndProvider } from "react-dnd";
+import { observeItem } from "./interfaces";
 
 const App: React.FC = (): JSX.Element => {
     const [xSize, setXSize] = useState<number>(5);
@@ -19,21 +16,18 @@ const App: React.FC = (): JSX.Element => {
         { id: -2, position: [0, 0], color: "green" },
         { id: -3, position: [0, 0], color: "yellow" },
         { id: -4, position: [0, 0], color: "blue" }
+
     ]);
 
-    const changeTile = (
-        index: number,
-        location: [number, number],
-        color: string
-    ) => {
-        if (index < 0) {
-            setTiles((oldArray) => [
+    const changeObject = (index: number, location: [number, number]) => {
+        if (index > objects.length - 1) {
+            setObjects((oldArray) => [
                 ...oldArray,
-                { id: oldArray.length, position: location, color: color }
+                { id: index, position: location }
             ]);
         } else {
-            setTiles(
-                tiles.map((o: tileItem): tileItem => {
+            setObjects(
+                objects.map((o: observeItem): observeItem => {
                     if (o.id === index) {
                         return { ...o, position: location };
                     } else {
@@ -72,40 +66,30 @@ const App: React.FC = (): JSX.Element => {
                 Table Top Map Editor for CISC275
             </header>
             <div>Justin Clavette</div>
+            <div>Wenhan Ying</div>
+            <div>Junnan Bai</div>
             <ImageDownload></ImageDownload>
             <GridEdit changeX={changeXSize} changeY={changeYSize}></GridEdit>
-            <div className="dndpage">
-                <DndProvider backend={HTML5Backend}>
-                    <div className="fullgrid">
-                        <TransformWrapper
-                            wheel={{ activationKeys: ["Shift"] }}
-                            panning={{ activationKeys: ["Shift"] }}
-                        >
-                            <TransformComponent>
-                                <div
-                                    className="grid"
-                                    id="map"
-                                    style={{
-                                        border: "1px solid gray",
-                                        width: 80 + "vw",
-                                        height: 80 * (ySize / xSize) + "vw"
-                                    }}
-                                >
-                                    <Board
-                                        tile={tiles}
-                                        changeTile={changeTile}
-                                        x={xSize}
-                                        y={ySize}
-                                    />
-                                </div>
-                            </TransformComponent>
-                        </TransformWrapper>
+            <TransformWrapper panning={{ activationKeys: ["Shift"] }}>
+                <TransformComponent>
+                    <div
+                        className="container"
+                        id="map"
+                        style={{
+                            width: "1000px",
+                            height: "1000px",
+                            border: "1px solid gray"
+                        }}
+                    >
+                        <Board
+                            object={objects}
+                            changeObject={changeObject}
+                            x={xSize}
+                            y={ySize}
+                        />
                     </div>
-                    <div className="list">
-                        <ListOb tiles={sourceTile}></ListOb>
-                    </div>
-                </DndProvider>
-            </div>
+                </TransformComponent>
+            </TransformWrapper>
         </div>
     );
 };
