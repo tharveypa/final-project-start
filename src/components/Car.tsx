@@ -4,10 +4,17 @@ import GreenCar from "./green car.png";
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
-export function Car(): JSX.Element {
+type CarProps = {
+    color: number;
+    clean: boolean;
+    tirefill: boolean;
+    window: boolean;
+};
+
+const Car: React.FC<CarProps> = (props) => {
     const [colorNum, setColorNum] = useState(0);
     return (
-        <div>
+        <div className="toolncar">
             {colorNum == 0 && <img src={RedCar} alt="red car" />}
             {colorNum == 1 && <img src={BlueCar} alt="blue car" />}
             {colorNum == 2 && <img src={GreenCar} alt="green car" />}
@@ -16,6 +23,6 @@ export function Car(): JSX.Element {
             </Button>
         </div>
     );
-}
+};
 
 export default Car;

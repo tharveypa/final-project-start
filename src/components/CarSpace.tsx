@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import RedCar from "./images/red car.png";
 import BlueCar from "./images/blue car.png";
@@ -7,11 +8,11 @@ import City from "./images/city.jpg";
 import Forest from "./images/forest.jpg";
 import { Button } from "react-bootstrap";
 
-type CarProps = {
-    color: string;
-    clean: boolean;
-    tirefill: boolean;
+
+type CarSpaceProps = {
+    DirtPosition: number[];
 };
+
 
 const Car: React.FC<CarProps> = () => {
     const backgrounds = [Street, City, Forest];
@@ -42,6 +43,8 @@ const Car: React.FC<CarProps> = () => {
             </div>
         </div>
     );
+}
+const CarSpace: React.FC<CarSpaceProps> = (props) => {
+    return <div>{renderDestroy(1000, 1000, props.DirtPosition)}</div>;
 };
-
-export default Car;
+export default CarSpace;

@@ -6,7 +6,7 @@ import GlassRepair from "./images/glass repair.png";
 
 const Pimp = () => {
     return (
-        <div>
+        <div className="toolncar">
             <h1>Pimp Mode</h1>
             <p>
                 Pimp Mode Options:
