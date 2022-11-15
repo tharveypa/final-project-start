@@ -4,7 +4,7 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import BoardSquare from "./BoardSquare";
 
-const renderPiece = (
+export const renderPiece = (
     x: number,
     y: number,
     pic: string,
@@ -34,7 +34,6 @@ const renderSquare = (j: number, i: number, picPosition: [number, number]) => {
                 | board squares x={x}-{picPosition[0]}, y={y}-{picPosition[1]}
                 <div key={i} style={{ width: "50%", height: "50%" }}>
                     <BoardSquare x={x} y={y}>
-                        {renderPiece(x, y, "yeet", picPosition)}
                         {renderPiece(x, y, "yeet", picPosition)}
                     </BoardSquare>
                 </div>

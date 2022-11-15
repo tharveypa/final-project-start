@@ -1,7 +1,7 @@
 import React from "react";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "./constants";
-import { canMovePic, movePic } from "./game";
+import { canAddPic, addPic, canMovePic, movePic } from "./game";
 import Overlay from "./Overlay";
 import Square from "./Square";
 
@@ -22,6 +22,15 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
             canDrop: !!monitor.canDrop()
         })
     });
+    // const [{ canAdd }, drop] = useDrop({
+    //     accept: ItemTypes.PIC,
+    //     canDrop: () => canAddPic(x, y),
+    //     drop: () => addPic(x, y),
+    //     collect: (monitor) => ({
+    //         isOver: !!monitor.isOver(),
+    //         canDrop: !!monitor.canDrop()
+    //     })
+    // });
 
     return (
         <div
