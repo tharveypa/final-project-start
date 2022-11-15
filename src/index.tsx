@@ -26,9 +26,6 @@ observe((picPosition: [number, number]) => {
                 <hr></hr>
                 <Row style={{ height: "700px" }}>
                     <Col>
-                        <Board picPosition={picPosition} />
-                    </Col>
-                    <Col>
                         <FilterDropdown
                             filterOptions={["Kitchen", "Bathroom", "Bedroom"]}
                         ></FilterDropdown>
@@ -39,9 +36,6 @@ observe((picPosition: [number, number]) => {
                                 "Design Type"
                             ]}
                         ></SortDropdown>
-                    </Col>
-                    <Col>
-                        <Board picPosition={picPosition} />
                     </Col>
                 </Row>
                 <hr></hr>
