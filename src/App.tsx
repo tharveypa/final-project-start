@@ -10,13 +10,12 @@ import { observeItem } from "./interfaces";
 const App: React.FC = (): JSX.Element => {
     const [xSize, setXSize] = useState<number>(5);
     const [ySize, setYSize] = useState<number>(5);
-    const [tiles, setTiles] = useState<tileItem[]>([]);
-    const [sourceTile /*, setSourceTile*/] = useState<tileItem[]>([
-        { id: -1, position: [0, 0], color: "red" },
-        { id: -2, position: [0, 0], color: "green" },
-        { id: -3, position: [0, 0], color: "yellow" },
-        { id: -4, position: [0, 0], color: "blue" }
-
+    const [objects, setObjects] = useState<observeItem[]>([
+        { id: 0, position: [0, 0] },
+        { id: 1, position: [1, 0] },
+        { id: 2, position: [2, 0] },
+        { id: 3, position: [3, 0] },
+        { id: 4, position: [4, 0] }
     ]);
 
     const changeObject = (index: number, location: [number, number]) => {
