@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Button, Col } from "react-bootstrap";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -9,10 +9,14 @@ import "./styles/Layout.css";
 import "./styles/index.css";
 import RoomBoard from "./components/RoomBoard";
 
+const roomImages: string[] = ["empty", "z-style", "suite-style"];
+
 const Layout = () => {
+    const [roomChoicesShown, setRoomChoiceVisibility] = useState(false);
+    const [roomChoice, setRoomChoice] = useState("empty");
+
     return (
         <DndProvider backend={HTML5Backend}>
-            {" "}
             <div id="grid">
                 <div id="logo-container">
                     <img
@@ -27,22 +31,30 @@ const Layout = () => {
                 >
                     <Container>
                         <Row>
-                            <Button className="options-button">
-                                Clear Room
-                            </Button>
+                            <Button>Clear Room</Button>
                         </Row>
                         <Row>
-                            <Button className="options-button">
+                            <div
+                                onMouseEnter={() =>
+                                    setRoomChoiceVisibility(true)
+                                }
+                                onMouseLeave={() =>
+                                    setRoomChoiceVisibility(false)
+                                }
+                            >
                                 Select Different Room Type
-                            </Button>
+                                {roomChoicesShown && (
+                                    <div>
+                                        <Button>Suite Style</Button>
+                                    </div>
+                                )}
+                            </div>
                         </Row>
                         <Row>
-                            <Button className="options-button">
-                                Default Room Layout
-                            </Button>
+                            <Button>Save Room</Button>
                         </Row>
+                        <FurnitureList />
                     </Container>
-                    <FurnitureList />
                 </div>
                 <div id="top-menu-container">
                     <Container>
@@ -85,10 +97,6 @@ const Layout = () => {
                 </div>
                 <div id="main-board-container">
                     <RoomBoard>{null}</RoomBoard>
-                    <p>
-                        Group Members: Jackson Gunn Pack, Maxyne Watkins, Ethan
-                        Hogan
-                    </p>
                 </div>
             </div>
         </DndProvider>
