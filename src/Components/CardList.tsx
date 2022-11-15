@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Task } from "../interfaces/task";
 import { Button } from "react-bootstrap";
-import { Card } from "./Card";
+import CardComp from "./CardComp";
 
 // MAKE IT SO THAT CARDS ARE MADE HERE, SO TAKE IN AN ARRAY OF TASK AND MAKE CARDS FROM THEM
 export function CardList(): JSX.Element {
@@ -14,7 +14,7 @@ export function CardList(): JSX.Element {
         },
         {
             title: "Title1",
-            description: "Title0 is also a test card!",
+            description: "Title1 is also a test card!",
             priority: "2",
             thumbColor: "blue"
         },
@@ -54,13 +54,11 @@ export function CardList(): JSX.Element {
             const sorted: Task[] = currList.sort(comparePriority); // should compare based on priority
             const tmp: Task[] = sorted.map((task: Task): Task => ({ ...task }));
             modList(tmp);
-            listIt();
         } else {
             // alphabetically by color
             const sorted: Task[] = currList.sort(compareColor);
             const tmp: Task[] = sorted.map((task: Task): Task => ({ ...task }));
             modList(tmp);
-            listIt();
         }
     }
 
@@ -75,7 +73,6 @@ export function CardList(): JSX.Element {
         const tmp: Task[] = currList.map((task: Task): Task => ({ ...task }));
         tmp.push(newTask);
         modList(tmp);
-        //listIt();
     }
 
     function removeCard(inTask: Task): void {
@@ -88,26 +85,10 @@ export function CardList(): JSX.Element {
                 task.thumbColor != inTask.thumbColor
         );
         modList(newNotes);
-        //listIt();
     }
 
     function resetList(): void {
         modList([]);
-        //listIt();
-    }
-
-    function listIt(): void {
-        // code to make a list out of an array, just using task.title for right now
-        /*
-        let str = "<ul>";
-        currList.forEach(function (task) {
-            str += "<li>" + task.title + "</li>";
-        });
-        str += "</ul>";
-        const element = document.getElementById("taskList");
-        if (element != null) element.innerHTML = str; // want to ensure this runs
-        */
-        currList.map((task: Task) => Card(task));
     }
 
     // FIXME double check that the listIt script works and re-renders (ensure state is correctly used and modifies by CardList and Card)
@@ -122,7 +103,14 @@ export function CardList(): JSX.Element {
             <Button onClick={() => sortIt(true)}>Sort by Priority</Button>
             <Button onClick={() => sortIt(false)}>Sort by Color</Button>
             <div id="taskList">
-                <script>listIt</script>
+                {currList.map((task: Task) => {
+                    return (
+                        //FIXME ADD A PROPER KEY ID SYSTEM
+                        <div key={1}>
+                            <CardComp task={task} id={0}></CardComp>
+                        </div>
+                    );
+                })}
             </div>
             <Button
                 onClick={() =>
