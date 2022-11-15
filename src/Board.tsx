@@ -7,22 +7,18 @@ import BoardSquare from "./BoardSquare";
 const renderPiece = (
     x: number,
     y: number,
+    pic: string,
     //addTool: () => void,
     [picX, picY]: [number, number]
 ) => {
-    // pic: string
     if (x === picX && y === picY) {
         //addTool();
-        return <Pic pic={"Yeet"} />;
+        return <Pic pic={pic} />;
     }
 };
 
-const renderSquare = (
-    i: number,
-    picPosition: [number, number],
-    ps: string[]
-) => {
-    const x = 0;
+const renderSquare = (j: number, i: number, picPosition: [number, number]) => {
+    const x = j;
     const y = i;
 
     // const [tool, setTool] = useState<number>(0);
@@ -38,10 +34,8 @@ const renderSquare = (
                 | board squares x={x}-{picPosition[0]}, y={y}-{picPosition[1]}
                 <div key={i} style={{ width: "50%", height: "50%" }}>
                     <BoardSquare x={x} y={y}>
-                        {
-                            //
-                            renderPiece(x, y, picPosition)
-                        }
+                        {renderPiece(x, y, "yeet", picPosition)}
+                        {renderPiece(x, y, "yeet", picPosition)}
                     </BoardSquare>
                 </div>
             </div>
@@ -59,11 +53,12 @@ const Board: React.FC<BoardProps> = (props) => {
     const { pics } = props;
     const squares = [];
     //let i=0;
-    //pics.map((p:string)=>(
-    //));
+    //pics.map((p:string)=>( ));
     //squares.push(renderSquare(0, picPosition, pics));
     for (let i = 0; i < 2; i++) {
-        squares.push(renderSquare(i, picPosition, pics));
+        for (let j = 0; j < 2; j++) {
+            squares.push(renderSquare(j, i, picPosition));
+        }
     }
 
     return (
