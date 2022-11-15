@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
-import "./App.css";
+import "./styles/App.css";
 
 function App(): JSX.Element {
     return (
@@ -10,7 +10,7 @@ function App(): JSX.Element {
                     <Row>
                         <Col>
                             <img
-                                src={require("./UDormLogo.png")}
+                                src={require("./images/UDormLogo.png")}
                                 width="150"
                                 height="100"
                             />

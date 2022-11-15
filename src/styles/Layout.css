@@ -38,3 +38,7 @@ div#main-board-container {
     grid-column: 2 / 3;
     border: 1px solid black;
 }
+
+.options-button {
+    margin-bottom: 10px;
+}
