@@ -3,12 +3,16 @@ import { useDrag } from "react-dnd";
 import { ItemTypes } from "./constants";
 import { Food } from "./Interfaces/food";
 
-const Pic: React.FC<{ foodItem: Food }> = ({ foodItem }) => {
+const Pic: React.FC<{
+    foodItem: Food;
+    setPortions: (newPortions: Food[]) => void;
+    portions: Food[];
+}> = ({ foodItem, setPortions, portions }) => {
     const [{ isDragging }, drag] = useDrag({
         item: { type: ItemTypes.PIC },
         end(item, monitor) {
             if (monitor.didDrop() === true) {
-                alert(foodItem.name);
+                setPortions([...portions, foodItem]);
             }
         },
         collect: (monitor) => ({
