@@ -1,5 +1,4 @@
-export interface tileItem {
+export interface observeItem {
     position: [number, number];
     id: number;
-    color: string;
 }
