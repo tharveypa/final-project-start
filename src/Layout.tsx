@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-parens */
 import React, { useState } from "react";
 import { Container, Row, Button, Col } from "react-bootstrap";
 
@@ -10,11 +11,11 @@ interface Props {
     picPosition: [number, number];
 }
 
-const roomImages: string[] = ["empty", "z-style", "suite-style"];
+//const roomImages: string[] = ["empty", "z-style", "suite-style"];
 
 const Layout = ({ picPosition }: Props) => {
     const [roomChoicesShown, setRoomChoiceVisibility] = useState(false);
-    const [roomChoice, setRoomChoice] = useState("empty");
+    //const [roomChoice, setRoomChoice] = useState("empty");
 
     return (
         <div id="grid">
