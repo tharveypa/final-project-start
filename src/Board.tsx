@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import Pic from "./Pic";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -9,13 +9,24 @@ import {
     PROTEIN_LIST,
     VEGETABLE_LIST
 } from "./data/foodList";
+// import Plate from "./Plate";
 import { Food } from "./Interfaces/food";
 import { Button } from "react-bootstrap";
 
-const renderPiece = (x: number, y: number, foodItem: Food) => {
+const renderPiece = (
+    x: number,
+    y: number,
+    foodItem: Food,
+    portions: Food[],
+    setPortions: Dispatch<SetStateAction<Food[]>>
+) => {
     return (
         <div>
-            <Pic foodItem={foodItem} />
+            <Pic
+                foodItem={foodItem}
+                portions={portions}
+                setPortions={setPortions}
+            />
         </div>
     );
 };
@@ -23,6 +34,8 @@ const renderPiece = (x: number, y: number, foodItem: Food) => {
 const renderSquare = (
     i: number,
     picPosition: [number, number],
+    portions: Food[],
+    setPortions: Dispatch<SetStateAction<Food[]>>,
     currentFoodList: Food[]
 ) => {
     const x = i;
@@ -32,12 +45,36 @@ const renderSquare = (
         <div key={i} style={{ width: "50%", height: "50%" }}>
             <BoardSquare x={x} y={y} currentFoodList={currentFoodList}>
                 {i < currentFoodList.length
-                    ? renderPiece(x, y, currentFoodList[i])
+                    ? renderPiece(
+                        x,
+                        y,
+                        currentFoodList[i],
+                        portions,
+                        setPortions
+                    )
                     : null}
             </BoardSquare>
         </div>
     );
 };
+
+// const renderPlate = (picPosition: [number, number], portions: []) => {
+//     const x = 0;
+//     const y = 0;
+
+//     return (
+//         <div>
+//             <Plate
+//                 x={x}
+//                 y={y}
+//                 portions={portions}
+//                 setPortions={function (): void {
+//                 \;
+//                 }}
+//             />
+//         </div>
+//     );
+// };
 
 type BoardProps = {
     picPosition: [number, number];
@@ -46,11 +83,16 @@ type BoardProps = {
 const Board: React.FC<BoardProps> = (props) => {
     const { picPosition } = props;
     const squares = [];
+    // const plate = [];
+    const [portions, setPortions] = useState<Food[]>([]);
     const [currentFoodList, setCurrentFoodList] =
         useState<Food[]>(PROTEIN_LIST);
     /**Determines the number of drag-and-drop squares to make */
     for (let i = 0; i < currentFoodList.length + 1; i++) {
-        squares.push(renderSquare(i, picPosition, currentFoodList));
+        squares.push(
+            renderSquare(i, picPosition, portions, setPortions, currentFoodList)
+        );
+        // plate.push(renderPlate(picPosition, portions));
     }
     return (
         <DndProvider backend={HTML5Backend}>
