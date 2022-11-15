@@ -26,12 +26,12 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
     return (
         <div
             ref={drop}
-            style={{ position: "relative", width: "100%", height: "100%" }}
+            style={{ position: "relative", width: "100%", height: "150%" }}
         >
             <Square black={black}>{children}</Square>
-            {isOver && !canDrop && <Overlay color="red" />}
-            {!isOver && canDrop && <Overlay color="yellow" />}
-            {isOver && canDrop && <Overlay color="green" />}
+            {isOver && !canDrop && <Overlay color="pink" />}
+            {!isOver && canDrop && <Overlay color="orange" />}
+            {isOver && canDrop && <Overlay color="pink" />}
         </div>
     );
 };

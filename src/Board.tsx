@@ -38,7 +38,7 @@ const Board: React.FC<BoardProps> = (props) => {
             <div
                 style={{
                     width: "250%",
-                    height: "120%",
+                    height: "150%",
                     display: "flex",
                     flexWrap: "wrap"
                 }}
