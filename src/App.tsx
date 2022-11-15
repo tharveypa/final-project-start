@@ -5,7 +5,6 @@ import { MakeNote } from "./components/MakeNote";
 import { CorkBoard } from "./components/CorkBoard";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import Pic from "./Pic";
 import { DeleteNote } from "./components/DeleteNote";
 
 const sampleCorkBoard = [
@@ -42,26 +41,14 @@ const sampleCorkBoard = [
 function App(): JSX.Element {
     return (
         <>
-            <div>
-                <CardList></CardList>
-            </div>
             <DndProvider backend={HTML5Backend}>
                 <div className="App">
                     <div>
                         <h3>CREATED BY: </h3>
                         <p>Blade Tyrrell, Brandon Branson, Michael Snead</p>
                     </div>
-                    <div
-                        style={{
-                            height: "50px",
-                            width: "50px",
-                            left: "500px",
-                            top: "50px",
-                            position: "absolute"
-                        }}
-                    >
-                        <Pic></Pic>
-                    </div>
+                    <CardList></CardList>
+
                     {/* CORKBOARD DIV : SIZE AND POSITION OF THE DIV DEFINES THAT OF THE CORKBOARD*/}
                     <div
                         style={{

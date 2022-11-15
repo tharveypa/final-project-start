@@ -11,7 +11,7 @@ export function CorkBoard({
 }): JSX.Element {
     //Handles the dropping of things onto the corkboard
     const [, drop] = useDrop({
-        accept: ItemTypes.PIC,
+        accept: ItemTypes.Card,
         drop: () =>
             addNoteData(
                 {
