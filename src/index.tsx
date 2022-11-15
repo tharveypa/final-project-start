@@ -1,11 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import Board from "./Board";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
 import { Col, Container, Row } from "react-bootstrap";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
         <React.StrictMode>
