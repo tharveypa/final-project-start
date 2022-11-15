@@ -12,6 +12,7 @@ const renderPiece = (x: number, y: number, [picX, picY]: [number, number]) => {
 
 const renderSquare = (i: number, picPosition: [number, number]) => {
     const x = i;
+    // const y = 0;
     const y = 0;
 
     return (
