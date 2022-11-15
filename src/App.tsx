@@ -16,8 +16,8 @@ const sampleCorkBoard = [
             thumbColor: "red"
         },
         id: 1,
-        height: 50,
-        width: 75,
+        height: 100,
+        width: 250,
         top: 60,
         left: 60,
         zIndex: 1

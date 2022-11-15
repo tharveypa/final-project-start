@@ -1,16 +1,31 @@
-// import React, { useState } from "react";
-// import { Button } from "react-bootstrap";
-// import { QuestionType } from "../interfaces/question";
-//import { render } from "@testing-library/react";
 import React from "react";
-//import { Task } from "../interfaces/task";
+import { useDrag } from "react-dnd";
+import { ItemTypes } from "../constants";
+import { Task } from "../interfaces/task";
 
-export function Note(): JSX.Element {
-    //const [note, setNote] = useState<Task>();
+export function Note({ task, id }: { task: Task; id: number }): JSX.Element {
+    //handles the dragging of the Note
+    const [, drag] = useDrag({
+        //type is note; Type determines where it can be dropped
+        item: { type: ItemTypes.Note, id: id }
+    });
 
-    // function makeNote(): void {
-
-    // }
-
-    return <div>placehold</div>;
+    return (
+        <div
+            //makes the dragging of the note work
+            ref={drag}
+            //style controls how the note looks
+            style={{
+                height: "100%",
+                width: "100%",
+                backgroundColor: "yellow"
+            }}
+        >
+            Title: {task.title}
+            <br />
+            Description: {task.description}
+            <br />
+            Priortity: {task.priority}
+        </div>
+    );
 }

@@ -3,6 +3,7 @@ import { useDrop } from "react-dnd";
 import { ItemTypes } from "../constants";
 import { noteData } from "../interfaces/noteData";
 import { Task } from "../interfaces/task";
+import { Note } from "./Note";
 
 export function CorkBoard({
     startingNotesAndPositionInfo
@@ -128,10 +129,7 @@ export function CorkBoard({
                             zIndex: noteData.zIndex + "%"
                         }}
                     >
-                        {noteData.task.title}
-                        {/*FIXME: INSERT NOTE HERE WHEN NOTE IS DONE
-                           noteData.task SHOULD BE THE INPUT TASK FOR NOTE
-                           SHOULD LOOK LIKE THIS <NOTE task={nodeData.task}></NOTE>*/}
+                        <Note task={noteData.task} id={noteData.id}></Note>
                     </div>
                 );
             })}
