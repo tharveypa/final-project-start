@@ -1,22 +1,26 @@
 import React from "react";
 import Pic from "./Pic";
 import BoardSquare from "./BoardSquare";
-import { observeItem } from "./interfaces";
+import { tileItem } from "./interfaces";
 
-const renderPiece = (x: number, y: number, object: observeItem[]) => {
-    const location = object.filter(
-        (o: observeItem): boolean => x === o.position[0] && y === o.position[1]
+const renderPiece = (x: number, y: number, tile: tileItem[]) => {
+    const location = tile.filter(
+        (o: tileItem): boolean => x === o.position[0] && y === o.position[1]
     );
     if (location.length > 0) {
-        return <Pic color={"red"} id={location[0].id} />;
+        return <Pic tile={location[0]} />;
     }
 };
 
 const renderSquare = (
     x: number,
     y: number,
-    object: observeItem[],
-    changeObject: (index: number, location: [number, number]) => void,
+    tiles: tileItem[],
+    changeTile: (
+        index: number,
+        location: [number, number],
+        color: string
+    ) => void,
     width: number,
     height: number
 ) => {
@@ -26,16 +30,20 @@ const renderSquare = (
             key={((x + y) * (x + y + 1)) / 2 + x}
             style={{ width: 100 / width + "%", height: 100 / height + "%" }}
         >
-            <BoardSquare x={x} y={y} changeObject={changeObject}>
-                {renderPiece(x, y, object)}
+            <BoardSquare x={x} y={y} changeTile={changeTile}>
+                {renderPiece(x, y, tiles)}
             </BoardSquare>
         </div>
     );
 };
 
 type BoardProps = {
-    object: observeItem[];
-    changeObject: (index: number, location: [number, number]) => void;
+    tile: tileItem[];
+    changeTile: (
+        index: number,
+        location: [number, number],
+        color: string
+    ) => void;
     x: number;
     y: number;
 };
@@ -49,8 +57,8 @@ const Board: React.FC<BoardProps> = (props) => {
                 renderSquare(
                     j,
                     i,
-                    props.object,
-                    props.changeObject,
+                    props.tile,
+                    props.changeTile,
                     props.x,
                     props.y
                 )

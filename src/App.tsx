@@ -5,7 +5,7 @@ import GridEdit from "./GridEdit";
 import "./background.css";
 import ImageDownload from "./ImageDownload";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { observeItem } from "./interfaces";
+import { tileItem } from "./interfaces";
 import ListOb from "./ListOb";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
@@ -13,17 +13,27 @@ import { DndProvider } from "react-dnd";
 const App: React.FC = (): JSX.Element => {
     const [xSize, setXSize] = useState<number>(5);
     const [ySize, setYSize] = useState<number>(5);
-    const [objects, setObjects] = useState<observeItem[]>([]);
+    const [tiles, setTiles] = useState<tileItem[]>([]);
+    const [sourceTile, setSourceTile] = useState<tileItem[]>([
+        { id: -1, position: [0, 0], color: "red" },
+        { id: -1, position: [0, 0], color: "green" },
+        { id: -1, position: [0, 0], color: "yellow" },
+        { id: -2, position: [0, 0], color: "blue" }
+    ]);
 
-    const changeObject = (index: number, location: [number, number]) => {
+    const changeTile = (
+        index: number,
+        location: [number, number],
+        color: string
+    ) => {
         if (index < 0) {
-            setObjects((oldArray) => [
+            setTiles((oldArray) => [
                 ...oldArray,
-                { id: oldArray.length, position: location }
+                { id: oldArray.length, position: location, color: color }
             ]);
         } else {
-            setObjects(
-                objects.map((o: observeItem): observeItem => {
+            setTiles(
+                tiles.map((o: tileItem): tileItem => {
                     if (o.id === index) {
                         return { ...o, position: location };
                     } else {
@@ -82,8 +92,8 @@ const App: React.FC = (): JSX.Element => {
                                     }}
                                 >
                                     <Board
-                                        object={objects}
-                                        changeObject={changeObject}
+                                        tile={tiles}
+                                        changeTile={changeTile}
                                         x={xSize}
                                         y={ySize}
                                     />
@@ -92,7 +102,7 @@ const App: React.FC = (): JSX.Element => {
                         </TransformWrapper>
                     </div>
                     <div className="list">
-                        <ListOb></ListOb>
+                        <ListOb tiles={sourceTile}></ListOb>
                     </div>
                 </DndProvider>
             </div>
