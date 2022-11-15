@@ -4,13 +4,14 @@ import Board from "./Board";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
+import App from "./App";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
         <React.StrictMode>
             <div
                 style={{
-                    width: "500px",
+                    width: "250px",
                     height: "500px",
                     border: "1px solid gray"
                 }}
