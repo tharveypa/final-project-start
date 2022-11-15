@@ -65,6 +65,7 @@ const App: React.FC = (): JSX.Element => {
                 Table Top Map Editor for CISC275
             </header>
             <div>Justin Clavette</div>
+            <div>Wenhan Ying</div>
             <ImageDownload></ImageDownload>
             <GridEdit changeX={changeXSize} changeY={changeYSize}></GridEdit>
             <TransformWrapper panning={{ activationKeys: ["Shift"] }}>
