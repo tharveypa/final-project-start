@@ -69,7 +69,7 @@ const App: React.FC = (): JSX.Element => {
     return (
         <div className="App">
             <header className="App-header">
-                Table Top Map Editor for CISC275
+                Tabletop Map Editor for CISC275
             </header>
             <div>Justin Clavette</div>
             <ImageDownload></ImageDownload>
