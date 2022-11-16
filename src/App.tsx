@@ -15,11 +15,46 @@ const App: React.FC = (): JSX.Element => {
     const [ySize, setYSize] = useState<number>(5);
     const [tiles, setTiles] = useState<tileItem[]>([]);
     const [sourceTile /*setSourceTile*/] = useState<tileItem[]>([
-        { id: -1, position: [0, 0], color: "red", tags: [], snap: "snap" },
-        { id: -2, position: [0, 0], color: "green", tags: [], snap: "snap" },
-        { id: -3, position: [0, 0], color: "yellow", tags: [], snap: "snap" },
-        { id: -4, position: [0, 0], color: "blue", tags: [], snap: "snap" },
-        { id: -5, position: [0, 0], color: "cyan", tags: [], snap: "nonsnap" }
+        {
+            id: -1,
+            position: [0, 0],
+            color: "red",
+            tags: [],
+            snap: "snap",
+            src: "./images/bosun_tally.jpg"
+        },
+        {
+            id: -2,
+            position: [0, 0],
+            color: "green",
+            tags: [],
+            snap: "snap",
+            src: "./images/bosun_tally.jpg"
+        },
+        {
+            id: -3,
+            position: [0, 0],
+            color: "yellow",
+            tags: [],
+            snap: "snap",
+            src: "./images/bosun_tally.jpg"
+        },
+        {
+            id: -4,
+            position: [0, 0],
+            color: "blue",
+            tags: [],
+            snap: "snap",
+            src: "./images/bosun_tally.jpg"
+        },
+        {
+            id: -5,
+            position: [0, 0],
+            color: "cyan",
+            tags: [],
+            snap: "nonsnap",
+            src: "./images/rocks.png"
+        }
     ]);
 
     const changeTile = (
@@ -27,7 +62,8 @@ const App: React.FC = (): JSX.Element => {
         location: [number, number],
         color: string,
         tags: string[],
-        snap: string
+        snap: string,
+        src: string
     ) => {
         if (index < 0) {
             setTiles((oldArray) => [
@@ -37,7 +73,8 @@ const App: React.FC = (): JSX.Element => {
                     position: location,
                     color: color,
                     tags: tags,
-                    snap: snap
+                    snap: snap,
+                    src: src
                 }
             ]);
         } else {

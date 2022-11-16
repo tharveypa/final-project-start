@@ -13,7 +13,8 @@ type BoardSquareProps = {
         location: [number, number],
         color: string,
         tags: string[],
-        snap: string
+        snap: string,
+        src: string
     ) => void;
 };
 
@@ -28,7 +29,8 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                 [x, y],
                 item.tile.color,
                 item.tile.tags,
-                item.tile.snap
+                item.tile.snap,
+                item.tile.src
             ),
         collect: (monitor) => ({
             isOver: !!monitor.isOver(),

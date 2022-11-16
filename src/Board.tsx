@@ -21,7 +21,8 @@ const renderSquare = (
         location: [number, number],
         color: string,
         tags: string[],
-        snap: string
+        snap: string,
+        src: string
     ) => void,
     width: number,
     height: number
@@ -46,7 +47,8 @@ type BoardProps = {
         location: [number, number],
         color: string,
         tags: string[],
-        snap: string
+        snap: string,
+        src: string
     ) => void;
     x: number;
     y: number;

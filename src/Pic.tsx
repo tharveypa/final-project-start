@@ -33,7 +33,7 @@ const Pic: React.FC<ObjectProp> = (props) => {
             >
                 {props.tile.color}
                 <img
-                    src={require("./bosun_tally.jpg")}
+                    src={require("./images/rocks.png")}
                     width="100%"
                     height="100%"
                 />

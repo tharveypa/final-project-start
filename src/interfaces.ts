@@ -4,4 +4,5 @@ export interface tileItem {
     color: string;
     tags: string[];
     snap: string;
+    src: string;
 }
