@@ -2,9 +2,15 @@ import React, { Fragment } from "react";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "./constants";
 
-const Pic: React.FC = () => {
+type PicProps = {
+    pic: string;
+};
+
+const Pic: React.FC<PicProps> = (props) => {
+    const { pic } = props;
     const [{ isDragging }, drag] = useDrag({
-        item: { type: ItemTypes.PIC },
+    	type: ItemTypes.PIC, 
+        item: { pic: pic },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging
         })
@@ -23,6 +29,7 @@ const Pic: React.FC = () => {
                 }}
             >
                 {/*♘*/}
+                <header>{pic}</header>
                 <img
                     src={require("./bosun_tally.jpg")}
                     width="80"
