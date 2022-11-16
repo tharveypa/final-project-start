@@ -4,19 +4,22 @@ import { ItemTypes } from "./constants";
 import { canAddPic, addPic, canMovePic, movePic } from "./game";
 import Overlay from "./Overlay";
 import Square from "./Square";
+import Pic from "./Pic";
 
 type BoardSquareProps = {
     x: number;
     y: number;
+    pics: string[];
 };
 
 const BoardSquare: React.FC<BoardSquareProps> = (props) => {
-    const { x, y, children } = props;
+    const [square, setSquare] = useState<string>("");
+    const { x, y, p, children } = props;
     const black = (x + y) % 2 === 1;
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.PIC,
         canDrop: () => canMovePic(x, y),
-        drop: () => movePic(x, y),
+        drop: (item) => addImageToBoard(item.pic),
         collect: (monitor) => ({
             isOver: !!monitor.isOver(),
             canDrop: !!monitor.canDrop()
@@ -31,6 +34,10 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
     //         canDrop: !!monitor.canDrop()
     //     })
     // });
+    const addImageToBoard = (pic) => {
+    	const p = pics.filter((picture: string) => pic === picture);
+    	setSquare(p);
+    	};
 
     return (
         <div
@@ -38,6 +45,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
             style={{ position: "relative", width: "90%", height: "90%" }}
         >
             yo
+            <Pic pic={square}/>
             <Square black={black}>{children}</Square>
             {isOver && !canDrop && <Overlay color="red" />}
             {!isOver && canDrop && <Overlay color="yellow" />}

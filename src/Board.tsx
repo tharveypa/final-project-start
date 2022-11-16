@@ -17,7 +17,7 @@ export const renderPiece = (
     }
 };
 
-const renderSquare = (j: number, i: number, picPosition: [number, number]) => {
+const renderSquare = (j: number, i: number, pic:[], picPosition: [number, number]) => {
     const x = j;
     const y = i;
 
@@ -33,7 +33,7 @@ const renderSquare = (j: number, i: number, picPosition: [number, number]) => {
             <div>
                 | board squares x={x}-{picPosition[0]}, y={y}-{picPosition[1]}
                 <div key={i} style={{ width: "50%", height: "50%" }}>
-                    <BoardSquare x={x} y={y}>
+                    <BoardSquare x={x} y={y} pic={pic}>
                         {renderPiece(x, y, "yeet", picPosition)}
                     </BoardSquare>
                 </div>
@@ -56,7 +56,7 @@ const Board: React.FC<BoardProps> = (props) => {
     //squares.push(renderSquare(0, picPosition, pics));
     for (let i = 0; i < 2; i++) {
         for (let j = 0; j < 2; j++) {
-            squares.push(renderSquare(j, i, picPosition));
+            squares.push(renderSquare(j, i, pics, picPosition));
         }
     }
 
