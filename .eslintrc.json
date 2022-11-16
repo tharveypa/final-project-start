@@ -42,15 +42,8 @@
             }
         ],
         "brace-style": ["error", "1tbs"],
-        "indent": ["error", 4], { "SwitchCase": 1 }],
+        "indent": ["error", 4],
         "quotes": ["error", "double"],
-                "enforceForArrowConditionals": false,
-                "ignoreJSX": "all"
-            }
-        ],
-        "brace-style": ["error", "1tbs"],
-        "indent": ["error", 4, { "SwitchCase": 1 }],
-        "quotes": ["error", "double", { "avoidEscape": true }],
         "semi": ["error", "always"]
     }
 }

@@ -1,5 +1,3 @@
-import React from "react";
-
 // import ReactDOM from "react-dom";
 // import Board from "../Board";
 // import { observe } from "../game";
@@ -34,11 +32,11 @@ import React from "react";
 //         document.getElementById("root")
 //     );
 // });
-
-import Towel from "./towel.png";
-import Shine from "./shine.png";
-import Pump from "./pump.png";
-import GlassRepair from "./glass repair.png";
+import React from "react";
+import Towel from "./images/towel.png";
+import Shine from "./images/shine.png";
+import Pump from "./images/pump.png";
+import GlassRepair from "./images/glass repair.png";
 
 const Pimp = () => {
     return (
