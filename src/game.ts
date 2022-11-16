@@ -34,6 +34,7 @@ export const canMovePic = (
     // const dx = toX - x;
 
     // return Math.abs(dx) === 1;
+
     if (toX === currentFoodList.length) {
         return true;
     } else {
