@@ -69,11 +69,67 @@ interface Couch {
     type: string;
     size: string;
     isComfy: boolean;
-    reclines: boolean;
+    picture: string;
 }
-const livingRoomCouch = {
+const couch1 = {
+    type: "Living Room",
+    size: "small",
+    isComfy: true,
+    picture: "src/Furniture/couch 1.jpg"
+};
+const couch2 = {
     type: "Living Room",
     size: "large",
     isComfy: true,
-    reclines: false
+    picture: "src/Furniture/couch 2.jpg"
+};
+const couch3 = {
+    type: "Living Room",
+    size: "medium",
+    isComfy: true,
+    picture: "src/Furniture/couch 3.jpg"
+};
+const couch4 = {
+    type: "Living Room",
+    size: "large",
+    isComfy: true,
+    picture: "src/Furniture/couch 4.jpg"
+};
+const couch5 = {
+    type: "Bedroom",
+    size: "small",
+    isComfy: true,
+    picture: "src/Furniture/couch 5.jpg"
+};
+const couch6 = {
+    type: "Living Room",
+    size: "medium",
+    isComfy: true,
+    picture: "src/Furniture/couch 6.jpg"
+};
+
+interface Bed {
+    type: string;
+    size: string;
+    picture: string;
+}
+const bed1 = {
+    type: "Kids Room",
+    size: "Twin",
+    picture: "src/Furniture/bed 1.jpg"
+};
+const bed2 = {
+    type: "Kids Room",
+    size: "Twin",
+    picture: "src/Furniture/bed 2.jpg"
+};
+const bed3 = {
+    type: "Adult Room",
+    size: "Double",
+    picture: "src/Furniture/bed 3.jpg"
+};
+const bed4 = {
+    type: "Adult Room",
+    size: "Queen",
+    picture: "src/Furniture/bed 4.jpg"
 };
