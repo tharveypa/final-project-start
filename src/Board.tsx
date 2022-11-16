@@ -43,7 +43,7 @@ const Board: React.FC<BoardProps> = (props) => {
         <DndProvider backend={HTML5Backend}>
             <div
                 style={{
-                    width: "200%",
+                    width: "50%",
                     height: "100%",
                     display: "flex",
                     flexWrap: "wrap"

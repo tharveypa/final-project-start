@@ -1,12 +1,12 @@
 import React from "react";
-import Dirt from "./dirt.png";
-import BirdPoop from "./bird poop.png";
-import Slash from "./slash.png";
-import Hammer from "./hammer.png";
+import Dirt from "./images/dirt.png";
+import BirdPoop from "./images/bird poop.png";
+import Slash from "./images/slash.png";
+import Hammer from "./images/hammer.png";
 
 const Destroy = () => {
     return (
-        <div>
+        <div className="toolncar">
             <h1>Destroy Mode</h1>
             <p>
                 Destroy Mode Options:

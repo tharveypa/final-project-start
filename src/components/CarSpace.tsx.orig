@@ -5,15 +5,16 @@ import Car from "./Car";
 type CarSpaceProps = {
     DirtPosition: number[];
 };
-
+<<<<<<< HEAD
 //woah
 const Car: React.FC<CarProps> = (props) => {
     const [colorNum, setColorNum] = useState(0);
+=======
 
 function renderDestroy(x: number, y: number, [dirtX, dirtY]: number[]) {
     const isDirtHere = dirtX === x && dirtY === y;
     const piece = isDirtHere ? <DirtTool /> : null;
-
+>>>>>>> 81f8a5da11b43bec7cd160cbb8c2271f793e9907
     return (
         <Car color={0} clean={true} window={true} tirefill={true}>
             {piece}
