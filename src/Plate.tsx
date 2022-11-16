@@ -53,6 +53,7 @@ const Plate: React.FC<PlateProps> = (props) => {
             <Square black={black}>
                 {children}
                 <ul>
+                    {/*eslint-disable-next-line no-extra-parens*/}
                     {portions.map((foodItem: Food) => (
                         <li key={foodItem.name}>
                             Food item: {foodItem.name}, Servings:{" "}
