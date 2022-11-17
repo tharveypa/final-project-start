@@ -21,25 +21,6 @@ const Destroy = () => {
                         </div>
                     )
                 )}
-                {/*
-                <div>
-                    <img src={Dirt} alt="dirt" />
-                    Dirty Car
-                </div>
-                <div>
-                    <img src={BirdPoop} alt="bird poop" />
-                    Bird Poop
-                </div>
-                <div>
-                    <img src={Slash} alt="slash tires" />
-                    Slash Tires
-                </div>
-                <div>
-                    <img src={Hammer} alt="break windows" />
-                    Break Windows
-                </div>
-                <div>etc</div>
-                    */}
             </p>
         </div>
     );
