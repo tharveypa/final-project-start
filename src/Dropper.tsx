@@ -49,6 +49,7 @@ function addToBank(newId: string) {
     setPieceBank([...PieceBank, newPiece]);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function reflectPiece(reflId: string) {
     const newBank: Piece[] = PieceBank.map(
         (p: Piece): Piece =>
@@ -57,6 +58,7 @@ function reflectPiece(reflId: string) {
     setPieceBank(newBank);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function rotatePiece(rotId: string, rotation: number) {
     const newBank: Piece[] = PieceBank.map(
         (p: Piece): Piece => (p.id === rotId ? { ...p, angle: rotation } : p)
