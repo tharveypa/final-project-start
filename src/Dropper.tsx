@@ -19,9 +19,24 @@ const style: CSSProperties = {
     float: "left"
 };
 
-const PieceBank: Piece[] = [
-    {
-        id: "F",
+const [PieceBank, setPieceBank] = useState<Piece[]>([]);
+
+addToBank("F");
+addToBank("I");
+addToBank("L");
+addToBank("N");
+addToBank("P");
+addToBank("T");
+addToBank("U");
+addToBank("V");
+addToBank("W");
+addToBank("X");
+addToBank("Y");
+addToBank("Z");
+
+function addToBank(newId: string) {
+    const newPiece: Piece = {
+        id: newId,
         angle: 0,
         width: 100,
         height: 100,
@@ -29,9 +44,25 @@ const PieceBank: Piece[] = [
         left: 100,
         onBoard: false,
         reflected: false,
-        image: "./src/images/F.png"
-    }
-];
+        image: "./src/images/" + newId + ".png"
+    };
+    setPieceBank([...PieceBank, newPiece]);
+}
+
+function reflectPiece(reflId: string) {
+    const newBank: Piece[] = PieceBank.map(
+        (p: Piece): Piece =>
+            p.id === reflId ? { ...p, reflected: !p.reflected } : p
+    );
+    setPieceBank(newBank);
+}
+
+function rotatePiece(rotId: string, rotation: number) {
+    const newBank: Piece[] = PieceBank.map(
+        (p: Piece): Piece => (p.id === rotId ? { ...p, angle: rotation } : p)
+    );
+    setPieceBank(newBank);
+}
 
 export const Dropper: FC = () => {
     const [top, setTop] = useState<number>(150);
