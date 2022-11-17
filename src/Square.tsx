@@ -1,4 +1,5 @@
 import React from "react";
+import BlueCar from "./components/images/blue car.png";
 
 type SquareProps = {
     black: boolean;
@@ -11,10 +12,11 @@ const Square: React.FC<SquareProps> = (props) => {
     return (
         <div
             style={{
+                backgroundImage: BlueCar,
                 backgroundColor: fill,
                 color: stroke,
-                width: "100%",
-                height: "100%"
+                width: "70%",
+                height: "70%"
             }}
         >
             {props.children}

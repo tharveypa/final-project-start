@@ -13,12 +13,18 @@ const renderPiece = (x: number, y: number, [picX, picY]: [number, number]) => {
 const renderSquare = (i: number, picPosition: [number, number]) => {
     const x = i;
     const y = 0;
-
+    //hi
     return (
-        <div key={i} style={{ width: "50%", height: "100%" }}>
+        <div key={i} style={{ width: "100%", height: "100%" }}>
             <BoardSquare x={x} y={y}>
                 {renderPiece(x, y, picPosition)}
             </BoardSquare>
+            {/* <BoardSquare x={x} y={y}>
+                {renderPiece(x, y, picPosition)}
+            </BoardSquare>
+            <BoardSquare x={x} y={y}>
+                {renderPiece(x, y, picPosition)}
+            </BoardSquare> */}
         </div>
     );
 };
@@ -30,14 +36,14 @@ type BoardProps = {
 const Board: React.FC<BoardProps> = (props) => {
     const { picPosition } = props;
     const squares = [];
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 5; i++) {
         squares.push(renderSquare(i, picPosition));
     }
     return (
         <DndProvider backend={HTML5Backend}>
             <div
                 style={{
-                    width: "100%",
+                    width: "50%",
                     height: "100%",
                     display: "flex",
                     flexWrap: "wrap"

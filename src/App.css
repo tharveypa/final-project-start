@@ -1,9 +1,9 @@
 .App {
-    text-align: center;
+    text-align: CENTER;
 }
 
 .App-logo {
-    height: 40vmin;
+    height: 0;
     pointer-events: none;
 }
 
@@ -15,8 +15,8 @@
 
 .App-header {
     width: 100%;
-    background-color: #282c34;
-    min-height: 40vh;
+    background-color: #5e181e;
+    min-height: 20vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,4 +36,13 @@
     to {
         transform: rotate(360deg);
     }
+}
+
+.relative {
+    position: relative;
+    left: 500px;
+}
+
+.toolncar {
+    display: inline-block;
 }
