@@ -14,11 +14,10 @@ type BoardSquareProps = {
 };
 
 const BoardSquare: React.FC<BoardSquareProps> = (props) => {
-    const { x, y, p, children } = props;
     const { x, y, pics, children } = props;
     const black = (x + y) % 2 === 1;
     const [square, setSquare] = useState<string[]>([]);
-    //const [square, setSquare] = useState<string[]>([]);
+    const [flic, setFlic] = useState<string>("");
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.PIC,
         canDrop: () => canMovePic(x, y),
@@ -30,22 +29,10 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
         })
     });
     const addImageToBoard = (pic: string) => {
-        const p = pics.filter((picture) => pic === picture);
-        setSquare((square) => [...square, p[0]]);
+        setFlic(pic);
+        //const p = pics.filter((picture) => pic === picture);
+        setSquare((square) => [...square, flic]);
     };
-    // const [{ canAdd }, drop] = useDrop({
-    //     accept: ItemTypes.PIC,
-    //     canDrop: () => canAddPic(x, y),
-    //     drop: () => addPic(x, y),
-    //     collect: (monitor) => ({
-    //         isOver: !!monitor.isOver(),
-    //         canDrop: !!monitor.canDrop()
-    //     })
-    // });
-    const addImageToBoard = (pic) => {
-    	const p = pics.filter((picture: string) => pic === picture);
-    	setSquare(p);
-    	};
 
     return (
         <>
@@ -62,6 +49,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                     {square.map(
                         (p: string): JSX.Element => (
                             <li key={p}>
+                                {p}
                                 <Square black={black}>{p}</Square>
                                 {
                                     //<Pic pic={p} />
