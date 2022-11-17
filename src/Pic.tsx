@@ -10,7 +10,7 @@ type PicProps = {
 const Pic: React.FC<PicProps> = (props) => {
     const { pic } = props;
     const [{ isDragging }, drag] = useDrag({
-        item: { type: ItemTypes.PIC, pic: { pic } },
+        item: { type: ItemTypes.PIC, pic: pic },
         collect: (monitor: DragSourceMonitor) => ({
             isDragging: !!monitor.isDragging()
         })
