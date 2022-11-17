@@ -36,7 +36,7 @@ import React from "react";
 import Towel from "./images/towel.png";
 import Shine from "./images/shine.png";
 import Pump from "./images/pump.png";
-import GlassRepair from "./images/glass repair.png";
+import GlassRepair from "./images/glassrepair.png";
 
 const Pimp = () => {
     return (

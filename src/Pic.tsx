@@ -1,5 +1,6 @@
+import { stringify } from "querystring";
 import React, { Fragment } from "react";
-import { useDrag } from "react-dnd";
+import { DragSourceMonitor, useDrag } from "react-dnd";
 import { ItemTypes } from "./constants";
 
 type PicProps = {
@@ -9,9 +10,9 @@ type PicProps = {
 const Pic: React.FC<PicProps> = (props) => {
     const { pic } = props;
     const [{ isDragging }, drag] = useDrag({
-        item: { type: ItemTypes.PIC },
-        collect: (monitor) => ({
-            isDragging: !!monitor.isDragging
+        item: { type: ItemTypes.PIC, pic: { pic } },
+        collect: (monitor: DragSourceMonitor) => ({
+            isDragging: !!monitor.isDragging()
         })
     });
 
