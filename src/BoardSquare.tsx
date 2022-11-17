@@ -5,7 +5,7 @@ import { canAddPic, addPic, canMovePic, movePic } from "./game";
 import Pic from "./Pic";
 import Overlay from "./Overlay";
 import Square from "./Square";
-import { Type } from "typescript";
+import { Button } from "react-bootstrap";
 
 type BoardSquareProps = {
     x: number;
@@ -31,12 +31,18 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
         const p = pics.filter((picture) => pic === picture);
         setSquare((square) => [...square, p[0]]);
     };
-
+    const clear = () => {
+        setSquare([]);
+    };
     return (
         <>
             <div
                 ref={drop}
-                style={{ position: "relative", width: "90%", height: "90%" }}
+                style={{
+                    position: "relative",
+                    width: "90%",
+                    height: "90%"
+                }}
             >
                 yo
                 <Square black={black}>{children}</Square>
@@ -55,6 +61,9 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                         )
                     )}
                 </ul>
+            </div>
+            <div>
+                <Button onClick={clear}>Clear</Button>
             </div>
         </>
     );

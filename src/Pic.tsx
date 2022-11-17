@@ -1,4 +1,3 @@
-import { stringify } from "querystring";
 import React, { Fragment } from "react";
 import { DragSourceMonitor, useDrag } from "react-dnd";
 import { ItemTypes } from "./constants";

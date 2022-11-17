@@ -73,31 +73,34 @@ const Board: React.FC<BoardProps> = (props) => {
     }
 
     return (
-        <DndProvider backend={HTML5Backend}>
-            <div
-                style={{
-                    width: "200%",
-                    height: "100%",
-                    display: "flex",
-                    flexWrap: "wrap"
-                }}
-            >
-                hey
-                {squares}
-            </div>
-            <div>
-                Choose a pic
-                <ul>
-                    {pics.map(
-                        (p: string): JSX.Element => (
-                            <li key={p}>
-                                <Pic pic={p} />
-                            </li>
-                        )
-                    )}
-                </ul>
-            </div>
-        </DndProvider>
+        <>
+            <DndProvider backend={HTML5Backend}>
+                <div
+                    style={{
+                        width: "200%",
+                        height: "100%",
+                        display: "flex",
+                        flexWrap: "wrap"
+                    }}
+                >
+                    hey
+                    {squares}
+                </div>
+
+                <div>
+                    Choose a pic
+                    <ul>
+                        {pics.map(
+                            (p: string): JSX.Element => (
+                                <li key={p}>
+                                    <Pic pic={p} />
+                                </li>
+                            )
+                        )}
+                    </ul>
+                </div>
+            </DndProvider>
+        </>
     );
 };
 
