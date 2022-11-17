@@ -1,3 +1,11 @@
+import React from "react";
+<<<<<<< HEAD
+import Towel from "./images/towel.png";
+import Shine from "./images/shine.png";
+import Pump from "./images/pump.png";
+import GlassRepair from "./images/glass repair.png";
+=======
+
 // import ReactDOM from "react-dom";
 // import Board from "../Board";
 // import { observe } from "../game";
@@ -32,11 +40,12 @@
 //         document.getElementById("root")
 //     );
 // });
-import React from "react";
-import Towel from "./images/towel.png";
-import Shine from "./images/shine.png";
-import Pump from "./images/pump.png";
-import GlassRepair from "./images/glassrepair.png";
+
+import Towel from "./towel.png";
+import Shine from "./shine.png";
+import Pump from "./pump.png";
+import GlassRepair from "./glass repair.png";
+>>>>>>> vicbranch
 
 const Pimp = () => {
     return (

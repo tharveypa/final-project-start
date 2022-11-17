@@ -1,6 +1,6 @@
-import RedCar from "./images/red car.png";
-import BlueCar from "./images/blue car.png";
-import GreenCar from "./images/green car.png";
+import RedCar from "./images/redcar.png";
+import BlueCar from "./images/bluecar.png";
+import GreenCar from "./images/greencar.png";
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import Street from "./images/street.jpg";
