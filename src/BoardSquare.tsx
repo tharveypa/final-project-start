@@ -57,9 +57,9 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                     {square.map(
                         (p: string): JSX.Element => (
                             <li key={p}>
-                                <Square black={black}>{p}</Square>
+                                <Pic pic={p} />
                                 {
-                                    //<Pic pic={p} />
+                                    //<Square black={black}>{p}</Square>
                                 }
                             </li>
                         )
