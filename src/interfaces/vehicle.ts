@@ -11,6 +11,9 @@ export interface Vehicle {
     /** Parking fee */
     parkingFee: number;
 
+    /** Parking time */
+    parkingTime: number;
+
     /** Whether the vehicle battery has electric powers */
     battery: boolean;
 
