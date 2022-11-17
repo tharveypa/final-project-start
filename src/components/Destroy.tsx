@@ -4,7 +4,8 @@ import BirdPoop from "./images/birdpoop.png";
 import Slash from "./images/slash.png";
 import Hammer from "./images/hammer.png";
 
-const destroy = ["./images/dirt.png", "Birdpoop", "Slash", "Hammer,"];
+const destroy = [Dirt, BirdPoop, Slash, Hammer];
+const str = ["Dirty Car", "Bird Poop", "Slash Tires", "Break Windows"];
 
 const Destroy = () => {
     return (
@@ -14,13 +15,14 @@ const Destroy = () => {
                 Destroy Mode Options:
                 {destroy.map(
                     (t: string): JSX.Element => (
-                        <div key={t}>
-                            <img src={t} alt={t} />
-                            heee
+                        <div key={t.toString()}>
+                            <img src={t} alt={t.toString()} />
+                            {str[destroy.indexOf(t)]}
                         </div>
                     )
                 )}
-                {/*<div>
+                {/*
+                <div>
                     <img src={Dirt} alt="dirt" />
                     Dirty Car
                 </div>
@@ -35,8 +37,9 @@ const Destroy = () => {
                 <div>
                     <img src={Hammer} alt="break windows" />
                     Break Windows
-                </div>*/}
+                </div>
                 <div>etc</div>
+                    */}
             </p>
         </div>
     );
