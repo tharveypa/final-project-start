@@ -78,26 +78,35 @@ export function Menu() {
                 </Modal.Footer>
             </Modal>
             <p></p>
-            <Table>
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {option.map((s: string) => (
-                        <tr key={s}>
-                            <td>
-                                <img
-                                    src={require(s + "")}
-                                    width="25%"
-                                    height="25%"
-                                />
-                            </td>
+            <div
+                className="table-wrapper-scroll-y my-custom-scrollbar"
+                style={{
+                    position: "relative",
+                    height: "200px",
+                    overflow: "auto"
+                }}
+            >
+                <Table className="table-fixed table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
                         </tr>
-                    ))}
-                </tbody>
-            </Table>
+                    </thead>
+                    <tbody>
+                        {option.map((s: string) => (
+                            <tr key={s}>
+                                <td>
+                                    <img
+                                        src={require(s + "")}
+                                        width="25%"
+                                        height="25%"
+                                    />
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
+            </div>
         </div>
     );
 }
