@@ -14,6 +14,7 @@ function App(): JSX.Element {
 
             <header className="App-header">CAR APP </header>
             <PimpVsDestroy></PimpVsDestroy>
+
             <div>
                 <CarSpace DirtPosition={[1000, 1000]}></CarSpace>
             </div>

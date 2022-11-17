@@ -38,29 +38,23 @@ import Shine from "./images/shine.png";
 import Pump from "./images/pump.png";
 import GlassRepair from "./images/glassrepair.png";
 
+const pimp = [Towel, Shine, Pump, GlassRepair];
+const str = ["Wipe Car", "Shine Car", "Fill Tires", "Repair Glass"];
+
 const Pimp = () => {
     return (
         <div className="toolncar">
             <h1>Pimp Mode</h1>
             <p>
                 Pimp Mode Options:
-                <div>
-                    <img src={Towel} alt="towel" />
-                    Wipe Car
-                </div>
-                <div>
-                    <img src={Shine} alt="shine" />
-                    Shine Car
-                </div>
-                <div>
-                    <img src={Pump} alt="pump" />
-                    Fill Tires
-                </div>
-                <div>
-                    <img src={GlassRepair} alt="glass repair" />
-                    Repair Windows
-                </div>
-                <div>etc</div>
+                {pimp.map(
+                    (t: string): JSX.Element => (
+                        <div key={t.toString()}>
+                            <img src={t} alt={t.toString()} />
+                            {str[pimp.indexOf(t)]}
+                        </div>
+                    )
+                )}
             </p>
         </div>
     );
