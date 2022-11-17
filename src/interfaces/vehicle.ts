@@ -8,6 +8,9 @@ export interface Vehicle {
     /** Vehicle size */
     size: number;
 
+    /** Parking fee */
+    parkingFee: number;
+
     /** Whether the vehicle battery has electric powers */
     battery: boolean;
 
