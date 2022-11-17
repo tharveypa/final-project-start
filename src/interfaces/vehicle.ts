@@ -8,15 +8,15 @@ export interface Vehicle {
     /** Vehicle size */
     size: number;
 
-    /** Whether the battery has power */
+    /** Whether the vehicle battery has electric powers */
     battery: boolean;
 
-    /** Whether the car lock is working properly */
+    /** Whether the vehicle lock works properly */
     lock: boolean;
 
     /** Remaining fuel */
     fuel: number;
 
-    /** Whether the tires have air */
+    /** Whether the vehicle has a flat tire */
     tire: boolean;
 }
