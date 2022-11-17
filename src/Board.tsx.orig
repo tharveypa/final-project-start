@@ -17,12 +17,16 @@ export const renderPiece = (
     }
 };
 
+<<<<<<< HEAD
+const renderSquare = (j: number, i: number, pic:[], picPosition: [number, number]) => {
+=======
 const renderSquare = (
     j: number,
     i: number,
     pics: string[],
     picPosition: [number, number]
 ) => {
+>>>>>>> main
     const x = j;
     const y = i;
 
@@ -38,7 +42,11 @@ const renderSquare = (
             <div>
                 | board squares x={x}-{picPosition[0]}, y={y}-{picPosition[1]}
                 <div key={i} style={{ width: "50%", height: "50%" }}>
+<<<<<<< HEAD
+                    <BoardSquare x={x} y={y} pic={pic}>
+=======
                     <BoardSquare x={x} y={y} pics={pics}>
+>>>>>>> main
                         {renderPiece(x, y, "yeet", picPosition)}
                     </BoardSquare>
                     {

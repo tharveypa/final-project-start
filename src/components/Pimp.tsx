@@ -1,5 +1,3 @@
-import React from "react";
-
 // import ReactDOM from "react-dom";
 // import Board from "../Board";
 // import { observe } from "../game";
@@ -34,15 +32,15 @@ import React from "react";
 //         document.getElementById("root")
 //     );
 // });
-
-import Towel from "./towel.png";
-import Shine from "./shine.png";
-import Pump from "./pump.png";
-import GlassRepair from "./glass repair.png";
+import React from "react";
+import Towel from "./images/towel.png";
+import Shine from "./images/shine.png";
+import Pump from "./images/pump.png";
+import GlassRepair from "./images/glassrepair.png";
 
 const Pimp = () => {
     return (
-        <div>
+        <div className="toolncar">
             <h1>Pimp Mode</h1>
             <p>
                 Pimp Mode Options:

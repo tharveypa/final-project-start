@@ -5,7 +5,11 @@ import { canAddPic, addPic, canMovePic, movePic } from "./game";
 import Pic from "./Pic";
 import Overlay from "./Overlay";
 import Square from "./Square";
+<<<<<<< HEAD
+import Pic from "./Pic";
+=======
 import { Type } from "typescript";
+>>>>>>> main
 
 type BoardSquareProps = {
     x: number;
@@ -14,16 +18,24 @@ type BoardSquareProps = {
 };
 
 const BoardSquare: React.FC<BoardSquareProps> = (props) => {
+<<<<<<< HEAD
+    const [square, setSquare] = useState<string>("");
     const { x, y, p, children } = props;
+=======
     const { x, y, pics, children } = props;
+>>>>>>> main
     const black = (x + y) % 2 === 1;
     const [square, setSquare] = useState<string[]>([]);
     //const [square, setSquare] = useState<string[]>([]);
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.PIC,
         canDrop: () => canMovePic(x, y),
+<<<<<<< HEAD
+        drop: (item) => addImageToBoard(item.pic),
+=======
         drop: (item: { type: string; pic: string }) =>
             addImageToBoard(item.pic),
+>>>>>>> main
         collect: (monitor) => ({
             isOver: !!monitor.isOver(),
             canDrop: !!monitor.canDrop()
@@ -48,6 +60,19 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
     	};
 
     return (
+<<<<<<< HEAD
+        <div
+            ref={drop}
+            style={{ position: "relative", width: "90%", height: "90%" }}
+        >
+            yo
+            <Pic pic={square}/>
+            <Square black={black}>{children}</Square>
+            {isOver && !canDrop && <Overlay color="red" />}
+            {!isOver && canDrop && <Overlay color="yellow" />}
+            {isOver && canDrop && <Overlay color="green" />}
+        </div>
+=======
         <>
             <div
                 ref={drop}
@@ -72,6 +97,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                 </ul>
             </div>
         </>
+>>>>>>> main
     );
 };
 
