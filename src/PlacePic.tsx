@@ -11,35 +11,41 @@ import { Place } from "./Place";
 //// add these two in div style for image when change to absolute
 
 const style: CSSProperties = {
-    position: "relative",
+    position: "absolute",
     border: "2px dashed black",
     cursor: "move"
 };
 
 type PlacePicProps = {
     objectPlace: Place;
+    picPosition: [number, number];
 };
 
 export const PlacePic: React.FC<PlacePicProps> = (props) => {
-    const { objectPlace } = props;
-    const picPosition = [objectPlace.left, objectPlace.top];
+    const { objectPlace, picPosition } = props;
+    const x = picPosition[0];
+    const y = picPosition[1];
+    //const picPosition = [objectPlace.left, objectPlace.top];
     console.log(objectPlace.Name, ",", objectPlace.top, ",", objectPlace.left);
-    const [canDrop, drop] = useDrop({
+    console.log(objectPlace.Name, ",", objectPlace.top, ",", objectPlace.left);
+    const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.PIC,
-        canDrop: () => canMovePic(objectPlace.top, objectPlace.left),
-        drop: () => movePic(objectPlace.top, objectPlace.left),
+        canDrop: () => canMovePic(x, y),
+        drop: () => movePic(x, y),
         collect: (monitor) => ({
             isOver: !!monitor.isOver(),
             canDrop: !!monitor.canDrop()
         })
     });
-    console.log(objectPlace.Name, ",", objectPlace.top, ",", objectPlace.left);
+
     const [{ isDragging }, drag] = useDrag({
-        item: { type: ItemTypes.PIC },
+        item: { type: ItemTypes.PLACE },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging
         })
     });
+    objectPlace.left = x * 2;
+    objectPlace.top = y * 200;
 
     return (
         <Fragment>
@@ -49,7 +55,9 @@ export const PlacePic: React.FC<PlacePicProps> = (props) => {
                     ...style,
                     opacity: isDragging ? 1 : 0.5,
                     fontWeight: "bold",
-                    cursor: "move"
+                    cursor: "move",
+                    top: objectPlace.top,
+                    left: objectPlace.left
                 }}
             >
                 <img src={objectPlace.Image} width="60" height="60" />

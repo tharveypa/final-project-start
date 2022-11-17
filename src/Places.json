@@ -8,8 +8,8 @@
         "onMap": false,
         "priority": 0,
         "Image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThNogb7-o4aaVM8FY751SGV1d7TcAQ2x2g3O6QKDqjH-4Co6j2_FbL_-FifB06n_aud-c&usqp=CAU",
-        "top": 0,
-        "left": 200
+        "top": 20,
+        "left": 550
     },
     {
         "Name": "The Colosseum",

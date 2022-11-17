@@ -13,8 +13,8 @@ type BoardProps = {
 
 const PLACES = sample.map((place): Place => ({ ...place }));
 
-const renderPiece = (i: Place) => {
-    return <PlacePic objectPlace={i}></PlacePic>;
+const renderPiece = (i: Place, picPosition: [number, number]) => {
+    return <PlacePic objectPlace={i} picPosition={picPosition}></PlacePic>;
 };
 
 //const renderSquare = (i: Place, picPosition: [number, number]) => {};
@@ -23,7 +23,7 @@ export const DraggableLayer: React.FC<BoardProps> = (props) => {
     const [placeArry] = useState<Place[]>(PLACES);
     const renderPlaces = [];
     for (let i = 0; i < placeArry.length; i++) {
-        renderPlaces.push(renderPiece(placeArry[i]));
+        renderPlaces.push(renderPiece(placeArry[i], picPosition));
     }
     return (
         <div>
