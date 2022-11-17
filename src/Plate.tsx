@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 import { DropTargetMonitor, useDrop } from "react-dnd";
 import { ItemTypes } from "./constants";
 import { canMovePic } from "./game";
@@ -35,6 +36,7 @@ const Plate: React.FC<PlateProps> = (props) => {
             setPortions(newPortionsList);
         }
     };
+
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.PIC,
         canDrop: () => canMovePic(x, y, currentFoodList),
@@ -65,6 +67,7 @@ const Plate: React.FC<PlateProps> = (props) => {
             {isOver && !canDrop && <Overlay color="red" />}
             {!isOver && canDrop && <Overlay color="yellow" />}
             {isOver && canDrop && <Overlay color="green" />}
+            <Button onClick={() => setPortions([])}>Clear Plate</Button>
         </div>
     );
 };
