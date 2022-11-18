@@ -10,7 +10,7 @@ type DeleteBinProps = {
 
 const DeleteBin: React.FC<DeleteBinProps> = (props) => {
     const [{ isOver, canDrop }, drop] = useDrop({
-        accept: ItemTypes.PIC,
+        accept: [ItemTypes.free, ItemTypes.snap],
         canDrop: () => true,
         drop: (item: { type: string; tile: tileItem }) =>
             props.deleteTile(item.tile.id),
