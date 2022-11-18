@@ -58,6 +58,7 @@ type BoardProps = {
     ) => void;
     x: number;
     y: number;
+    scale: number;
 };
 
 const Board: React.FC<BoardProps> = (props) => {
@@ -78,8 +79,8 @@ const Board: React.FC<BoardProps> = (props) => {
                 x = 0;
                 y = 0;
             } else if (position !== null) {
-                x = item.tile.position[0] + position.x;
-                y = item.tile.position[1] + position.y;
+                x = item.tile.position[0] + position.x / props.scale;
+                y = item.tile.position[1] + position.y / props.scale;
             } else {
                 x = 0;
                 y = 0;

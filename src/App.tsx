@@ -4,7 +4,11 @@ import Board from "./Board";
 import GridEdit from "./GridEdit";
 import "./background.css";
 import ImageDownload from "./ImageDownload";
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import {
+    TransformWrapper,
+    TransformComponent,
+    ReactZoomPanPinchRef
+} from "react-zoom-pan-pinch";
 import { tileItem } from "./interfaces";
 import ListOb from "./ListOb";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -14,6 +18,7 @@ const App: React.FC = (): JSX.Element => {
     const [xSize, setXSize] = useState<number>(5);
     const [ySize, setYSize] = useState<number>(5);
     const [tiles, setTiles] = useState<tileItem[]>([]);
+    const [scale, setScale] = useState<number>(1);
     const [sourceTile /*setSourceTile*/] = useState<tileItem[]>([
         {
             id: -1,
@@ -65,7 +70,6 @@ const App: React.FC = (): JSX.Element => {
         snap: string,
         src: string
     ) => {
-        console.log(location);
         if (index < 0) {
             setTiles((oldArray) => [
                 ...oldArray,
@@ -127,6 +131,9 @@ const App: React.FC = (): JSX.Element => {
                         <TransformWrapper
                             wheel={{ activationKeys: ["Shift"] }}
                             panning={{ activationKeys: ["Shift"] }}
+                            onZoom={(ref: ReactZoomPanPinchRef) =>
+                                setScale(ref.state.scale)
+                            }
                         >
                             <TransformComponent>
                                 <div
@@ -143,6 +150,7 @@ const App: React.FC = (): JSX.Element => {
                                         changeTile={changeTile}
                                         x={xSize}
                                         y={ySize}
+                                        scale={scale}
                                     />
                                 </div>
                             </TransformComponent>
