@@ -12,7 +12,15 @@ type listProps = {
 const ListOb: React.FC<listProps> = (props) => {
     return (
         <div>
-            <DeleteBin deleteTile={props.deleteTile} />
+            <div
+                style={{
+                    display: "inline-block",
+                    width: "100%",
+                    height: "10vw"
+                }}
+            >
+                <DeleteBin deleteTile={props.deleteTile} />
+            </div>
             {props.tiles.map((tile: tileItem, i: number) => (
                 <div
                     key={i}

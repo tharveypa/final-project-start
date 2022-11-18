@@ -29,6 +29,7 @@ const DeleteBin: React.FC<DeleteBinProps> = (props) => {
                 border: "1px solid gray"
             }}
         >
+            Discard
             {isOver && canDrop && <Overlay color="grey" />}
         </div>
     );
