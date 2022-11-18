@@ -52,7 +52,7 @@ const App: React.FC = (): JSX.Element => {
             position: [0, 0],
             color: "cyan",
             tags: [],
-            snap: "nonsnap",
+            snap: "free",
             src: "./images/rocks.png"
         }
     ]);
