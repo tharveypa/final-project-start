@@ -4,6 +4,7 @@ import { tileItem } from "./interfaces";
 
 type ObjectProp = {
     tile: tileItem;
+    scale: number;
     //position: [number, number];
     //orientation: number;
     //size: number;
@@ -34,8 +35,8 @@ const Pic: React.FC<ObjectProp> = (props) => {
                 {props.tile.color}
                 <img
                     src={require("" + props.tile.src)}
-                    width="100%"
-                    height="100%"
+                    width={props.scale + "%"}
+                    height={props.scale + "%"}
                 />
             </div>
         </Fragment>

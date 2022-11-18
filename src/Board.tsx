@@ -12,7 +12,7 @@ const renderPiece = (x: number, y: number, tiles: tileItem[]) => {
             x === o.position[0] && y === o.position[1] && o.snap === "snap"
     );
     if (location.length > 0) {
-        return <Pic tile={location[0]} />;
+        return <Pic tile={location[0]} scale={100} />;
     }
 };
 
@@ -144,7 +144,7 @@ const Board: React.FC<BoardProps> = (props) => {
                             top: o.position[1]
                         }}
                     >
-                        <Pic tile={o} />
+                        <Pic tile={o} scale={500 / props.x} />
                     </div>
                 );
             })}

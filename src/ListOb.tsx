@@ -25,7 +25,7 @@ const ListOb: React.FC<listProps> = (props) => {
                     className="tileitem"
                     style={{ display: "inline-block", width: "50%" }}
                 >
-                    <Pic tile={tile} />
+                    <Pic tile={tile} scale={100} />
                 </div>
             ))}
         </div>
