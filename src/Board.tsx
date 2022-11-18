@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable prettier/prettier */
+import React, { useCallback, useEffect, useState } from "react";
 import Pic from "./Pic";
 import BoardSquare from "./BoardSquare";
 import { tileItem } from "./interfaces";
 import { ItemTypes } from "./constants";
-import { useDrop } from "react-dnd";
+import { useDragLayer, useDrop, DropTarget } from "react-dnd";
 
 const renderPiece = (x: number, y: number, tiles: tileItem[]) => {
     const location = tiles.filter(
@@ -65,22 +66,32 @@ const Board: React.FC<BoardProps> = (props) => {
     const board = document.getElementById("board");
     const test = renderFree(props.tile);
 
-    const [{ isOver }, drop] = useDrop({
+    const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.free,
         canDrop: () => true,
-        drop: (item: { type: string; tile: tileItem }) =>
+        drop: (item: { type: string; tile: tileItem }, monitor) =>
             props.changeTile(
                 item.tile.id,
-                [coords[0] - 76, coords[1] - 133],
+                [monitor.getClientOffset().x, monitor.getClientOffset().y],
                 item.tile.color,
                 item.tile.tags,
                 item.tile.snap,
                 item.tile.src
             ),
         collect: (monitor) => ({
-            isOver: !!monitor.isOver()
+            isOver: !!monitor.isOver(),
+            canDrop: !!monitor.canDrop()
         })
     });
+
+    const { itemtype, isDragging, item, initalOffset, currentOffset } =
+        useDragLayer((monitor) => ({
+            item: monitor.getItem(),
+            itemtype: monitor.getItemType(),
+            initalOffset: monitor.getClientOffset(),
+            currentOffset: monitor.getClientOffset(),
+            isDragging: monitor.isDragging()
+        }));
 
     for (let i = 0; i < props.y; i++) {
         for (let j = 0; j < props.x; j++) {

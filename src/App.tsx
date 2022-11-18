@@ -65,6 +65,7 @@ const App: React.FC = (): JSX.Element => {
         snap: string,
         src: string
     ) => {
+        console.log(location);
         if (index < 0) {
             setTiles((oldArray) => [
                 ...oldArray,
