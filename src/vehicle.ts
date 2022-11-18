@@ -2,6 +2,10 @@ export interface Vehicle {
     /** A unique identifier for the vehicle */
     id: number;
 
+    x: number;
+
+    y: number;
+
     /** Vehicle type */
     type: string;
 
