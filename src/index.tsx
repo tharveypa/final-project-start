@@ -8,6 +8,8 @@ import reportWebVitals from "./reportWebVitals";
 import { Col, Container, Row } from "react-bootstrap";
 import { useEffect, useRef } from "react";
 
+import { Vehicle } from "./vehicle";
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
@@ -77,6 +79,7 @@ observe((picPosition: [number, number]) => {
                                         Class One
                                     </div>
                                     <div
+                                        id="Sedan"
                                         style={{
                                             border: "1px solid blue",
                                             padding: "4px",
@@ -88,6 +91,7 @@ observe((picPosition: [number, number]) => {
                                         Sedan
                                     </div>
                                     <div
+                                        id="SUV"
                                         style={{
                                             border: "1px solid blue",
                                             padding: "4px",
@@ -112,6 +116,7 @@ observe((picPosition: [number, number]) => {
                                         Class Two
                                     </div>
                                     <div
+                                        id="Van"
                                         style={{
                                             border: "1px solid blue",
                                             padding: "4px",
@@ -123,6 +128,7 @@ observe((picPosition: [number, number]) => {
                                         Van
                                     </div>
                                     <div
+                                        id="Limousine"
                                         style={{
                                             border: "1px solid blue",
                                             padding: "4px",
@@ -147,6 +153,7 @@ observe((picPosition: [number, number]) => {
                                         Class Three
                                     </div>
                                     <div
+                                        id="Bus"
                                         style={{
                                             border: "1px solid blue",
                                             padding: "4px",
@@ -158,6 +165,7 @@ observe((picPosition: [number, number]) => {
                                         Bus
                                     </div>
                                     <div
+                                        id="Truck"
                                         style={{
                                             border: "1px solid blue",
                                             padding: "4px",
@@ -182,6 +190,7 @@ observe((picPosition: [number, number]) => {
                                         Class Four
                                     </div>
                                     <div
+                                        id="Articulated Bus"
                                         style={{
                                             border: "1px solid blue",
                                             padding: "4px",
@@ -193,6 +202,7 @@ observe((picPosition: [number, number]) => {
                                         Articulated Bus
                                     </div>
                                     <div
+                                        id="Heavy Truck"
                                         style={{
                                             border: "1px solid blue",
                                             padding: "4px",
