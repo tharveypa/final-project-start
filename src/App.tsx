@@ -20,6 +20,9 @@ const App: React.FC = (): JSX.Element => {
         { id: -3, position: [0, 0], color: "yellow" },
         { id: -4, position: [0, 0], color: "blue" }
     ]);
+    const deleteTile = (index: number) => {
+        setTiles(tiles.filter((tile: tileItem): boolean => tile.id !== index));
+    };
 
     const changeTile = (
         index: number,
@@ -104,7 +107,10 @@ const App: React.FC = (): JSX.Element => {
                         </TransformWrapper>
                     </div>
                     <div className="list">
-                        <ListOb tiles={sourceTile}></ListOb>
+                        <ListOb
+                            tiles={sourceTile}
+                            deleteTile={deleteTile}
+                        ></ListOb>
                     </div>
                 </DndProvider>
             </div>
