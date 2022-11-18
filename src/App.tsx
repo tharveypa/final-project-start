@@ -49,7 +49,7 @@ const App: React.FC = (): JSX.Element => {
         },
         {
             id: -5,
-            position: [0, 0],
+            position: [-100, -100],
             color: "cyan",
             tags: [],
             snap: "free",
