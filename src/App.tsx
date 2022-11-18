@@ -61,6 +61,9 @@ const App: React.FC = (): JSX.Element => {
             src: "./images/rocks.png"
         }
     ]);
+    const deleteTile = (index: number) => {
+        setTiles(tiles.filter((tile: tileItem): boolean => tile.id !== index));
+    };
 
     const changeTile = (
         index: number,
@@ -123,6 +126,8 @@ const App: React.FC = (): JSX.Element => {
                 Table Top Map Editor for CISC275
             </header>
             <div>Justin Clavette</div>
+            <div>Wenhan Ying</div>
+            <div>Junnan Bai</div>
             <ImageDownload></ImageDownload>
             <GridEdit changeX={changeXSize} changeY={changeYSize}></GridEdit>
             <div className="dndpage">
@@ -157,7 +162,10 @@ const App: React.FC = (): JSX.Element => {
                         </TransformWrapper>
                     </div>
                     <div className="list">
-                        <ListOb tiles={sourceTile}></ListOb>
+                        <ListOb
+                            tiles={sourceTile}
+                            deleteTile={deleteTile}
+                        ></ListOb>
                     </div>
                 </DndProvider>
             </div>

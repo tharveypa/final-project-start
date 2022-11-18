@@ -1,10 +1,12 @@
 /* eslint-disable no-extra-parens */
 import React from "react";
+import DeleteBin from "./DeleteBin";
 import { tileItem } from "./interfaces";
 import Pic from "./Pic";
 
 type listProps = {
     tiles: tileItem[];
+    deleteTile: (index: number) => void;
 };
 
 const ListOb: React.FC<listProps> = (props) => {
@@ -13,12 +15,12 @@ const ListOb: React.FC<listProps> = (props) => {
             <div
                 style={{
                     display: "inline-block",
-                    width: "100%"
+                    width: "100%",
+                    height: "10vw"
                 }}
             >
-                trash!!!!
+                <DeleteBin deleteTile={props.deleteTile} />
             </div>
-
             {props.tiles.map((tile: tileItem, i: number) => (
                 <div
                     key={i}
