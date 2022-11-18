@@ -1,3 +1,4 @@
 export const ItemTypes = {
-    PIC: "pic"
+    snap: "snap",
+    free: "free"
 };
