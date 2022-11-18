@@ -8,6 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Col, Container, Row } from "react-bootstrap";
 import { useEffect, useRef } from "react";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Vehicle } from "./vehicle";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
