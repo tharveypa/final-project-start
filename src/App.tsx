@@ -4,7 +4,11 @@ import Board from "./Board";
 import GridEdit from "./GridEdit";
 import "./background.css";
 import ImageDownload from "./ImageDownload";
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import {
+    TransformWrapper,
+    TransformComponent,
+    ReactZoomPanPinchRef
+} from "react-zoom-pan-pinch";
 import { tileItem } from "./interfaces";
 import ListOb from "./ListOb";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -14,22 +18,72 @@ const App: React.FC = (): JSX.Element => {
     const [xSize, setXSize] = useState<number>(5);
     const [ySize, setYSize] = useState<number>(5);
     const [tiles, setTiles] = useState<tileItem[]>([]);
+    const [scale, setScale] = useState<number>(1);
     const [sourceTile /*setSourceTile*/] = useState<tileItem[]>([
-        { id: -1, position: [0, 0], color: "red" },
-        { id: -2, position: [0, 0], color: "green" },
-        { id: -3, position: [0, 0], color: "yellow" },
-        { id: -4, position: [0, 0], color: "blue" }
+        {
+            id: -1,
+            position: [0, 0],
+            color: "red",
+            tags: [],
+            snap: "snap",
+            src: "./images/bosun_tally.jpg"
+        },
+        {
+            id: -2,
+            position: [0, 0],
+            color: "green",
+            tags: [],
+            snap: "snap",
+            src: "./images/bosun_tally.jpg"
+        },
+        {
+            id: -3,
+            position: [0, 0],
+            color: "yellow",
+            tags: [],
+            snap: "snap",
+            src: "./images/bosun_tally.jpg"
+        },
+        {
+            id: -4,
+            position: [0, 0],
+            color: "blue",
+            tags: [],
+            snap: "snap",
+            src: "./images/bosun_tally.jpg"
+        },
+        {
+            id: -5,
+            position: [-100, -100],
+            color: "cyan",
+            tags: [],
+            snap: "free",
+            src: "./images/rocks.png"
+        }
     ]);
+    const deleteTile = (index: number) => {
+        setTiles(tiles.filter((tile: tileItem): boolean => tile.id !== index));
+    };
 
     const changeTile = (
         index: number,
         location: [number, number],
-        color: string
+        color: string,
+        tags: string[],
+        snap: string,
+        src: string
     ) => {
         if (index < 0) {
             setTiles((oldArray) => [
                 ...oldArray,
-                { id: oldArray.length, position: location, color: color }
+                {
+                    id: oldArray.length,
+                    position: location,
+                    color: color,
+                    tags: tags,
+                    snap: snap,
+                    src: src
+                }
             ]);
         } else {
             setTiles(
@@ -82,6 +136,9 @@ const App: React.FC = (): JSX.Element => {
                         <TransformWrapper
                             wheel={{ activationKeys: ["Shift"] }}
                             panning={{ activationKeys: ["Shift"] }}
+                            onZoom={(ref: ReactZoomPanPinchRef) =>
+                                setScale(ref.state.scale)
+                            }
                         >
                             <TransformComponent>
                                 <div
@@ -98,13 +155,17 @@ const App: React.FC = (): JSX.Element => {
                                         changeTile={changeTile}
                                         x={xSize}
                                         y={ySize}
+                                        scale={scale}
                                     />
                                 </div>
                             </TransformComponent>
                         </TransformWrapper>
                     </div>
                     <div className="list">
-                        <ListOb tiles={sourceTile}></ListOb>
+                        <ListOb
+                            tiles={sourceTile}
+                            deleteTile={deleteTile}
+                        ></ListOb>
                     </div>
                 </DndProvider>
             </div>

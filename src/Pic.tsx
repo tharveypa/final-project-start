@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { useDrag } from "react-dnd";
-import { ItemTypes } from "./constants";
 import { tileItem } from "./interfaces";
 // import imgList from "./image/allImage";
 // import { images, image1 } from "./image/images";
@@ -10,6 +9,7 @@ import { tileItem } from "./interfaces";
 
 type ObjectProp = {
     tile: tileItem;
+    scale: number;
     //position: [number, number];
     //orientation: number;
     //size: number;
@@ -19,7 +19,7 @@ type ObjectProp = {
 
 const Pic: React.FC<ObjectProp> = (props) => {
     const [{ isDragging }, drag] = useDrag({
-        item: { type: ItemTypes.PIC, tile: props.tile },
+        item: { type: props.tile.snap, tile: props.tile },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging
         })
@@ -46,15 +46,12 @@ const Pic: React.FC<ObjectProp> = (props) => {
                     textAlign: "center"
                 }}
             >
-                <div>
-                    {props.tile.color}
-                    <img
-                        src={require("./bosun_tally.jpg")}
-                        // src = {imgList[index]}
-                        width="100%"
-                        height="100%"
-                    />
-                </div>
+                {props.tile.color}
+                <img
+                    src={require("" + props.tile.src)}
+                    width={props.scale + "%"}
+                    height={props.scale + "%"}
+                />
             </div>
         </Fragment>
     );
