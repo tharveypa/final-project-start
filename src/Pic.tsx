@@ -1,6 +1,11 @@
 import React, { Fragment } from "react";
 import { useDrag } from "react-dnd";
 import { tileItem } from "./interfaces";
+// import imgList from "./image/allImage";
+// import { images, image1 } from "./image/images";
+// import images from "./image/img";
+// import { BackgroundImage } from "./image/img";
+// import { image } from "html2canvas/dist/types/css/types/image";
 
 type ObjectProp = {
     tile: tileItem;
@@ -19,7 +24,16 @@ const Pic: React.FC<ObjectProp> = (props) => {
             isDragging: !!monitor.isDragging
         })
     });
+    // const [index, setIndex] = useState<number>(0);
+    // function CurrentIndex() {
+    //     setIndex(index + 1);
+    // }
+    // let imageAllName = imgList[]
 
+    // const [choseImage, SetChoseImage] = useState<string>("./image/cat.jpg");
+    // const currentImage = SetChoseImage("./image/cat.jpg" || "./image/dog.jpg");
+    // const current = choseImage === currentImage?
+    // const image = ["./image/cat.jpg", "./image/dog.jpg"];
     return (
         <Fragment>
             <div
