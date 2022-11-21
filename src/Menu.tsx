@@ -96,11 +96,17 @@ export function Menu() {
                         {option.map((s: string) => (
                             <tr key={s}>
                                 <td>
-                                    <img
-                                        src={require(s + "")}
-                                        width="25%"
-                                        height="25%"
-                                    />
+                                    <Button
+                                        style={{
+                                            height: "50x"
+                                        }}
+                                    >
+                                        <img
+                                            src={require(s + "")}
+                                            width="25%"
+                                            height="25%"
+                                        />
+                                    </Button>
                                 </td>
                             </tr>
                         ))}
