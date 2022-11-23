@@ -3,6 +3,7 @@ import { Task } from "../interfaces/task";
 import Card from "react-bootstrap/Card";
 import { ItemTypes } from "../constants";
 import { useDrag } from "react-dnd";
+import { Button } from "react-bootstrap";
 
 function CardComp({ task, id }: { task: Task; id: number }): JSX.Element {
     const [, drag] = useDrag({
@@ -17,6 +18,7 @@ function CardComp({ task, id }: { task: Task; id: number }): JSX.Element {
                 //ref makes the dragging of the Card Work
                 ref={drag}
             >
+                <Button>🖉</Button>
                 <Card.Body>
                     <Card.Title>{task.title}</Card.Title>
                     <Card.Text>{task.description}</Card.Text>
