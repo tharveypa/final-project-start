@@ -3,62 +3,49 @@ import { Task } from "../interfaces/task";
 import { Button } from "react-bootstrap";
 import CardComp from "./CardComp";
 import { MakeNote } from "./MakeNote";
+import { cardData } from "../interfaces/cardData";
 
-// MAKE IT SO THAT CARDS ARE MADE HERE, SO TAKE IN AN ARRAY OF TASK AND MAKE CARDS FROM THEM
 export function CardList(): JSX.Element {
-    const [currList, modList] = useState<Task[]>([
-        {
-            title: "Title0",
-            description: "Title0 is a test card!",
-            priority: "1",
-            thumbColor: "red"
-        },
-        {
-            title: "Title1",
-            description: "Title1 is also a test card!",
-            priority: "2",
-            thumbColor: "blue"
-        },
-        {
-            title: "Title2",
-            description: "Title2 is a test card as well!",
-            priority: "3",
-            thumbColor: "green"
-        }
-    ]); // will be [] in final (empty list, currently giving a dumby list)
+    const [currList, modList] = useState<cardData[]>([]);
 
-    function comparePriority(a: Task, b: Task): number {
-        if (parseInt(a.priority) > parseInt(b.priority)) {
+    //maintains the id of cards
+    const [currentId, setCurrentId] = useState<number>(currList.length);
+
+    function comparePriority(a: cardData, b: cardData): number {
+        if (parseInt(a.task.priority) > parseInt(b.task.priority)) {
             return -1;
         }
-        if (parseInt(a.priority) < parseInt(b.priority)) {
+        if (parseInt(a.task.priority) < parseInt(b.task.priority)) {
             return 1;
         }
         return 0;
     }
 
-    function compareColor(a: Task, b: Task): number {
+    function compareColor(a: cardData, b: cardData): number {
         // can make this compare color too since both are strings and it will sort the same
-        if (a.thumbColor > b.thumbColor) {
+        if (a.task.thumbColor > b.task.thumbColor) {
             return -1;
         }
-        if (a.thumbColor < b.thumbColor) {
+        if (a.task.thumbColor < b.task.thumbColor) {
             return 1;
         }
         return 0;
     }
 
     function sortIt(howTo: boolean): void {
-        // going to just make two buttons, sounds more user friendly
+        // sorts by priority
         if (howTo) {
-            // by priority
-            const sorted: Task[] = currList.sort(comparePriority); // should compare based on priority
-            const tmp: Task[] = sorted.map((task: Task): Task => ({ ...task }));
+            const sorted: cardData[] = currList.sort(comparePriority); // should compare based on priority
+            const tmp: cardData[] = sorted.map(
+                (cardData: cardData): cardData => ({ ...cardData })
+            );
             modList(tmp);
         } else {
-            // alphabetically by color
-            const sorted: Task[] = currList.sort(compareColor);
-            const tmp: Task[] = sorted.map((task: Task): Task => ({ ...task }));
+            // sorts alphabetically by color
+            const sorted: cardData[] = currList.sort(compareColor);
+            const tmp: cardData[] = sorted.map(
+                (cardData: cardData): cardData => ({ ...cardData })
+            );
             modList(tmp);
         }
     }
@@ -71,19 +58,22 @@ export function CardList(): JSX.Element {
             priority: inTask.priority,
             thumbColor: inTask.thumbColor
         };
-        const tmp: Task[] = currList.map((task: Task): Task => ({ ...task }));
-        tmp.push(newTask);
+        const tmp: cardData[] = currList.map(
+            (cardData: cardData): cardData => ({ ...cardData })
+        );
+
+        tmp.push({ task: newTask, id: currentId });
+        setCurrentId(currentId + 1);
+
         modList(tmp);
     }
 
-    function removeCard(inTask: Task): void {
-        //need to make it so that arg is a Card
-        const newNotes: Task[] = currList.filter(
-            (task: Task) =>
-                task.title !== inTask.title &&
-                task.description !== inTask.description &&
-                task.priority !== inTask.priority &&
-                task.thumbColor != inTask.thumbColor
+    function removeCard(inID: number): void {
+        //removes a card from the list by id
+
+        //filter out all cards that match the input ID
+        const newNotes: cardData[] = currList.filter(
+            (cardData: cardData) => cardData.id != inID
         );
         modList(newNotes);
     }
@@ -105,27 +95,16 @@ export function CardList(): JSX.Element {
             <Button onClick={() => sortIt(true)}>Sort by Priority</Button>
             <Button onClick={() => sortIt(false)}>Sort by Color</Button>
             <div id="taskList">
-                {currList.map((task: Task) => {
+                {currList.map((cardData: cardData) => {
                     return (
-                        //FIXME ADD A PROPER KEY ID SYSTEM
-                        <div key={1}>
-                            <CardComp task={task} id={0}></CardComp>
-                        </div>
+                        <CardComp
+                            key={"card #" + cardData.id}
+                            task={cardData.task}
+                            id={cardData.id}
+                        ></CardComp>
                     );
                 })}
             </div>
-            <Button
-                onClick={() =>
-                    removeCard({
-                        title: "test",
-                        description: "test",
-                        priority: "1",
-                        thumbColor: "red"
-                    })
-                }
-            >
-                Remove Card
-            </Button>
         </div>
     );
     // FIXME need to make adding and removing based on events, namely creation of one from MakeNote and delete from however we delete
