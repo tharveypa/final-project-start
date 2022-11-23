@@ -4,14 +4,21 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
+/*
 export let globalNote: Task = {
     title: "p",
     description: "",
     priority: "",
     thumbColor: ""
 };
+*/
 
-export function MakeNote() {
+export function MakeNote({
+    // input parameter from CardList ; Used for the creating of card so that it gets added to CardList
+    addCard
+}: {
+    addCard: (inTask: Task) => void;
+}): JSX.Element {
     const [show, setShow] = useState(false);
     const [title, setTitle] = useState("");
     const [description, setDesc] = useState("");
@@ -55,16 +62,24 @@ export function MakeNote() {
             thumbColor: color
         });
         handleClose();
+
+        // Calls the function passed in from CardList to add the created card to CardList
+        addCard({
+            title: title,
+            description: description,
+            priority: priority,
+            thumbColor: color
+        });
         console.log(newNote);
-        globalNote = newNote;
+        //globalNote = newNote;
     };
 
     return (
         <>
-            <Button onClick={handleShow}>Make Note</Button>
+            <Button onClick={handleShow}>Make Card</Button>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Make a New Note:</Modal.Title>
+                    <Modal.Title>Make a New Card:</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
@@ -72,7 +87,7 @@ export function MakeNote() {
                             <Form.Label>Title</Form.Label>
                             <Form.Control
                                 type="textarea"
-                                placeholder="Note title..."
+                                placeholder="Card title..."
                                 value={title}
                                 onChange={titleHandler}
                                 autoFocus
@@ -82,6 +97,7 @@ export function MakeNote() {
                             <Form.Label>Description</Form.Label>
                             <Form.Control
                                 as="textarea"
+                                placeholder="Card description..."
                                 rows={3}
                                 value={description}
                                 onChange={descHandler}
