@@ -26,7 +26,13 @@ function CardComp({
                 //ref makes the dragging of the Card Work
                 ref={drag}
             >
-                <EditCard id={id} editCard={editCard} task={task}></EditCard>
+                <div style={{ position: "absolute", top: "0", right: "0" }}>
+                    <EditCard
+                        id={id}
+                        editCard={editCard}
+                        task={task}
+                    ></EditCard>
+                </div>
                 <Card.Body>
                     <Card.Title>{task.title}</Card.Title>
                     <Card.Text>{task.description}</Card.Text>
