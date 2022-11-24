@@ -59,7 +59,6 @@ export function MakeNote() {
 
         // Calls the function passed in from CardList to add the created card to CardList
         console.log(newNote);
-        //globalNote = newNote;
     };
 
     return (
