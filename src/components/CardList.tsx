@@ -12,21 +12,21 @@ export function CardList(): JSX.Element {
             description: "Title0 is a test card!",
             priority: "1",
             thumbColor: "red",
-            assigned: ["Nobody :["]
+            assigned: ["Blade", "Brandon"]
         },
         {
             title: "Title1",
             description: "Title1 is also a test card!",
             priority: "2",
             thumbColor: "blue",
-            assigned: ["Myself"]
+            assigned: ["Michael"]
         },
         {
             title: "Title2",
             description: "Title2 is a test card as well!",
             priority: "3",
             thumbColor: "green",
-            assigned: ["Blade", "Brandon"]
+            assigned: ["Nobody"]
         }
     ]); // will be [] in final (empty list, currently giving a dumby list)
 
@@ -72,7 +72,8 @@ export function CardList(): JSX.Element {
             title: inTask.title,
             description: inTask.description,
             priority: inTask.priority,
-            thumbColor: inTask.thumbColor
+            thumbColor: inTask.thumbColor,
+            assigned: inTask.assigned
         };
         const tmp: Task[] = currList.map((task: Task): Task => ({ ...task }));
         tmp.push(newTask);
@@ -117,18 +118,6 @@ export function CardList(): JSX.Element {
                     );
                 })}
             </div>
-            <Button
-                onClick={() =>
-                    removeCard({
-                        title: "test",
-                        description: "test",
-                        priority: "1",
-                        thumbColor: "red"
-                    })
-                }
-            >
-                Remove Card
-            </Button>
         </div>
     );
     // FIXME need to make adding and removing based on events, namely creation of one from MakeNote and delete from however we delete

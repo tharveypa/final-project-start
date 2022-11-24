@@ -4,7 +4,12 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-export function MakeNote() {
+export function MakeNote({
+    // input parameter from CardList ; Used for the creating of card so that it gets added to CardList
+    addCard
+}: {
+    addCard: (inTask: Task) => void;
+}): JSX.Element {
     const [show, setShow] = useState(false);
     const [title, setTitle] = useState("");
     const [description, setDesc] = useState("");
@@ -55,10 +60,16 @@ export function MakeNote() {
             thumbColor: color,
             assigned: assignees
         });
-        handleClose();
-
-        // Calls the function passed in from CardList to add the created card to CardList
+        handleClose(); // Calls the function passed in from CardList to add the created card to CardList
+        addCard({
+            title: title,
+            description: description,
+            priority: priority,
+            thumbColor: color,
+            assigned: assignees
+        });
         console.log(newNote);
+        //globalNote = newNote;
     };
 
     return (
@@ -133,7 +144,6 @@ export function MakeNote() {
                                 onChange={assiHandler}
                             />
                         </Form.Group>
-                        <Form.Label>Priority</Form.Label>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
