@@ -16,7 +16,7 @@ export function MakeNote({
     const [assignees, setAssi] = useState([""]);
     //FIXME: Use color to set thumbtack color when modal is made
     const [color, setColor] = useState("red");
-    const colors = ["red", "pink", "orange", "blue"];
+    const colors = ["Coral", "Pink", "Orange", "Moccasin", "Plum"];
     const [newNote, setNote] = useState({
         title: "placeholder",
         description: "",
