@@ -8,22 +8,25 @@ export function EditCard({
     // input parameter from CardList ; is used within editCard so that CardList knows what card is being changed
     id,
     // input parameter from CardList ; Used for the editing of a card so that it gets changed in CardList
-    editCard
+    editCard,
+    // input parameter from CardList ; Used for setting default values of input fields
+    task
 }: {
     id: number;
     editCard: (id: number, inTask: Task) => void;
+    task: Task;
 }): JSX.Element {
     // used to manage visibility of editCard modal
     const [show, setShow] = useState(false);
 
     // state that holds the title the user input
-    const [title, setTitle] = useState("");
+    const [title, setTitle] = useState(task.title);
     // state that holds the description the user input
-    const [description, setDesc] = useState("");
+    const [description, setDesc] = useState(task.description);
     // state that holds the color the user selected
-    const [color, setColor] = useState("red");
+    const [color, setColor] = useState(task.thumbColor);
     // state that holds the priority the user selected
-    const [priority, setPriority] = useState("low");
+    const [priority, setPriority] = useState(task.priority);
 
     // list of colors the user can select
     const colors = ["red", "pink", "orange", "blue", "black"];
@@ -34,6 +37,14 @@ export function EditCard({
     const handleClose = () => setShow(false);
     // function that sets the modal to be shown
     const handleShow = () => setShow(true);
+    // function that resets values when changes are discarded and closes the modal
+    const restoreDefaultAndClose = () => {
+        handleClose();
+        setTitle(task.title);
+        setDesc(task.description);
+        setColor(task.thumbColor);
+        setPriority(task.priority);
+    };
 
     // function that handles a color being selected
     const colorHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -73,7 +84,7 @@ export function EditCard({
             {/* Button that opens the editCard Modal */}
             <Button onClick={handleShow}>🖉</Button>
             {/* Modal that facilitates the editing of cards */}
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={restoreDefaultAndClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Edit Card:</Modal.Title>
                 </Modal.Header>
@@ -144,7 +155,7 @@ export function EditCard({
                 </Modal.Body>
                 <Modal.Footer>
                     {/* Button that closes the modal without saving */}
-                    <Button onClick={handleClose}>Close</Button>
+                    <Button onClick={restoreDefaultAndClose}>Discard</Button>
                     {/* Button that saves changes to the card and closes the modal */}
                     <Button onClick={sendEdit}>Save</Button>
                 </Modal.Footer>

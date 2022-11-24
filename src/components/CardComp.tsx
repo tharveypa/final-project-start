@@ -26,7 +26,7 @@ function CardComp({
                 //ref makes the dragging of the Card Work
                 ref={drag}
             >
-                <EditCard id={id} editCard={editCard}></EditCard>
+                <EditCard id={id} editCard={editCard} task={task}></EditCard>
                 <Card.Body>
                     <Card.Title>{task.title}</Card.Title>
                     <Card.Text>{task.description}</Card.Text>
