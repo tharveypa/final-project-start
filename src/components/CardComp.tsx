@@ -9,11 +9,13 @@ import { Button } from "react-bootstrap";
 function CardComp({
     task,
     id,
-    editCard
+    editCard,
+    deleteCard
 }: {
     task: Task;
     id: number;
     editCard: (id: number, newTask: Task) => void;
+    deleteCard: (id: number) => void;
 }): JSX.Element {
     const [, drag] = useDrag({
         //type is Card; Type determines where it can be dropped
@@ -34,6 +36,7 @@ function CardComp({
                         task={task}
                     ></EditCard>
                     <Button
+                        onClick={() => deleteCard(id)}
                         style={{ marginLeft: "2px", backgroundColor: "red" }}
                     >
                         X

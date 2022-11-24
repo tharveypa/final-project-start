@@ -112,6 +112,7 @@ export function CardList(): JSX.Element {
                             task={cardData.task}
                             id={cardData.id}
                             editCard={editCard}
+                            deleteCard={removeCard}
                         ></CardComp>
                     );
                 })}
