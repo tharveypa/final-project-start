@@ -13,7 +13,7 @@ function CardComp({ task, id }: { task: Task; id: number }): JSX.Element {
     return (
         <div>
             <Card
-                style={{ width: "12rem" }}
+                style={{ width: "12rem", backgroundColor: task.thumbColor }}
                 //ref makes the dragging of the Card Work
                 ref={drag}
             >
