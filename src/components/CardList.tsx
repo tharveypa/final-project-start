@@ -11,21 +11,21 @@ export function CardList(): JSX.Element {
             title: "Title0",
             description: "Title0 is a test card!",
             priority: "1",
-            thumbColor: "red",
+            thumbColor: "Coral",
             assigned: ["Blade", "Brandon"]
         },
         {
             title: "Title1",
             description: "Title1 is also a test card!",
             priority: "2",
-            thumbColor: "blue",
+            thumbColor: "Pink",
             assigned: ["Michael"]
         },
         {
             title: "Title2",
             description: "Title2 is a test card as well!",
             priority: "3",
-            thumbColor: "green",
+            thumbColor: "Plum",
             assigned: ["Nobody"]
         }
     ]); // will be [] in final (empty list, currently giving a dumby list)
