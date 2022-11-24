@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Task } from "../interfaces/task";
 import { Button } from "react-bootstrap";
 import CardComp from "./CardComp";
+import { MakeNote } from "./MakeNote";
 
 // MAKE IT SO THAT CARDS ARE MADE HERE, SO TAKE IN AN ARRAY OF TASK AND MAKE CARDS FROM THEM
 export function CardList(): JSX.Element {
@@ -99,6 +100,7 @@ export function CardList(): JSX.Element {
     console.log(currList[2]);
     return (
         <div>
+            <MakeNote addCard={addCard}></MakeNote>
             <Button onClick={resetList}>Clear the list</Button>
             <Button onClick={() => sortIt(true)}>Sort by Priority</Button>
             <Button onClick={() => sortIt(false)}>Sort by Color</Button>
@@ -112,18 +114,6 @@ export function CardList(): JSX.Element {
                     );
                 })}
             </div>
-            <Button
-                onClick={() =>
-                    addCard({
-                        title: "test",
-                        description: "test",
-                        priority: "1",
-                        thumbColor: "red"
-                    })
-                }
-            >
-                Add Card
-            </Button>
             <Button
                 onClick={() =>
                     removeCard({
