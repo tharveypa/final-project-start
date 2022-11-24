@@ -78,6 +78,15 @@ export function CardList(): JSX.Element {
         modList(newNotes);
     }
 
+    function editCard(id: number, newTask: Task) {
+        modList(
+            currList.map((cardData: cardData): cardData => {
+                if (cardData.id === id) return { task: newTask, id: id };
+                return cardData;
+            })
+        );
+    }
+
     function resetList(): void {
         modList([]);
     }
