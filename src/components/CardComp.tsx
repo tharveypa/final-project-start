@@ -1,11 +1,19 @@
 import React from "react";
 import { Task } from "../interfaces/task";
+import { EditCard } from "./EditCard";
 import Card from "react-bootstrap/Card";
 import { ItemTypes } from "../constants";
 import { useDrag } from "react-dnd";
-import { Button } from "react-bootstrap";
 
-function CardComp({ task, id }: { task: Task; id: number }): JSX.Element {
+function CardComp({
+    task,
+    id,
+    editCard
+}: {
+    task: Task;
+    id: number;
+    editCard: (id: number, newTask: Task) => void;
+}): JSX.Element {
     const [, drag] = useDrag({
         //type is Card; Type determines where it can be dropped
         item: { type: ItemTypes.Card, id: id }
@@ -18,7 +26,7 @@ function CardComp({ task, id }: { task: Task; id: number }): JSX.Element {
                 //ref makes the dragging of the Card Work
                 ref={drag}
             >
-                <Button>🖉</Button>
+                <EditCard id={id} editCard={editCard}></EditCard>
                 <Card.Body>
                     <Card.Title>{task.title}</Card.Title>
                     <Card.Text>{task.description}</Card.Text>

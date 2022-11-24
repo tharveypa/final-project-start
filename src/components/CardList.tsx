@@ -79,6 +79,7 @@ export function CardList(): JSX.Element {
     }
 
     function editCard(id: number, newTask: Task) {
+        //overwrites the task of all cards matching id to newTask
         modList(
             currList.map((cardData: cardData): cardData => {
                 if (cardData.id === id) return { task: newTask, id: id };
@@ -110,6 +111,7 @@ export function CardList(): JSX.Element {
                             key={"card #" + cardData.id}
                             task={cardData.task}
                             id={cardData.id}
+                            editCard={editCard}
                         ></CardComp>
                     );
                 })}
