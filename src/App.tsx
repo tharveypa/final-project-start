@@ -13,7 +13,8 @@ const sampleCorkBoard = [
             title: "fred",
             description: "also fred",
             priority: "high",
-            thumbColor: "red"
+            thumbColor: "red",
+            assigned: ["Definitely Fred", "Dr. Harvey"]
         },
         id: 1,
         height: 100,
@@ -27,7 +28,8 @@ const sampleCorkBoard = [
             title: "burt",
             description: "also burt",
             priority: "low",
-            thumbColor: "green"
+            thumbColor: "green",
+            assigned: ["I'm doing it all myself"]
         },
         id: 2,
         height: 80,
