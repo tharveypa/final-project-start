@@ -4,6 +4,7 @@ import { EditCard } from "./EditCard";
 import Card from "react-bootstrap/Card";
 import { ItemTypes } from "../constants";
 import { useDrag } from "react-dnd";
+import { Button } from "react-bootstrap";
 
 function CardComp({
     task,
@@ -22,7 +23,7 @@ function CardComp({
     return (
         <div>
             <Card
-                style={{ width: "12rem" }}
+                style={{ width: "15rem" }}
                 //ref makes the dragging of the Card Work
                 ref={drag}
             >
@@ -32,6 +33,11 @@ function CardComp({
                         editCard={editCard}
                         task={task}
                     ></EditCard>
+                    <Button
+                        style={{ marginLeft: "2px", backgroundColor: "red" }}
+                    >
+                        X
+                    </Button>
                 </div>
                 <Card.Body>
                     <Card.Title>{task.title}</Card.Title>
