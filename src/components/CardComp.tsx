@@ -22,6 +22,7 @@ function CardComp({ task, id }: { task: Task; id: number }): JSX.Element {
                     <Card.Text>{task.description}</Card.Text>
                     <Card.Text>Priority: {task.priority}</Card.Text>
                     <Card.Text>Thumbtack Color: {task.thumbColor}</Card.Text>
+                    <Card.Text>Assignees: {task.assigned}</Card.Text>
                 </Card.Body>
             </Card>
         </div>
