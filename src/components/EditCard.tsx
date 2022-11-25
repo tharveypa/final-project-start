@@ -21,6 +21,8 @@ export function EditCard({
 
     // state that holds the title the user input
     const [title, setTitle] = useState(task.title);
+    // state that holds the list of assignees
+    const [assignees, setAssi] = useState([""]);
     // state that holds the description the user input
     const [description, setDesc] = useState(task.description);
     // state that holds the color the user selected
@@ -29,7 +31,7 @@ export function EditCard({
     const [priority, setPriority] = useState(task.priority);
 
     // list of colors the user can select
-    const colors = ["red", "pink", "orange", "blue", "black"];
+    const colors = ["Coral", "Pink", "Orange", "Moccasin", "Plum"];
     // list of colors the user can select
     const priorities = ["low", "medium", "high"];
 
@@ -49,6 +51,11 @@ export function EditCard({
     // function that handles a color being selected
     const colorHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setColor(event.target.value);
+    };
+
+    const assiHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const assi = event.target.value.split(",");
+        setAssi(assi);
     };
 
     // function that handles a priority being selected
@@ -75,7 +82,8 @@ export function EditCard({
             title: title,
             description: description,
             priority: priority,
-            thumbColor: color
+            thumbColor: color,
+            assigned: assignees
         });
     };
 
@@ -150,6 +158,15 @@ export function EditCard({
                                     />
                                 </>
                             ))}
+                        </Form.Group>
+                        <Form.Group className="makeNoteAssi">
+                            <Form.Label>Assignees</Form.Label>
+                            <Form.Control
+                                as="textarea"
+                                rows={2}
+                                value={assignees}
+                                onChange={assiHandler}
+                            />
                         </Form.Group>
                     </Form>
                 </Modal.Body>

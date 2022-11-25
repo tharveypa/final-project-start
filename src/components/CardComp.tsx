@@ -22,10 +22,12 @@ function CardComp({
         item: { type: ItemTypes.Card, id: id }
     });
 
+    const assi = task.assigned.join(", ");
+
     return (
         <div>
             <Card
-                style={{ width: "15rem" }}
+                style={{ width: "12rem", backgroundColor: task.thumbColor }}
                 //ref makes the dragging of the Card Work
                 ref={drag}
             >
@@ -46,7 +48,7 @@ function CardComp({
                     <Card.Title>{task.title}</Card.Title>
                     <Card.Text>{task.description}</Card.Text>
                     <Card.Text>Priority: {task.priority}</Card.Text>
-                    <Card.Text>Thumbtack Color: {task.thumbColor}</Card.Text>
+                    <Card.Text>Assignees: {assi}</Card.Text>
                 </Card.Body>
             </Card>
         </div>

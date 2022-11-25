@@ -56,7 +56,8 @@ export function CardList(): JSX.Element {
             title: inTask.title,
             description: inTask.description,
             priority: inTask.priority,
-            thumbColor: inTask.thumbColor
+            thumbColor: inTask.thumbColor,
+            assigned: inTask.assigned
         };
         const tmp: cardData[] = currList.map(
             (cardData: cardData): cardData => ({ ...cardData })

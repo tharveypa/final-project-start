@@ -4,15 +4,6 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-/*
-export let globalNote: Task = {
-    title: "p",
-    description: "",
-    priority: "",
-    thumbColor: ""
-};
-*/
-
 export function MakeNote({
     // input parameter from CardList ; Used for the creating of card so that it gets added to CardList
     addCard
@@ -22,14 +13,16 @@ export function MakeNote({
     const [show, setShow] = useState(false);
     const [title, setTitle] = useState("");
     const [description, setDesc] = useState("");
+    const [assignees, setAssi] = useState([""]);
     //FIXME: Use color to set thumbtack color when modal is made
     const [color, setColor] = useState("red");
-    const colors = ["red", "pink", "orange", "blue", "black"];
+    const colors = ["Coral", "Pink", "Orange", "Moccasin", "Plum"];
     const [newNote, setNote] = useState({
         title: "placeholder",
         description: "",
         priority: "low",
-        thumbColor: "red"
+        thumbColor: "red",
+        assigned: ["Pla", "Ce", "Holder"]
     });
 
     const [priority, setPriority] = useState("low");
@@ -54,21 +47,26 @@ export function MakeNote({
         setDesc(event.target.value);
     };
 
+    const assiHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const assi = event.target.value.split(",");
+        setAssi(assi);
+    };
+
     const createNote = () => {
         setNote({
             title: title,
             description: description,
             priority: priority,
-            thumbColor: color
+            thumbColor: color,
+            assigned: assignees
         });
-        handleClose();
-
-        // Calls the function passed in from CardList to add the created card to CardList
+        handleClose(); // Calls the function passed in from CardList to add the created card to CardList
         addCard({
             title: title,
             description: description,
             priority: priority,
-            thumbColor: color
+            thumbColor: color,
+            assigned: assignees
         });
         console.log(newNote);
         //globalNote = newNote;
@@ -136,6 +134,15 @@ export function MakeNote({
                                     />
                                 </>
                             ))}
+                        </Form.Group>
+                        <Form.Group className="makeNoteAssi">
+                            <Form.Label>Assignees</Form.Label>
+                            <Form.Control
+                                as="textarea"
+                                rows={2}
+                                value={assignees}
+                                onChange={assiHandler}
+                            />
                         </Form.Group>
                     </Form>
                 </Modal.Body>
