@@ -136,7 +136,7 @@ export function MakeNote({
                             ))}
                         </Form.Group>
                         <Form.Group className="makeNoteAssi">
-                            <Form.Label>Assignes</Form.Label>
+                            <Form.Label>Assignees</Form.Label>
                             <Form.Control
                                 as="textarea"
                                 rows={2}
