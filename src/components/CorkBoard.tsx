@@ -19,7 +19,8 @@ export function CorkBoard({
                     title: "fred",
                     description: "also fred",
                     priority: "high",
-                    thumbColor: "red"
+                    thumbColor: "red",
+                    assigned: ["freddy"]
                 },
                 50,
                 75,

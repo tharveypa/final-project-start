@@ -9,4 +9,5 @@ export interface Task {
     //set as a string, but should be chosen from a pre-made list of colors (the default HTML/CSS colors)
     //color of the thumbtack when it's stuck to the corkboard
     thumbColor: string;
+    assigned: string[];
 }
