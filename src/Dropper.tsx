@@ -7,8 +7,8 @@ import { Button } from "react-bootstrap";
 import { Piece } from "./interfaces/piece";
 
 const style: CSSProperties = {
-    height: "20rem",
-    width: "50rem",
+    height: "40rem",
+    width: "70rem",
     marginRight: "1.5rem",
     marginBottom: "1.5rem",
     color: "white",
@@ -63,7 +63,13 @@ export const Dropper: FC = () => {
     return (
         <div
             ref={drop}
-            style={{ ...style, backgroundColor }}
+            style={{
+                ...style,
+                backgroundColor
+                //backgroundImage: "src/Assets/solutions/3x20.png"
+                //backgroundImage:
+                //    "/Users/noname-school/Documents/CISC275/Assignments/CISC275-final-project/src/Assets/solutions/3x20.png"
+            }}
             data-testid="dustbin"
         >
             <Button onClick={resetPiece}>Reset</Button>
