@@ -1,13 +1,21 @@
 import React from "react";
 import "./App.css";
-import { CardList } from "./Components/CardList";
-import { MakeNote } from "./Components/MakeNote";
-import { CorkBoard } from "./Components/CorkBoard";
+<<<<<<< HEAD
+import { CardList } from "./components/CardList";
+import { MakeNote } from "./components/MakeNote";
+import { CorkBoard } from "./components/CorkBoard";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Pic from "./Pic";
-import { Card } from "./Components/Card";
-import { DeleteNote } from "./Components/DeleteNote";
+import { Card } from "./components/Card";
+import { DeleteNote } from "./components/DeleteNote";
+=======
+import { CardList } from "./components/CardList";
+import { CorkBoard } from "./components/CorkBoard";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { DeleteNote } from "./components/DeleteNote";
+>>>>>>> 615c2b3ef1ed064d3dc34d41560b43bc226254e9
 
 const sampleCorkBoard = [
     {
@@ -15,7 +23,8 @@ const sampleCorkBoard = [
             title: "fred",
             description: "also fred",
             priority: "high",
-            thumbColor: "red"
+            thumbColor: "red",
+            assigned: ["Definitely Fred", "Dr. Harvey"]
         },
         id: 1,
         height: 100,
@@ -29,7 +38,8 @@ const sampleCorkBoard = [
             title: "burt",
             description: "also burt",
             priority: "low",
-            thumbColor: "green"
+            thumbColor: "green",
+            assigned: ["I'm doing it all myself"]
         },
         id: 2,
         height: 80,
@@ -43,26 +53,14 @@ const sampleCorkBoard = [
 function App(): JSX.Element {
     return (
         <>
-            <div>
-                <CardList></CardList>
-            </div>
             <DndProvider backend={HTML5Backend}>
                 <div className="App">
                     <div>
                         <h3>CREATED BY: </h3>
                         <p>Blade Tyrrell, Brandon Branson, Michael Snead</p>
                     </div>
-                    <div
-                        style={{
-                            height: "50px",
-                            width: "50px",
-                            left: "500px",
-                            top: "50px",
-                            position: "absolute"
-                        }}
-                    >
-                        <Pic></Pic>
-                    </div>
+                    <CardList></CardList>
+
                     {/* CORKBOARD DIV : SIZE AND POSITION OF THE DIV DEFINES THAT OF THE CORKBOARD*/}
                     <div
                         style={{
@@ -76,7 +74,6 @@ function App(): JSX.Element {
                         <CorkBoard
                             startingNotesAndPositionInfo={sampleCorkBoard}
                         ></CorkBoard>
-                        <MakeNote></MakeNote>
                         <DeleteNote></DeleteNote>
                     </div>
                 </div>

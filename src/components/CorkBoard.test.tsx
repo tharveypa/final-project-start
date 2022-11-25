@@ -8,7 +8,8 @@ const testNote = [
             title: "Complete CISC 275 Project",
             description: "Just do it",
             priority: "medium",
-            thumbColor: "purple"
+            thumbColor: "purple",
+            assigned: ["Fred"]
         },
         id: 1,
         height: 50,
@@ -25,7 +26,8 @@ const testNotes = [
             title: "Complete CISC 275 Project",
             description: "Just do it",
             priority: "medium",
-            thumbColor: "purple"
+            thumbColor: "purple",
+            assigned: ["Fred"]
         },
         id: 1,
         height: 50,
@@ -40,7 +42,8 @@ const testNotes = [
             description:
                 "I need to walk my dog if I don't walk him he will be sad so I should do that",
             priority: "high",
-            thumbColor: "yellow"
+            thumbColor: "yellow",
+            assigned: ["Fredling"]
         },
         id: 2,
         height: 80,
@@ -54,7 +57,8 @@ const testNotes = [
             title: "Perform open heart surgery",
             description: "It's filthy in there",
             priority: "low",
-            thumbColor: "red"
+            thumbColor: "red",
+            assigned: ["Medic TF2"]
         },
         id: 3,
         height: 50,
