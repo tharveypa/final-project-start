@@ -93,7 +93,38 @@ export function CardList(): JSX.Element {
         modList([]);
     }
 
-    // FIXME double check that the listIt script works and re-renders (ensure state is correctly used and modifies by CardList and Card)
+    function filterList(
+        coral: boolean,
+        pink: boolean,
+        orange: boolean,
+        moccasin: boolean,
+        plum: boolean
+    ): void {
+        // filters the list based on modal input
+        let newList = { ...currList };
+        if (coral)
+            newList = newList.filter(
+                (cd: cardData) => cd.task.thumbColor !== "Coral"
+            );
+        if (pink)
+            newList = newList.filter(
+                (cd: cardData) => cd.task.thumbColor !== "Pink"
+            );
+        if (orange)
+            newList = newList.filter(
+                (cd: cardData) => cd.task.thumbColor !== "Orange"
+            );
+        if (moccasin)
+            newList = newList.filter(
+                (cd: cardData) => cd.task.thumbColor !== "Moccasin"
+            );
+        if (plum)
+            newList = newList.filter(
+                (cd: cardData) => cd.task.thumbColor !== "Plum"
+            );
+        modList(newList);
+    }
+
     // FIXME Part 2: Electric Boogalo, modify the CSS to have overflow-y: auto rule for this div
     console.log(currList.length);
     console.log(currList[0]);
