@@ -7,7 +7,28 @@ import { FilterNote } from "./FilterNote";
 import { cardData } from "../interfaces/cardData";
 
 export function CardList(): JSX.Element {
-    const [currList, modList] = useState<cardData[]>([]);
+    const [currList, modList] = useState<cardData[]>([
+        {
+            task: {
+                title: "some",
+                description: "sum",
+                priority: "low",
+                thumbColor: "Coral",
+                assigned: ["Someone"]
+            },
+            id: 1
+        },
+        {
+            task: {
+                title: "other",
+                description: "other",
+                priority: "high",
+                thumbColor: "Pink",
+                assigned: ["Another"]
+            },
+            id: 2
+        }
+    ]);
 
     //maintains the id of cards
     const [currentId, setCurrentId] = useState<number>(currList.length);
