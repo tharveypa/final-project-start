@@ -5,6 +5,7 @@ import CardComp from "./CardComp";
 import { MakeNote } from "./MakeNote";
 import { FilterNote } from "./FilterNote";
 import { cardData } from "../interfaces/cardData";
+import { Card } from "./Card";
 
 export function CardList(): JSX.Element {
     // REMOVE THIS COMMENT  const [currList, modList] = useState<cardData[]>([]);
@@ -36,7 +37,7 @@ export function CardList(): JSX.Element {
     const [currentId, setCurrentId] = useState<number>(currList.length);
 
     function comparePriority(a: cardData, b: cardData): number {
-        // FIXME low medium high priority (strings) l m h
+        // FIXME low medium high priority (strings) l m h ALPHA h l m
         if (parseInt(a.task.priority) > parseInt(b.task.priority)) {
             return -1;
         }
@@ -47,11 +48,10 @@ export function CardList(): JSX.Element {
     }
 
     function compareColor(a: cardData, b: cardData): number {
-        // can make this compare color too since both are strings and it will sort the same
-        if (a.task.thumbColor > b.task.thumbColor) {
+        if (a.task.thumbColor < b.task.thumbColor) { // REMOVE FIXED THE SIGNS HERE
             return -1;
         }
-        if (a.task.thumbColor < b.task.thumbColor) {
+        if (a.task.thumbColor > b.task.thumbColor) {
             return 1;
         }
         return 0;
@@ -62,21 +62,44 @@ export function CardList(): JSX.Element {
         if (howTo) {
             const sorted: cardData[] = currList.sort(comparePriority); // should compare based on priority
             const tmp: cardData[] = sorted.map(
-                (cardData: cardData): cardData => ({ ...cardData })
+                (cardData: cardData): cardData => ({
+                    ...cardData,
+                    task: { ...cardData.task },
+                    id: cardData.id
+                })
+            );
+            console.log(
+                "currList[0] before setting it : " +
+                    currList[0].task.title +
+                    " with priority " +
+                    currList[0].task.priority +
+                    "; What it is being set to : " +
+                    tmp[0].task.title +
+                    "\n"
             );
             modList(tmp);
         } else {
             // sorts alphabetically by color
             const sorted: cardData[] = currList.sort(compareColor);
             const tmp: cardData[] = sorted.map(
-                (cardData: cardData): cardData => ({ ...cardData })
+                (cardData: cardData): cardData => ({
+                    ...cardData,
+                    task: { ...cardData.task },
+                    id: cardData.id
+                })
+            );
+            console.log(
+                "currList[0] before setting it : " +
+                    currList[0].task.title +
+                    "; WHAT IT IS BEING SET TO : " +
+                    tmp[0].task.title +
+                    "\n"
             );
             modList(tmp);
         }
     }
 
     function addCard(inTask: Task): void {
-        // need to set conditional based on creation of card, invoke with the card creation
         const newTask: Task = {
             title: inTask.title,
             description: inTask.description,
@@ -126,7 +149,13 @@ export function CardList(): JSX.Element {
         plum: boolean
     ): void {
         // filters the list based on modal input
-        let newList = { ...currList };
+        let newList = currList.map(
+            (mapcard: cardData): cardData => ({
+                ...mapcard,
+                task: { ...mapcard.task },
+                id: mapcard.id
+            })
+        );
         if (coral)
             newList = newList.filter(
                 (cd: cardData) => cd.task.thumbColor !== "Coral"
@@ -151,10 +180,6 @@ export function CardList(): JSX.Element {
     }
 
     // FIXME Part 2: Electric Boogalo, modify the CSS to have overflow-y: auto rule for this div
-    console.log(currList.length);
-    console.log(currList[0]);
-    console.log(currList[1]);
-    console.log(currList[2]);
     return (
         <div>
             <MakeNote addCard={addCard}></MakeNote>
@@ -177,5 +202,4 @@ export function CardList(): JSX.Element {
             </div>
         </div>
     );
-    // FIXME need to make adding and removing based on events, namely creation of one from MakeNote and delete from however we delete
 }

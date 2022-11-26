@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Task } from "../interfaces/task";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-// This file contains Blade's MakeNote modified for the purpose of filtering the CardList
+// This file contains a modifed version of Blade's MakeNote for the purpose of filtering the CardList by color
 
 export function FilterNote({
     // CardList function that filters the list
