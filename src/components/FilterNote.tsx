@@ -4,11 +4,19 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-export function MakeNote({
-    // input parameter from CardList ; Used for the creating of card so that it gets added to CardList
-    addCard
+// This file contains Blade's MakeNote modified for the purpose of filtering the CardList
+
+export function FilterNote({
+    // CardList function that filters the list
+    filterList
 }: {
-    addCard: (inTask: Task) => void;
+    filterList: (
+        coral: boolean,
+        pink: boolean,
+        orange: boolean,
+        moccasin: boolean,
+        plum: boolean
+    ) => void;
 }): JSX.Element {
     const [show, setShow] = useState(false);
     const [title, setTitle] = useState("");

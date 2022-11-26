@@ -12,6 +12,7 @@ export function CardList(): JSX.Element {
     const [currentId, setCurrentId] = useState<number>(currList.length);
 
     function comparePriority(a: cardData, b: cardData): number {
+        // FIXME low medium high priority (strings) l m p sort reverse alphabetical
         if (parseInt(a.task.priority) > parseInt(b.task.priority)) {
             return -1;
         }
