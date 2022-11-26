@@ -3,16 +3,40 @@ import { Task } from "../interfaces/task";
 import { Button } from "react-bootstrap";
 import CardComp from "./CardComp";
 import { MakeNote } from "./MakeNote";
+import { FilterNote } from "./FilterNote";
 import { cardData } from "../interfaces/cardData";
 
 export function CardList(): JSX.Element {
-    const [currList, modList] = useState<cardData[]>([]);
+    // REMOVE THIS COMMENT  const [currList, modList] = useState<cardData[]>([]);
+
+    const [currList, modList] = useState<cardData[]>([
+        {
+            task: {
+                title: "Top with Priority",
+                description: "test1",
+                priority: "3",
+                thumbColor: "Pink",
+                assigned: []
+            },
+            id: 1
+        },
+        {
+            task: {
+                title: "Top with Color / Filtered",
+                description: "test2",
+                priority: "1",
+                thumbColor: "Orange",
+                assigned: []
+            },
+            id: 2
+        }
+    ]);
 
     //maintains the id of cards
     const [currentId, setCurrentId] = useState<number>(currList.length);
 
     function comparePriority(a: cardData, b: cardData): number {
-        // FIXME low medium high priority (strings) l m p sort reverse alphabetical
+        // FIXME low medium high priority (strings) l m h
         if (parseInt(a.task.priority) > parseInt(b.task.priority)) {
             return -1;
         }
@@ -134,6 +158,7 @@ export function CardList(): JSX.Element {
     return (
         <div>
             <MakeNote addCard={addCard}></MakeNote>
+            <FilterNote filterList={filterList}></FilterNote>
             <Button onClick={resetList}>Clear the list</Button>
             <Button onClick={() => sortIt(true)}>Sort by Priority</Button>
             <Button onClick={() => sortIt(false)}>Sort by Color</Button>

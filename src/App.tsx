@@ -1,21 +1,10 @@
 import React from "react";
 import "./App.css";
-<<<<<<< HEAD
-import { CardList } from "./components/CardList";
-import { MakeNote } from "./components/MakeNote";
-import { CorkBoard } from "./components/CorkBoard";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import Pic from "./Pic";
-import { Card } from "./components/Card";
-import { DeleteNote } from "./components/DeleteNote";
-=======
 import { CardList } from "./components/CardList";
 import { CorkBoard } from "./components/CorkBoard";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DeleteNote } from "./components/DeleteNote";
->>>>>>> 615c2b3ef1ed064d3dc34d41560b43bc226254e9
 
 const sampleCorkBoard = [
     {
