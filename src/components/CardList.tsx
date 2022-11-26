@@ -30,6 +30,16 @@ export function CardList(): JSX.Element {
                 assigned: []
             },
             id: 2
+        },
+        {
+            task: {
+                title: "Middle?",
+                description: "test3",
+                priority: "2",
+                thumbColor: "Moccasin",
+                assigned: []
+            },
+            id: 2
         }
     ]);
 
@@ -37,7 +47,7 @@ export function CardList(): JSX.Element {
     const [currentId, setCurrentId] = useState<number>(currList.length);
 
     function comparePriority(a: cardData, b: cardData): number {
-        // FIXME low medium high priority (strings) l m h ALPHA h l m
+        // FIXME low medium high priority (strings) l m p sort reverse alphabetical
         if (parseInt(a.task.priority) > parseInt(b.task.priority)) {
             return -1;
         }
@@ -48,7 +58,8 @@ export function CardList(): JSX.Element {
     }
 
     function compareColor(a: cardData, b: cardData): number {
-        if (a.task.thumbColor < b.task.thumbColor) { // REMOVE FIXED THE SIGNS HERE
+        if (a.task.thumbColor < b.task.thumbColor) {
+            // REMOVE FIXED THE SIGNS HERE
             return -1;
         }
         if (a.task.thumbColor > b.task.thumbColor) {
