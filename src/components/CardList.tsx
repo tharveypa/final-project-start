@@ -5,53 +5,24 @@ import CardComp from "./CardComp";
 import { MakeNote } from "./MakeNote";
 import { FilterNote } from "./FilterNote";
 import { cardData } from "../interfaces/cardData";
-import { Card } from "./Card";
 
 export function CardList(): JSX.Element {
-    // REMOVE THIS COMMENT  const [currList, modList] = useState<cardData[]>([]);
-
-    const [currList, modList] = useState<cardData[]>([
-        {
-            task: {
-                title: "Top with Priority",
-                description: "test1",
-                priority: "3",
-                thumbColor: "Pink",
-                assigned: []
-            },
-            id: 1
-        },
-        {
-            task: {
-                title: "Top with Color / Filtered",
-                description: "test2",
-                priority: "1",
-                thumbColor: "Orange",
-                assigned: []
-            },
-            id: 2
-        },
-        {
-            task: {
-                title: "Middle?",
-                description: "test3",
-                priority: "2",
-                thumbColor: "Moccasin",
-                assigned: []
-            },
-            id: 2
-        }
-    ]);
+    const [currList, modList] = useState<cardData[]>([]);
 
     //maintains the id of cards
     const [currentId, setCurrentId] = useState<number>(currList.length);
 
     function comparePriority(a: cardData, b: cardData): number {
-        // FIXME low medium high priority (strings) l m p sort reverse alphabetical
-        if (parseInt(a.task.priority) > parseInt(b.task.priority)) {
+        if (
+            (a.task.priority === "high" && b.task.priority !== "high") ||
+            (a.task.priority === "medium" && b.task.priority === "low")
+        ) {
             return -1;
         }
-        if (parseInt(a.task.priority) < parseInt(b.task.priority)) {
+        if (
+            (a.task.priority === "low" && b.task.priority !== "low") ||
+            (a.task.priority === "medium" && b.task.priority === "high")
+        ) {
             return 1;
         }
         return 0;
@@ -59,7 +30,6 @@ export function CardList(): JSX.Element {
 
     function compareColor(a: cardData, b: cardData): number {
         if (a.task.thumbColor < b.task.thumbColor) {
-            // REMOVE FIXED THE SIGNS HERE
             return -1;
         }
         if (a.task.thumbColor > b.task.thumbColor) {
@@ -71,7 +41,7 @@ export function CardList(): JSX.Element {
     function sortIt(howTo: boolean): void {
         // sorts by priority
         if (howTo) {
-            const sorted: cardData[] = currList.sort(comparePriority); // should compare based on priority
+            const sorted: cardData[] = currList.sort(comparePriority);
             const tmp: cardData[] = sorted.map(
                 (cardData: cardData): cardData => ({
                     ...cardData,
@@ -79,15 +49,7 @@ export function CardList(): JSX.Element {
                     id: cardData.id
                 })
             );
-            console.log(
-                "currList[0] before setting it : " +
-                    currList[0].task.title +
-                    " with priority " +
-                    currList[0].task.priority +
-                    "; What it is being set to : " +
-                    tmp[0].task.title +
-                    "\n"
-            );
+            console.log(tmp + "\n");
             modList(tmp);
         } else {
             // sorts alphabetically by color
@@ -99,13 +61,7 @@ export function CardList(): JSX.Element {
                     id: cardData.id
                 })
             );
-            console.log(
-                "currList[0] before setting it : " +
-                    currList[0].task.title +
-                    "; WHAT IT IS BEING SET TO : " +
-                    tmp[0].task.title +
-                    "\n"
-            );
+            console.log(tmp + "\n");
             modList(tmp);
         }
     }
@@ -163,7 +119,10 @@ export function CardList(): JSX.Element {
         let newList = currList.map(
             (mapcard: cardData): cardData => ({
                 ...mapcard,
-                task: { ...mapcard.task },
+                task: {
+                    ...mapcard.task,
+                    assigned: { ...mapcard.task.assigned }
+                },
                 id: mapcard.id
             })
         );
