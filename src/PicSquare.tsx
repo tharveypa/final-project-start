@@ -10,9 +10,9 @@ type BoardSquareProps = {
     y: number;
 };
 
-const BoardSquare: React.FC<BoardSquareProps> = (props) => {
+const PicSquare: React.FC<BoardSquareProps> = (props) => {
     const { x, y } = props;
-    const black = false; /*(x + y) % 2 === 1;*/ /*TEST*/
+    //const black = false; /*(x + y) % 2 === 1;*/ /*TEST*/
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.PIC,
         canDrop: () => canMovePic(x, y),
@@ -27,13 +27,8 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
         <div
             ref={drop}
             style={{ position: "relative", width: "100%", height: "100%" }}
-        >
-            <Square black={black}></Square>
-            {isOver && !canDrop && <Overlay color="red" />}
-            {!isOver && canDrop && <Overlay color="yellow" />}
-            {isOver && canDrop && <Overlay color="green" />}
-        </div>
+        ></div>
     );
 };
 
-export default BoardSquare;
+export default PicSquare;

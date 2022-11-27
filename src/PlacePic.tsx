@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { CSSProperties, Fragment } from "react";
+import update from "immutability-helper";
+import React, { CSSProperties, Fragment, useCallback } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { ItemTypes } from "./constants";
-import { canMovePic, movePic } from "./game";
+import { canMovePlace, movePic } from "./game";
 import { Place } from "./Place";
+import { ObjectPlaces } from "./ObjectPlaces";
+
 //change position to ABSOLUTE to then set the specific values of left and top WITHIN CSS PROPERTIES STYLE
 //////////////////////////////////////////////////////////////////////////////////
 //                    top: objectPlace.top,
@@ -11,45 +14,59 @@ import { Place } from "./Place";
 //// add these two in div style for image when change to absolute
 
 const style: CSSProperties = {
-    position: "relative",
+    position: "absolute",
     border: "2px dashed black",
     cursor: "move"
 };
 
 type PlacePicProps = {
     objectPlace: Place;
+    picPosition: [number, number];
 };
 
 export const PlacePic: React.FC<PlacePicProps> = (props) => {
-    const { objectPlace } = props;
-    const picPosition = [objectPlace.left, objectPlace.top];
+    const { objectPlace, picPosition } = props;
+    /*
+    const x = picPosition[0];
+    const y = picPosition[1];
+    */
+    console.log(picPosition);
+    //const picPosition = [objectPlace.left, objectPlace.top];
     console.log(objectPlace.Name, ",", objectPlace.top, ",", objectPlace.left);
-    const [canDrop, drop] = useDrop({
+    //console.log(objectPlace.Name, ",", objectPlace.top, ",", objectPlace.left);
+    function dropper(obj: Place) {
+        console.log("entered");
+        return true;
+    }
+    function mover(monitor: any, object: Place, left: number, top: number) {
+        object.left += 1;
+        return true;
+    }
+
+    const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.PIC,
-        canDrop: () => canMovePic(objectPlace.top, objectPlace.left),
-        drop: () => movePic(objectPlace.top, objectPlace.left),
+        canDrop: () => dropper(objectPlace),
+        drop: (monitor) =>
+            mover(monitor, objectPlace, objectPlace.top, objectPlace.left),
         collect: (monitor) => ({
             isOver: !!monitor.isOver(),
             canDrop: !!monitor.canDrop()
         })
     });
-    console.log(objectPlace.Name, ",", objectPlace.top, ",", objectPlace.left);
-    const [{ isDragging }, drag] = useDrag({
-        item: { type: ItemTypes.PIC },
-        collect: (monitor) => ({
-            isDragging: !!monitor.isDragging
-        })
-    });
 
+    //objectPlace.top = picPosition[0];
+    console.log(objectPlace.Name, ",", objectPlace.top, ",", objectPlace.left);
+    console.log(objectPlace.Name, ",", canDrop);
     return (
         <Fragment>
             <div
                 ref={drop}
                 style={{
                     ...style,
-                    opacity: isDragging ? 1 : 0.5,
                     fontWeight: "bold",
-                    cursor: "move"
+                    cursor: "move",
+                    top: objectPlace.top,
+                    left: objectPlace.left
                 }}
             >
                 <img src={objectPlace.Image} width="60" height="60" />
@@ -57,3 +74,4 @@ export const PlacePic: React.FC<PlacePicProps> = (props) => {
         </Fragment>
     );
 };
+//                    opacity: isDragging ? 1 : 0.5,
