@@ -7,28 +7,9 @@ import { FilterNote } from "./FilterNote";
 import { cardData } from "../interfaces/cardData";
 
 export function CardList(): JSX.Element {
-    const [currList, modList] = useState<cardData[]>([
-        {
-            task: {
-                title: "some",
-                description: "sum",
-                priority: "low",
-                thumbColor: "Coral",
-                assigned: ["Someone"]
-            },
-            id: 1
-        },
-        {
-            task: {
-                title: "other",
-                description: "other",
-                priority: "high",
-                thumbColor: "Pink",
-                assigned: ["Another"]
-            },
-            id: 2
-        }
-    ]);
+    // REMOVE THIS COMMENT  const [currList, modList] = useState<cardData[]>([]);
+
+    const [currList, modList] = useState<cardData[]>([]);
 
     //maintains the id of cards
     const [currentId, setCurrentId] = useState<number>(currList.length);
@@ -62,7 +43,7 @@ export function CardList(): JSX.Element {
     function sortIt(howTo: boolean): void {
         // sorts by priority
         if (howTo) {
-            const sorted: cardData[] = currList.sort(comparePriority);
+            const sorted: cardData[] = currList.sort(comparePriority); // should compare based on priority
             const tmp: cardData[] = sorted.map(
                 (cardData: cardData): cardData => ({
                     ...cardData,
@@ -70,7 +51,15 @@ export function CardList(): JSX.Element {
                     id: cardData.id
                 })
             );
-            console.log(tmp + "\n");
+            console.log(
+                "currList[0] before setting it : " +
+                    currList[0].task.title +
+                    " with priority " +
+                    currList[0].task.priority +
+                    "; What it is being set to : " +
+                    tmp[0].task.title +
+                    "\n"
+            );
             modList(tmp);
         } else {
             // sorts alphabetically by color
@@ -82,7 +71,13 @@ export function CardList(): JSX.Element {
                     id: cardData.id
                 })
             );
-            console.log(tmp + "\n");
+            console.log(
+                "currList[0] before setting it : " +
+                    currList[0].task.title +
+                    "; WHAT IT IS BEING SET TO : " +
+                    tmp[0].task.title +
+                    "\n"
+            );
             modList(tmp);
         }
     }
@@ -140,10 +135,7 @@ export function CardList(): JSX.Element {
         let newList = currList.map(
             (mapcard: cardData): cardData => ({
                 ...mapcard,
-                task: {
-                    ...mapcard.task,
-                    assigned: { ...mapcard.task.assigned }
-                },
+                task: { ...mapcard.task },
                 id: mapcard.id
             })
         );
