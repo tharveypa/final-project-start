@@ -16,11 +16,10 @@ const style: CSSProperties = {
     textAlign: "center",
     fontSize: "1rem",
     lineHeight: "normal",
-    float: "left"
+    float: "left",
+    backgroundColor: "black"
 };
-
-const [PieceBank, setPieceBank] = useState<Piece[]>([]);
-
+/*
 addToBank("F");
 addToBank("I");
 addToBank("L");
@@ -34,73 +33,123 @@ addToBank("X");
 addToBank("Y");
 addToBank("Z");
 
-function addToBank(newId: string) {
-    const newPiece: Piece = {
-        id: newId,
-        angle: 0,
-        width: 100,
-        height: 100,
-        top: 150,
-        left: 100,
-        onBoard: false,
-        reflected: false,
-        image: "./src/images/" + newId + ".png"
-    };
-    setPieceBank([...PieceBank, newPiece]);
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function reflectPiece(reflId: string) {
-    const newBank: Piece[] = PieceBank.map(
-        (p: Piece): Piece =>
-            p.id === reflId ? { ...p, reflected: !p.reflected } : p
-    );
-    setPieceBank(newBank);
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function rotatePiece(rotId: string, rotation: number) {
-    const newBank: Piece[] = PieceBank.map(
-        (p: Piece): Piece => (p.id === rotId ? { ...p, angle: rotation } : p)
-    );
-    setPieceBank(newBank);
-}
-
+*/
 export const Dropper: FC = () => {
-    const [top, setTop] = useState<number>(150);
-    const [left, setLeft] = useState<number>(100);
+    //PieceBank state definition and filling it
+    const [PieceBank, setPieceBank] = useState<Piece[]>([
+        {
+            id: "F",
+            angle: 0,
+            width: 100,
+            height: 100,
+            top: 150,
+            left: 100,
+            onBoard: false,
+            reflected: false,
+            image: "./Assets/Images/" + "F" + ".png"
+        },
+        {
+            id: "I",
+            angle: 0,
+            width: 100,
+            height: 100,
+            top: 150,
+            left: 100,
+            onBoard: false,
+            reflected: false,
+            image: "./Assets/Images/" + "I" + ".png"
+        },
+        {
+            id: "L",
+            angle: 0,
+            width: 100,
+            height: 100,
+            top: 150,
+            left: 100,
+            onBoard: false,
+            reflected: false,
+            image: "./Assets/Images/" + "L" + ".png"
+        }
+    ]);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    function reflectPiece(reflId: string) {
+        const newBank: Piece[] = PieceBank.map(
+            (p: Piece): Piece =>
+                p.id === reflId ? { ...p, reflected: !p.reflected } : p
+        );
+        setPieceBank(newBank);
+    }
 
-    const [{ canDrop, isOver }, drop] = useDrop({
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    function rotatePiece(rotId: string, rotation: number) {
+        const newBank: Piece[] = PieceBank.map(
+            (p: Piece): Piece =>
+                p.id === rotId ? { ...p, angle: rotation } : p
+        );
+        setPieceBank(newBank);
+    }
+    //Add a piece to the set of total pieces
+    function addToBank(newId: string) {
+        const newPiece: Piece = {
+            id: newId,
+            angle: 0,
+            width: 100,
+            height: 100,
+            top: 150,
+            left: 100,
+            onBoard: false,
+            reflected: false,
+            image: "./src/images/" + newId + ".png"
+        };
+        setPieceBank([...PieceBank, newPiece]);
+    }
+    //Move a piece by changing the state for that piece's top and left
+    function movePiece(id: string, left: number, top: number): void {
+        const newPieces = PieceBank.map(
+            (piece: Piece): Piece =>
+                piece.id === id ? { ...piece, top: top, left: left } : piece
+        );
+        setPieceBank(newPieces);
+    }
+
+    function resetPieces(): void {
+        const newPieces = PieceBank.map(
+            (piece: Piece): Piece => ({ ...piece, top: 150, left: 100 })
+        );
+        setPieceBank(newPieces);
+    }
+
+    const [, drop] = useDrop({
         accept: ItemTypes.PIC,
-        drop: (item, monitor) => {
+        drop: (
+            item: { type: string; id: string; top: number; left: number },
+            monitor
+        ) => {
             const delta = monitor.getDifferenceFromInitialOffset() as XYCoord;
-            setLeft(left + delta.x);
-            setTop(top + delta.y);
+            const ileft = item.left + delta.x;
+            const itop = item.top + delta.y;
+            movePiece(item.id, ileft, itop);
         },
         collect: (monitor) => ({
             isOver: monitor.isOver(),
             canDrop: monitor.canDrop()
         })
     });
-
-    const isActive = canDrop && isOver;
-    let backgroundColor = "#222";
-    if (isActive) {
-        backgroundColor = "darkgreen";
-    }
-
-    function resetPiece() {
-        setTop(150);
-        setLeft(100);
-    }
     return (
-        <div
-            ref={drop}
-            style={{ ...style, backgroundColor }}
-            data-testid="dustbin"
-        >
-            <Button onClick={resetPiece}>Reset</Button>
-            <Pic top={top} left={left} />
+        <div ref={drop} style={{ ...style }} data-testid="dustbin">
+            <Button onClick={resetPieces}>Reset</Button>
+            {PieceBank.map((p: Piece) => {
+                return (
+                    <div key={p.id}>
+                        <Pic
+                            id={p.id}
+                            top={p.top}
+                            left={p.left}
+                            image={p.image}
+                        />
+                    </div>
+                );
+            })}
         </div>
     );
 };
