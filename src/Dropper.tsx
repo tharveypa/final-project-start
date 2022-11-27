@@ -89,6 +89,7 @@ export const Dropper: FC = () => {
         setPieceBank(newBank);
     }
     //Add a piece to the set of total pieces
+    /*
     function addToBank(newId: string) {
         const newPiece: Piece = {
             id: newId,
@@ -103,6 +104,7 @@ export const Dropper: FC = () => {
         };
         setPieceBank([...PieceBank, newPiece]);
     }
+    */
     //Move a piece by changing the state for that piece's top and left
     function movePiece(id: string, left: number, top: number): void {
         const newPieces = PieceBank.map(
