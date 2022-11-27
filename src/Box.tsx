@@ -13,7 +13,7 @@ const style: CSSProperties = {
 };
 
 export interface BoxProps {
-    id: any;
+    id: string;
     left: number;
     top: number;
     hideSourceOnDrag?: boolean;

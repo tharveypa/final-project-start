@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import update from "immutability-helper";
 import React, { CSSProperties, Fragment, useCallback } from "react";
