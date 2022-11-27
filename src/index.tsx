@@ -1,39 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Board from "./Board";
 import "./index.css";
-import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
-//import { BDropDown } from "./BackgroundDD";
-//  import { Form, Row } from "react-bootstrap";
+import Charizard from "./Pokemon/Charizard";
 import { PopUpSlider } from "./PopUpSlider";
+import "./App.css";
 
-observe((picPosition: [number, number]) => {
-    ReactDOM.render(
-        <>
-            <div>
-                <h3 style={{ textAlign: "center" }}>
-                    Welcome to Poke Team Design
-                </h3>
-                <PopUpSlider></PopUpSlider>
+ReactDOM.render(
+    <>
+        <div>
+            <h3 style={{ textAlign: "center" }}>Welcome to Poke Team Design</h3>
+            <PopUpSlider></PopUpSlider>
+        </div>
+        <hr></hr>
+        <React.StrictMode>
+            <div className="container" style={{ textAlign: "center" }}>
+                <Charizard />
             </div>
-            <hr></hr>
-            <React.StrictMode>
-                <div
-                    style={{
-                        width: "1500px",
-                        height: "500px",
-                        border: "1px solid gray"
-                    }}
-                >
-                    <Board picPosition={picPosition} />
-                </div>
-                <p>hi</p>
-            </React.StrictMode>
-        </>,
-        document.getElementById("root")
-    );
-});
+        </React.StrictMode>
+    </>,
+    document.getElementById("root")
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

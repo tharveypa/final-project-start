@@ -37,3 +37,20 @@
         transform: rotate(360deg);
     }
 }
+.Charizard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: blueviolet;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.container {
+    position: relative;
+    border: 1px solid black;
+    height: 800px;
+    width: 1500px;
+    overflow: hidden;
+}

@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useEffect, useRef } from "react";
 
 function useDragger(id: string): void {
     const isClicked = useRef<boolean>(false);
