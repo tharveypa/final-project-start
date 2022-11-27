@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/homepage/static/css/main.92931bbc.css",
+    "main.js": "/homepage/static/js/main.a8602d09.js",
+    "static/js/787.4ef7427d.chunk.js": "/homepage/static/js/787.4ef7427d.chunk.js",
+    "static/media/worldmap2.png": "/homepage/static/media/worldmap2.f4bcaac4685af0173335.png",
+    "static/media/bosun_tally.jpg": "/homepage/static/media/bosun_tally.efd13eb681079a6cc65d.jpg",
+    "index.html": "/homepage/index.html",
+    "main.92931bbc.css.map": "/homepage/static/css/main.92931bbc.css.map",
+    "main.a8602d09.js.map": "/homepage/static/js/main.a8602d09.js.map",
+    "787.4ef7427d.chunk.js.map": "/homepage/static/js/787.4ef7427d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.92931bbc.css",
+    "static/js/main.a8602d09.js"
+  ]
+}
