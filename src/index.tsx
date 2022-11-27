@@ -1,10 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import reportWebVitals from "./reportWebVitals";
-import Charizard from "./Pokemon/Charizard";
-import { PopUpSlider } from "./PopUpSlider";
 import "./App.css";
+import reportWebVitals from "./reportWebVitals";
+import { PopUpSlider } from "./PopUpSlider";
+import Lucario from "./Pokemon/Lucario";
+import Charizard from "./Pokemon/Charizard";
+import Bulbasaur from "./Pokemon/Bulbasaur";
+import Snorlax from "./Pokemon/Snorlax";
 
 ReactDOM.render(
     <>
@@ -16,6 +19,9 @@ ReactDOM.render(
         <React.StrictMode>
             <div className="container" style={{ textAlign: "center" }}>
                 <Charizard />
+                <Bulbasaur />
+                <Lucario />
+                <Snorlax />
             </div>
         </React.StrictMode>
     </>,

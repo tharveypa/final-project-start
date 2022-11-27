@@ -47,6 +47,36 @@
     border-radius: 50%;
     cursor: pointer;
 }
+.Bulbasaur {
+    position: absolute;
+    top: 0;
+    right: 1000px;
+    background-color: rgb(43, 226, 134);
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.Lucario {
+    position: absolute;
+    bottom: 0;
+    right: 1100px;
+    background-color: rgb(193, 25, 25);
+    height: 240px;
+    width: 240px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.Snorlax {
+    position: absolute;
+    bottom: 0;
+    right: 200px;
+    background-color: rgb(126, 128, 131);
+    height: 240px;
+    width: 240px;
+    border-radius: 50%;
+    cursor: pointer;
+}
 .container {
     position: relative;
     border: 1px solid black;
