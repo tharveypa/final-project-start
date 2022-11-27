@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import update from "immutability-helper";
 import type { CSSProperties, FC } from "react";
