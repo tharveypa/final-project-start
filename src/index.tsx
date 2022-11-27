@@ -1,26 +1,32 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Board from "./Board";
 import "./index.css";
-import { observe } from "./game";
+import "./App.css";
 import reportWebVitals from "./reportWebVitals";
+import { PopUpSlider } from "./PopUpSlider";
+import Lucario from "./Pokemon/Lucario";
+import Charizard from "./Pokemon/Charizard";
+import Bulbasaur from "./Pokemon/Bulbasaur";
+import Snorlax from "./Pokemon/Snorlax";
 
-observe((picPosition: [number, number]) => {
-    ReactDOM.render(
+ReactDOM.render(
+    <>
+        <div>
+            <h3 style={{ textAlign: "center" }}>Welcome to Poke Team Design</h3>
+            <PopUpSlider></PopUpSlider>
+        </div>
+        <hr></hr>
         <React.StrictMode>
-            <div
-                style={{
-                    width: "500px",
-                    height: "500px",
-                    border: "1px solid gray"
-                }}
-            >
-                <Board picPosition={picPosition} />
+            <div className="container" style={{ textAlign: "center" }}>
+                <Charizard />
+                <Bulbasaur />
+                <Lucario />
+                <Snorlax />
             </div>
-        </React.StrictMode>,
-        document.getElementById("root")
-    );
-});
+        </React.StrictMode>
+    </>,
+    document.getElementById("root")
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

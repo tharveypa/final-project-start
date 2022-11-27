@@ -11,25 +11,67 @@ const Pic: React.FC = () => {
     });
 
     return (
-        <Fragment>
-            <div
-                ref={drag}
-                style={{
-                    opacity: isDragging ? 1 : 0.5,
-                    fontSize: 50,
-                    fontWeight: "bold",
-                    cursor: "move",
-                    textAlign: "center"
-                }}
-            >
-                {/*♘*/}
-                <img
-                    src={require("./bosun_tally.jpg")}
-                    width="80"
-                    height="80"
-                />
-            </div>
-        </Fragment>
+        <>
+            <>
+                <Fragment>
+                    <div
+                        ref={drag}
+                        style={{
+                            opacity: isDragging ? 1 : 0.5,
+                            fontSize: 50,
+                            fontWeight: "bold",
+                            cursor: "move",
+                            textAlign: "center"
+                        }}
+                    >
+                        {/*♘*/}
+                        <img
+                            src={require("./006.png")}
+                            width="80"
+                            height="80"
+                        />
+                    </div>
+                </Fragment>
+                <Fragment>
+                    <div
+                        ref={drag}
+                        style={{
+                            opacity: isDragging ? 1 : 0.5,
+                            fontSize: 50,
+                            fontWeight: "bold",
+                            cursor: "move",
+                            textAlign: "center"
+                        }}
+                    >
+                        {/*♘*/}
+                        <img
+                            src={require("./Bulbasaur.png")}
+                            width="80"
+                            height="80"
+                        />
+                    </div>
+                </Fragment>
+            </>
+            <Fragment>
+                <div
+                    ref={drag}
+                    style={{
+                        opacity: isDragging ? 1 : 0.5,
+                        fontSize: 50,
+                        fontWeight: "bold",
+                        cursor: "move",
+                        textAlign: "center"
+                    }}
+                >
+                    {/*♘*/}
+                    <img
+                        src={require("./Wartortle.png")}
+                        width="80"
+                        height="80"
+                    />
+                </div>
+            </Fragment>
+        </>
     );
 };
 
