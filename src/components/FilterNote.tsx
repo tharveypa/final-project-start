@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-// This file contains a modifed version of Blade's MakeNote for the purpose of filtering the CardList by color
+// Modified MakeNote that will instead be used to filter the CardList
 
 export function FilterNote({
     // CardList function that filters the list

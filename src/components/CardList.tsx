@@ -7,8 +7,6 @@ import { FilterNote } from "./FilterNote";
 import { cardData } from "../interfaces/cardData";
 
 export function CardList(): JSX.Element {
-    // REMOVE THIS COMMENT  const [currList, modList] = useState<cardData[]>([]);
-
     const [currList, modList] = useState<cardData[]>([]);
 
     //maintains the id of cards
@@ -43,7 +41,7 @@ export function CardList(): JSX.Element {
     function sortIt(howTo: boolean): void {
         // sorts by priority
         if (howTo) {
-            const sorted: cardData[] = currList.sort(comparePriority); // should compare based on priority
+            const sorted: cardData[] = currList.sort(comparePriority);
             const tmp: cardData[] = sorted.map(
                 (cardData: cardData): cardData => ({
                     ...cardData,
