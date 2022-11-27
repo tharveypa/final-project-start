@@ -4,6 +4,7 @@ import type { CSSProperties, FC } from "react";
 import { useCallback, useState } from "react";
 import type { XYCoord } from "react-dnd";
 import { useDrop } from "react-dnd";
+import { Place } from "./Place";
 
 import { Box } from "./Box";
 import type { DragItem } from "./interfaces";
@@ -18,13 +19,14 @@ const styles: CSSProperties = {
 
 export interface ContainerProps {
     hideSourceOnDrag: boolean;
+    places: Place[];
 }
 
 export interface ContainerState {
     boxes: { [key: string]: { top: number; left: number; title: string } };
 }
 
-export const Container: FC<ContainerProps> = ({ hideSourceOnDrag }) => {
+export const Container: FC<ContainerProps> = ({ hideSourceOnDrag, places }) => {
     const [boxes, setBoxes] = useState<{
         [key: string]: {
             top: number;
@@ -32,8 +34,12 @@ export const Container: FC<ContainerProps> = ({ hideSourceOnDrag }) => {
             title: string;
         };
     }>({
-        a: { top: 20, left: 80, title: "Drag me around" },
-        b: { top: 180, left: 20, title: "Drag me too" }
+        a: {
+            top: 23,
+            left: 80,
+            title: "https://www.rainforest-alliance.org/wp-content/uploads/2021/06/capybara-square-1.jpg.optimal.jpg"
+        },
+        b: { top: 20, left: 80, title: "Drag me around" }
     });
 
     const moveBox = useCallback(
@@ -80,7 +86,7 @@ export const Container: FC<ContainerProps> = ({ hideSourceOnDrag }) => {
                         top={top}
                         hideSourceOnDrag={hideSourceOnDrag}
                     >
-                        {title}
+                        <img src={title} width="60" height="60" alt={title} />
                     </Box>
                 );
             })}
