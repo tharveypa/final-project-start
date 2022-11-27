@@ -17,10 +17,14 @@ function CardComp({
     editCard: (id: number, newTask: Task) => void;
     deleteCard: (id: number) => void;
 }): JSX.Element {
-    const [, drag] = useDrag({
+    const [{ item, offsets }, drag] = useDrag({
         //type is Card; Type determines where it can be dropped
-        item: { type: ItemTypes.Card, id: id }
-    });
+        item: { type: ItemTypes.Card, id: id },
+        collect: (monitor) => ({
+            item: monitor.getItem(),
+            offsets: monitor.getClientOffset()
+        })
+    }); // WARNING this may not work as intended (getClientOffset) come back here to adjust issues
 
     const assi = task.assigned.join(", ");
 
