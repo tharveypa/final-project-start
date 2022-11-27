@@ -112,6 +112,13 @@ export const Dropper: FC = () => {
         setPieceBank(newPieces);
     }
 
+    function resetPieces(): void {
+        const newPieces = PieceBank.map(
+            (piece: Piece): Piece => ({ ...piece, top: 150, left: 100 })
+        );
+        setPieceBank(newPieces);
+    }
+
     const [, drop] = useDrop({
         accept: ItemTypes.PIC,
         drop: (
@@ -128,17 +135,9 @@ export const Dropper: FC = () => {
             canDrop: monitor.canDrop()
         })
     });
-
-    /*
-    function resetPieces() {
-        
-        setTop(150);
-        setLeft(100);
-    }
-    */
     return (
         <div ref={drop} style={{ ...style }} data-testid="dustbin">
-            {/*<Button onClick={resetPieces}>Reset</Button>*/}
+            <Button onClick={resetPieces}>Reset</Button>
             {PieceBank.map((p: Piece) => {
                 return (
                     <div key={p.id}>
