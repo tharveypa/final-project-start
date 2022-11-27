@@ -1,5 +1,6 @@
 let picPosition = [0, 0];
 let observer: ((arg0: number[]) => void) | null = null;
+export {};
 
 const emitChange = () => {
     observer && observer(picPosition);
