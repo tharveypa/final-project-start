@@ -229,6 +229,7 @@ observe((picPosition: [number, number]) => {
                                             Service
                                         </div>
                                         <div
+                                            id="Jump Starts"
                                             style={{
                                                 border: "1px solid blue",
                                                 padding: "4px",
@@ -240,6 +241,7 @@ observe((picPosition: [number, number]) => {
                                             Jump Starts
                                         </div>
                                         <div
+                                            id="Lockout Service"
                                             style={{
                                                 border: "1px solid blue",
                                                 padding: "4px",
@@ -251,6 +253,7 @@ observe((picPosition: [number, number]) => {
                                             Lockout Service
                                         </div>
                                         <div
+                                            id="Emergency Fuel Assistance"
                                             style={{
                                                 border: "1px solid blue",
                                                 padding: "4px",
@@ -262,6 +265,7 @@ observe((picPosition: [number, number]) => {
                                             Emergency Fuel Assistance
                                         </div>
                                         <div
+                                            id="Tire Inflation"
                                             style={{
                                                 border: "1px solid blue",
                                                 padding: "4px",
