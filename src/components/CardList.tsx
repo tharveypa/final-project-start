@@ -7,7 +7,8 @@ import { FilterNote } from "./FilterNote";
 import { cardData } from "../interfaces/cardData";
 
 export function CardList(): JSX.Element {
-    const [currList, modList] = useState<cardData[]>([]);
+    const [currList, modList] = useState<cardData[]>([]); // the entire list of tasks
+    const [displayList, modDisList] = useState<cardData[]>([]); // what is going to be displayed (due to filter)
 
     //maintains the id of cards
     const [currentId, setCurrentId] = useState<number>(currList.length);
@@ -49,16 +50,16 @@ export function CardList(): JSX.Element {
                     id: cardData.id
                 })
             );
-            console.log(
-                "currList[0] before setting it : " +
-                    currList[0].task.title +
-                    " with priority " +
-                    currList[0].task.priority +
-                    "; What it is being set to : " +
-                    tmp[0].task.title +
-                    "\n"
+            const sorted2: cardData[] = displayList.sort(comparePriority);
+            const tmp2: cardData[] = sorted2.map(
+                (cardData: cardData): cardData => ({
+                    ...cardData,
+                    task: { ...cardData.task },
+                    id: cardData.id
+                })
             );
             modList(tmp);
+            modDisList(tmp2);
         } else {
             // sorts alphabetically by color
             const sorted: cardData[] = currList.sort(compareColor);
@@ -69,14 +70,16 @@ export function CardList(): JSX.Element {
                     id: cardData.id
                 })
             );
-            console.log(
-                "currList[0] before setting it : " +
-                    currList[0].task.title +
-                    "; WHAT IT IS BEING SET TO : " +
-                    tmp[0].task.title +
-                    "\n"
+            const sorted2: cardData[] = displayList.sort(compareColor);
+            const tmp2: cardData[] = sorted2.map(
+                (cardData: cardData): cardData => ({
+                    ...cardData,
+                    task: { ...cardData.task },
+                    id: cardData.id
+                })
             );
             modList(tmp);
+            modDisList(tmp2);
         }
     }
 
@@ -91,11 +94,14 @@ export function CardList(): JSX.Element {
         const tmp: cardData[] = currList.map(
             (cardData: cardData): cardData => ({ ...cardData })
         );
-
         tmp.push({ task: newTask, id: currentId });
+        const tmp2: cardData[] = displayList.map(
+            (cardData: cardData): cardData => ({ ...cardData })
+        );
+        tmp2.push({ task: newTask, id: currentId });
         setCurrentId(currentId + 1);
-
         modList(tmp);
+        modDisList(tmp2);
     }
 
     function removeCard(inID: number): void {
@@ -105,7 +111,11 @@ export function CardList(): JSX.Element {
         const newNotes: cardData[] = currList.filter(
             (cardData: cardData) => cardData.id != inID
         );
+        const newNotes2: cardData[] = displayList.filter(
+            (cardData: cardData) => cardData.id != inID
+        );
         modList(newNotes);
+        modDisList(newNotes2);
     }
 
     function editCard(id: number, newTask: Task) {
@@ -116,10 +126,17 @@ export function CardList(): JSX.Element {
                 return cardData;
             })
         );
+        modDisList(
+            displayList.map((cardData: cardData): cardData => {
+                if (cardData.id === id) return { task: newTask, id: id };
+                return cardData;
+            })
+        );
     }
 
     function resetList(): void {
         modList([]);
+        modDisList([]);
     }
 
     function filterList(
@@ -130,34 +147,85 @@ export function CardList(): JSX.Element {
         plum: boolean
     ): void {
         // filters the list based on modal input
-        let newList = currList.map(
+        let newList = displayList.map(
             (mapcard: cardData): cardData => ({
                 ...mapcard,
                 task: { ...mapcard.task },
                 id: mapcard.id
             })
         );
-        if (coral)
+        if (coral) {
             newList = newList.filter(
                 (cd: cardData) => cd.task.thumbColor !== "Coral"
             );
-        if (pink)
+        } else {
+            // ensures that if a color is unfiltered it will appear back in the list
+            currList.map((cardD: cardData) =>
+                cardD.task.thumbColor === "Coral" &&
+                displayList.findIndex(
+                    (card: cardData) => card.id === cardD.id
+                ) === -1
+                    ? newList.push({ ...cardD, task: { ...cardD.task } })
+                    : console.log("")
+            );
+        }
+        if (pink) {
             newList = newList.filter(
                 (cd: cardData) => cd.task.thumbColor !== "Pink"
             );
-        if (orange)
+        } else {
+            currList.map((cardD: cardData) =>
+                cardD.task.thumbColor === "Pink" &&
+                displayList.findIndex(
+                    (card: cardData) => card.id === cardD.id
+                ) === -1
+                    ? newList.push({ ...cardD, task: { ...cardD.task } })
+                    : console.log("")
+            );
+        }
+        if (orange) {
             newList = newList.filter(
                 (cd: cardData) => cd.task.thumbColor !== "Orange"
             );
-        if (moccasin)
+        } else {
+            currList.map((cardD: cardData) =>
+                cardD.task.thumbColor === "Orange" &&
+                displayList.findIndex(
+                    (card: cardData) => card.id === cardD.id
+                ) === -1
+                    ? newList.push({ ...cardD, task: { ...cardD.task } })
+                    : console.log("")
+            );
+        }
+        if (moccasin) {
             newList = newList.filter(
                 (cd: cardData) => cd.task.thumbColor !== "Moccasin"
             );
-        if (plum)
+        } else {
+            currList.map((cardD: cardData) =>
+                cardD.task.thumbColor === "Moccasin" &&
+                displayList.findIndex(
+                    (card: cardData) => card.id === cardD.id
+                ) === -1
+                    ? newList.push({ ...cardD, task: { ...cardD.task } })
+                    : console.log("")
+            );
+        }
+        if (plum) {
             newList = newList.filter(
                 (cd: cardData) => cd.task.thumbColor !== "Plum"
             );
-        modList(newList);
+        } else {
+            currList.map((cardD: cardData) =>
+                cardD.task.thumbColor === "Plum" &&
+                displayList.findIndex(
+                    (card: cardData) => card.id === cardD.id
+                ) === -1
+                    ? newList.push({ ...cardD, task: { ...cardD.task } })
+                    : console.log("")
+            );
+        }
+        modDisList(newList);
     }
 
     // FIXME Part 2: Electric Boogalo, modify the CSS to have overflow-y: auto rule for this div
@@ -169,7 +237,7 @@ export function CardList(): JSX.Element {
             <Button onClick={() => sortIt(true)}>Sort by Priority</Button>
             <Button onClick={() => sortIt(false)}>Sort by Color</Button>
             <div id="taskList">
-                {currList.map((cardData: cardData) => {
+                {displayList.map((cardData: cardData) => {
                     return (
                         <CardComp
                             key={"card #" + cardData.id}
