@@ -11,23 +11,14 @@ export function CorkBoard({
     startingNotesAndPositionInfo: noteData[];
 }): JSX.Element {
     //Handles the dropping of things onto the corkboard
-    const [, drop] = useDrop({
+    // NOTE FOR ME the fields 50, 75, blah blah blah, will need to be passed from the drag (last position, etc.) No grids like chess
+    const [{ item, offset }, drop] = useDrop({
         accept: ItemTypes.Card,
-        drop: () =>
-            addNoteData(
-                {
-                    title: "fred",
-                    description: "also fred",
-                    priority: "high",
-                    thumbColor: "red",
-                    assigned: ["freddy"]
-                },
-                50,
-                75,
-                30,
-                70,
-                1
-            )
+        collect: (monitor) => ({
+            item: monitor.getItem(),
+            offset: monitor.getClientOffset()
+        }),
+        drop: () => addNoteData(item, 50, 75, 30, 70, 1)
     });
 
     //state for holding our note and position info
