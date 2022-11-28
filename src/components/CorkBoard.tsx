@@ -12,11 +12,10 @@ export function CorkBoard({
 }): JSX.Element {
     //Handles the dropping of things onto the corkboard
     // NOTE FOR ME the fields 50, 75, blah blah blah, will need to be passed from the drag (last position, etc.) No grids like chess
-    const [{ item, offset }, drop] = useDrop({
+    const [{ item }, drop] = useDrop({
         accept: ItemTypes.Card,
         collect: (monitor) => ({
-            item: monitor.getItem(),
-            offset: monitor.getClientOffset()
+            item: monitor.getItem()
         }),
         drop: () => addNoteData(item, 50, 75, 30, 70, 1)
     }); // task, height, width, top, left, zindex
