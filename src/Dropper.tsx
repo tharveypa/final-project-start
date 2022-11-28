@@ -7,59 +7,126 @@ import { Button } from "react-bootstrap";
 import { Piece } from "./interfaces/piece";
 
 const style: CSSProperties = {
-    height: "40rem",
-    width: "70rem",
-    marginRight: "1.5rem",
-    marginBottom: "1.5rem",
+    height: "35rem",
+    width: "80%",
     color: "white",
     padding: "1rem",
     textAlign: "center",
     fontSize: "1rem",
     lineHeight: "normal",
-    float: "left"
+    float: "left",
+    backgroundColor: "black",
+    // paddingRight: "30px",
+    // paddingLeft: "30px",
+    marginLeft: "10%",
+    marginRight: "10%",
+    marginBottom: "10%",
+    borderStyle: "solid",
+    borderWidth: "10px",
+    borderColor: "red"
 };
-
+/*
+addToBank("F");
+addToBank("I");
+addToBank("L");
+addToBank("N");
+addToBank("P");
+addToBank("T");
+addToBank("U");
+addToBank("V");
+addToBank("W");
+addToBank("X");
+addToBank("Y");
+addToBank("Z");
+*/
 export const Dropper: FC = () => {
-    const [top, setTop] = useState<number>(150);
-    const [left, setLeft] = useState<number>(100);
+    //PieceBank state definition and filling it
+    //console.log(document.getElementById("dustbin"));
+    //console.log("test");
+    //box pos left
+    //box pos width
+    const [PieceBank, setPieceBank] = useState<Piece[]>([]);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    function reflectPiece(reflId: string) {
+        const newBank: Piece[] = PieceBank.map(
+            (p: Piece): Piece =>
+                p.id === reflId ? { ...p, reflected: !p.reflected } : p
+        );
+        setPieceBank(newBank);
+    }
 
-    const [{ canDrop, isOver }, drop] = useDrop({
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    function rotatePiece(rotId: string, rotation: number) {
+        const newBank: Piece[] = PieceBank.map(
+            (p: Piece): Piece =>
+                p.id === rotId ? { ...p, angle: rotation } : p
+        );
+        setPieceBank(newBank);
+    }
+    //Add a piece to the set of total pieces
+    /*
+    function addToBank(newId: string) {
+        const newPiece: Piece = {
+            id: newId,
+            angle: 0,
+            width: 100,
+            height: 100,
+            top: 150,
+            left: 100,
+            onBoard: false,
+            reflected: false,
+            image: "./src/images/" + newId + ".png"
+        };
+        setPieceBank([...PieceBank, newPiece]);
+    }
+    */
+    //Move a piece by changing the state for that piece's top and left
+    function movePiece(id: string, left: number, top: number): void {
+        const newPieces = PieceBank.map(
+            (piece: Piece): Piece =>
+                piece.id === id ? { ...piece, top: top, left: left } : piece
+        );
+        setPieceBank(newPieces);
+    }
+
+    function resetPieces(): void {
+        const newPieces = PieceBank.map(
+            (piece: Piece): Piece => ({ ...piece, top: 150, left: 100 })
+        );
+        setPieceBank(newPieces);
+    }
+
+    const [, drop] = useDrop({
         accept: ItemTypes.PIC,
-        drop: (item, monitor) => {
+        drop: (
+            item: { type: string; id: string; top: number; left: number },
+            monitor
+        ) => {
             const delta = monitor.getDifferenceFromInitialOffset() as XYCoord;
-            setLeft(left + delta.x);
-            setTop(top + delta.y);
+            const ileft = item.left + delta.x;
+            const itop = item.top + delta.y;
+            movePiece(item.id, ileft, itop);
         },
         collect: (monitor) => ({
             isOver: monitor.isOver(),
             canDrop: monitor.canDrop()
         })
     });
-
-    const isActive = canDrop && isOver;
-    let backgroundColor = "#222";
-    if (isActive) {
-        backgroundColor = "darkgreen";
-    }
-
-    function resetPiece() {
-        setTop(150);
-        setLeft(100);
-    }
     return (
-        <div
-            ref={drop}
-            style={{
-                ...style,
-                backgroundColor
-                //backgroundImage: "src/Assets/solutions/3x20.png"
-                //backgroundImage:
-                //    "/Users/noname-school/Documents/CISC275/Assignments/CISC275-final-project/src/Assets/solutions/3x20.png"
-            }}
-            data-testid="dustbin"
-        >
-            <Button onClick={resetPiece}>Reset</Button>
-            <Pic top={top} left={left} />
+        <div ref={drop} style={{ ...style }} id="dustbin" data-testid="dustbin">
+            <Button onClick={resetPieces}>Reset</Button>
+            {PieceBank.map((p: Piece) => {
+                return (
+                    <div key={p.id}>
+                        <Pic
+                            id={p.id}
+                            top={p.top}
+                            left={p.left}
+                            image={p.image}
+                        />
+                    </div>
+                );
+            })}
         </div>
     );
 };

@@ -4,7 +4,6 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { render } from "react-dom";
 import { Dropper } from "./Dropper";
-import { Bank } from "./Bank";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
@@ -17,7 +16,6 @@ function App() {
                 <p>Matt Gwin</p>
                 <Dropper />
                 <br></br>
-                <Bank />
             </DndProvider>
         </div>
     );

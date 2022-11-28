@@ -1,5 +1,3 @@
-import { BsPrefixProps } from "react-bootstrap/esm/helpers";
-
 export interface Piece {
     id: string; //unique id for each piece to track it
     angle: number; // angle of rotation used for margin of error
