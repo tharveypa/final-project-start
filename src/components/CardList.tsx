@@ -131,7 +131,7 @@ export function CardList(): JSX.Element {
                 if (cardData.id === id) return { task: newTask, id: id };
                 return cardData;
             })
-        ); // WARNING this may not work, testing it out
+        );
     }
 
     function resetList(): void {
@@ -154,10 +154,6 @@ export function CardList(): JSX.Element {
                 id: mapcard.id
             })
         );
-        newList.map((cardD: cardData) =>
-            console.log("cardD.task.title = " + cardD.task.title + " ; ")
-        );
-        console.log("\n"); // RM
         if (coral) {
             newList = newList.filter(
                 (cd: cardData) => cd.task.thumbColor !== "Coral"
@@ -167,14 +163,10 @@ export function CardList(): JSX.Element {
             currList.map((cardD: cardData) =>
                 cardD.task.thumbColor === "Coral" &&
                 displayList.findIndex(
-                    (card: cardData) =>
-                        card.task.title === cardD.task.title &&
-                        card.task.description === cardD.task.description &&
-                        card.task.priority === cardD.task.priority &&
-                        card.task.thumbColor === cardD.task.thumbColor
+                    (card: cardData) => card.id === cardD.id
                 ) === -1
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
-                    : console.log("NULL CASE")
+                    : console.log("")
             );
         }
         if (pink) {
@@ -189,7 +181,7 @@ export function CardList(): JSX.Element {
                     (card: cardData) => card.id === cardD.id
                 ) === -1
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
-                    : console.log("NULL CASE")
+                    : console.log("")
             );
         }
         if (orange) {
@@ -203,7 +195,7 @@ export function CardList(): JSX.Element {
                     (card: cardData) => card.id === cardD.id
                 ) === -1
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
-                    : console.log("NULL CASE")
+                    : console.log("")
             );
         }
         if (moccasin) {
@@ -217,7 +209,7 @@ export function CardList(): JSX.Element {
                     (card: cardData) => card.id === cardD.id
                 ) === -1
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
-                    : console.log("NULL CASE")
+                    : console.log("")
             );
         }
         if (plum) {
@@ -231,7 +223,7 @@ export function CardList(): JSX.Element {
                     (card: cardData) => card.id === cardD.id
                 ) === -1
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
-                    : console.log("NULL CASE")
+                    : console.log("")
             );
         }
         modDisList(newList);
