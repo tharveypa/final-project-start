@@ -154,6 +154,10 @@ export function CardList(): JSX.Element {
                 id: mapcard.id
             })
         );
+        newList.map((cardD: cardData) =>
+            console.log("cardD.task.title = " + cardD.task.title + " ; ")
+        );
+        console.log("\n"); // RM
         if (coral) {
             newList = newList.filter(
                 (cd: cardData) => cd.task.thumbColor !== "Coral"
@@ -163,13 +167,18 @@ export function CardList(): JSX.Element {
             currList.map((cardD: cardData) =>
                 cardD.task.thumbColor === "Coral" &&
                 displayList.findIndex(
-                    (card: cardData) => card.id === cardD.id
-                ) !== -1
+                    (card: cardData) =>
+                        card.task.title === cardD.task.title &&
+                        card.task.description === cardD.task.description &&
+                        card.task.priority === cardD.task.priority &&
+                        card.task.thumbColor === cardD.task.thumbColor
+                ) === -1
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
-                    : console.log("")
+                    : console.log("NULL CASE")
             );
         }
         if (pink) {
+            console.log("PINK: ");
             newList = newList.filter(
                 (cd: cardData) => cd.task.thumbColor !== "Pink"
             );
@@ -178,9 +187,9 @@ export function CardList(): JSX.Element {
                 cardD.task.thumbColor === "Pink" &&
                 displayList.findIndex(
                     (card: cardData) => card.id === cardD.id
-                ) !== -1
+                ) === -1
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
-                    : console.log("")
+                    : console.log("NULL CASE")
             );
         }
         if (orange) {
@@ -192,9 +201,9 @@ export function CardList(): JSX.Element {
                 cardD.task.thumbColor === "Orange" &&
                 displayList.findIndex(
                     (card: cardData) => card.id === cardD.id
-                ) !== -1
+                ) === -1
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
-                    : console.log("")
+                    : console.log("NULL CASE")
             );
         }
         if (moccasin) {
@@ -206,9 +215,9 @@ export function CardList(): JSX.Element {
                 cardD.task.thumbColor === "Moccasin" &&
                 displayList.findIndex(
                     (card: cardData) => card.id === cardD.id
-                ) !== -1
+                ) === -1
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
-                    : console.log("")
+                    : console.log("NULL CASE")
             );
         }
         if (plum) {
@@ -220,9 +229,9 @@ export function CardList(): JSX.Element {
                 cardD.task.thumbColor === "Plum" &&
                 displayList.findIndex(
                     (card: cardData) => card.id === cardD.id
-                ) !== -1
+                ) === -1
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
-                    : console.log("")
+                    : console.log("NULL CASE")
             );
         }
         modDisList(newList);
