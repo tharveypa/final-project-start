@@ -245,6 +245,8 @@ export function CardList(): JSX.Element {
                             id={cardData.id}
                             editCard={editCard}
                             deleteCard={removeCard}
+                            x={-99}
+                            y={-99} //need a special default value before they start moving, these will be set properly later
                         ></CardComp>
                     );
                 })}

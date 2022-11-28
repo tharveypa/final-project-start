@@ -17,12 +17,23 @@ export function CorkBoard({
         collect: (monitor) => ({
             item: monitor.getItem()
         }),
-        drop: () => addNoteData(item.task, 50, 75, 30, 70, 1)
+        drop: () =>
+            addNoteData(
+                item.task,
+                50,
+                75,
+                30,
+                70,
+                1
+            )
     }); // task, height, width, top, left, zindex
-
     /* 
-    REMOVE saw this online, height and width we set, but top can be monitor.getItem().top + monitor.getDifferenceFromInitialOffset().y
-    and left can be monitor.getItem().left = monitor.getDifferenceFromInitialOffset().x 
+    HAHA MICHAEL IS RIGHT TERNARYS ARE IMPOSSIBLE I LOVE THIS!! Need to set zindex based on low medium or high
+
+    code for top: document.getElementById(item.id).getBoundingClientRect().y
+    code for left: document.getElementById(item.id).getBoundingClientRect().y
+
+    
     */
 
     //state for holding our note and position infos
