@@ -35,7 +35,7 @@ const PieceBank: Piece[] = [
 
 export const Bank: FC = () => {
     const [top, setTop] = useState<number>(150);
-    const [left, setLeft] = useState<number>(100);
+    const [left, setLeft] = useState<number>(250);
 
     const [{ canDrop, isOver }, drop] = useDrop({
         accept: ItemTypes.PIC,
