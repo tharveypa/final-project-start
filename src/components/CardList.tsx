@@ -170,7 +170,6 @@ export function CardList(): JSX.Element {
             );
         }
         if (pink) {
-            console.log("PINK: ");
             newList = newList.filter(
                 (cd: cardData) => cd.task.thumbColor !== "Pink"
             );
