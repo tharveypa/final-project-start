@@ -17,10 +17,15 @@ export function CorkBoard({
         collect: (monitor) => ({
             item: monitor.getItem()
         }),
-        drop: () => addNoteData(item, 50, 75, 30, 70, 1)
+        drop: () => addNoteData(item.task, 50, 75, 30, 70, 1)
     }); // task, height, width, top, left, zindex
 
-    //state for holding our note and position info
+    /* 
+    REMOVE saw this online, height and width we set, but top can be monitor.getItem().top + monitor.getDifferenceFromInitialOffset().y
+    and left can be monitor.getItem().left = monitor.getDifferenceFromInitialOffset().x 
+    */
+
+    //state for holding our note and position infos
     const [notesAndPositionInfo, setNotesAndPositionInfo] = useState<
         noteData[]
     >(startingNotesAndPositionInfo);

@@ -10,12 +10,16 @@ function CardComp({
     task,
     id,
     editCard,
-    deleteCard
+    deleteCard,
+    x,
+    y
 }: {
     task: Task;
     id: number;
     editCard: (id: number, newTask: Task) => void;
     deleteCard: (id: number) => void;
+    x: number;
+    y: number;
 }): JSX.Element {
     const [, drag] = useDrag({
         //type is Card; Type determines where it can be dropped
