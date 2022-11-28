@@ -19,7 +19,7 @@ export function CorkBoard({
             offset: monitor.getClientOffset()
         }),
         drop: () => addNoteData(item, 50, 75, 30, 70, 1)
-    });
+    }); // task, height, width, top, left, zindex
 
     //state for holding our note and position info
     const [notesAndPositionInfo, setNotesAndPositionInfo] = useState<
