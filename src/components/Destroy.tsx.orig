@@ -4,9 +4,12 @@ import BirdPoop from "./images/birdpoop.png";
 import Slash from "./images/slash.png";
 import Hammer from "./images/hammer.png";
 
+<<<<<<< HEAD
 const destroy = [Dirt, BirdPoop, Slash, Hammer];
 const str = ["Dirty Car", "Bird Poop", "Slash Tires", "Break Windows"];
+=======
 //const destroy = ["./images/dirt.png", "Birdpoop", "Slash", "Hammer,"];
+>>>>>>> 1d310865b9d93942a5df7dab299cf70d2a2a084e
 
 const Destroy = () => {
     return (
@@ -20,8 +23,10 @@ const Destroy = () => {
                             <img src={t} alt={t.toString()} />
                             {str[destroy.indexOf(t)]}
                         </div>
-                   )
+                    )
+<<<<<<< HEAD
                 )}
+=======
                 )}*/}
                 <div>
                     <img src={Dirt} alt="dirt" />
@@ -40,6 +45,7 @@ const Destroy = () => {
                     Break Windows
                 </div>
                 <div>etc</div>
+>>>>>>> 1d310865b9d93942a5df7dab299cf70d2a2a084e
             </p>
         </div>
     );
