@@ -14,7 +14,12 @@ const FurnitureList = () => {
         <div id="furniture-list">
             <p>Room Furniture</p>
             {furniture.map((f: Furniture) => (
-                <FurnitureItem key={f.name} item={f} />
+                <>
+                    <p className="furniture-label">
+                        {f.name.charAt(0).toUpperCase() + f.name.slice(1)}
+                    </p>
+                    <FurnitureItem key={f.name} item={f} />
+                </>
             ))}
         </div>
     );

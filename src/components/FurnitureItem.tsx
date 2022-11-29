@@ -1,18 +1,19 @@
+/* eslint-disable no-extra-parens */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useRef, useEffect, useState, ReactDOM } from "react";
+import React, { useEffect, useState, ReactDOM } from "react";
 import { useDrag } from "react-dnd";
 
 import type { Furniture } from "./types";
 
 interface FurnitureItemProps {
     item: Furniture;
+    removeFromRoomBoard?: (id: string) => void;
 }
 
-const FurnitureItem = ({ item }: FurnitureItemProps) => {
+const FurnitureItem = ({ item, removeFromRoomBoard }: FurnitureItemProps) => {
     const { id, name, left, top, height, width } = item;
     const [position, setPosition] = useState({ top: top, left: left });
-
-    const positionRef = useRef(null);
+    const [isHovered, setIsHovered] = useState(false);
 
     useEffect(() => {
         const elem = document.getElementById(item.id)?.getBoundingClientRect();
@@ -46,21 +47,33 @@ const FurnitureItem = ({ item }: FurnitureItemProps) => {
         margin: 0
     };
 
-    useEffect(() => {
-        console.log(positionRef.current);
-    }, [positionRef]);
+    const showRemoveIcon = isHovered && !id.includes("menu");
 
     return (
-        <div id={item.id} style={styles} ref={drag}>
-            <div
-                style={{ width: "100%", height: "100%" }}
-                ref={(positionRef) => {
-                    if (!positionRef) return;
-                }}
-            >
-                <p style={{ margin: 0 }}>
-                    {name}, {id}
-                </p>
+        <div
+            id={item.id}
+            style={styles}
+            ref={drag}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+            <div style={{ width: "100%", height: "100%" }}>
+                {isHovered && (
+                    <>
+                        <p className="dimensions-label">H: {height}</p>
+                        <p className="dimensions-label">W: {width}</p>
+                    </>
+                )}
+                {showRemoveIcon && (
+                    <p
+                        id="remove-button"
+                        onClick={() =>
+                            removeFromRoomBoard && removeFromRoomBoard(id)
+                        }
+                    >
+                        Remove
+                    </p>
+                )}
             </div>
         </div>
     );
