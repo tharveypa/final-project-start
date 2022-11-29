@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Board from "./Board";
+import { CustomDragLayer } from "./CustomDragLayer";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
@@ -9,37 +10,12 @@ import Dndarr from "./components/dndarr";
 //import Dndarr from "./components/dndarr";
 import { FilterDropdown, SortDropdown } from "./components/dropdown";
 import { Row, Col } from "react-bootstrap";
+import App from "./App";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
         <React.StrictMode>
-            <div
-                style={{
-                    width: window.innerWidth, //originally "500px"
-                    height: window.innerHeight,
-                    border: "1px solid gray"
-                }}
-            >
-                <h1> Harleen Chahal, Sean OSullivan, Matthew Hansen </h1>
-                <Dndarr picPosition={picPosition} />
-                <Board picPosition={picPosition} />
-                <hr></hr>
-                <Row style={{ height: "700px" }}>
-                    <Col>
-                        <FilterDropdown
-                            filterOptions={["Kitchen", "Bathroom", "Bedroom"]}
-                        ></FilterDropdown>
-                        <SortDropdown
-                            sortOptions={[
-                                "Alphabetical",
-                                "Tile Type",
-                                "Design Type"
-                            ]}
-                        ></SortDropdown>
-                    </Col>
-                </Row>
-                <hr></hr>
-            </div>
+            <App></App>
         </React.StrictMode>,
         document.getElementById("root")
     );
