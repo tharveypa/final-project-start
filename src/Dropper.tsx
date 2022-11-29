@@ -7,17 +7,23 @@ import { Button } from "react-bootstrap";
 import { Piece } from "./interfaces/piece";
 
 const style: CSSProperties = {
-    height: "20rem",
-    width: "50rem",
-    marginRight: "1.5rem",
-    marginBottom: "1.5rem",
+    height: "35rem",
+    width: "80%",
     color: "white",
     padding: "1rem",
     textAlign: "center",
     fontSize: "1rem",
     lineHeight: "normal",
     float: "left",
-    backgroundColor: "black"
+    backgroundColor: "black",
+    // paddingRight: "30px",
+    // paddingLeft: "30px",
+    marginLeft: "10%",
+    marginRight: "10%",
+    marginBottom: "10%",
+    borderStyle: "solid",
+    borderWidth: "10px",
+    borderColor: "red"
 };
 /*
 addToBank("F");
@@ -32,45 +38,14 @@ addToBank("W");
 addToBank("X");
 addToBank("Y");
 addToBank("Z");
-
 */
 export const Dropper: FC = () => {
     //PieceBank state definition and filling it
-    const [PieceBank, setPieceBank] = useState<Piece[]>([
-        {
-            id: "F",
-            angle: 0,
-            width: 100,
-            height: 100,
-            top: 150,
-            left: 100,
-            onBoard: false,
-            reflected: false,
-            image: "./Assets/Images/" + "F" + ".png"
-        },
-        {
-            id: "I",
-            angle: 0,
-            width: 100,
-            height: 100,
-            top: 150,
-            left: 100,
-            onBoard: false,
-            reflected: false,
-            image: "./Assets/Images/" + "I" + ".png"
-        },
-        {
-            id: "L",
-            angle: 0,
-            width: 100,
-            height: 100,
-            top: 150,
-            left: 100,
-            onBoard: false,
-            reflected: false,
-            image: "./Assets/Images/" + "L" + ".png"
-        }
-    ]);
+    //console.log(document.getElementById("dustbin"));
+    //console.log("test");
+    //box pos left
+    //box pos width
+    const [PieceBank, setPieceBank] = useState<Piece[]>([]);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     function reflectPiece(reflId: string) {
         const newBank: Piece[] = PieceBank.map(
@@ -138,7 +113,7 @@ export const Dropper: FC = () => {
         })
     });
     return (
-        <div ref={drop} style={{ ...style }} data-testid="dustbin">
+        <div ref={drop} style={{ ...style }} id="dustbin" data-testid="dustbin">
             <Button onClick={resetPieces}>Reset</Button>
             {PieceBank.map((p: Piece) => {
                 return (

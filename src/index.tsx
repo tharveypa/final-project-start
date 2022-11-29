@@ -15,6 +15,7 @@ function App() {
                 <p>Blair Felker</p>
                 <p>Matt Gwin</p>
                 <Dropper />
+                <br></br>
             </DndProvider>
         </div>
     );
