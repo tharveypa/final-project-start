@@ -9,8 +9,8 @@
 }
 
 #room {
-    height: 500px;
-    width: 800px;
+    height: 36rem;
+    width: 57rem;
     border: 1px solid black;
     z-index: 10;
 }
