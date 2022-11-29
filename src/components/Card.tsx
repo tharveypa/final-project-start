@@ -21,7 +21,21 @@ export function Card(inputTask: Task): JSX.Element {
     }
 
     return (
-        <div style={{ backgroundColor: "white", border: "1 px black" }}>
+        <div
+            style={{
+                backgroundColor: "white",
+                border: "2 px solid black"
+            }}
+        >
+            <span
+                style={{
+                    color: currTask.thumbColor,
+                    fontSize: 20
+                }}
+            >
+                ·
+            </span>
+            <br></br>
             Title: {currTask.title} <br></br>
             Description: {currTask.description} <br></br>
             Priority: {currTask.priority} <br></br>
