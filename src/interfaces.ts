@@ -1,7 +1,7 @@
 export interface tileItem {
     position: [number, number];
     id: number;
-    color: string;
+    name: string;
     tags: string[];
     snap: string;
     src: string;

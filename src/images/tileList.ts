@@ -3,15 +3,15 @@ const tileList: tileItem[] = [
     {
         id: -1,
         position: [0, 0],
-        color: "red",
+        name: "Barrel",
         tags: ["inside", "furniture"],
-        snap: "snap",
+        snap: "free",
         src: "./images/barrel.jpg"
     },
     {
         id: -2,
         position: [0, 0],
-        color: "green",
+        name: "Wood floor",
         tags: ["inside", "furniture"],
         snap: "snap",
         src: "./images/woodFloor.jpg"
@@ -19,103 +19,103 @@ const tileList: tileItem[] = [
     {
         id: -3,
         position: [0, 0],
-        color: "yellow",
+        name: "Burger",
         tags: ["inside", "outside", "food"],
-        snap: "snap",
+        snap: "free",
         src: "./images/burger.jpg"
     },
     {
         id: -4,
         position: [0, 0],
-        color: "blue",
+        name: "Bushes",
         tags: ["outside", "plants", "road"],
-        snap: "snap",
+        snap: "free",
         src: "./images/bushes.jpg"
     },
     {
         id: -5,
         position: [-100, -100],
-        color: "cyan",
+        name: "Candle",
         tags: ["inside", "light"],
-        snap: "snap",
+        snap: "free",
         src: "./images/candle.jpg"
     },
     {
         id: -6,
         position: [-100, -100],
-        color: "cyan",
+        name: "Window",
         tags: ["inside", "furniture"],
-        snap: "snap",
+        snap: "free",
         src: "./images/window.jpg"
     },
     {
         id: -7,
         position: [-100, -100],
-        color: "cyan",
+        name: "chair",
         tags: ["inside", "furniture"],
-        snap: "snap",
+        snap: "free",
         src: "./images/chair.jpg"
     },
     {
         id: -8,
         position: [-100, -100],
-        color: "cyan",
+        name: "Chest",
         tags: ["inside", "outside", "storage"],
-        snap: "snap",
+        snap: "free",
         src: "./images/chest.jpg"
     },
     {
         id: -9,
         position: [-100, -100],
-        color: "cyan",
+        name: "Flower1",
         tags: ["outside", "inside", "plants"],
-        snap: "snap",
+        snap: "free",
         src: "./images/Chrysanthemum.jpg"
     },
     {
         id: -10,
         position: [-100, -100],
-        color: "cyan",
+        name: "Cracks",
         tags: ["outside", "cracks"],
-        snap: "snap",
+        snap: "free",
         src: "./images/cracks.jpg"
     },
     {
         id: -11,
         position: [-100, -100],
-        color: "cyan",
+        name: "Crate",
         tags: ["inside", "outside", "furniture"],
-        snap: "snap",
+        snap: "free",
         src: "./images/crate.jpg"
     },
     {
         id: -12,
         position: [-100, -100],
-        color: "cyan",
+        name: "Tree1",
         tags: ["outside", "plants"],
-        snap: "snap",
+        snap: "free",
         src: "./images/tree.jpg"
     },
     {
         id: -13,
         position: [-100, -100],
-        color: "cyan",
+        name: "Door",
         tags: ["inside", "outside", "furniture"],
-        snap: "snap",
+        snap: "free",
         src: "./images/door.jpg"
     },
     {
         id: -14,
         position: [-100, -100],
-        color: "cyan",
+        name: "Flag",
         tags: ["outside", "decoration"],
-        snap: "snap",
+        snap: "free",
         src: "./images/flag.jpg"
     },
     {
         id: -15,
         position: [-100, -100],
-        color: "cyan",
+        name: "Tile Floor",
         tags: ["inside", "furniture"],
         snap: "snap",
         src: "./images/floor.jpg"
@@ -123,55 +123,55 @@ const tileList: tileItem[] = [
     {
         id: -16,
         position: [-100, -100],
-        color: "cyan",
+        name: "Coin",
         tags: ["inside", "outside", "coin"],
-        snap: "snap",
+        snap: "free",
         src: "./images/goldCoin.jpg"
     },
     {
         id: -17,
         position: [-100, -100],
-        color: "cyan",
+        name: "Grass",
         tags: ["outside", "plants", "road"],
-        snap: "snap",
+        snap: "free",
         src: "./images/grass.jpg"
     },
     {
         id: -18,
         position: [-100, -100],
-        color: "cyan",
+        name: "Tree2",
         tags: ["outside", "plants"],
-        snap: "snap",
+        snap: "free",
         src: "./images/greenTree.jpg"
     },
     {
         id: -19,
         position: [-100, -100],
-        color: "cyan",
+        name: "Stone1",
         tags: ["outside", "stone"],
-        snap: "snap",
+        snap: "free",
         src: "./images/hugeStone.jpg"
     },
     {
         id: -20,
         position: [-100, -100],
-        color: "cyan",
+        name: "Paper",
         tags: ["inside", "item"],
-        snap: "snap",
+        snap: "free",
         src: "./images/paper.jpg"
     },
     {
         id: -21,
         position: [-100, -100],
-        color: "cyan",
+        name: "Pasta",
         tags: ["inside", "outside", "food"],
-        snap: "snap",
+        snap: "free",
         src: "./images/pasta.jpg"
     },
     {
         id: -22,
         position: [-100, -100],
-        color: "cyan",
+        name: "Path1",
         tags: ["outside", "road"],
         snap: "snap",
         src: "./images/path.jpg"
@@ -179,15 +179,15 @@ const tileList: tileItem[] = [
     {
         id: -23,
         position: [-100, -100],
-        color: "cyan",
+        name: "Pen",
         tags: ["inside", "item"],
-        snap: "snap",
+        snap: "free",
         src: "./images/pen.jpg"
     },
     {
         id: -24,
         position: [-100, -100],
-        color: "cyan",
+        name: "Pillar",
         tags: ["inside", "outside", "furniture"],
         snap: "snap",
         src: "./images/pillar.jpg"
@@ -195,47 +195,47 @@ const tileList: tileItem[] = [
     {
         id: -25,
         position: [-100, -100],
-        color: "cyan",
+        name: "Pizza",
         tags: ["inside", "outside", "food"],
-        snap: "snap",
+        snap: "free",
         src: "./images/pizza.jpg"
     },
     {
         id: -26,
         position: [-100, -100],
-        color: "cyan",
+        name: "Flower2",
         tags: ["inside", "outside", "plants"],
-        snap: "snap",
+        snap: "free",
         src: "./images/redFlowers.jpg"
     },
     {
         id: -27,
         position: [-100, -100],
-        color: "cyan",
+        name: "Rocks",
         tags: ["outside", "stone"],
-        snap: "snap",
+        snap: "free",
         src: "./images/rocks.png"
     },
     {
         id: -28,
         position: [-100, -100],
-        color: "cyan",
+        name: "Stone2",
         tags: ["outside", "stone"],
-        snap: "snap",
+        snap: "free",
         src: "./images/stone.jpg"
     },
     {
         id: -29,
         position: [-100, -100],
-        color: "cyan",
+        name: "Table",
         tags: ["inside", "outside", "furniture"],
-        snap: "snap",
+        snap: "free",
         src: "./images/table.jpg"
     },
     {
         id: -30,
         position: [-100, -100],
-        color: "cyan",
+        name: "Path2",
         tags: ["outside", "road"],
         snap: "snap",
         src: "./images/topPath.jpg"

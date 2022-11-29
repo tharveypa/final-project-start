@@ -27,7 +27,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
             props.changeTile(
                 item.tile.id,
                 [x, y],
-                item.tile.color,
+                item.tile.name,
                 item.tile.tags,
                 item.tile.snap,
                 item.tile.src

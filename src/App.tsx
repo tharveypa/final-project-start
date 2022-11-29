@@ -43,7 +43,7 @@ const App: React.FC = (): JSX.Element => {
     const changeTile = (
         index: number,
         location: [number, number],
-        color: string,
+        name: string,
         tags: string[],
         snap: string,
         src: string
@@ -54,7 +54,7 @@ const App: React.FC = (): JSX.Element => {
                 {
                     id: oldArray.length,
                     position: location,
-                    color: color,
+                    name: name,
                     tags: tags,
                     snap: snap,
                     src: src

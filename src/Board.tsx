@@ -107,7 +107,7 @@ const Board: React.FC<BoardProps> = (props) => {
                     //monitor.getSourceClientOffset().y +
                     y
                 ],
-                item.tile.color,
+                item.tile.name,
                 item.tile.tags,
                 item.tile.snap,
                 item.tile.src
