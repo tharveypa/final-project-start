@@ -10,11 +10,15 @@ import "./styles/Layout.css";
 import "./styles/index.css";
 import RoomBoard from "./components/RoomBoard";
 
-// const roomImages: string[] = ["empty", "z-style", "suite-style"];
+const roomImages: string[] = ["empty", "z-style", "suite-style"];
 
 const Layout = () => {
     const [roomChoicesShown, setRoomChoiceVisibility] = useState(false);
-    // const [roomChoice, setRoomChoice] = useState("empty");
+    const [roomChoice, setRoomChoice] = useState("empty");
+
+    function changeRoomType(r: string): void {
+        setRoomChoice(r);
+    }
 
     return (
         <DndProvider backend={HTML5Backend}>
@@ -46,7 +50,13 @@ const Layout = () => {
                                 Select Different Room Type
                                 {roomChoicesShown && (
                                     <div>
-                                        <Button>Suite Style</Button>
+                                        <Button
+                                            onClick={() =>
+                                                changeRoomType("suite-style")
+                                            }
+                                        >
+                                            Suite Style
+                                        </Button>
                                     </div>
                                 )}
                             </div>
