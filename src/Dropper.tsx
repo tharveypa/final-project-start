@@ -132,7 +132,7 @@ export const Dropper: FC = () => {
 
     function resetPieces(): void {
         const newPieces = PieceBank.map(
-            (piece: Piece): Piece => ({ ...piece, top: 150, left: 100 })
+            (piece: Piece): Piece => ({ ...piece, top: 440, left: 220 })
         );
         setPieceBank(newPieces);
     }
@@ -163,7 +163,7 @@ export const Dropper: FC = () => {
             </div>
             {PieceBank.map((p: Piece) => {
                 return (
-                    <div key={p.id}>
+                    <div key={p.id} data-testid="pieces">
                         <Pic
                             id={p.id}
                             top={p.top}
