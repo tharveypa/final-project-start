@@ -5,7 +5,7 @@ import { canAddPic, addPic, canMovePic, movePic } from "./game";
 import Pic from "./Pic";
 import Overlay from "./Overlay";
 import Square from "./Square";
-import { Button } from "react-bootstrap";
+import { Type } from "typescript";
 
 type BoardSquareProps = {
     x: number;
@@ -17,6 +17,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
     const { x, y, pics, children } = props;
     const black = (x + y) % 2 === 1;
     const [square, setSquare] = useState<string[]>([]);
+    const [flic, setFlic] = useState<string>("");
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.PIC,
         canDrop: () => canMovePic(x, y),
@@ -28,21 +29,16 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
         })
     });
     const addImageToBoard = (pic: string) => {
-        const p = pics.filter((picture) => pic === picture);
-        setSquare((square) => [...square, p[0]]);
+        setFlic(pic);
+        //const p = pics.filter((picture) => pic === picture);
+        setSquare((square) => [...square, flic]);
     };
-    const clear = () => {
-        setSquare([]);
-    };
+
     return (
         <>
             <div
                 ref={drop}
-                style={{
-                    position: "relative",
-                    width: "90%",
-                    height: "90%"
-                }}
+                style={{ position: "relative", width: "90%", height: "90%" }}
             >
                 yo
                 <Square black={black}>{children}</Square>
@@ -53,7 +49,12 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                     {square.map(
                         (p: string): JSX.Element => (
                             <li key={p}>
+<<<<<<< HEAD
+                                {p}
+                                <Square black={black}>{p}</Square>
+=======
                                 <Pic pic={p} />
+>>>>>>> main
                                 {
                                     //<Square black={black}>{p}</Square>
                                 }
@@ -61,9 +62,6 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                         )
                     )}
                 </ul>
-            </div>
-            <div>
-                <Button onClick={clear}>Clear</Button>
             </div>
         </>
     );

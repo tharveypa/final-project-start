@@ -43,58 +43,25 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { useDrag } from "react-dnd";
 import ToolDrop from "./ToolDrop";
 
-type PimpPicProps = {
-    pic: string;
-};
+const pimp = [Towel, Shine, Pump, GlassRepair];
+const str = ["Wipe Car", "Shine Car", "Fill Tires", "Repair Glass"];
 
-const PimpPicList = [
-    {
-        id: 1,
-        pic: Towel
-    },
-    {
-        id: 2,
-        pic: Shine
-    },
-    {
-        id: 3,
-        pic: Pump
-    },
-    {
-        id: 4,
-        pic: GlassRepair
-    }
-];
-
-const Pimp: React.FC<PimpPicProps> = (props) => {
-    const { pic } = props;
+const Pimp = () => {
     return (
-        <DndProvider backend={HTML5Backend}>
-            <div className="toolncar">
-                <h1>Pimp Mode</h1>
-                <p>
-                    Pimp Mode Options:
-                    <div>
-                        <img src={Towel} alt="towel" />
-                        Wipe Car
-                    </div>
-                    <div>
-                        <img src={Shine} alt="shine" />
-                        Shine Car
-                    </div>
-                    <div>
-                        <img src={Pump} alt="pump" />
-                        Fill Tires
-                    </div>
-                    <div>
-                        <img src={GlassRepair} alt="glass repair" />
-                        Repair Windows
-                    </div>
-                    <div>etc</div>
-                </p>
-                {props.children}
-            </div>
-        </DndProvider>
+        <div className="toolncar">
+            <h1>Pimp Mode</h1>
+            <p>
+                Pimp Mode Options:
+                {pimp.map(
+                    (t: string): JSX.Element => (
+                        <div key={t.toString()}>
+                            <img src={t} alt={t.toString()} />
+                            {str[pimp.indexOf(t)]}
+                        </div>
+                    )
+                )}
+            </p>
+        </div>
     );
 };
 
