@@ -1,5 +1,4 @@
 /* eslint-disable no-extra-parens */
-import React from "react";
 import React, { Fragment, useState } from "react";
 import { useDrag } from "react-dnd";
 import { tileItem } from "./interfaces";
@@ -31,6 +30,11 @@ const Pic: React.FC<ObjectProp> = (props) => {
     const [rotateRight, setRotateRight] = useState<boolean>(false);
     const [rotate] = useState<boolean>(false);
     const [isColor, setIsColor] = useState<boolean>(false);
+    const update = (event: React.MouseEvent) => {
+        if (event.button === 1 && props.tile.id >= 0) {
+            props.updateSelectTile(props.tile);
+        }
+    };
     function ChangeImage(): void {
         setPreview(!preview);
     }
