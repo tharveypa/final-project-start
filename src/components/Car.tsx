@@ -114,6 +114,7 @@ const Car: React.FC<CarProps> = (props) => {
                     Change Background (Street/City/Forest)
                 </Button>
                 {pause.map(
+                    // eslint-disable-next-line no-extra-parens
                     (e: number): JSX.Element => (
                         <div key={e}> {e} </div>
                     )
