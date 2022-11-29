@@ -1,9 +1,8 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { useDrag } from "react-dnd";
 import { tileItem } from "./interfaces";
-// import imgList from "./image/allImage";
-// import { images, image1 } from "./image/images";
-// import images from "./image/img";
+import { Button, Form } from "react-bootstrap";
+import "./Button.css";
 // import { BackgroundImage } from "./image/img";
 // import { image } from "html2canvas/dist/types/css/types/image";
 
@@ -24,16 +23,40 @@ const Pic: React.FC<ObjectProp> = (props) => {
             isDragging: !!monitor.isDragging
         })
     });
-    // const [index, setIndex] = useState<number>(0);
-    // function CurrentIndex() {
-    //     setIndex(index + 1);
-    // }
-    // let imageAllName = imgList[]
-
-    // const [choseImage, SetChoseImage] = useState<string>("./image/cat.jpg");
-    // const currentImage = SetChoseImage("./image/cat.jpg" || "./image/dog.jpg");
-    // const current = choseImage === currentImage?
-    // const image = ["./image/cat.jpg", "./image/dog.jpg"];
+    const [preview, setPreview] = useState<boolean>(false);
+    const [rotateLeft, setRotateLeft] = useState<boolean>(false);
+    const [rotateRight, setRotateRight] = useState<boolean>(false);
+    const [rotate] = useState<boolean>(false);
+    const [isColor, setIsColor] = useState<boolean>(false);
+    function ChangeImage(): void {
+        setPreview(!preview);
+    }
+    function RotateLeft(): void {
+        setRotateLeft(!rotateLeft);
+        rotate === true;
+    }
+    function RotateRight(): void {
+        setRotateRight(!rotateRight);
+        rotate === true;
+    }
+    function chooseColor(): void {
+        setIsColor(!isColor);
+    }
+    const [choseColor, setChoseColor] = useState<string>("red");
+    const updateColor = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setChoseColor(event.target.value);
+    };
+    const Color = [
+        "red",
+        "blue",
+        "green",
+        "orange",
+        "purple",
+        "cyan",
+        "magenta",
+        "white",
+        "black"
+    ];
     return (
         <Fragment>
             <div
@@ -46,12 +69,71 @@ const Pic: React.FC<ObjectProp> = (props) => {
                     textAlign: "center"
                 }}
             >
-                {props.tile.color}
+                <div className="img">
+                    <Button className="button" onClick={ChangeImage}></Button>
+                    {preview ? (
+                        <div>
+                            <Button onClick={RotateLeft}>left</Button>
+                            <Button onClick={RotateRight}>right</Button>
+                            <Button onClick={chooseColor}>choose Color</Button>
+                            {isColor && (
+                                <div>
+                                    <Form.Group>
+                                        <Form.Label></Form.Label>
+                                        {Color.map((color: string) => (
+                                            <Form.Check
+                                                key={color}
+                                                onChange={updateColor}
+                                                label={color}
+                                                checked={choseColor === color}
+                                                // style={{
+                                                //     backgroundColor: color
+                                                // }}
+                                                inline
+                                            />
+                                        ))}
+                                    </Form.Group>
+                                    <img
+                                        src={require("" + props.tile.src)}
+                                        // background-color={choseColor}
+                                        background-color="red"
+                                    />
+                                </div>
+                            )}
+                            {rotateRight ? (
+                                <img
+                                    className="rotateRight"
+                                    src={require("" + props.tile.src)}
+                                />
+                            ) : (
+                                ""
+                            )}
+                            {rotateLeft ? (
+                                <img
+                                    className="rotateLeft"
+                                    src={require("" + props.tile.src)}
+                                />
+                            ) : (
+                                ""
+                            )}
+                        </div>
+                    ) : (
+                        <div>
+                            {props.tile.color}
+                            <img
+                                src={require("" + props.tile.src)}
+                                width={props.scale + "%"}
+                                height={props.scale + "%"}
+                            />
+                        </div>
+                    )}
+                </div>
+                {/* {props.tile.color}
                 <img
                     src={require("" + props.tile.src)}
                     width={props.scale + "%"}
                     height={props.scale + "%"}
-                />
+                /> */}
             </div>
         </Fragment>
     );
