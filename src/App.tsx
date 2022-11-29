@@ -13,12 +13,15 @@ import { tileItem } from "./interfaces";
 import ListOb from "./ListOb";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
+import TileEdit from "./TileEdit";
 
 const App: React.FC = (): JSX.Element => {
     const [xSize, setXSize] = useState<number>(5);
     const [ySize, setYSize] = useState<number>(5);
     const [tiles, setTiles] = useState<tileItem[]>([]);
     const [scale, setScale] = useState<number>(1);
+    const [middleClick, setMiddleClick] = useState<boolean>(false);
+    const [selectTile, setSelectTile] = useState<tileItem | null>(null);
     const [sourceTile /*setSourceTile*/] = useState<tileItem[]>([
         {
             id: -1,
@@ -63,6 +66,12 @@ const App: React.FC = (): JSX.Element => {
     ]);
     const deleteTile = (index: number) => {
         setTiles(tiles.filter((tile: tileItem): boolean => tile.id !== index));
+    };
+
+    const handlemiddleDown = (event: React.MouseEvent) => {
+        if (event.button === 1) {
+            setMiddleClick(true);
+        }
     };
 
     const changeTile = (
@@ -161,11 +170,14 @@ const App: React.FC = (): JSX.Element => {
                             </TransformComponent>
                         </TransformWrapper>
                     </div>
-                    <div className="list">
-                        <ListOb
-                            tiles={sourceTile}
-                            deleteTile={deleteTile}
-                        ></ListOb>
+                    <div className="rightbar" onMouseDown={handlemiddleDown}>
+                        {(!middleClick && (
+                            <ListOb
+                                tiles={sourceTile}
+                                deleteTile={deleteTile}
+                            ></ListOb>
+                        )) ||
+                            (middleClick && <TileEdit tile={selectTile} />)}
                     </div>
                 </DndProvider>
             </div>

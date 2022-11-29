@@ -63,7 +63,7 @@ type BoardProps = {
 
 const Board: React.FC<BoardProps> = (props) => {
     const squares = [];
-    const test = renderFree(props.tile);
+    const freeTiles = renderFree(props.tile);
 
     const [, drop] = useDrop({
         accept: ItemTypes.free,
@@ -133,7 +133,7 @@ const Board: React.FC<BoardProps> = (props) => {
             }}
         >
             {squares}
-            {test.map((o: tileItem) => {
+            {freeTiles.map((o: tileItem) => {
                 return (
                     <div
                         key={o.id}
