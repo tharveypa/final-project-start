@@ -45,7 +45,31 @@ export const Dropper: FC = () => {
     //console.log("test");
     //box pos left
     //box pos width
-    const [PieceBank, setPieceBank] = useState<Piece[]>([]);
+
+    const solutions: string[] = ["3x20", "4x15", "5x12", "6x10"];
+
+    const [solutionImage, setSolutionImage] = useState<string>(
+        "./Assets/solutions/3x20.png"
+    );
+
+    function setRandomPuzzle() {
+        const current = Math.floor(Math.random() * solutions.length);
+        setSolutionImage("./Assets/solutions/" + solutions[current] + ".png");
+    }
+
+    const [PieceBank, setPieceBank] = useState<Piece[]>([
+        {
+            id: "F",
+            angle: 0,
+            width: 100,
+            height: 100,
+            top: 150,
+            left: 100,
+            onBoard: false,
+            reflected: false,
+            image: "./Assets/Images/" + "F" + ".png"
+        }
+    ]);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     function reflectPiece(reflId: string) {
         const newBank: Piece[] = PieceBank.map(
@@ -114,7 +138,12 @@ export const Dropper: FC = () => {
     });
     return (
         <div ref={drop} style={{ ...style }} id="dustbin" data-testid="dustbin">
+            <Button onClick={setRandomPuzzle}>Randomize Puzzle</Button>
             <Button onClick={resetPieces}>Reset</Button>
+            <div>
+                {" "}
+                <img src={require(`${solutionImage}`)} />
+            </div>
             {PieceBank.map((p: Piece) => {
                 return (
                     <div key={p.id}>
