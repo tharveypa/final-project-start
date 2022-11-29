@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-parens */
 import React, { /*MouseEvent,*/ useState } from "react";
 import "./App.css";
 import Board from "./Board";
@@ -13,6 +14,7 @@ import { tileItem } from "./interfaces";
 import ListOb from "./ListOb";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
+import TileEdit from "./TileEdit";
 import { SortingItems } from "./Sorting";
 
 const App: React.FC = (): JSX.Element => {
@@ -20,6 +22,8 @@ const App: React.FC = (): JSX.Element => {
     const [ySize, setYSize] = useState<number>(5);
     const [tiles, setTiles] = useState<tileItem[]>([]);
     const [scale, setScale] = useState<number>(1);
+    const [middleClick, setMiddleClick] = useState<boolean>(false);
+    const [selectTile, setSelectTile] = useState<tileItem | null>(null);
     const [sourceTile, setSourceTile] = useState<tileItem[]>([
         {
             id: -1,
@@ -266,6 +270,15 @@ const App: React.FC = (): JSX.Element => {
         setTiles(tiles.filter((tile: tileItem): boolean => tile.id !== index));
     };
 
+    const resetMiddle = () => {
+        setMiddleClick(false);
+    };
+
+    const updateSelectTile = (tile: tileItem) => {
+        setSelectTile(tile);
+        setMiddleClick(true);
+    };
+
     const changeTile = (
         index: number,
         location: [number, number],
@@ -298,29 +311,21 @@ const App: React.FC = (): JSX.Element => {
             );
         }
     };
-    //const [pan, setPan] = useState<boolean>(false);
+
+    const updateTile = (tile: tileItem) => {
+        setTiles(
+            tiles.map((o: tileItem): tileItem => {
+                if (o.id === tile.id) {
+                    return tile;
+                } else {
+                    return o;
+                }
+            })
+        );
+    };
 
     const changeXSize = (x: number) => setXSize(x);
     const changeYSize = (y: number) => setYSize(y);
-
-    /* Working on middle mouse panning
-    const handleMiddleDown = (event: React.MouseEvent) => {
-        if (event.button === 1) {
-            setPan(true);
-        }
-    };
-
-    const handleMiddleUp = (event: React.MouseEvent) => {
-        if (event.button === 1) {
-            setPan(false);
-        }
-    };
-
-     disabled: !pan, 
-
-    onMouseDown={handleMiddleDown}
-    onMouseUp={handleMiddleUp}
-    */
 
     return (
         <div className="App">
@@ -362,16 +367,28 @@ const App: React.FC = (): JSX.Element => {
                                         x={xSize}
                                         y={ySize}
                                         scale={scale}
+                                        updateSelectTile={updateSelectTile}
                                     />
                                 </div>
                             </TransformComponent>
                         </TransformWrapper>
                     </div>
-                    <div className="list">
-                        <ListOb
-                            tiles={sourceTile}
-                            deleteTile={deleteTile}
-                        ></ListOb>
+                    <div className="rightbar">
+                        {(!middleClick && (
+                            <ListOb
+                                tiles={sourceTile}
+                                deleteTile={deleteTile}
+                                updateSelectTile={updateSelectTile}
+                            ></ListOb>
+                        )) ||
+                            (middleClick && (
+                                <TileEdit
+                                    tile={selectTile}
+                                    tileList={tiles}
+                                    resetMiddle={resetMiddle}
+                                    updateTile={updateTile}
+                                />
+                            ))}
                     </div>
                 </DndProvider>
             </div>

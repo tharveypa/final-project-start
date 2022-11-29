@@ -7,6 +7,7 @@ import Pic from "./Pic";
 type listProps = {
     tiles: tileItem[];
     deleteTile: (index: number) => void;
+    updateSelectTile: (tile: tileItem) => void;
 };
 
 const ListOb: React.FC<listProps> = (props) => {
@@ -27,7 +28,11 @@ const ListOb: React.FC<listProps> = (props) => {
                     className="tileitem"
                     style={{ display: "inline-block", width: "50%" }}
                 >
-                    <Pic tile={tile} scale={100} />
+                    <Pic
+                        tile={tile}
+                        scale={100}
+                        updateSelectTile={props.updateSelectTile}
+                    />
                 </div>
             ))}
         </div>

@@ -1,4 +1,5 @@
 /* eslint-disable no-extra-parens */
+import React from "react";
 import React, { Fragment, useState } from "react";
 import { useDrag } from "react-dnd";
 import { tileItem } from "./interfaces";
@@ -10,6 +11,7 @@ import "./Button.css";
 type ObjectProp = {
     tile: tileItem;
     scale: number;
+    updateSelectTile: (tile: tileItem) => void;
     //position: [number, number];
     //orientation: number;
     //size: number;
@@ -62,6 +64,7 @@ const Pic: React.FC<ObjectProp> = (props) => {
         <Fragment>
             <div
                 ref={drag}
+                onMouseDown={update}
                 style={{
                     opacity: isDragging ? 1 : 0.5,
                     fontSize: 10,
