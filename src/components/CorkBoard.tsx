@@ -49,8 +49,8 @@ export function CorkBoard({
     >(startingNotesAndPositionInfo);
 
     //state that will be needed for when the board scales
-    const [boardTop, setBoardTop] = useState<number>(50);
-    const [boardLeft, setBoardLeft] = useState<number>(800);
+    const [boardTop, setBoardTop] = useState<number>(0);
+    const [boardLeft, setBoardLeft] = useState<number>(0);
 
     ///*
     //maintains the id of noteDatas as they get added to the list of notesAndPositionInfo
@@ -162,8 +162,8 @@ export function CorkBoard({
                             width: noteData.width + "px",
                             backgroundColor: "yellow",
                             position: "absolute",
-                            top: noteData.top + "%",
-                            left: noteData.left + "%",
+                            top: noteData.top + "px",
+                            left: noteData.left + "px",
                             zIndex: noteData.zIndex + "%"
                         }}
                     >
