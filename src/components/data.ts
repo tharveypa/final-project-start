@@ -1,35 +1,50 @@
 import type { Bed, Desk, Wardrobe, Dresser, Rug } from "./types";
 
 const bed: Bed = {
+    id: "menu-bed",
     name: "bed",
-    dimensions: [40, 40, 40, 40],
-    position: [0, 0],
-    bunk: false
+    height: 150,
+    width: 150,
+    bunk: false,
+    top: 0,
+    left: 0
 };
 
 const desk: Desk = {
+    id: "menu-desk",
     name: "desk",
-    dimensions: [40, 40, 40, 40],
-    position: [0, 0]
+    height: 150,
+    width: 150,
+    top: 0,
+    left: 0
 };
 
 const wardrobe: Wardrobe = {
+    id: "menu-wardrobe",
     name: "wardrobe",
-    dimensions: [40, 40, 40, 40],
-    position: [0, 0]
+    height: 150,
+    width: 150,
+    top: 0,
+    left: 0
 };
 
 const dresser: Dresser = {
+    id: "menu-dresser",
     name: "dresser",
-    dimensions: [40, 40, 40, 40],
-    position: [0, 0]
+    height: 150,
+    width: 150,
+    top: 0,
+    left: 0
 };
 
 const rug: Rug = {
+    id: "menu-rug",
     name: "rug",
-    dimensions: [40, 40, 40, 40],
-    position: [0, 0],
-    color: "red"
+    height: 150,
+    width: 150,
+    color: "red",
+    top: 0,
+    left: 0
 };
 
 export const furniture = [bed, desk, wardrobe, dresser, rug];

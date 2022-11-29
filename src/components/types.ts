@@ -1,56 +1,84 @@
 export interface Bed {
+    id: string;
     name: "bed";
-    dimensions: number[];
     bunk: boolean;
-    position: number[];
+    height: number;
+    width: number;
+    top: number;
+    left: number;
 }
 
 export interface Desk {
+    id: string;
     name: "desk";
-    dimensions: number[];
-    position: number[];
+    top: number;
+    height: number;
+    width: number;
+    left: number;
 }
+
 export interface Wardrobe {
+    id: string;
     name: "wardrobe";
-    dimensions: number[];
-    position: number[];
+    height: number;
+    width: number;
+    top: number;
+    left: number;
 }
 
 export interface Dresser {
+    id: string;
     name: "dresser";
-    dimensions: number[];
-    position: number[];
+    height: number;
+    width: number;
+    top: number;
+    left: number;
 }
 
 export interface Rug {
+    id: string;
     name: "rug";
-    dimensions: number[];
-    position: number[];
+    height: number;
+    width: number;
     color: string;
+    top: number;
+    left: number;
 }
 
 export interface Microwave {
+    id: string;
     name: "microwave";
-    dimensions: number[];
-    position: number[];
+    height: number;
+    width: number;
+    top: number;
+    left: number;
 }
 
 export interface LaundryBasket {
+    id: string;
     name: "Laundry Basket";
-    dimensions: number[];
-    position: number[];
+    height: number;
+    width: number;
+    top: number;
+    left: number;
 }
 
 export interface TrashCan {
+    id: string;
     name: "Trash Can";
-    dimensions: number[];
-    position: number[];
+    height: number;
+    width: number;
+    top: number;
+    left: number;
 }
 
 export interface Fridge {
+    id: string;
     name: "fridge";
-    dimensions: number[];
-    position: number[];
+    height: number;
+    width: number;
+    top: number;
+    left: number;
 }
 
 export type Furniture =
