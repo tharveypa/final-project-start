@@ -12,11 +12,11 @@ export function SortingItems({
         <Button
             onClick={() =>
                 setSourceTile(
-                    sourceTile.sort((a, b) => a.color.localeCompare(b.color))
+                    sourceTile.sort((a, b) => a.name.localeCompare(b.name))
                 )
             }
         >
-            Sort By Color
+            Sort By Name
         </Button>
     );
 }

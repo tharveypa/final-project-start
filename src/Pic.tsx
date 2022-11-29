@@ -127,7 +127,6 @@ const Pic: React.FC<ObjectProp> = (props) => {
                         </div>
                     ) : (
                         <div>
-                            {props.tile.color}
                             <img
                                 src={require("" + props.tile.src)}
                                 width={props.scale + "%"}
