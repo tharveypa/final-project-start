@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-parens */
 import React, { /*MouseEvent,*/ useState } from "react";
 import "./App.css";
 import Board from "./Board";
@@ -109,29 +110,22 @@ const App: React.FC = (): JSX.Element => {
             );
         }
     };
-    //const [pan, setPan] = useState<boolean>(false);
+
+    const updateTile = (tile: tileItem) => {
+        setTiles(
+            tiles.map((o: tileItem): tileItem => {
+                if (o.id === tile.id) {
+                    return tile;
+                } else {
+                    return o;
+                }
+            })
+        );
+    };
 
     const changeXSize = (x: number) => setXSize(x);
     const changeYSize = (y: number) => setYSize(y);
 
-    /* Working on middle mouse panning
-    const handleMiddleDown = (event: React.MouseEvent) => {
-        if (event.button === 1) {
-            setPan(true);
-        }
-    };
-
-    const handleMiddleUp = (event: React.MouseEvent) => {
-        if (event.button === 1) {
-            setPan(false);
-        }
-    };
-
-     disabled: !pan, 
-
-    onMouseDown={handleMiddleDown}
-    onMouseUp={handleMiddleUp}
-    */
     return (
         <div className="App">
             <header className="App-header">
@@ -187,6 +181,7 @@ const App: React.FC = (): JSX.Element => {
                                     tile={selectTile}
                                     tileList={tiles}
                                     resetMiddle={resetMiddle}
+                                    updateTile={updateTile}
                                 />
                             ))}
                     </div>

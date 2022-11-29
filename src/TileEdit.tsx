@@ -6,6 +6,7 @@ type listProps = {
     tile: tileItem | null;
     tileList: tileItem[];
     resetMiddle: () => void;
+    updateTile: (tile: tileItem) => void;
     //deleteTile: (index: number) => void;
 };
 
