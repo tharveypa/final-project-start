@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { tileItem } from "./interfaces";
 
 type listProps = {
@@ -23,11 +23,6 @@ const TileEdit: React.FC<listProps> = (props) => {
                 <Button className="resetMiddle" onClick={props.resetMiddle}>
                     Done
                 </Button>
-                {
-                    props.tileList.find(
-                        (item: tileItem) => item.id === props.tile?.id
-                    )?.position
-                }
             </div>
         </div>
     );
