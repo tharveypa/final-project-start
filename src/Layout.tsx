@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-extra-parens */
 import React, { useState, useEffect, useCallback } from "react";
 import { Container, Row, Button, Col } from "react-bootstrap";
