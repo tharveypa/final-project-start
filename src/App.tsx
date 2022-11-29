@@ -13,13 +13,14 @@ import { tileItem } from "./interfaces";
 import ListOb from "./ListOb";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
+import { SortingItems } from "./Sorting";
 
 const App: React.FC = (): JSX.Element => {
     const [xSize, setXSize] = useState<number>(5);
     const [ySize, setYSize] = useState<number>(5);
     const [tiles, setTiles] = useState<tileItem[]>([]);
     const [scale, setScale] = useState<number>(1);
-    const [sourceTile /*setSourceTile*/] = useState<tileItem[]>([
+    const [sourceTile, setSourceTile] = useState<tileItem[]>([
         {
             id: -1,
             position: [0, 0],
@@ -129,6 +130,10 @@ const App: React.FC = (): JSX.Element => {
             <div>Wenhan Ying</div>
             <div>Junnan Bai</div>
             <ImageDownload></ImageDownload>
+            <SortingItems
+                setSourceTile={setSourceTile}
+                sourceTile={sourceTile}
+            ></SortingItems>
             <GridEdit changeX={changeXSize} changeY={changeYSize}></GridEdit>
             <div className="dndpage">
                 <DndProvider backend={HTML5Backend}>
