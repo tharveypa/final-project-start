@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "./constants";
-import { canAddPic, addPic, canMovePic, movePic } from "./game";
+import { canMovePic } from "./game";
 import Pic from "./Pic";
 import Overlay from "./Overlay";
 import Square from "./Square";
@@ -51,6 +51,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                 {isOver && canDrop && <Overlay color="green" />}
                 <ul>
                     {square.map(
+                        // eslint-disable-next-line no-extra-parens
                         (p: string): JSX.Element => (
                             <li key={p}>
                                 <Pic pic={p} />
@@ -60,6 +61,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                             </li>
                         )
                     )}
+                    ;
                 </ul>
             </div>
             <div>

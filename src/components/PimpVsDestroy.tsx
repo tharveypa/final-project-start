@@ -7,11 +7,7 @@ export function PimpVsDestroy(): JSX.Element {
     const [isPimp, setIsPimp] = useState(true);
     return (
         <div>
-            {isPimp && (
-                <div>
-                    <Pimp></Pimp>
-                </div>
-            )}
+            {isPimp && <div>{Pimp()}</div>}
             {isPimp || <div>{Destroy()}</div>}
             <Button onClick={() => setIsPimp(!isPimp)}>Pimp Vs Destroy</Button>
         </div>

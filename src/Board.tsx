@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Pic from "./Pic";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -91,6 +91,7 @@ const Board: React.FC<BoardProps> = (props) => {
                     Choose a pic
                     <ul>
                         {pics.map(
+                            // eslint-disable-next-line no-extra-parens
                             (p: string): JSX.Element => (
                                 <li key={p}>
                                     <Pic pic={p} />
