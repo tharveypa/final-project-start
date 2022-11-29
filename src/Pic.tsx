@@ -5,6 +5,7 @@ import { tileItem } from "./interfaces";
 type ObjectProp = {
     tile: tileItem;
     scale: number;
+    updateSelectTile: (tile: tileItem) => void;
     //position: [number, number];
     //orientation: number;
     //size: number;
@@ -20,26 +21,32 @@ const Pic: React.FC<ObjectProp> = (props) => {
         })
     });
 
+    const update = (event: React.MouseEvent) => {
+        if (event.button === 1) {
+            props.updateSelectTile(props.tile);
+            console.log(props.tile);
+        }
+    };
+
     return (
-        <Fragment>
-            <div
-                ref={drag}
-                style={{
-                    opacity: isDragging ? 1 : 0.5,
-                    fontSize: 10,
-                    fontWeight: "bold",
-                    cursor: "move",
-                    textAlign: "center"
-                }}
-            >
-                {props.tile.color}
-                <img
-                    src={require("" + props.tile.src)}
-                    width={props.scale + "%"}
-                    height={props.scale + "%"}
-                />
-            </div>
-        </Fragment>
+        <div
+            ref={drag}
+            onMouseDown={update}
+            style={{
+                opacity: isDragging ? 1 : 0.5,
+                fontSize: 10,
+                fontWeight: "bold",
+                cursor: "move",
+                textAlign: "center"
+            }}
+        >
+            {props.tile.color}
+            <img
+                src={require("" + props.tile.src)}
+                width={props.scale + "%"}
+                height={props.scale + "%"}
+            />
+        </div>
     );
 };
 

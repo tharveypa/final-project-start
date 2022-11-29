@@ -1,7 +1,5 @@
 import React from "react";
-import DeleteBin from "./DeleteBin";
 import { tileItem } from "./interfaces";
-import Pic from "./Pic";
 
 type listProps = {
     tile: tileItem | null;
@@ -18,7 +16,7 @@ const TileEdit: React.FC<listProps> = (props) => {
                     height: "10vw"
                 }}
             >
-                hello
+                {props.tile?.position}
             </div>
         </div>
     );

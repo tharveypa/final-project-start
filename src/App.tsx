@@ -68,10 +68,14 @@ const App: React.FC = (): JSX.Element => {
         setTiles(tiles.filter((tile: tileItem): boolean => tile.id !== index));
     };
 
-    const handlemiddleDown = (event: React.MouseEvent) => {
+    const handleMiddleDown = (event: React.MouseEvent) => {
         if (event.button === 1) {
             setMiddleClick(true);
         }
+    };
+
+    const updateSelectTile = (tile: tileItem) => {
+        setSelectTile(tile);
     };
 
     const changeTile = (
@@ -165,16 +169,18 @@ const App: React.FC = (): JSX.Element => {
                                         x={xSize}
                                         y={ySize}
                                         scale={scale}
+                                        updateSelectTile={updateSelectTile}
                                     />
                                 </div>
                             </TransformComponent>
                         </TransformWrapper>
                     </div>
-                    <div className="rightbar" onMouseDown={handlemiddleDown}>
+                    <div className="rightbar" onMouseDown={handleMiddleDown}>
                         {(!middleClick && (
                             <ListOb
                                 tiles={sourceTile}
                                 deleteTile={deleteTile}
+                                updateSelectTile={updateSelectTile}
                             ></ListOb>
                         )) ||
                             (middleClick && <TileEdit tile={selectTile} />)}

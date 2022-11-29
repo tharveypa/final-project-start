@@ -6,13 +6,24 @@ import { tileItem } from "./interfaces";
 import { ItemTypes } from "./constants";
 import { useDrop } from "react-dnd";
 
-const renderPiece = (x: number, y: number, tiles: tileItem[]) => {
+const renderPiece = (
+    x: number,
+    y: number,
+    tiles: tileItem[],
+    updateSelectTile: (tile: tileItem) => void
+) => {
     const location = tiles.filter(
         (o: tileItem): boolean =>
             x === o.position[0] && y === o.position[1] && o.snap === "snap"
     );
     if (location.length > 0) {
-        return <Pic tile={location[0]} scale={100} />;
+        return (
+            <Pic
+                tile={location[0]}
+                scale={100}
+                updateSelectTile={updateSelectTile}
+            />
+        );
     }
 };
 
@@ -31,7 +42,8 @@ const renderSquare = (
         src: string
     ) => void,
     width: number,
-    height: number
+    height: number,
+    updateSelectTile: (tile: tileItem) => void
 ) => {
     return (
         <div
@@ -40,7 +52,7 @@ const renderSquare = (
             style={{ width: 100 / width + "%", height: 100 / height + "%" }}
         >
             <BoardSquare x={x} y={y} changeTile={changeTile}>
-                {renderPiece(x, y, tiles)}
+                {renderPiece(x, y, tiles, updateSelectTile)}
             </BoardSquare>
         </div>
     );
@@ -59,6 +71,7 @@ type BoardProps = {
     x: number;
     y: number;
     scale: number;
+    updateSelectTile: (tile: tileItem) => void;
 };
 
 const Board: React.FC<BoardProps> = (props) => {
@@ -115,7 +128,8 @@ const Board: React.FC<BoardProps> = (props) => {
                     props.tile,
                     props.changeTile,
                     props.x,
-                    props.y
+                    props.y,
+                    props.updateSelectTile
                 )
             );
         }
@@ -144,7 +158,11 @@ const Board: React.FC<BoardProps> = (props) => {
                             top: o.position[1]
                         }}
                     >
-                        <Pic tile={o} scale={500 / props.x} />
+                        <Pic
+                            tile={o}
+                            scale={500 / props.x}
+                            updateSelectTile={props.updateSelectTile}
+                        />
                     </div>
                 );
             })}
