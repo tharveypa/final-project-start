@@ -14,7 +14,7 @@
 }
 
 .App-header {
-    width: 85%;
+    width: 100%;
     background-color: #5e181e;
     min-height: 20vh;
     display: flex;
@@ -45,4 +45,24 @@
 
 .toolncar {
     display: inline-block;
+}
+
+.container {
+    position: relative;
+    border: 1px solid black;
+    /* background-image: url("bluecar.png"); */
+    height: 400px;
+    width: 800px;
+    overflow: hidden;
+}
+
+.box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("./components/images/dirt.png");
+    /* background-color: hotpink; */
+    height: 60px;
+    width: 40px;
+    cursor: pointer;
 }

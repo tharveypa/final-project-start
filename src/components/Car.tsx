@@ -1,11 +1,12 @@
 import RedCar from "./images/redcar.png";
 import BlueCar from "./images/bluecar.png";
 import GreenCar from "./images/greencar.png";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button } from "react-bootstrap";
 import Street from "./images/street.jpg";
 import City from "./images/city.jpg";
 import Forest from "./images/forest.jpg";
+import Dirt from "./images/dirt.png";
 
 type CarProps = {
     color: number;
