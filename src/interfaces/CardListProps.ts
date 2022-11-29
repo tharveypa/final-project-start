@@ -1,4 +1,4 @@
 import { Task } from "./task";
-interface CardListProps {
+export interface CardListProps {
     modList: (currTaskArr: Task[]) => void;
 }
