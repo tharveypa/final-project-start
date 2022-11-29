@@ -2,7 +2,7 @@ import { tileItem } from "../interfaces";
 const tileList: tileItem[] = [
     {
         id: -1,
-        position: [0, 0],
+        position: [-100, -100],
         name: "Barrel",
         tags: ["inside", "furniture"],
         snap: "free",
@@ -18,7 +18,7 @@ const tileList: tileItem[] = [
     },
     {
         id: -3,
-        position: [0, 0],
+        position: [-100, -100],
         name: "Burger",
         tags: ["inside", "outside", "food"],
         snap: "free",
@@ -26,7 +26,7 @@ const tileList: tileItem[] = [
     },
     {
         id: -4,
-        position: [0, 0],
+        position: [-100, -100],
         name: "Bushes",
         tags: ["outside", "plants", "road"],
         snap: "free",
@@ -114,7 +114,7 @@ const tileList: tileItem[] = [
     },
     {
         id: -15,
-        position: [-100, -100],
+        position: [0, 0],
         name: "Tile Floor",
         tags: ["inside", "furniture"],
         snap: "snap",
@@ -170,7 +170,7 @@ const tileList: tileItem[] = [
     },
     {
         id: -22,
-        position: [-100, -100],
+        position: [0, 0],
         name: "Path1",
         tags: ["outside", "road"],
         snap: "snap",
@@ -186,7 +186,7 @@ const tileList: tileItem[] = [
     },
     {
         id: -24,
-        position: [-100, -100],
+        position: [0, 0],
         name: "Pillar",
         tags: ["inside", "outside", "furniture"],
         snap: "snap",
@@ -234,7 +234,7 @@ const tileList: tileItem[] = [
     },
     {
         id: -30,
-        position: [-100, -100],
+        position: [0, 0],
         name: "Path2",
         tags: ["outside", "road"],
         snap: "snap",
