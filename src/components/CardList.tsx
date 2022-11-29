@@ -236,7 +236,7 @@ export function CardList(): JSX.Element {
             <Button onClick={resetList}>Clear the list</Button>
             <Button onClick={() => sortIt(true)}>Sort by Priority</Button>
             <Button onClick={() => sortIt(false)}>Sort by Color</Button>
-            <div id="taskList">
+            <div id="CardList">
                 {displayList.map((cardData: cardData) => {
                     return (
                         <CardComp
@@ -245,8 +245,6 @@ export function CardList(): JSX.Element {
                             id={cardData.id}
                             editCard={editCard}
                             deleteCard={removeCard}
-                            x={-99}
-                            y={-99} //need a special default value before they start moving, these will be set properly later
                         ></CardComp>
                     );
                 })}

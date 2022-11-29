@@ -12,18 +12,25 @@ export function CorkBoard({
 }): JSX.Element {
     //Handles the dropping of things onto the corkboard
     // NOTE FOR ME the fields 50, 75, blah blah blah, will need to be passed from the drag (last position, etc.) No grids like chess
-    const [{ item }, drop] = useDrop({
+    const [{ item, offset }, drop] = useDrop({
         accept: ItemTypes.Card,
         collect: (monitor) => ({
-            item: monitor.getItem()
+            item: monitor.getItem(),
+            offset: monitor.getClientOffset()
         }),
         drop: () =>
             addNoteData(
-                item.task,
+                {
+                    title: "Test",
+                    description: "TEST",
+                    priority: "low",
+                    thumbColor: "pink",
+                    assigned: ["someone"]
+                },
                 50,
                 75,
-                30,
-                70,
+                offset.y,
+                offset.x,
                 1
             )
     }); // task, height, width, top, left, zindex
@@ -40,6 +47,10 @@ export function CorkBoard({
     const [notesAndPositionInfo, setNotesAndPositionInfo] = useState<
         noteData[]
     >(startingNotesAndPositionInfo);
+
+    //state that will be needed for when the board scales
+    const [boardTop, setBoardTop] = useState<number>(50);
+    const [boardLeft, setBoardLeft] = useState<number>(800);
 
     ///*
     //maintains the id of noteDatas as they get added to the list of notesAndPositionInfo
@@ -88,15 +99,34 @@ export function CorkBoard({
         zIndex: number
     ) {
         setCurrentId(currentId + 1);
+        console.log(
+            "WHAT WE ARE PASSING TO addNoteData: newTask = " +
+                newTask +
+                ", height = " +
+                height +
+                ", width = " +
+                width +
+                ", top = " +
+                top +
+                ", top - boardTop = " +
+                (top - boardTop) +
+                ", left = " +
+                left +
+                ", left - boardLeft = " +
+                (left - boardLeft) +
+                ", zIndex = " +
+                zIndex +
+                "\n"
+        );
         setNotesAndPositionInfo([
             ...notesAndPositionInfo,
             {
                 task: newTask,
-                id: currentId,
+                id: 777,
                 height: height,
                 width: width,
-                top: top,
-                left: left,
+                top: top - boardTop,
+                left: left - boardLeft,
                 zIndex: zIndex
             }
         ]);
@@ -120,6 +150,7 @@ export function CorkBoard({
                 backgroundColor: "#7E481C",
                 position: "relative"
             }}
+            id={"CorkBoard"}
         >
             {/* This is the part that puts every note in the list of notes onto the corkboard*/}
             {notesAndPositionInfo.map((noteData: noteData) => {
