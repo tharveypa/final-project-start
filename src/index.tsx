@@ -7,7 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 
 observe((picPosition: [number, number]) => {
-    const arr: string[] = ["goofy", "AAh"];
+    //const arr: string[] = ["goofy", "AAh"];
     ReactDOM.render(
         <React.StrictMode>
             <div
