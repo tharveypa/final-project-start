@@ -37,11 +37,6 @@ import Towel from "./images/towel.png";
 import Shine from "./images/shine.png";
 import Pump from "./images/pump.png";
 import GlassRepair from "./images/glassrepair.png";
-import { DragSourceMonitor, useDrag } from "react-dnd";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import { useDrag } from "react-dnd";
-import ToolDrop from "./ToolDrop";
 
 const pimp = [Towel, Shine, Pump, GlassRepair];
 const str = ["Wipe Car", "Shine Car", "Fill Tires", "Repair Glass"];

@@ -24,7 +24,10 @@ const Car: React.FC<CarProps> = (props) => {
 
     const isClicked = useRef<boolean>(false);
 
+    const [pause, setPause] = useState<number[]>([]);
+
     const coords = useRef<{
+        //window: number[][];
         startX: number;
         startY: number;
         lastX: number;
@@ -46,9 +49,10 @@ const Car: React.FC<CarProps> = (props) => {
             isClicked.current = true;
             coords.current.startX = e.clientX;
             coords.current.startY = e.clientY;
+            setPause([e.clientX, e.clientY]);
         };
 
-        const onMouseUp = (e: MouseEvent) => {
+        const onMouseUp = () => {
             isClicked.current = false;
             coords.current.lastX = box.offsetLeft;
             coords.current.lastY = box.offsetTop;
@@ -109,6 +113,11 @@ const Car: React.FC<CarProps> = (props) => {
                 >
                     Change Background (Street/City/Forest)
                 </Button>
+                {pause.map(
+                    (e: number): JSX.Element => (
+                        <div key={e}> {e} </div>
+                    )
+                )}
             </div>
             {props.children}
         </div>

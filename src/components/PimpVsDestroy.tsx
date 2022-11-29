@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import Destroy from "./Destroy";
 import Pimp from "./Pimp";
-import Towel from "./images/towel.png";
 
 export function PimpVsDestroy(): JSX.Element {
     const [isPimp, setIsPimp] = useState(true);
@@ -10,7 +9,7 @@ export function PimpVsDestroy(): JSX.Element {
         <div>
             {isPimp && (
                 <div>
-                    <Pimp pic={Towel}></Pimp>
+                    <Pimp></Pimp>
                 </div>
             )}
             {isPimp || <div>{Destroy()}</div>}
