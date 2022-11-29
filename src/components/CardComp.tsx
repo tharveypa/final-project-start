@@ -27,7 +27,11 @@ function CardComp({
     return (
         <div>
             <Card
-                style={{ width: "12rem", backgroundColor: task.thumbColor }}
+                style={{
+                    width: "200px",
+                    height: "100px",
+                    backgroundColor: task.thumbColor
+                }}
                 //ref makes the dragging of the Card Work
                 ref={drag}
             >

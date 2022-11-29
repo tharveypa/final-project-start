@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useDrop } from "react-dnd";
+import React, { useEffect, useState } from "react";
+import { useDragLayer, useDrop } from "react-dnd";
 import { ItemTypes } from "../constants";
 import { noteData } from "../interfaces/noteData";
 import { Task } from "../interfaces/task";
@@ -12,13 +12,12 @@ export function CorkBoard({
 }): JSX.Element {
     //Handles the dropping of things onto the corkboard
     // NOTE FOR ME the fields 50, 75, blah blah blah, will need to be passed from the drag (last position, etc.) No grids like chess
-    const [{ item, offset }, drop] = useDrop({
+    const [{ item }, drop] = useDrop({
         accept: ItemTypes.Card,
         collect: (monitor) => ({
-            item: monitor.getItem(),
-            offset: monitor.getClientOffset()
+            item: monitor.getItem()
         }),
-        drop: () =>
+        drop: () => {
             addNoteData(
                 {
                     title: "Test",
@@ -29,11 +28,45 @@ export function CorkBoard({
                 },
                 50,
                 75,
-                offset.y,
-                offset.x,
+                currentOffset.y -
+                    boardTop +
+                    (grabOffset?.y - sourceOffset?.y + 10), //+ scrollPositionY,
+                currentOffset.x -
+                    boardLeft +
+                    (grabOffset?.x - sourceOffset?.x - 100), //+ scrollPositionX,
                 1
-            )
+            );
+        }
     }); // task, height, width, top, left, zindex
+
+    //this is the the state the keeps track of the position since use Drop is blithering useless
+    const { currentOffset, grabOffset, sourceOffset } = useDragLayer(
+        (monitor) => ({
+            currentOffset: monitor.getSourceClientOffset(),
+            grabOffset: monitor.getInitialClientOffset(),
+            sourceOffset: monitor.getInitialSourceClientOffset()
+        })
+    );
+
+    // variable to access scroll offset (pain & agony)
+    const [scrollPositionY, setScrollPositionY] = useState(0);
+    const [scrollPositionX, setScrollYPositionX] = useState(0);
+
+    const handleScroll = () => {
+        const positionY = window.pageYOffset;
+        setScrollPositionY(positionY);
+        const positionX = window.pageXOffset;
+        setScrollYPositionX(positionX);
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    });
+
     /* 
     HAHA MICHAEL IS RIGHT TERNARYS ARE IMPOSSIBLE I LOVE THIS!! Need to set zindex based on low medium or high
 
@@ -49,8 +82,8 @@ export function CorkBoard({
     >(startingNotesAndPositionInfo);
 
     //state that will be needed for when the board scales
-    const [boardTop, setBoardTop] = useState<number>(0);
-    const [boardLeft, setBoardLeft] = useState<number>(0);
+    const [boardTop, setBoardTop] = useState<number>(50);
+    const [boardLeft, setBoardLeft] = useState<number>(700);
 
     ///*
     //maintains the id of noteDatas as they get added to the list of notesAndPositionInfo
@@ -100,6 +133,7 @@ export function CorkBoard({
     ) {
         setCurrentId(currentId + 1);
         console.log(
+            /*
             "WHAT WE ARE PASSING TO addNoteData: newTask = " +
                 newTask +
                 ", height = " +
@@ -116,17 +150,35 @@ export function CorkBoard({
                 (left - boardLeft) +
                 ", zIndex = " +
                 zIndex +
+                "\n" +
+                scrollPositionX +
+                " " +
+                scrollPositionY +
+                "\n"
+                */
+            "x: " +
+                currentOffset?.x +
+                "\n" +
+                "y: " +
+                currentOffset?.y +
+                "\n" +
+                "grabX: " +
+                (grabOffset?.x - sourceOffset?.x) +
+                "\n" +
+                "grabY: " +
+                (grabOffset?.y - sourceOffset?.y) +
                 "\n"
         );
+
         setNotesAndPositionInfo([
             ...notesAndPositionInfo,
             {
                 task: newTask,
-                id: 777,
+                id: currentId,
                 height: height,
                 width: width,
-                top: top - boardTop,
-                left: left - boardLeft,
+                top: top,
+                left: left,
                 zIndex: zIndex
             }
         ]);
@@ -156,7 +208,7 @@ export function CorkBoard({
             {notesAndPositionInfo.map((noteData: noteData) => {
                 return (
                     <div
-                        key={noteData.id}
+                        key={"note: " + noteData.id}
                         style={{
                             height: noteData.height + "px",
                             width: noteData.width + "px",

@@ -53,7 +53,7 @@ function App(): JSX.Element {
                     {/* CORKBOARD DIV : SIZE AND POSITION OF THE DIV DEFINES THAT OF THE CORKBOARD*/}
                     <div
                         style={{
-                            height: "600px",
+                            height: "1600px",
                             width: "800px",
                             left: "800px",
                             top: "50px",
