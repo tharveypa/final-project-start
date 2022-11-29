@@ -21,6 +21,7 @@ const Pic: React.FC<PicProps> = (props) => {
                 ref={drag}
                 style={{
                     opacity: isDragging ? 1 : 0.5,
+                    background: "red",
                     fontSize: 50,
                     fontWeight: "bold",
                     cursor: "move",

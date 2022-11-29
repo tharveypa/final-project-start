@@ -7,6 +7,9 @@ import Street from "./images/street.jpg";
 import City from "./images/city.jpg";
 import Forest from "./images/forest.jpg";
 import Dirt from "./images/dirt.png";
+import BirdPoop from "./images/birdpoop.png";
+import Slash from "./images/slash.png";
+import Hammer from "./images/hammer.png";
 
 type CarProps = {
     color: number;
@@ -92,10 +95,16 @@ const Car: React.FC<CarProps> = (props) => {
                     {colorNum == 0 && <img src={RedCar} alt="red car" />}
                     {colorNum == 1 && <img src={BlueCar} alt="blue car" />}
                     {colorNum == 2 && <img src={GreenCar} alt="green car" />}
-
                     <div ref={boxRef} className="box">
                         <img src={Dirt} alt="dirt" />
                     </div>
+                    {/* <div ref={boxRef} className="box">
+                        <img src={BirdPoop} alt="poop" />
+                    </div>
+                    <div ref={boxRef} className="box">
+                        <img src={Hammer} alt="hammer" />
+                        <img src={Slash} alt="slash" />
+                    </div> */}
                 </div>
             </div>
             <div>
