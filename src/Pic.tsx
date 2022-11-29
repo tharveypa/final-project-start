@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-parens */
 import React, { Fragment, useState } from "react";
 import { useDrag } from "react-dnd";
 import { tileItem } from "./interfaces";
