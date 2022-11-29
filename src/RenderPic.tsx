@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+/*import React, { useState } from "react";
 import type { CSSProperties, FC } from "react";
 import { useDrop, XYCoord } from "react-dnd";
 import Pic from "./Pic";
 import { ItemTypes } from "./constants";
 import { Button } from "react-bootstrap";
-import { Piece } from "./interfaces/piece";
+import { Piece } from "./interfaces/piece";*/
 
 //const div = document.querySelector("div");
 const dustbinTop = document.getElementById("dustbin")?.offsetTop || 0;
