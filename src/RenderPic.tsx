@@ -15,6 +15,8 @@ export function createPieces(top: number, left: number): Piece[] {
     return pieces;
 }
 
+//we need to set these pieces to be the pieces in the piece bank
+
 const pieces: Piece[] = [
     {
         id: "F",
