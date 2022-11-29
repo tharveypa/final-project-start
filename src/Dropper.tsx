@@ -46,6 +46,35 @@ export const Dropper: FC = () => {
     //box pos left
     //box pos width
 
+    const p: string[] = [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+    ];
+
+    const pieces: Piece[] = p.map(
+        (s: string): Piece => ({
+            id: s,
+            angle: 0,
+            width: 100,
+            height: 100,
+            top: 150,
+            left: 200,
+            onBoard: false,
+            reflected: false,
+            image: "./Assets/Images/" + s + ".png"
+        })
+    );
+
     const solutions: string[] = ["3x20", "4x15", "5x12", "6x10"];
 
     const [solutionImage, setSolutionImage] = useState<string>(
@@ -57,19 +86,7 @@ export const Dropper: FC = () => {
         setSolutionImage("./Assets/solutions/" + solutions[current] + ".png");
     }
 
-    const [PieceBank, setPieceBank] = useState<Piece[]>([
-        {
-            id: "F",
-            angle: 0,
-            width: 100,
-            height: 100,
-            top: 150,
-            left: 100,
-            onBoard: false,
-            reflected: false,
-            image: "./Assets/Images/" + "F" + ".png"
-        }
-    ]);
+    const [PieceBank, setPieceBank] = useState<Piece[]>(pieces);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     function reflectPiece(reflId: string) {
         const newBank: Piece[] = PieceBank.map(
