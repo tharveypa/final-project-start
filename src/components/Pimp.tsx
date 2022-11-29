@@ -37,32 +37,64 @@ import Towel from "./images/towel.png";
 import Shine from "./images/shine.png";
 import Pump from "./images/pump.png";
 import GlassRepair from "./images/glassrepair.png";
+import { DragSourceMonitor, useDrag } from "react-dnd";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { useDrag } from "react-dnd";
+import ToolDrop from "./ToolDrop";
 
-const Pimp = () => {
+type PimpPicProps = {
+    pic: string;
+};
+
+const PimpPicList = [
+    {
+        id: 1,
+        pic: Towel
+    },
+    {
+        id: 2,
+        pic: Shine
+    },
+    {
+        id: 3,
+        pic: Pump
+    },
+    {
+        id: 4,
+        pic: GlassRepair
+    }
+];
+
+const Pimp: React.FC<PimpPicProps> = (props) => {
+    const { pic } = props;
     return (
-        <div className="toolncar">
-            <h1>Pimp Mode</h1>
-            <p>
-                Pimp Mode Options:
-                <div>
-                    <img src={Towel} alt="towel" />
-                    Wipe Car
-                </div>
-                <div>
-                    <img src={Shine} alt="shine" />
-                    Shine Car
-                </div>
-                <div>
-                    <img src={Pump} alt="pump" />
-                    Fill Tires
-                </div>
-                <div>
-                    <img src={GlassRepair} alt="glass repair" />
-                    Repair Windows
-                </div>
-                <div>etc</div>
-            </p>
-        </div>
+        <DndProvider backend={HTML5Backend}>
+            <div className="toolncar">
+                <h1>Pimp Mode</h1>
+                <p>
+                    Pimp Mode Options:
+                    <div>
+                        <img src={Towel} alt="towel" />
+                        Wipe Car
+                    </div>
+                    <div>
+                        <img src={Shine} alt="shine" />
+                        Shine Car
+                    </div>
+                    <div>
+                        <img src={Pump} alt="pump" />
+                        Fill Tires
+                    </div>
+                    <div>
+                        <img src={GlassRepair} alt="glass repair" />
+                        Repair Windows
+                    </div>
+                    <div>etc</div>
+                </p>
+                {props.children}
+            </div>
+        </DndProvider>
     );
 };
 
