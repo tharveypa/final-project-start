@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { useDrag } from "react-dnd";
 import { tileItem } from "./interfaces";
 
@@ -22,9 +22,8 @@ const Pic: React.FC<ObjectProp> = (props) => {
     });
 
     const update = (event: React.MouseEvent) => {
-        if (event.button === 1) {
+        if (event.button === 1 && props.tile.id >= 0) {
             props.updateSelectTile(props.tile);
-            console.log(props.tile);
         }
     };
 

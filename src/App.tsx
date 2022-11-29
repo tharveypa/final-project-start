@@ -68,14 +68,13 @@ const App: React.FC = (): JSX.Element => {
         setTiles(tiles.filter((tile: tileItem): boolean => tile.id !== index));
     };
 
-    const handleMiddleDown = (event: React.MouseEvent) => {
-        if (event.button === 1) {
-            setMiddleClick(true);
-        }
+    const resetMiddle = () => {
+        setMiddleClick(false);
     };
 
     const updateSelectTile = (tile: tileItem) => {
         setSelectTile(tile);
+        setMiddleClick(true);
     };
 
     const changeTile = (
@@ -175,7 +174,7 @@ const App: React.FC = (): JSX.Element => {
                             </TransformComponent>
                         </TransformWrapper>
                     </div>
-                    <div className="rightbar" onMouseDown={handleMiddleDown}>
+                    <div className="rightbar">
                         {(!middleClick && (
                             <ListOb
                                 tiles={sourceTile}
@@ -183,7 +182,13 @@ const App: React.FC = (): JSX.Element => {
                                 updateSelectTile={updateSelectTile}
                             ></ListOb>
                         )) ||
-                            (middleClick && <TileEdit tile={selectTile} />)}
+                            (middleClick && (
+                                <TileEdit
+                                    tile={selectTile}
+                                    tileList={tiles}
+                                    resetMiddle={resetMiddle}
+                                />
+                            ))}
                     </div>
                 </DndProvider>
             </div>
