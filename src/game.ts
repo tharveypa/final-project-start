@@ -3,6 +3,7 @@ let observer: ((arg0: number[]) => void) | null = null;
 
 const emitChange = () => {
     observer && observer(picPosition);
+    console.log(picPosition);
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

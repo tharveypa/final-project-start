@@ -1,4 +1,5 @@
 export interface Element {
+    position: [number, number];
     // /** Name of Element */
     // name: string;
 
