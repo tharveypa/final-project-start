@@ -35,9 +35,9 @@ const Square: React.FC<SquareProps> = (props) => {
                 />
             }
             {thisTank.pred && <Overlay color="red" opacity={0.25} />}
-            {props.children}
         </div>
     );
 };
 
 export default Square;
+//line after thisTank.pred = {props.children}

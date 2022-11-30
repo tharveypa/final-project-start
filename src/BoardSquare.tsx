@@ -14,7 +14,7 @@ type BoardSquareProps = {
 };
 
 const BoardSquare: React.FC<BoardSquareProps> = (props) => {
-    const { x, y, children } = props;
+    const { x, y } = props;
     const salt = x % 2 === 1;
     const pred = x % 3 === 0;
     const [newTank, setNewTank] = useState<Tank>({
@@ -58,9 +58,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
             }}
         >
             {!edit && (
-                <Square thisTank={newTank} turnOnEdit={turnOnEdit}>
-                    {children}
-                </Square>
+                <Square thisTank={newTank} turnOnEdit={turnOnEdit}></Square>
             )}
             {edit && (
                 <TankEdit
@@ -77,3 +75,4 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
 };
 
 export default BoardSquare;
+//inside <Square> here </Square> = {children}
