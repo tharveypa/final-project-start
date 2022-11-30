@@ -46,6 +46,7 @@ function App() {
             coords.current.startY = e.clientY;
         };
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const onMouseUp = (e: MouseEvent) => {
             isClicked.current = false;
             coords.current.lastX = box.offsetLeft;
