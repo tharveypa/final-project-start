@@ -18,8 +18,8 @@ observe((picPosition: [number, number]) => {
                 }}
             >
                 <App />
-                x={picPosition[0]}
-                y={picPosition[1]}
+                {/* x={picPosition[0]}
+                y={picPosition[1]} */}
                 <Board
                     pics={[
                         "Wipe Car",

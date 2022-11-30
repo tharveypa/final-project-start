@@ -36,7 +36,7 @@ const renderSquare = (
     return (
         <>
             <div>
-                | board squares x={x}-{picPosition[0]}, y={y}-{picPosition[1]}
+                {/* | board squares x={x}-{picPosition[0]}, y={y}-{picPosition[1]} */}
                 <div key={i} style={{ width: "50%", height: "50%" }}>
                     <BoardSquare x={x} y={y} pics={pics}>
                         {renderPiece(x, y, "yeet", picPosition)}
@@ -83,12 +83,12 @@ const Board: React.FC<BoardProps> = (props) => {
                         flexWrap: "wrap"
                     }}
                 >
-                    hey
-                    {squares}
+                    {/* hey */}
+                    {/* {squares} */}
                 </div>
 
                 <div>
-                    Choose a pic
+                    {/* Choose a pic */}
                     <ul>
                         {pics.map(
                             // eslint-disable-next-line no-extra-parens
