@@ -2,21 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Board from "./Board";
 import "./index.css";
+import App from "./App";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
         <React.StrictMode>
-            <div
-                style={{
-                    width: "500px",
-                    height: "500px",
-                    border: "1px solid gray"
-                }}
-            >
-                <Board picPosition={picPosition} />
-            </div>
+            <App />
         </React.StrictMode>,
         document.getElementById("root")
     );
