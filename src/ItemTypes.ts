@@ -1,4 +1,3 @@
 export const ItemTypes = {
-    FISH: 'fish',
-  }
-  
+    FISH: "fish"
+};
