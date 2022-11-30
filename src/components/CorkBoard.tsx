@@ -30,10 +30,12 @@ export function CorkBoard({
                 75,
                 currentOffset.y -
                     boardTop +
-                    (grabOffset?.y - sourceOffset?.y + 10), //+ scrollPositionY,
+                    (grabOffset?.y - sourceOffset?.y) +
+                    scrollPositionY,
                 currentOffset.x -
                     boardLeft +
-                    (grabOffset?.x - sourceOffset?.x - 100), //+ scrollPositionX,
+                    (grabOffset?.x - sourceOffset?.x - 100) +
+                    scrollPositionX,
                 1
             );
         }
