@@ -1,5 +1,5 @@
 import update from "immutability-helper";
-import type { CSSProperties, FC } from "react";
+import type { FC } from "react";
 import { useCallback, useState } from "react";
 import type { XYCoord } from "react-dnd";
 import { useDrop } from "react-dnd";
