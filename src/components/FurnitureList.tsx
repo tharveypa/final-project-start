@@ -12,9 +12,13 @@ import "./styles.css";
 const FurnitureList = () => {
     return (
         <div id="furniture-list">
-            <p>Room Furniture</p>
             {furniture.map((f: Furniture) => (
-                <FurnitureItem key={f.name} item={f} />
+                <div key={f.name}>
+                    <p className="furniture-label">
+                        {f.name.charAt(0).toUpperCase() + f.name.slice(1)}
+                    </p>
+                    <FurnitureItem item={f} />
+                </div>
             ))}
         </div>
     );

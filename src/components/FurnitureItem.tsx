@@ -1,18 +1,19 @@
+/* eslint-disable no-extra-parens */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useRef, useEffect, useState, ReactDOM } from "react";
+import React, { useEffect, useState, ReactDOM } from "react";
 import { useDrag } from "react-dnd";
 
 import type { Furniture } from "./types";
 
 interface FurnitureItemProps {
     item: Furniture;
+    removeFromRoomBoard?: (id: string) => void;
 }
 
-const FurnitureItem = ({ item }: FurnitureItemProps) => {
-    const { id, name, left, top, height, width } = item;
+const FurnitureItem = ({ item, removeFromRoomBoard }: FurnitureItemProps) => {
+    const { id, name, left, top, height, width, color } = item;
     const [position, setPosition] = useState({ top: top, left: left });
-
-    const positionRef = useRef(null);
+    const [isHovered, setIsHovered] = useState(false);
 
     useEffect(() => {
         const elem = document.getElementById(item.id)?.getBoundingClientRect();
@@ -29,7 +30,8 @@ const FurnitureItem = ({ item }: FurnitureItemProps) => {
             left: id.includes("menu") ? position.left : left,
             top: id.includes("menu") ? position.top : top,
             height,
-            width
+            width,
+            color
         },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging()
@@ -40,27 +42,43 @@ const FurnitureItem = ({ item }: FurnitureItemProps) => {
         position: id.includes("menu") ? "static" : "absolute",
         left,
         top,
-        height,
-        width,
-        "background-color": isDragging ? "blue" : "red",
+        height: id.includes("menu") ? height / 2 : height,
+        width: id.includes("menu") ? width / 2 : width,
+        backgroundColor: color,
         margin: 0
     };
 
-    useEffect(() => {
-        console.log(positionRef.current);
-    }, [positionRef]);
+    const showDimensionsAndIcon = isHovered && !id.includes("menu");
 
     return (
-        <div id={item.id} style={styles} ref={drag}>
-            <div
-                style={{ width: "100%", height: "100%" }}
-                ref={(positionRef) => {
-                    if (!positionRef) return;
-                }}
-            >
-                <p style={{ margin: 0 }}>
-                    {name}, {id}
-                </p>
+        <div
+            id={item.id}
+            style={styles}
+            ref={drag}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+            <div style={{ width: "100%", height: "100%" }}>
+                {showDimensionsAndIcon && (
+                    <>
+                        <p className="dimensions-label">
+                            H: {height / 3} inches
+                        </p>
+                        <p className="dimensions-label">
+                            W: {width / 3} inches
+                        </p>
+                    </>
+                )}
+                {showDimensionsAndIcon && (
+                    <p
+                        id="remove-button"
+                        onClick={() =>
+                            removeFromRoomBoard && removeFromRoomBoard(id)
+                        }
+                    >
+                        Remove
+                    </p>
+                )}
             </div>
         </div>
     );

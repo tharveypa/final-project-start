@@ -11,12 +11,14 @@ interface RoomBoardProps {
     furnitureInRoomBoard: Furniture[];
     moveFurniture: (id: string, top: number, left: number) => void;
     addToRoomBoard: (item: Furniture, top: number, left: number) => void;
+    removeFromRoomBoard: (id: string) => void;
 }
 
 const RoomBoard = ({
     furnitureInRoomBoard,
     moveFurniture,
-    addToRoomBoard
+    addToRoomBoard,
+    removeFromRoomBoard
 }: RoomBoardProps) => {
     const [, drop] = useDrop({
         accept: "Furniture",
@@ -44,10 +46,16 @@ const RoomBoard = ({
     });
 
     return (
-        <div ref={drop} id="room-board">
-            {furnitureInRoomBoard.map((f: Furniture) => (
-                <FurnitureItem key={f.id} item={f} />
-            ))}
+        <div id="room-board">
+            <div ref={drop} id="room">
+                {furnitureInRoomBoard.map((f: Furniture) => (
+                    <FurnitureItem
+                        removeFromRoomBoard={removeFromRoomBoard}
+                        key={f.id}
+                        item={f}
+                    />
+                ))}
+            </div>
         </div>
     );
 };

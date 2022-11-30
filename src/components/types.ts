@@ -6,6 +6,7 @@ export interface Bed {
     width: number;
     top: number;
     left: number;
+    color: string;
 }
 
 export interface Desk {
@@ -15,6 +16,7 @@ export interface Desk {
     height: number;
     width: number;
     left: number;
+    color: string;
 }
 
 export interface Wardrobe {
@@ -24,6 +26,7 @@ export interface Wardrobe {
     width: number;
     top: number;
     left: number;
+    color: string;
 }
 
 export interface Dresser {
@@ -33,6 +36,7 @@ export interface Dresser {
     width: number;
     top: number;
     left: number;
+    color: string;
 }
 
 export interface Rug {
@@ -40,9 +44,9 @@ export interface Rug {
     name: "rug";
     height: number;
     width: number;
-    color: string;
     top: number;
     left: number;
+    color: string;
 }
 
 export interface Microwave {
@@ -52,6 +56,7 @@ export interface Microwave {
     width: number;
     top: number;
     left: number;
+    color: string;
 }
 
 export interface LaundryBasket {
@@ -61,6 +66,7 @@ export interface LaundryBasket {
     width: number;
     top: number;
     left: number;
+    color: string;
 }
 
 export interface TrashCan {
@@ -70,6 +76,7 @@ export interface TrashCan {
     width: number;
     top: number;
     left: number;
+    color: string;
 }
 
 export interface Fridge {
@@ -79,6 +86,7 @@ export interface Fridge {
     width: number;
     top: number;
     left: number;
+    color: string;
 }
 
 export type Furniture =

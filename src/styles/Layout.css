@@ -46,3 +46,14 @@ div#main-board-container {
 .options-button {
     margin-bottom: 10px;
 }
+
+#room-selection-container {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.room-selection-button {
+    margin-left: 5px;
+    margin-right: 5px;
+}

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-extra-parens */
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { Container, Row, Button, Col } from "react-bootstrap";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -15,9 +15,15 @@ import "./styles/index.css";
 
 const roomImages: string[] = ["empty", "z-style", "suite-style"];
 
+interface SavedRoom {
+    id: number;
+    furniture: Furniture[];
+}
+
 const Layout = () => {
     const [roomChoicesShown, setRoomChoiceVisibility] = useState(false);
     const [roomChoice, setRoomChoice] = useState("empty");
+    const [savedRooms, setSavedRooms] = useState<SavedRoom[]>([]);
 
     function changeRoomType(r: string): void {
         setRoomChoice(r);
@@ -28,43 +34,49 @@ const Layout = () => {
     >([]);
 
     const addToRoomBoard = (item: Furniture, left: number, top: number) => {
-        console.log("ADD TO ROOM BOARD");
-        console.log("ID:", item.id);
-        console.log("HEIGHT:", item.height);
-        console.log("WIDTH:", item.width);
-        console.log("TOP:", top);
-        console.log("LEFT:", left);
         const newId = `${item.name}${furnitureInRoomBoard.length + 1}`;
         const newItem = { ...item, id: newId, left: left, top: top };
         const newList = [...furnitureInRoomBoard, newItem];
         setFurnitureInRoomBoard(newList);
     };
 
+    const removeFromRoomBoard = (id: string) => {
+        const newItems = furnitureInRoomBoard.filter((f) => f.id !== id);
+        setFurnitureInRoomBoard(newItems);
+    };
+
     const clearRoomBoard = () => {
-        console.log("CLEARING ROOM");
         setFurnitureInRoomBoard([]);
     };
 
     const moveFurniture = useCallback(
         (id, left, top) => {
-            console.log("MOVE FURNITURE");
             const newItems = furnitureInRoomBoard.map((item) => {
-                console.log("ITEM:", item.id);
                 return item.id === id
                     ? { ...item, top: top, left: left }
                     : item;
             });
-            console.log("ID:", id);
-            console.log("TOP:", top);
-            console.log("LEFT:", left);
-            console.log(newItems);
             setFurnitureInRoomBoard(newItems);
         },
         [furnitureInRoomBoard]
     );
 
-    useEffect(() => {
-        console.log("objects");
+    const createNewRoom = () => {
+        const newSavedRoom: SavedRoom = {
+            id: savedRooms.length + 1,
+            furniture: [...furnitureInRoomBoard]
+        };
+        const newSavedRooms = [...savedRooms, newSavedRoom];
+        setSavedRooms(newSavedRooms);
+        setFurnitureInRoomBoard([]);
+    };
+
+    const switchToRoom = (id: number) => {
+        const newRoom = savedRooms[id - 1];
+        setFurnitureInRoomBoard(newRoom.furniture);
+    };
+
+    React.useEffect(() => {
         console.log(furnitureInRoomBoard);
     }, [furnitureInRoomBoard]);
 
@@ -88,7 +100,7 @@ const Layout = () => {
                                 Clear Room
                             </Button>
                         </Row>
-                        <Row>
+                        {/* <Row>
                             <div
                                 onMouseEnter={() =>
                                     setRoomChoiceVisibility(true)
@@ -113,7 +125,7 @@ const Layout = () => {
                         </Row>
                         <Row>
                             <Button>Save Room</Button>
-                        </Row>
+                        </Row> */}
                         <FurnitureList />
                     </Container>
                 </div>
@@ -121,6 +133,33 @@ const Layout = () => {
                     <Container>
                         <Row>
                             <Col>
+                                <Button
+                                    style={{ backgroundColor: "transparent" }}
+                                    onClick={() => createNewRoom()}
+                                >
+                                    <img
+                                        src={require("./images/newRoomButton.png")}
+                                        width="150"
+                                        height="40"
+                                    />
+                                </Button>
+                            </Col>
+                            <Col>
+                                <div id="room-selection-container">
+                                    {savedRooms.map((room) => (
+                                        <Button
+                                            className="room-selection-button"
+                                            key={`room${room.id}`}
+                                            onClick={() =>
+                                                switchToRoom(room.id)
+                                            }
+                                        >
+                                            Room {room.id}
+                                        </Button>
+                                    ))}
+                                </div>
+                            </Col>
+                            {/* <Col>
                                 <Button
                                     style={{ backgroundColor: "transparent" }}
                                 >
@@ -136,23 +175,12 @@ const Layout = () => {
                                     style={{ backgroundColor: "transparent" }}
                                 >
                                     <img
-                                        src={require("./images/newRoomButton.png")}
-                                        width="150"
-                                        height="40"
-                                    />
-                                </Button>
-                            </Col>
-                            <Col>
-                                <Button
-                                    style={{ backgroundColor: "transparent" }}
-                                >
-                                    <img
                                         src={require("./images/viewRoomsButton.png")}
                                         width="120"
                                         height="40"
                                     />
                                 </Button>
-                            </Col>
+                            </Col> */}
                         </Row>
                     </Container>
                 </div>
@@ -161,6 +189,7 @@ const Layout = () => {
                         furnitureInRoomBoard={furnitureInRoomBoard}
                         moveFurniture={moveFurniture}
                         addToRoomBoard={addToRoomBoard}
+                        removeFromRoomBoard={removeFromRoomBoard}
                     />
                 </div>
             </div>
