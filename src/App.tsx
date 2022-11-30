@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Col } from "react-bootstrap";
 import "./App.css";
 import Bathtub from "../src/furniture/bathtub.png";
 import CoffeeTable from "../src/furniture/coffee_table.png";
@@ -72,156 +72,202 @@ function App(): JSX.Element {
                 {expanded && (
                     <ul>
                         <li>
-                            Bathtub
-                            <img
-                                src={Bathtub}
-                                width="40"
-                                height="20"
-                                alt="Bathtub"
-                            />
+                            <Col>Bathtub</Col>
+                            <Col>
+                                <img
+                                    src={Bathtub}
+                                    width="40"
+                                    height="20"
+                                    alt="Bathtub"
+                                />
+                            </Col>
                         </li>
                         <li>
-                            Coffee Table
-                            <img
-                                src={CoffeeTable}
-                                width="40"
-                                height="20"
-                                alt="CoffeeTable"
-                            />
+                            <Col>Coffee Table</Col>
+                            <Col>
+                                <img
+                                    src={CoffeeTable}
+                                    width="40"
+                                    height="20"
+                                    alt="CoffeeTable"
+                                />
+                            </Col>
                         </li>
                         <li>
-                            Couch
-                            <img
-                                src={Couch}
-                                width="40"
-                                height="20"
-                                alt="Couch"
-                            />
+                            <Col>Couch</Col>
+                            <Col>
+                                <img
+                                    src={Couch}
+                                    width="40"
+                                    height="20"
+                                    alt="Couch"
+                                />
+                            </Col>
                         </li>
                         <li>
-                            Dinner Table
-                            <img
-                                src={DinnerTable}
-                                width="40"
-                                height="30"
-                                alt="Dinner Table"
-                            />
+                            <Col>Dinner Table</Col>
+                            <Col>
+                                <img
+                                    src={DinnerTable}
+                                    width="40"
+                                    height="30"
+                                    alt="Dinner Table"
+                                />
+                            </Col>
                         </li>
                         <li>
-                            Double Bed
-                            <img
-                                src={DoubleBed}
-                                width="40"
-                                height="30"
-                                alt="Double Bed"
-                            />
+                            <Col>Double Bed</Col>
+                            <Col>
+                                <img
+                                    src={DoubleBed}
+                                    width="40"
+                                    height="30"
+                                    alt="Double Bed"
+                                />
+                            </Col>
                         </li>
                         <li>
-                            Flat TV
-                            <img
-                                src={FlatTV}
-                                width="40"
-                                height="30"
-                                alt="Flat TV"
-                            />
+                            <Col>Flat TV</Col>
+                            <Col>
+                                <img
+                                    src={FlatTV}
+                                    width="40"
+                                    height="30"
+                                    alt="Flat TV"
+                                />
+                            </Col>
                         </li>
                         <li>
-                            Fridge
-                            <img
-                                src={Fridge}
-                                width="20"
-                                height="40"
-                                alt="Fridge"
-                            />
+                            <Col>Fridge</Col>
+                            <Col>
+                                <img
+                                    src={Fridge}
+                                    width="20"
+                                    height="40"
+                                    alt="Fridge"
+                                />
+                            </Col>
                         </li>
                         <li>
-                            Lamp
-                            <img src={Lamp} width="30" height="30" alt="Lamp" />
+                            <Col>Lamp</Col>
+                            <Col>
+                                <img
+                                    src={Lamp}
+                                    width="30"
+                                    height="30"
+                                    alt="Lamp"
+                                />
+                            </Col>
                         </li>
                         <li>
-                            Plant
-                            <img
-                                src={Plant}
-                                width="30"
-                                height="30"
-                                alt="Plant"
-                            />
+                            <Col>Plant</Col>
+                            <Col>
+                                <img
+                                    src={Plant}
+                                    width="30"
+                                    height="30"
+                                    alt="Plant"
+                                />
+                            </Col>
                         </li>
                         <li>
-                            Single Bed
-                            <img
-                                src={SingleBed}
-                                width="40"
-                                height="30"
-                                alt="Single Bed"
-                            />
+                            <Col>Single Bed</Col>
+                            <Col>
+                                <img
+                                    src={SingleBed}
+                                    width="40"
+                                    height="30"
+                                    alt="Single Bed"
+                                />
+                            </Col>
                         </li>
                         <li>
-                            Sink
-                            <img src={Sink} width="40" height="30" alt="Sink" />
+                            <Col>Sink</Col>
+                            <Col>
+                                <img
+                                    src={Sink}
+                                    width="40"
+                                    height="30"
+                                    alt="Sink"
+                                />
+                            </Col>
                         </li>
                         <li>
-                            Stove
-                            <img
-                                src={Stove}
-                                width="40"
-                                height="30"
-                                alt="Stove"
-                            />
+                            <Col>Stove</Col>
+                            <Col>
+                                <img
+                                    src={Stove}
+                                    width="40"
+                                    height="30"
+                                    alt="Stove"
+                                />
+                            </Col>
                         </li>
                         <li>
-                            Toilet
-                            <img
-                                src={Toilet}
-                                width="40"
-                                height="30"
-                                alt="Toilet"
-                            />
+                            <Col>Toilet</Col>
+                            <Col>
+                                <img
+                                    src={Toilet}
+                                    width="40"
+                                    height="30"
+                                    alt="Toilet"
+                                />
+                            </Col>
                         </li>
                         <li>
-                            Rectangle Table
-                            <img
-                                src={RectTable}
-                                width="40"
-                                height="30"
-                                alt="Rectangle Table"
-                            />
+                            <Col>Rectangle Table</Col>
+                            <Col>
+                                <img
+                                    src={RectTable}
+                                    width="40"
+                                    height="30"
+                                    alt="Rectangle Table"
+                                />
+                            </Col>
                         </li>
                         <li>
-                            Round Sink
-                            <img
-                                src={RoundSink}
-                                width="40"
-                                height="30"
-                                alt="Round Sink"
-                            />
+                            <Col>Round Sink</Col>
+                            <Col>
+                                <img
+                                    src={RoundSink}
+                                    width="40"
+                                    height="30"
+                                    alt="Round Sink"
+                                />
+                            </Col>
                         </li>
                         <li>
-                            Round Table
-                            <img
-                                src={RoundTable}
-                                width="40"
-                                height="40"
-                                alt="Round Table"
-                            />
+                            <Col>Round Table</Col>
+                            <Col>
+                                <img
+                                    src={RoundTable}
+                                    width="40"
+                                    height="40"
+                                    alt="Round Table"
+                                />
+                            </Col>
                         </li>
                         <li>
-                            Square Sink
-                            <img
-                                src={SquareSink}
-                                width="40"
-                                height="30"
-                                alt="Square Sink"
-                            />
+                            <Col>Square Sink</Col>
+                            <Col>
+                                <img
+                                    src={SquareSink}
+                                    width="40"
+                                    height="30"
+                                    alt="Square Sink"
+                                />
+                            </Col>
                         </li>
                         <li>
-                            Chair
-                            <img
-                                src={Chair}
-                                width="40"
-                                height="30"
-                                alt="Chair"
-                            />
+                            <Col>Chair</Col>
+                            <Col>
+                                <img
+                                    src={Chair}
+                                    width="40"
+                                    height="30"
+                                    alt="Chair"
+                                />
+                            </Col>
                         </li>
                     </ul>
                 )}
