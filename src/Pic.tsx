@@ -1,6 +1,12 @@
 import React, { Fragment } from "react";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "./constants";
+//import { Element } from "./interfaces/Element";
+
+// const elements: [Element] = [
+//     { icon: "./bosun_tally.jpg" },
+//     { icon: "bosun_tally.jpg" }
+// ];
 
 const Pic: React.FC = () => {
     const [{ isDragging }, drag] = useDrag({
@@ -22,7 +28,6 @@ const Pic: React.FC = () => {
                     textAlign: "center"
                 }}
             >
-                {/*♘*/}
                 <img
                     src={require("./bosun_tally.jpg")}
                     width="80"

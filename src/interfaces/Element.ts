@@ -1,28 +1,28 @@
 export interface Element {
-    /** Name of Element */
-    name: string;
+    // /** Name of Element */
+    // name: string;
 
-    /** Atomic Number  */
-    atomicNumber: number;
+    // /** Atomic Number  */
+    // atomicNumber: number;
 
-    /** Index in Element Array */
-    index: number;
+    // /** Index in Element Array */
+    // index: number;
 
-    /** Atomic Weight */
-    atomicWeight: number;
+    // /** Atomic Weight */
+    // atomicWeight: number;
 
-    /** Description */
-    description: string;
+    // /** Description */
+    // description: string;
 
-    /** Fun Fact */
-    funFact: string;
+    // /** Fun Fact */
+    // funFact: string;
 
-    /** Is noble gas */
-    isNobleGas: boolean;
+    // /** Is noble gas */
+    // isNobleGas: boolean;
 
     /** Icon */
     icon: string;
 
-    /** Element Shells */
-    valenceElectronsImg: string;
+    // /** Element Shells */
+    // valenceElectronsImg: string;
 }
