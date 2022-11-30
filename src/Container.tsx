@@ -1,4 +1,3 @@
-import update from "immutability-helper";
 import type { FC } from "react";
 import { useCallback, useState } from "react";
 import type { XYCoord } from "react-dnd";
