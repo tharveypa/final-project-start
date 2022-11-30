@@ -18,7 +18,7 @@ export interface ContainerProps {
 }
 
 export interface ContainerState {
-    fishes: { [key: string]: { top: number; left: number; title: string } };
+    fishes: { [key: string]: { top: number; left: number } };
 }
 
 export const Container: FC<ContainerProps> = ({
@@ -27,25 +27,46 @@ export const Container: FC<ContainerProps> = ({
     width,
     height
 }) => {
+    const tankWidth = document.getElementById("tank")?.offsetWidth;
+    const tankHeight = document.getElementById("tank")?.offsetHeight;
     const [fishes, setFishes] = useState<{
         [key: string]: {
             top: number;
             left: number;
         };
     }>({
-        a: { top: 20, left: 80 },
-        b: { top: 180, left: 20 }
+        a: {
+            top: tankHeight !== undefined ? tankHeight / 10 : 10,
+            left: tankWidth !== undefined ? tankWidth / 10 : 10
+        },
+        b: {
+            top: tankHeight !== undefined ? (tankHeight / 10) * 9 : 90,
+            left: tankWidth !== undefined ? (tankWidth / 10) * 9 : 90
+        }
     });
 
     const moveFish = useCallback(
         (id: string, left: number, top: number) => {
-            setFishes(
-                update(fishes, {
-                    [id]: {
-                        $merge: { left, top }
-                    }
-                })
-            );
+            const tankWidth = document.getElementById("tank")?.offsetWidth;
+            const tankHeight = document.getElementById("tank")?.offsetHeight;
+            if (tankWidth !== undefined && tankHeight !== undefined) {
+                const fishWidth = (height / 200) * tankWidth;
+                const fishHeight = (height / 200) * tankHeight;
+                if (
+                    left + fishWidth < tankWidth &&
+                    left > 0 &&
+                    top + fishHeight < tankHeight &&
+                    top > 0
+                ) {
+                    setFishes(
+                        update(fishes, {
+                            [id]: {
+                                $merge: { left, top }
+                            }
+                        })
+                    );
+                }
+            }
         },
         [fishes, setFishes]
     );
@@ -77,6 +98,7 @@ export const Container: FC<ContainerProps> = ({
     return (
         <div
             ref={drop}
+            id={"tank"}
             style={{
                 height: height.toString() + "%",
                 width: width.toString() + "%",

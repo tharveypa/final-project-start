@@ -16,15 +16,8 @@ observe((picPosition: [number, number]) => {
                     fontSize: "80px"
                 }}
             >
-                FISHDOM
+                FISHDOM: Shreeya, Daniel, Jason
             </h1>
-            <h2
-                style={{
-                    fontSize: "45px"
-                }}
-            >
-                Shreeya, Daniel, Jason
-            </h2>
             <div>
                 <Menu></Menu>
             </div>
