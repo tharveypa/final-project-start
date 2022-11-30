@@ -9,8 +9,8 @@
 }
 
 #room {
-    height: 36rem;
-    width: 57rem;
+    height: 432px;
+    width: 684px;
     border: 1px solid black;
     z-index: 10;
 }
@@ -31,6 +31,8 @@
     font-weight: bold;
     color: #ffffff;
     font-size: 20px;
+    margin-bottom: 4px;
+    margin-top: 14px;
 }
 
 .dimensions-label {

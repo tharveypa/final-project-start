@@ -11,7 +11,7 @@ interface FurnitureItemProps {
 }
 
 const FurnitureItem = ({ item, removeFromRoomBoard }: FurnitureItemProps) => {
-    const { id, name, left, top, height, width } = item;
+    const { id, name, left, top, height, width, color } = item;
     const [position, setPosition] = useState({ top: top, left: left });
     const [isHovered, setIsHovered] = useState(false);
 
@@ -30,7 +30,8 @@ const FurnitureItem = ({ item, removeFromRoomBoard }: FurnitureItemProps) => {
             left: id.includes("menu") ? position.left : left,
             top: id.includes("menu") ? position.top : top,
             height,
-            width
+            width,
+            color
         },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging()
@@ -41,13 +42,13 @@ const FurnitureItem = ({ item, removeFromRoomBoard }: FurnitureItemProps) => {
         position: id.includes("menu") ? "static" : "absolute",
         left,
         top,
-        height,
-        width,
-        "background-color": isDragging ? "blue" : "red",
+        height: id.includes("menu") ? height / 2 : height,
+        width: id.includes("menu") ? width / 2 : width,
+        backgroundColor: color,
         margin: 0
     };
 
-    const showRemoveIcon = isHovered && !id.includes("menu");
+    const showDimensionsAndIcon = isHovered && !id.includes("menu");
 
     return (
         <div
@@ -58,13 +59,17 @@ const FurnitureItem = ({ item, removeFromRoomBoard }: FurnitureItemProps) => {
             onMouseLeave={() => setIsHovered(false)}
         >
             <div style={{ width: "100%", height: "100%" }}>
-                {isHovered && (
+                {showDimensionsAndIcon && (
                     <>
-                        <p className="dimensions-label">H: {height}</p>
-                        <p className="dimensions-label">W: {width}</p>
+                        <p className="dimensions-label">
+                            H: {height / 3} inches
+                        </p>
+                        <p className="dimensions-label">
+                            W: {width / 3} inches
+                        </p>
                     </>
                 )}
-                {showRemoveIcon && (
+                {showDimensionsAndIcon && (
                     <p
                         id="remove-button"
                         onClick={() =>
