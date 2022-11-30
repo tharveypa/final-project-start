@@ -5,17 +5,27 @@ import Board from "./Board";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Col, Container, Row } from "react-bootstrap";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useEffect, useRef } from "react";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Vehicle } from "./vehicle";
+import App from "./App";
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+interface boxProps {
+    position: number;
+    setPosition: (newPositon: number) => void;
+}
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
         <React.StrictMode>
             <div className="App">
+                <App></App>
                 <header className="App-header">
                     Parking Management System
                 </header>
@@ -331,81 +341,6 @@ observe((picPosition: [number, number]) => {
         document.getElementById("root")
     );
 });
-
-function App() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const boxRef = useRef<HTMLDivElement>(null);
-
-    const isClicked = useRef<boolean>(false);
-
-    const coords = useRef<{
-        startX: number;
-        startY: number;
-        lastX: number;
-        lastY: number;
-    }>({
-        startX: 0,
-        startY: 0,
-        lastX: 0,
-        lastY: 0
-    });
-
-    useEffect(() => {
-        if (!boxRef.current || !containerRef.current) return;
-
-        const box = boxRef.current;
-        const container = containerRef.current;
-
-        const onMouseDown = (e: MouseEvent) => {
-            isClicked.current = true;
-            coords.current.startX = e.clientX;
-            coords.current.startY = e.clientY;
-        };
-
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const onMouseUp = (e: MouseEvent) => {
-            isClicked.current = false;
-            coords.current.lastX = box.offsetLeft;
-            coords.current.lastY = box.offsetTop;
-        };
-
-        const onMouseMove = (e: MouseEvent) => {
-            if (!isClicked.current) return;
-
-            const nextX =
-                e.clientX - coords.current.startX + coords.current.lastX;
-            const nextY =
-                e.clientY - coords.current.startY + coords.current.lastY;
-
-            box.style.top = `${nextY}px`;
-            box.style.left = `${nextX}px`;
-        };
-
-        box.addEventListener("mousedown", onMouseDown);
-        box.addEventListener("mouseup", onMouseUp);
-        container.addEventListener("mousemove", onMouseMove);
-        container.addEventListener("mouseleave", onMouseUp);
-
-        const cleanup = () => {
-            box.removeEventListener("mousedown", onMouseDown);
-            box.removeEventListener("mouseup", onMouseUp);
-            container.removeEventListener("mousemove", onMouseMove);
-            container.removeEventListener("mouseleave", onMouseUp);
-        };
-
-        return cleanup;
-    }, []);
-
-    return (
-        <main>
-            <div ref={containerRef} className="container">
-                <div ref={boxRef} className="box"></div>
-            </div>
-        </main>
-    );
-}
-
-export default App;
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
