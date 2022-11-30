@@ -1,5 +1,6 @@
+/* eslint-disable no-extra-parens */
 import React, { useEffect, useState } from "react";
-import { useDragLayer, useDrop } from "react-dnd";
+import { useDragLayer, useDrop, XYCoord } from "react-dnd";
 import { ItemTypes } from "../constants";
 import { noteData } from "../interfaces/noteData";
 import { Task } from "../interfaces/task";
@@ -44,9 +45,18 @@ export function CorkBoard({
     //this is the the state the keeps track of the position since use Drop is blithering useless
     const { currentOffset, grabOffset, sourceOffset } = useDragLayer(
         (monitor) => ({
-            currentOffset: monitor.getSourceClientOffset(),
-            grabOffset: monitor.getInitialClientOffset(),
-            sourceOffset: monitor.getInitialSourceClientOffset()
+            currentOffset:
+                monitor.getSourceClientOffset() === null
+                    ? { x: 0, y: 0 }
+                    : (monitor.getSourceClientOffset() as XYCoord),
+            grabOffset:
+                monitor.getInitialClientOffset() === null
+                    ? { x: 0, y: 0 }
+                    : (monitor.getInitialClientOffset() as XYCoord),
+            sourceOffset:
+                monitor.getInitialSourceClientOffset() === null
+                    ? { x: 0, y: 0 }
+                    : (monitor.getInitialSourceClientOffset() as XYCoord)
         })
     );
 
