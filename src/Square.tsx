@@ -16,9 +16,7 @@ const Square: React.FC<SquareProps> = (props) => {
                 width: "100%",
                 height: "100%"
             }}
-        >
-            {props.children}
-        </div>
+        ></div>
     );
 };
 

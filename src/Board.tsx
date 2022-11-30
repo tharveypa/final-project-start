@@ -16,9 +16,7 @@ const renderSquare = (i: number, j: number, picPosition: [number, number]) => {
 
     return (
         <div key={i} style={{ width: "25%", height: "25%" }}>
-            <BoardSquare x={x} y={y}>
-                {renderPiece(x, y, picPosition)}
-            </BoardSquare>
+            <BoardSquare x={x} y={y}></BoardSquare>
         </div>
     );
 };
