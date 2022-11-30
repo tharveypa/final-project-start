@@ -71,6 +71,9 @@ export const Container: FC<ContainerProps> = ({
         [fishes, setFishes]
     );
 
+    // put else on line 68 that says if fish is moved out of tank and into another tank,
+    //delete the fish in this tank and put it into the other tank
+
     const [, drop] = useDrop(
         () => ({
             accept: ItemTypes.FISH,
