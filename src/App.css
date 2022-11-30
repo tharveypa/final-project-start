@@ -61,6 +61,7 @@
 }
 
 .app-drop-down ul {
+    height: 500px;
     margin-left: 200px;
     padding: 10px;
     position: absolute;
@@ -73,6 +74,7 @@
     border-radius: 4px;
     box-shadow: 0 0 5px #d4d4d4;
     list-style: none;
+    overflow-y: auto;
 }
 
 .app-drop-down ul li {
