@@ -1,14 +1,18 @@
 import React from "react";
-import Pic from "./Pic";
+//import Pic from "./Pic";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import BoardSquare from "./BoardSquare";
+//import BoardSquare from "./BoardSquare";
+//import { Container } from "./Container";
+import Example from "./Example";
 
+/*
 const renderPiece = (x: number, y: number, [picX, picY]: [number, number]) => {
     if (x === picX && y === picY) {
         return <Pic />;
     }
 };
+*/
 
 const renderSquare = (
     i: number,
@@ -27,13 +31,11 @@ const renderSquare = (
                 height: height.toString() + "%"
             }}
         >
-            <BoardSquare x={x} y={y}>
-                {renderPiece(x, y, picPosition)}
-            </BoardSquare>
+            <Example x={x} y={y} width={width} height={height}></Example>
         </div>
     );
 };
-
+// <BoardSquare x={x} y={y} ></BoardSquare> instead of example
 type BoardProps = {
     picPosition: [number, number];
     numSquares: number;

@@ -1,10 +1,13 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
+import ReactDOM, { render } from "react-dom";
+//import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
 import NumSquareForm from "./NumSquareForm";
 import { Menu } from "./Menu";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import Example from "./Example";
 
 observe((picPosition: [number, number]) => {
     ReactDOM.render(
@@ -32,6 +35,8 @@ observe((picPosition: [number, number]) => {
             <div>
                 <NumSquareForm picPosition={picPosition}></NumSquareForm>
             </div>
+            <div className="App">
+		</div>
         </React.StrictMode>,
         document.getElementById("root")
     );
