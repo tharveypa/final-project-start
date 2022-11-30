@@ -1,7 +1,7 @@
 import React from "react";
 import Board from "./Board";
 import { CustomDragLayer } from "./CustomDragLayer";
-import Dndarr from "./components/dndarr";
+import { DndArray } from "./components/dndarr";
 //import { Dropdown } from "./components/dropdown";
 //import Dndarr from "./components/dndarr";
 import { FilterDropdown, SortDropdown } from "./components/dropdown";
@@ -34,9 +34,8 @@ function App(): JSX.Element {
                     {/*<Box name="couch" id={1}></Box>*/}
                 </div>
                 <h1> Harleen Chahal, Sean OSullivan, Matthew Hansen </h1>
-                <Dndarr picPosition={[0, 0]} />
-                <hr></hr>
-                <Row style={{ height: "700px" }}>
+                <DndArray />
+                {/*<Row style={{ height: "700px" }}>
                     <Col>
                         <FilterDropdown
                             filterOptions={["Kitchen", "Bathroom", "Bedroom"]}
@@ -49,8 +48,7 @@ function App(): JSX.Element {
                             ]}
                         ></SortDropdown>
                     </Col>
-                </Row>
-                <hr></hr>
+                        </Row>*/}
             </DndProvider>
         </div>
     );

@@ -6,9 +6,12 @@ import { DragTile } from "../Interfaces/DragTile";
 type BoxProps = { name: string; id: number };
 
 export function Box(bp: BoxProps): JSX.Element {
-    const [, drag] = useDrag({
+    const [{ offset }, drag] = useDrag({
         //type is note; Type determines where it can be dropped
-        item: { type: ItemTypes.DragTile, id: bp.id }
+        item: { type: ItemTypes.DragTile, id: bp.id },
+        collect: (monitor) => ({
+            offset: monitor.getClientOffset()
+        })
     });
     return (
         <div
@@ -16,8 +19,8 @@ export function Box(bp: BoxProps): JSX.Element {
             ref={drag}
             //style controls how the note looks
             style={{
-                height: "100%",
-                width: "100%",
+                height: "20%",
+                width: "20%",
                 backgroundColor: "yellow"
             }}
         >

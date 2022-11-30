@@ -5,7 +5,6 @@ import { CustomDragLayer } from "./CustomDragLayer";
 import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
-import Dndarr from "./components/dndarr";
 //import { Dropdown } from "./components/dropdown";
 //import Dndarr from "./components/dndarr";
 import { FilterDropdown, SortDropdown } from "./components/dropdown";

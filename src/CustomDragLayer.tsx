@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useDrop, XYCoord } from "react-dnd";
+import { useDragLayer, useDrop, XYCoord } from "react-dnd";
 import React, { useState } from "react";
 import { DragTile } from "./Interfaces/DragTile";
 import { Box } from "./components/Box";
@@ -29,24 +29,44 @@ export function CustomDragLayer(): JSX.Element {
             addDragTile({
                 type: "string",
                 design: "string",
-                pos: [notnull(offset).x, notnull(offset).y],
+                pos: [
+                    notnull(currentOffset).x -
+                        800 +
+                        (notnull(grabOffset).x - notnull(sourceOffset).x),
+                    notnull(currentOffset).y -
+                        50 +
+                        (notnull(grabOffset).y - notnull(sourceOffset).y)
+                ],
                 graphic: "string", //file name
-                name: "string",
+                name: "test",
                 size: [50, 75],
-                id: 0,
+                id: 1,
                 hasFurniture: false,
                 hasPainting: false,
                 placeOnWall: false,
                 isFill: false
             });
+            //console.log("x: " + notnull(currentOffset).x);
+            //console.log("x real: " + BoxArray[size - 1].pos[0]);
+            //console.log("y: " + notnull(currentOffset).y);
+            //console.log("y real: " + BoxArray[size - 1].pos[1]);
         }
     });
-    const [itemArray, setItemArray] = useState<DragTile[]>([dragt]);
+    const { currentOffset, grabOffset, sourceOffset } = useDragLayer(
+        (monitor) => ({
+            currentOffset: monitor.getSourceClientOffset(),
+            grabOffset: monitor.getInitialClientOffset(),
+            sourceOffset: monitor.getInitialSourceClientOffset()
+        })
+    );
+    const [BoxArray, setBoxArray] = useState<DragTile[]>([dragt]);
+    const [size, setSize] = useState<number>(BoxArray.length);
     function addDragTile(dt: DragTile) {
-        setItemArray([...itemArray, dt]);
+        setBoxArray([...BoxArray, { ...dt, id: size }]);
+        setSize(size + 1);
     }
-    function notnull(x: null | XYCoord) {
-        return x === null ? { x: 0, y: 0 } : x;
+    function notnull(p: null | XYCoord) {
+        return p === null ? { x: 0, y: 0 } : p;
     }
     return (
         <div
@@ -54,12 +74,11 @@ export function CustomDragLayer(): JSX.Element {
             style={{
                 height: "100%",
                 width: "100%",
-                backgroundColor: "#7E481C",
+                backgroundColor: "#ff0000",
                 position: "relative"
             }}
         >
-            {/* This is the part that puts every note in the list of notes onto the corkboard*/}
-            {itemArray.map((dt: DragTile) => {
+            {BoxArray.map((dt: DragTile) => {
                 return (
                     <div
                         key={dt.id}
@@ -68,8 +87,8 @@ export function CustomDragLayer(): JSX.Element {
                             width: dt.size[0] + "px",
                             backgroundColor: "yellow",
                             position: "absolute",
-                            top: dt.pos[1] + "%",
-                            left: dt.pos[0] + "%",
+                            top: dt.pos[1] + "px",
+                            left: dt.pos[0] + "px",
                             zIndex: "1%"
                         }}
                     >
