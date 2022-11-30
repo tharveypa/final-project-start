@@ -3,14 +3,14 @@ import { useDrop } from "react-dnd";
 import { ItemTypes } from "./constants";
 import { canMovePic, movePic } from "./game";
 import Overlay from "./Overlay";
-import Square from "./Square";
+import Rectangle from "./Rectangle";
 
-type BoardSquareProps = {
+type BankRectangleProps = {
     x: number;
     y: number;
 };
 
-const BoardSquare: React.FC<BoardSquareProps> = (props) => {
+const BankRectangle: React.FC<BankRectangleProps> = (props) => {
     const { x, y, children } = props;
     const black = false; /*(x + y) % 2 === 1;*/
     const [{ isOver, canDrop }, drop] = useDrop({
@@ -28,7 +28,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
             ref={drop}
             style={{ position: "relative", width: "100%", height: "100%" }}
         >
-            <Square black={black}>{children}</Square>
+            <Rectangle black={black}>{children}</Rectangle>
             {isOver && !canDrop && <Overlay color="red" />}
             {!isOver && canDrop && <Overlay color="yellow" />}
             {isOver && canDrop && <Overlay color="green" />}
@@ -36,4 +36,4 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
     );
 };
 
-export default BoardSquare;
+export default BankRectangle;
