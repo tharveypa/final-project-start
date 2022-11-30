@@ -48,6 +48,7 @@ const Pimp = () => {
             <p>
                 Pimp Mode Options:
                 {pimp.map(
+                    // eslint-disable-next-line no-extra-parens
                     (t: string): JSX.Element => (
                         <div key={t.toString()}>
                             <img src={t} alt={t.toString()} />
