@@ -35,8 +35,11 @@ export function Menu() {
         <div
             className="bg-grey border m-2 p-2"
             style={{
-                height: "100%",
-                width: "25%"
+                position: "fixed",
+                bottom: "9.1%",
+                left: "0.25%",
+                height: "80%",
+                width: "26%"
             }}
         >
             <Container>
@@ -81,8 +84,10 @@ export function Menu() {
             <div
                 className="table-wrapper-scroll-y my-custom-scrollbar"
                 style={{
-                    position: "relative",
-                    height: "200px",
+                    position: "fixed",
+                    height: "80%",
+                    width: "25%",
+                    left: "1%",
                     overflow: "auto"
                 }}
             >

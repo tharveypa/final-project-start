@@ -16,9 +16,9 @@ export function NumSquareForm({
                 <Form.Group
                     controlId="numSquareForm"
                     style={{
-                        position: "absolute",
+                        position: "fixed",
                         width: "130px",
-                        right: "5%",
+                        right: "2%",
                         bottom: "3%"
                     }}
                 >
@@ -34,9 +34,9 @@ export function NumSquareForm({
             </div>
             <div
                 style={{
-                    position: "absolute",
-                    top: "10%",
-                    left: "25%",
+                    position: "fixed",
+                    bottom: "10%",
+                    right: "2%",
                     width: "70%",
                     height: "80%",
                     border: "2px solid black",
