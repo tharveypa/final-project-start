@@ -46,6 +46,13 @@
     justify-content: center;
     position: relative;
 }
+.container {
+    position: relative;
+    border: 1px solid black;
+    height: 400px;
+    width: 800px;
+    overflow: hidden;
+}
 
 .app-drop-down button {
     margin-left: 200px;
