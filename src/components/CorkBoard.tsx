@@ -11,6 +11,16 @@ export function CorkBoard({
 }: {
     startingNotesAndPositionInfo: noteData[];
 }): JSX.Element {
+    //state for holding our note and position infos
+    const [notesAndPositionInfo, setNotesAndPositionInfo] = useState<
+        noteData[]
+    >(startingNotesAndPositionInfo);
+
+    //maintains the id of noteDatas as they get added to the list of notesAndPositionInfo
+    const [currentId, setCurrentId] = useState<number>(
+        notesAndPositionInfo.length
+    );
+
     //Handles the dropping of things onto the corkboard
     // NOTE FOR ME the fields 50, 75, blah blah blah, will need to be passed from the drag (last position, etc.) No grids like chess
     const [{ item }, drop] = useDrop({
@@ -21,11 +31,11 @@ export function CorkBoard({
         drop: () => {
             addNoteData(
                 {
-                    title: "Test",
-                    description: "TEST",
-                    priority: "low",
-                    thumbColor: "pink",
-                    assigned: ["someone"]
+                    title: item.task.title,
+                    description: item.task.description,
+                    priority: item.task.priority,
+                    thumbColor: item.task.thumbColor,
+                    assigned: item.task.assigned
                 },
                 50,
                 75,
@@ -60,10 +70,11 @@ export function CorkBoard({
         })
     );
 
-    // variable to access scroll offset (pain & agony)
+    // this is the state that keeps track of the scroll positions
     const [scrollPositionY, setScrollPositionY] = useState(0);
     const [scrollPositionX, setScrollYPositionX] = useState(0);
 
+    //this is a function that updates the scroll positions state
     const handleScroll = () => {
         const positionY = window.pageYOffset;
         setScrollPositionY(positionY);
@@ -71,6 +82,7 @@ export function CorkBoard({
         setScrollYPositionX(positionX);
     };
 
+    //this updates the scroll positions when the page is scrolled
     useEffect(() => {
         window.addEventListener("scroll", handleScroll, { passive: true });
 
@@ -87,21 +99,11 @@ export function CorkBoard({
 
     
     */
-
-    //state for holding our note and position infos
-    const [notesAndPositionInfo, setNotesAndPositionInfo] = useState<
-        noteData[]
-    >(startingNotesAndPositionInfo);
-
     //state that will be needed for when the board scales
     const [boardTop, setBoardTop] = useState<number>(50);
     const [boardLeft, setBoardLeft] = useState<number>(700);
 
     ///*
-    //maintains the id of noteDatas as they get added to the list of notesAndPositionInfo
-    const [currentId, setCurrentId] = useState<number>(
-        notesAndPositionInfo.length
-    );
 
     //*/
     //edits a note and position data associated with that note based on the parameters passed in
