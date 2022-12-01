@@ -52,8 +52,8 @@ export const Fish: FC<FishProps> = ({
                 ...style,
                 left,
                 top,
-                width: (height / 2).toString() + "%",
-                height: (height / 2).toString() + "%"
+                width: height.toString() + "%",
+                height: height.toString() + "%"
             }}
             data-testid="fish"
         >

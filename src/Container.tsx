@@ -27,31 +27,40 @@ export const Container: FC<ContainerProps> = ({
     width,
     height
 }) => {
-    const tankWidth = document.getElementById("tank")?.offsetWidth;
-    const tankHeight = document.getElementById("tank")?.offsetHeight;
     const [fishes, setFishes] = useState<{
         [key: string]: {
             top: number;
             left: number;
         };
-    }>({
-        a: {
-            top: tankHeight !== undefined ? tankHeight / 10 : 10,
-            left: tankWidth !== undefined ? tankWidth / 10 : 10
-        },
-        b: {
-            top: tankHeight !== undefined ? (tankHeight / 10) * 9 : 90,
-            left: tankWidth !== undefined ? (tankWidth / 10) * 9 : 90
+    }>({});
+
+    const addFish = () => {
+        console.log("inside");
+        const tankWidth = document.getElementById("tank")?.offsetWidth;
+        const tankHeight = document.getElementById("tank")?.offsetHeight;
+        const numFish = Object.keys(fishes).length;
+        if (tankHeight !== undefined && tankWidth !== undefined) {
+            const fishWidth = (height / 100) * tankWidth;
+            const fishHeight = (height / 100) * tankHeight;
+            const top = Math.floor(Math.random() * (tankHeight - fishHeight));
+            const left = Math.floor(Math.random() * (tankWidth - fishWidth));
+            const idVal = (numFish + 1).toString();
+            const newFish = { left: left, top: top };
+            setFishes(
+                update(fishes, { $set: { ...fishes, [idVal]: newFish } })
+            );
+        } else {
+            console.log("undefined");
         }
-    });
+    };
 
     const moveFish = useCallback(
-        (id: string, left: number, top: number) => {
+        (id: number, left: number, top: number) => {
             const tankWidth = document.getElementById("tank")?.offsetWidth;
             const tankHeight = document.getElementById("tank")?.offsetHeight;
             if (tankWidth !== undefined && tankHeight !== undefined) {
-                const fishWidth = (height / 200) * tankWidth;
-                const fishHeight = (height / 200) * tankHeight;
+                const fishWidth = (height / 100) * tankWidth;
+                const fishHeight = (height / 100) * tankHeight;
                 if (
                     left + fishWidth < tankWidth &&
                     left > 0 &&
@@ -108,6 +117,7 @@ export const Container: FC<ContainerProps> = ({
                 border: "1px solid black",
                 position: "absolute"
             }}
+            onClick={addFish}
         >
             <img
                 src={require("./images/" + tankPic)}
@@ -124,7 +134,7 @@ export const Container: FC<ContainerProps> = ({
                 return (
                     <Fish
                         key={key}
-                        id={key}
+                        id={parseInt(key)}
                         left={left}
                         top={top}
                         hideSourceOnDrag={hideSourceOnDrag}
