@@ -1,0 +1,7 @@
+.scroll-bar {
+    height: 500px;
+    width: 250px;
+    border: 1px solid grey;
+    font-family: "GestaRegular", Arial, Helvetica, sans-serif;
+    overflow: auto;
+}
