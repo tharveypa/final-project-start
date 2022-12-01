@@ -83,6 +83,17 @@
     cursor: pointer;
     transition: background-color ease 0.2s;
 }
+
+.app-drop-down ul li.Title {
+    background-color: white;
+    padding: 5px 15px;
+}
+
+.app-drop-down ul li.Title:hover {
+    background-color: white;
+    color: black;
+}
+
 .app-drop-down ul li:hover {
     background-color: lightgrey;
     color: black;
