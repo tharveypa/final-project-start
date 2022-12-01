@@ -17,7 +17,6 @@ The objects being moved should have attributes:
     		 app *is* meaningfully filterable. Ask yourself *why* the user wants to filter)
 
 Required Features:
-View previous 2d views of object arrangements and edit
 Top down view by default
 2d space can change virtual size (e.g. it can be 5 feet or 50 feet; both use screen appropriately)
 Filter objects to facilitate customer process
@@ -29,6 +28,7 @@ Object images scale as 2d space changes virtual size.
 30 or more objects with varying attributes in selection area
 
 Optional features:
+View previous 2d views of object arrangements and edit
 Multiple characteristics can be specified in increase/relax filter
 Add new objects during run
 Side view or orthographic view
