@@ -34,6 +34,7 @@ export const Container: FC<ContainerProps> = ({ hideSourceOnDrag }) => {
     }>({
         a: { top: 20, left: 80, title: "Drag me around" },
         b: { top: 180, left: 20, title: "Drag me too" }
+        c: { top: 120, left: 20, title: "car" }
     });
 
     const moveBox = useCallback(
