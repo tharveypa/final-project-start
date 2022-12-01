@@ -7,7 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 
 observe((picPosition: [number, number]) => {
-    const arr: string[] = ["goofy", "AAh"];
+    //const arr: string[] = ["goofy", "AAh"];
     ReactDOM.render(
         <React.StrictMode>
             <div
@@ -18,8 +18,8 @@ observe((picPosition: [number, number]) => {
                 }}
             >
                 <App />
-                x={picPosition[0]}
-                y={picPosition[1]}
+                {/* x={picPosition[0]}
+                y={picPosition[1]} */}
                 <Board
                     pics={[
                         "Wipe Car",

@@ -32,7 +32,8 @@
 //         document.getElementById("root")
 //     );
 // });
-import React, { useRef } from "react";
+//bruh
+import React from "react";
 import Towel from "./images/towel.png";
 import Shine from "./images/shine.png";
 import Pump from "./images/pump.png";
@@ -42,13 +43,13 @@ const pimp = [Towel, Shine, Pump, GlassRepair];
 const str = ["Wipe Car", "Shine Car", "Fill Tires", "Repair Glass"];
 
 const Pimp = () => {
-    const boxRef = useRef<HTMLDivElement>(null);
     return (
         <div className="toolncar">
             <h1>Pimp Mode</h1>
             <p>
                 Pimp Mode Options:
                 {pimp.map(
+                    // eslint-disable-next-line no-extra-parens
                     (t: string): JSX.Element => (
                         <div key={t.toString()}>
                             <img src={t} alt={t.toString()} />

@@ -28,12 +28,12 @@ const Pic: React.FC<PicProps> = (props) => {
                 }}
             >
                 {/*♘*/}
-                <header>{pic}</header>
+                {/* <header>{pic}</header>
                 <img
                     src={require("./bosun_tally.jpg")}
                     width="80"
                     height="80"
-                />
+                /> */}
             </div>
         </Fragment>
     );
