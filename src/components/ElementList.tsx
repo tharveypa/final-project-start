@@ -3,8 +3,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
 import { Element } from "../interfaces/Element";
-import { elements } from "../elementList";
-import Object from "./Object";
+//import { elements } from "../elementList";
+//import Object from "./Object";
 
 import "./ElementList.css";
 import Modal from "./Modal";

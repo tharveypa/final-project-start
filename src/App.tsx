@@ -3,7 +3,7 @@ import React from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import ElementList from "./components/ElementList";
-import Block from "./components/Block";
+import { Example } from "./components/Example";
 
 import "./App.css";
 function App(): JSX.Element {
@@ -12,10 +12,10 @@ function App(): JSX.Element {
             <div className="App">
                 <div className="row">
                     <div className="column-game">
-                        <ElementList></ElementList>
+                        {/* <ElementList></ElementList> */}
                     </div>
                     <div className="column-game">
-                        <Block></Block>
+                        <Example></Example>
                     </div>
                 </div>
             </div>
