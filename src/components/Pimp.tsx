@@ -32,7 +32,7 @@
 //         document.getElementById("root")
 //     );
 // });
-import React from "react";
+import React, { useRef } from "react";
 import Towel from "./images/towel.png";
 import Shine from "./images/shine.png";
 import Pump from "./images/pump.png";
@@ -42,6 +42,7 @@ const pimp = [Towel, Shine, Pump, GlassRepair];
 const str = ["Wipe Car", "Shine Car", "Fill Tires", "Repair Glass"];
 
 const Pimp = () => {
+    const boxRef = useRef<HTMLDivElement>(null);
     return (
         <div className="toolncar">
             <h1>Pimp Mode</h1>
