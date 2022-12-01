@@ -45,6 +45,7 @@ import RoundTableB from "../src/furniture/round_table_B.png";
 import RoundTableG from "../src/furniture/round_table_G.png";
 import SquareSink from "../src/furniture/square_sink.png";
 import SquareSinkB from "../src/furniture/square_sink_B.png";
+import Floor1 from "../src/furniture/room_floor_1.png";
 
 function App(): JSX.Element {
     const [expanded, setExpanded] = useState<boolean>(false);
@@ -226,6 +227,10 @@ function App(): JSX.Element {
                     </ul>
                 )}
             </div>
+            <div
+                style={{ backgroundImage: `url(${Floor1})` }}
+                className="container"
+            ></div>
         </div>
     );
 }
