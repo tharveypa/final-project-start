@@ -1,0 +1,10 @@
+.App {
+    background-color: rgb(227, 223, 219);
+    height: 100vh;
+}
+
+.column-game {
+    float: left;
+    width: auto;
+    border-style: dotted;
+}
