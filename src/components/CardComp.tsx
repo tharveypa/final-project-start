@@ -19,7 +19,7 @@ function CardComp({
 }): JSX.Element {
     const [, drag] = useDrag({
         //type is Card; Type determines where it can be dropped
-        item: { type: ItemTypes.Card, id: id }
+        item: { type: ItemTypes.Card, id: id, shouldAdd: true, task: task }
     });
 
     const assi = task.assigned.join(", ");
@@ -27,7 +27,11 @@ function CardComp({
     return (
         <div>
             <Card
-                style={{ width: "12rem", backgroundColor: task.thumbColor }}
+                style={{
+                    width: "200px",
+                    height: "100px",
+                    backgroundColor: task.thumbColor
+                }}
                 //ref makes the dragging of the Card Work
                 ref={drag}
             >

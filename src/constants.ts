@@ -1,5 +1,4 @@
 export const ItemTypes = {
     PIC: "pic",
-    Card: "card",
-    Note: "note"
+    Card: "card"
 };

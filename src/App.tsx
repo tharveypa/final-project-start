@@ -4,7 +4,6 @@ import { CardList } from "./components/CardList";
 import { CorkBoard } from "./components/CorkBoard";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { DeleteNote } from "./components/DeleteNote";
 
 const sampleCorkBoard = [
     {
@@ -63,7 +62,6 @@ function App(): JSX.Element {
                         <CorkBoard
                             startingNotesAndPositionInfo={sampleCorkBoard}
                         ></CorkBoard>
-                        <DeleteNote></DeleteNote>
                     </div>
                 </div>
             </DndProvider>

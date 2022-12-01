@@ -7,7 +7,7 @@ export function Note({ task, id }: { task: Task; id: number }): JSX.Element {
     //handles the dragging of the Note
     const [, drag] = useDrag({
         //type is note; Type determines where it can be dropped
-        item: { type: ItemTypes.Note, id: id }
+        item: { type: ItemTypes.Card, id: id, shouldAdd: false, task: task }
     });
 
     return (

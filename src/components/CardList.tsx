@@ -236,7 +236,7 @@ export function CardList(): JSX.Element {
             <Button onClick={resetList}>Clear the list</Button>
             <Button onClick={() => sortIt(true)}>Sort by Priority</Button>
             <Button onClick={() => sortIt(false)}>Sort by Color</Button>
-            <div id="taskList">
+            <div id="CardList">
                 {displayList.map((cardData: cardData) => {
                     return (
                         <CardComp
