@@ -1,19 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Element } from "../interfaces/element";
 import { elements } from "../elementList";
-import Prop from "./Object";
+import Object from "./Object";
 
 import "./ElementList.css";
+import Modal from "./Modal";
 
-function PropList() {
+function ElementList() {
     const [proplist, setProplist] = useState<Element[]>(elements);
-
-    function myFunction(d: Element) {
-        console.log(d.name);
-    }
 
     function generateList(prop: Element[]) {
         console.log(prop, "Generated");
@@ -21,10 +18,10 @@ function PropList() {
         return prop.map((prop) => (
             <div key={prop.name} className="propcontainer">
                 <li>
-                    {prop.name}{" "}
-                    <Button onClick={() => myFunction(prop)}></Button>
+                    {prop.name + "             "}
+                    <Modal temp={prop}></Modal>
                 </li>
-                <Prop element={prop} />
+                <Object element={prop} />
             </div>
         ));
     }
@@ -104,4 +101,4 @@ function PropList() {
     );
 }
 
-export default PropList;
+export default ElementList;

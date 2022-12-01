@@ -7,7 +7,7 @@ import { Element } from "../interfaces/element";
 
 import "./Object.css";
 
-function Prop({ element }: { element: Element }): JSX.Element {
+function Object({ element }: { element: Element }): JSX.Element {
     const [{ isDragging }, drag] = useDrag({
         item: { type: ItemTypes.PROP, id: element },
         collect: (monitor) => ({
@@ -33,4 +33,4 @@ function Prop({ element }: { element: Element }): JSX.Element {
     );
 }
 
-export default Prop;
+export default Object;
