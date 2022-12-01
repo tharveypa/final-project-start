@@ -185,20 +185,6 @@ export function CorkBoard({
         ]);
     }
 
-    /*
-    //deletes a note and position data associated with that note based on the id
-    function deleteNoteAndPosition(noteId: number) {
-        console.log(notesAndPositionInfo);
-        console.log("ID Removed: " + noteId + "\n");
-        setNotesAndPositionInfo(
-            notesAndPositionInfo.filter(
-                (noteData: noteData): boolean => noteId !== noteData.id
-            )
-        );
-        console.log(notesAndPositionInfo);
-    }
-    */
-
     return (
         <div
             ref={drop}
