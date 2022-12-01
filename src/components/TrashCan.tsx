@@ -1,9 +1,25 @@
 import React from "react";
+import { useDrop } from "react-dnd";
+import { ItemTypes } from "../constants";
+import { noteData } from "../interfaces/noteData";
+import trash from "../trash.png";
 
-export function TrashCan(): JSX.Element {
+type deleteCardProps = {
+    deleteNote: (id: number) => void;
+};
+
+const DeleteItem: React.FC<deleteCardProps> = (props) => {
+    //Handles the dropping of things onto the trash can
+    const [, drop] = useDrop({
+        accept: [ItemTypes.Card],
+        drop: (item: { type: string; note: noteData }) =>
+            props.deleteNote(item.note.id)
+    });
     return (
-        <div>
-            <img src="Trash.png"></img>
+        <div ref={drop}>
+            <img src={trash}></img>
         </div>
     );
-}
+};
+
+export default DeleteItem;
