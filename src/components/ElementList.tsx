@@ -1,10 +1,7 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
 import { Element } from "../interfaces/Element";
-//import { elements } from "../elementList";
-//import Object from "./Object";
+import { elements } from "../elementList";
+import Object from "./Object";
 
 import "./ElementList.css";
 import Modal from "./Modal";
@@ -45,7 +42,7 @@ function ElementList() {
 
     return (
         <div>
-            <strong> Element List </strong>
+            <strong> Element List</strong>
             <button onClick={() => Alphabetical()}></button>
             <button onClick={() => ByAtomicNum()}></button>
             <button onClick={() => Reset()}></button>
