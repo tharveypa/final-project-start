@@ -1,6 +1,9 @@
 .scroll-bar {
-    height: 500px;
-    width: 250px;
+    margin-left: 20px;
+    padding-left: 20px;
+    background-color: aliceblue;
+    height: 80vh;
+    width: 150px;
     border: 1px solid grey;
     font-family: "GestaRegular", Arial, Helvetica, sans-serif;
     overflow: auto;

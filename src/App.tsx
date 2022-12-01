@@ -2,12 +2,14 @@
 import React from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import ElementList from "./components/ElementList";
 
+import "./App.css";
 function App(): JSX.Element {
     return (
         <DndProvider backend={HTML5Backend}>
             <div className="App">
-                <header> dafdd</header>
+                <ElementList></ElementList>
             </div>
         </DndProvider>
     );
