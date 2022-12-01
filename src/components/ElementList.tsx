@@ -12,7 +12,14 @@ function ElementList() {
     const [proplist, setProplist] = useState<Element[]>(elements);
 
     function Alphabetical() {
-        setProplist(elements);
+        console.log("hi");
+        const x = proplist.map((element: Element): Element => element);
+        setProplist(x.sort((a, b) => a.name.localeCompare(b.name)));
+    }
+
+    function ByAtomicNum() {
+        const x = proplist.map((element: Element): Element => element);
+        setProplist(x.sort((a, b) => a.atomicNum - b.atomicNum));
     }
 
     function generateList(prop: Element[]) {
@@ -34,6 +41,7 @@ function ElementList() {
             <strong>Element List</strong>
             <ul className="scroll-bar">{generateList(proplist)}</ul>
             <button onClick={() => Alphabetical()}></button>
+            <button onClick={() => ByAtomicNum()}></button>
         </div>
     );
 }

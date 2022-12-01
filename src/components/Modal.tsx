@@ -14,9 +14,7 @@ function Moddal({ temp }: { temp: Element }) {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                ?
-            </Button>
+            <Button className="HelpButton" onClick={handleShow}></Button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -31,7 +29,7 @@ function Moddal({ temp }: { temp: Element }) {
                             <h1> {temp.name} </h1>
                             <div>
                                 <strong>Chemical Formula: </strong>
-                                {temp.chemFormula}{" "}
+                                {temp.chemAbr}{" "}
                             </div>
                         </div>
                     </div>
