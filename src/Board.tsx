@@ -8,12 +8,7 @@ const renderPiece = (x: number, y: number, [picX, picY]: [number, number]) => {
     if (x === picX && y === picY) {
         return (
             <div>
-                <div>
-                    <Pic></Pic>
-                </div>
-                <div>
-                    <Pic></Pic>
-                </div>
+                <Pic></Pic>
             </div>
         );
     }
