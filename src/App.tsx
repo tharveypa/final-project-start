@@ -3,7 +3,6 @@ import React from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import ElementList from "./components/ElementList";
-import Modal from "./components/Modal";
 import Block from "./components/Block";
 
 import "./App.css";
