@@ -7,7 +7,7 @@ import Prop from "./Object";
 import "./Block.css";
 
 function Block() {
-    return <div className="temp">daf</div>;
+    return <div className="temp"></div>;
 }
 
 export default Block;

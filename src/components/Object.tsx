@@ -26,7 +26,7 @@ function Object({ element }: { element: Element }): JSX.Element {
                 ref={drag}
                 src={element.image}
                 alt={"dfa"}
-                style={{ border: isDragging ? "10px solid pink" : "0px" }}
+                style={{ border: isDragging ? "10px solid black" : "0px" }}
                 onClick={() => setDescriptionVisible(!descriptionVisible)}
             />
         </div>
