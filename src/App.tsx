@@ -12,7 +12,7 @@ function App(): JSX.Element {
             <div className="App">
                 <div className="row">
                     <div className="column-game">
-                        {/* <ElementList></ElementList> */}
+                        <ElementList></ElementList>
                     </div>
                     <div className="column-game">
                         <Example></Example>
