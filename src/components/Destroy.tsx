@@ -13,6 +13,7 @@ const Destroy = () => {
         <div className="toolncar">
             <h1>Destroy Mode</h1>
             <p>
+                {/*
                 Destroy Mode Options:
                 <div>
                     <img src={Dirt} alt="dirt" />
