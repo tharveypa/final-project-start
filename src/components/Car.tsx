@@ -1,6 +1,15 @@
 import RedCar from "./images/redcar.png";
+import RedCarLeftTire from "./images/redcar left tire.png";
+import RedCarRightTire from "./images/redcar right tire.png";
+import RedCarBothTires from "./images/redcar both tires.png";
 import BlueCar from "./images/bluecar.png";
+import BlueCarLeftTire from "./images/bluecar left tire.png";
+import BlueCarRightTire from "./images/bluecar right tire.png";
+import BlueCarBothTires from "./images/bluecar both tires.png";
 import GreenCar from "./images/greencar.png";
+import GreenCarLeftTire from "./images/greencar left tire.png";
+import GreenCarRightTire from "./images/greencar right tire.png";
+import GreenCarBothTires from "./images/greencar both tires.png";
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "react-bootstrap";
 import Street from "./images/street.jpg";
@@ -11,13 +20,19 @@ import Dirt from "./images/dirt.png";
 type CarProps = {
     color: number;
     clean: boolean;
-    tirefill: boolean;
+    tirefill: number;
     window: boolean;
 };
 
 const Car: React.FC<CarProps> = (props) => {
     const backgrounds = [Street, City, Forest];
+    const cars = [
+        [RedCar, RedCarLeftTire, RedCarRightTire, RedCarBothTires],
+        [GreenCar, GreenCarLeftTire, GreenCarRightTire, GreenCarBothTires],
+        [BlueCar, BlueCarLeftTire, BlueCarRightTire, BlueCarBothTires]
+    ];
     const [colorNum, setColorNum] = useState(0);
+    const [tireNum, setTireNum] = useState(0);
     const [backgroundIndex, setBackgroundIndex] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
     const boxRef = useRef<HTMLDivElement>(null);
@@ -93,9 +108,7 @@ const Car: React.FC<CarProps> = (props) => {
                 }}
             >
                 <div ref={containerRef} className="container">
-                    {colorNum == 0 && <img src={RedCar} alt="red car" />}
-                    {colorNum == 1 && <img src={BlueCar} alt="blue car" />}
-                    {colorNum == 2 && <img src={GreenCar} alt="green car" />}
+                    <img src={cars[colorNum][tireNum]} alt="car model" />
 
                     <div ref={boxRef} className="box">
                         <img src={Dirt} alt="dirt" />
@@ -105,6 +118,9 @@ const Car: React.FC<CarProps> = (props) => {
             <div>
                 <Button onClick={() => setColorNum((colorNum + 1) % 3)}>
                     Change Color (Red/Blue/Green)
+                </Button>
+                <Button onClick={() => setTireNum((tireNum + 1) % 4)}>
+                    Tire test (Left/Right/Both)
                 </Button>
                 <Button
                     onClick={() =>
