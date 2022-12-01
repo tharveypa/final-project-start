@@ -51,7 +51,13 @@
     border: 1px solid black;
     height: 400px;
     width: 800px;
+    top: 100px;
+    left: 100px;
     overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    background-image: url("../src/furniture/room_floor_1.png");
 }
 
 .app-drop-down button {
@@ -109,4 +115,74 @@
 .app-drop-down button:hover {
     background-color: darkslategrey;
     color: white;
+}
+
+body {
+    font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+    margin: 2em;
+}
+
+.box {
+    border: 0px solid #666;
+    background-image: url("../src/furniture/bathtub.png");
+    background-size: cover;
+    border-radius: 0em;
+    padding: 0px;
+    cursor: move;
+    position: absolute;
+    z-index: 1;
+}
+
+.box .bathtub {
+    background-image: url("../src/furniture/bathtub.png");
+    background-size: cover;
+    width: 100px;
+    height: 50px;
+    top: 200px;
+    cursor: move;
+    position: absolute;
+    z-index: 1;
+}
+
+.box .chair {
+    background-image: url("../src/furniture/chair.png");
+    background-size: cover;
+    width: 40px;
+    height: 30px;
+    cursor: move;
+    position: absolute;
+    top: 300px;
+    z-index: 1;
+}
+
+.box.over {
+    border: 3px dotted #666;
+}
+
+.box .rotate {
+    transform: rotate(90deg);
+}
+
+[draggable] {
+    user-select: none;
+}
+
+.bathtub {
+    background-image: url("../src/furniture/bathtub.png");
+    background-size: cover;
+    width: 100px;
+    height: 50px;
+    top: 200px;
+    cursor: move;
+    position: absolute;
+    z-index: 1;
+}
+
+.chair {
+    background-image: url("../src/furniture/chair.png");
+    background-size: cover;
+    width: 100px;
+    height: 50px;
+    cursor: move;
+    position: absolute;
 }

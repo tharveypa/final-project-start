@@ -1,7 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import { Style } from "util";
 import { Button } from "react-bootstrap";
 import "./App.css";
-import Bathtub from "../src/furniture/bathtub.png";
+import Moveable from "moveable";
+import bathtub from "../src/furniture/bathtub.png";
+import box from "../src/furniture/box.png";
 import CoffeeTable from "../src/furniture/coffee_table.png";
 import CoffeeTableB from "../src/furniture/coffee_table_B.png";
 import CoffeeTableG from "../src/furniture/coffee_table_G.png";
@@ -61,410 +64,75 @@ function App(): JSX.Element {
     };
 
     window.addEventListener("click", handleClickOutside);
+
+    const containerRef = useRef<HTMLDivElement>(null);
+    const boxRef = useRef<HTMLDivElement>(null);
+
+    const isClicked = useRef<boolean>(false);
+
+    const coords = useRef<{
+        startX: number;
+        startY: number;
+        lastX: number;
+        lastY: number;
+    }>({
+        startX: 0,
+        startY: 0,
+        lastX: 0,
+        lastY: 0
+    });
+
+    useEffect(() => {
+        if (!boxRef.current || !containerRef.current) return;
+
+        const box = boxRef.current;
+        const container = containerRef.current;
+
+        const onMouseDown = (e: MouseEvent) => {
+            isClicked.current = true;
+            coords.current.startX = e.clientX;
+            coords.current.startY = e.clientY;
+        };
+
+        const onMouseUp = (e: MouseEvent) => {
+            isClicked.current = false;
+            coords.current.lastX = box.offsetLeft;
+            coords.current.lastY = box.offsetTop;
+        };
+
+        const onMouseMove = (e: MouseEvent) => {
+            if (!isClicked.current) return;
+
+            const nextX =
+                e.clientX - coords.current.startX + coords.current.lastX;
+            const nextY =
+                e.clientY - coords.current.startY + coords.current.lastY;
+
+            box.style.top = `${nextY}px`;
+            box.style.left = `${nextX}px`;
+        };
+
+        box.addEventListener("mousedown", onMouseDown);
+        box.addEventListener("mouseup", onMouseUp);
+        container.addEventListener("mousemove", onMouseMove);
+        container.addEventListener("mouseleave", onMouseUp);
+
+        const cleanup = () => {
+            box.removeEventListener("mousedown", onMouseDown);
+            box.removeEventListener("mouseup", onMouseUp);
+            container.removeEventListener("mousemove", onMouseMove);
+            container.removeEventListener("mouseleave", onMouseUp);
+        };
+    }, []);
+
     return (
         <div className="App">
             <header className="App-header">
                 Floor Design App (Free not a scam)
             </header>
-            <div className="app-drop-down" ref={dropdownRef}>
-                <Button onClick={(e) => handleDropDownFocus(expanded)}>
-                    Furniture
-                </Button>
-                {expanded && (
-                    <ul>
-                        <li className="Title">Bathtub</li>
-                        <li>
-                            <img
-                                src={Bathtub}
-                                width="40"
-                                height="20"
-                                alt="Bathtub"
-                            />
-                        </li>
-                        <li className="Title">Coffee Table</li>
-                        <li>
-                            <img
-                                src={CoffeeTable}
-                                width="40"
-                                height="20"
-                                alt="Coffee Table"
-                            />
-                        </li>
-                        <li className="Title">Coffee Table Blue</li>
-                        <li>
-                            <img
-                                src={CoffeeTableB}
-                                width="40"
-                                height="20"
-                                alt="Coffee Table Blue"
-                            />
-                        </li>
-                        <li className="Title">Coffee Table Green</li>
-                        <li>
-                            <img
-                                src={CoffeeTableG}
-                                width="40"
-                                height="20"
-                                alt="Coffee Table Green"
-                            />
-                        </li>
-                        <li className="Title">Couch</li>
-                        <li>
-                            <img
-                                src={Couch}
-                                width="40"
-                                height="20"
-                                alt="Couch"
-                            />
-                        </li>
-                        <li className="Title">Couch Red</li>
-                        <li>
-                            <img
-                                src={CouchR}
-                                width="40"
-                                height="20"
-                                alt="Couch Red"
-                            />
-                        </li>
-                        <li className="Title">Couch Blue</li>
-                        <li>
-                            <img
-                                src={CouchB}
-                                width="40"
-                                height="20"
-                                alt="Couch Blue"
-                            />
-                        </li>
-                        <li className="Title">Couch Green</li>
-                        <li>
-                            <img
-                                src={CouchG}
-                                width="40"
-                                height="20"
-                                alt="Couch Green"
-                            />
-                        </li>
-                        <li className="Title">Dinner Table</li>
-                        <li>
-                            <img
-                                src={DinnerTable}
-                                width="40"
-                                height="30"
-                                alt="Dinner Table"
-                            />
-                        </li>
-                        <li className="Title">Dinner Table Red</li>
-                        <li>
-                            <img
-                                src={DinnerTableR}
-                                width="40"
-                                height="30"
-                                alt="Dinner Table Red"
-                            />
-                        </li>
-                        <li className="Title">Dinner Table Blue</li>
-                        <li>
-                            <img
-                                src={DinnerTableB}
-                                width="40"
-                                height="30"
-                                alt="Dinner Table Blue"
-                            />
-                        </li>
-                        <li className="Title">Dinner Table Green</li>
-                        <li>
-                            <img
-                                src={DinnerTableG}
-                                width="40"
-                                height="30"
-                                alt="Dinner Table Green"
-                            />
-                        </li>
-                        <li className="Title">Double Bed</li>
-                        <li>
-                            <img
-                                src={DoubleBed}
-                                width="40"
-                                height="30"
-                                alt="Double Bed"
-                            />
-                        </li>
-                        <li className="Title">Double Bed Blue</li>
-                        <li>
-                            <img
-                                src={DoubleBedB}
-                                width="40"
-                                height="30"
-                                alt="Double Bed Blue"
-                            />
-                        </li>
-                        <li className="Title">Double Bed Green</li>
-                        <li>
-                            <img
-                                src={DoubleBedG}
-                                width="40"
-                                height="30"
-                                alt="Double Bed Green"
-                            />
-                        </li>
-                        <li className="Title">Flat TV</li>
-                        <li>
-                            <img
-                                src={FlatTV}
-                                width="40"
-                                height="30"
-                                alt="Flat TV"
-                            />
-                        </li>
-                        <li className="Title">Flat TV Blue</li>
-                        <li>
-                            <img
-                                src={FlatTVB}
-                                width="40"
-                                height="30"
-                                alt="Flat TV Blue"
-                            />
-                        </li>
-                        <li className="Title">Flat TV Green</li>
-                        <li>
-                            <img
-                                src={FlatTVG}
-                                width="40"
-                                height="30"
-                                alt="Flat TV Green"
-                            />
-                        </li>
-                        <li className="Title">Fridge</li>
-                        <li>
-                            <img
-                                src={Fridge}
-                                width="20"
-                                height="40"
-                                alt="Fridge"
-                            />
-                        </li>
-                        <li className="Title">Fridge Blue</li>
-                        <li>
-                            <img
-                                src={FridgeB}
-                                width="20"
-                                height="40"
-                                alt="Fridge Blue"
-                            />
-                        </li>
-                        <li className="Title">Lamp</li>
-                        <li>
-                            <img src={Lamp} width="30" height="30" alt="Lamp" />
-                        </li>
-                        <li className="Title">Plant</li>
-                        <li>
-                            <img
-                                src={Plant}
-                                width="30"
-                                height="30"
-                                alt="Plant"
-                            />
-                        </li>
-                        <li className="Title">Single Bed</li>
-                        <li>
-                            <img
-                                src={SingleBed}
-                                width="40"
-                                height="30"
-                                alt="Single Bed"
-                            />
-                        </li>
-                        <li className="Title">Single Bed Blue</li>
-                        <li>
-                            <img
-                                src={SingleBedB}
-                                width="40"
-                                height="30"
-                                alt="Single Bed Blue"
-                            />
-                        </li>
-                        <li className="Title">Single Bed Green</li>
-                        <li>
-                            <img
-                                src={SingleBedG}
-                                width="40"
-                                height="30"
-                                alt="Single Bed Green"
-                            />
-                        </li>
-                        <li className="Title">Sink</li>
-                        <li>
-                            <img src={Sink} width="40" height="30" alt="Sink" />
-                        </li>
-                        <li className="Title">Stove</li>
-                        <li>
-                            <img
-                                src={Stove}
-                                width="40"
-                                height="30"
-                                alt="Stove"
-                            />
-                        </li>
-                        <li className="Title">Toilet</li>
-                        <li>
-                            <img
-                                src={Toilet}
-                                width="40"
-                                height="30"
-                                alt="Toilet"
-                            />
-                        </li>
-                        <li className="Title">Rectangle Table</li>
-                        <li>
-                            <img
-                                src={RectTable}
-                                width="40"
-                                height="30"
-                                alt="Rectangle Table"
-                            />
-                        </li>
-                        <li className="Title">Rectangle Table Red</li>
-                        <li>
-                            <img
-                                src={RectTableR}
-                                width="40"
-                                height="30"
-                                alt="Rectangle Table Red"
-                            />
-                        </li>
-                        <li className="Title">Rectangle Table Blue</li>
-                        <li>
-                            <img
-                                src={RectTableB}
-                                width="40"
-                                height="30"
-                                alt="Rectangle Table Blue"
-                            />
-                        </li>
-                        <li className="Title">Rectangle Table Green</li>
-                        <li>
-                            <img
-                                src={RectTableG}
-                                width="40"
-                                height="30"
-                                alt="Rectangle Table Green"
-                            />
-                        </li>
-                        <li className="Title">Round Sink</li>
-                        <li>
-                            <img
-                                src={RoundSink}
-                                width="40"
-                                height="30"
-                                alt="Round Sink"
-                            />
-                        </li>
-                        <li className="Title">Round Sink Blue</li>
-                        <li>
-                            <img
-                                src={RoundSinkB}
-                                width="40"
-                                height="30"
-                                alt="Round Sink Blue"
-                            />
-                        </li>
-                        <li className="Title">Round Sink Green</li>
-                        <li>
-                            <img
-                                src={RoundSinkG}
-                                width="40"
-                                height="30"
-                                alt="Round Sink Green"
-                            />
-                        </li>
-                        <li className="Title">Round Table</li>
-                        <li>
-                            <img
-                                src={RoundTable}
-                                width="40"
-                                height="40"
-                                alt="Round Table"
-                            />
-                        </li>
-                        <li className="Title">Round Table Blue</li>
-                        <li>
-                            <img
-                                src={RoundTableB}
-                                width="40"
-                                height="40"
-                                alt="Round Table Blue"
-                            />
-                        </li>
-                        <li className="Title">Round Table Green</li>
-                        <li>
-                            <img
-                                src={RoundTableG}
-                                width="40"
-                                height="40"
-                                alt="Round Table Green"
-                            />
-                        </li>
-                        <li className="Title">Square Sink</li>
-                        <li>
-                            <img
-                                src={SquareSink}
-                                width="40"
-                                height="30"
-                                alt="Square Sink"
-                            />
-                        </li>
-                        <li className="Title">Square Sink Blue</li>
-                        <li>
-                            <img
-                                src={SquareSinkB}
-                                width="40"
-                                height="30"
-                                alt="Square Sink Blue"
-                            />
-                        </li>
-                        <li className="Title">Chair</li>
-                        <li>
-                            <img
-                                src={Chair}
-                                width="40"
-                                height="30"
-                                alt="Chair"
-                            />
-                        </li>
-                        <li className="Title">Chair Blue</li>
-                        <li>
-                            <img
-                                src={ChairB}
-                                width="40"
-                                height="30"
-                                alt="Chair Blue"
-                            />
-                        </li>
-                        <li className="Title">Chair Red</li>
-                        <li>
-                            <img
-                                src={ChairR}
-                                width="40"
-                                height="30"
-                                alt="Chair Red"
-                            />
-                        </li>
-                        <li className="Title">Chair Green</li>
-                        <li>
-                            <img
-                                src={ChairG}
-                                width="40"
-                                height="30"
-                                alt="Chair Green"
-                            />
-                        </li>
-                    </ul>
-                )}
-            </div>
-            <div
-                style={{ backgroundImage: `url(${Floor1})` }}
-                className="container"
-            ></div>
+            <div className="app-drop-down">Furniture</div>
+            <div draggable="true" ref={boxRef} className="bathtub"></div>
+            <div ref={containerRef} className="container"></div>
         </div>
     );
 }
