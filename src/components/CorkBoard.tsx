@@ -18,7 +18,11 @@ export function CorkBoard({
 
     //maintains the id of noteDatas as they get added to the list of notesAndPositionInfo
     const [currentId, setCurrentId] = useState<number>(
-        notesAndPositionInfo.length
+        notesAndPositionInfo.reduce(
+            (currentHighest: number, noteData: noteData) =>
+                Math.max(currentHighest, noteData.id),
+            -1
+        ) + 1
     );
 
     //Handles the dropping of things onto the corkboard
