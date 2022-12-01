@@ -65,4 +65,5 @@
     height: 60px;
     width: 40px;
     cursor: pointer;
+    filter: drop-shadow(0 6mm 4mm red);
 }
