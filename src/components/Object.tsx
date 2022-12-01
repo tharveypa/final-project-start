@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "../constants";
-import { Element } from "../interfaces/element";
+import { Element } from "../interfaces/Element";
 
 import "./Object.css";
 

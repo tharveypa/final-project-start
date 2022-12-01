@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import { Element } from "../interfaces/element";
+import { Element } from "../interfaces/Element";
 import { elements } from "../elementList";
 import Object from "./Object";
 

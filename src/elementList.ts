@@ -1,4 +1,4 @@
-import { Element } from "./interfaces/element";
+import { Element } from "./interfaces/Element";
 
 const Nitrogen: Element = {
     name: "Nitrogen",
