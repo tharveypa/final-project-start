@@ -52,7 +52,6 @@
     height: 400px;
     width: 800px;
     top: 100px;
-    left: 100px;
     overflow: hidden;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -138,7 +137,6 @@ body {
     background-size: cover;
     width: 100px;
     height: 50px;
-    top: 200px;
     cursor: move;
     position: absolute;
     z-index: 1;

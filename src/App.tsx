@@ -123,6 +123,8 @@ function App(): JSX.Element {
             container.removeEventListener("mousemove", onMouseMove);
             container.removeEventListener("mouseleave", onMouseUp);
         };
+
+        return cleanup();
     }, []);
 
     return (
@@ -131,8 +133,9 @@ function App(): JSX.Element {
                 Floor Design App (Free not a scam)
             </header>
             <div className="app-drop-down">Furniture</div>
-            <div draggable="true" ref={boxRef} className="bathtub"></div>
-            <div ref={containerRef} className="container"></div>
+            <div ref={containerRef} className="container">
+                <div draggable="true" ref={boxRef} className="bathtub"></div>
+            </div>
         </div>
     );
 }
