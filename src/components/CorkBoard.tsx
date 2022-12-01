@@ -29,26 +29,45 @@ export function CorkBoard({
             item: monitor.getItem()
         }),
         drop: () => {
-            addNoteData(
-                {
-                    title: item.task.title,
-                    description: item.task.description,
-                    priority: item.task.priority,
-                    thumbColor: item.task.thumbColor,
-                    assigned: item.task.assigned
-                },
-                50,
-                75,
-                currentOffset.y -
-                    boardTop +
-                    (grabOffset?.y - sourceOffset?.y) +
-                    scrollPositionY,
-                currentOffset.x -
-                    boardLeft +
-                    (grabOffset?.x - sourceOffset?.x - 100) +
-                    scrollPositionX,
-                1
-            );
+            ///*
+            if (item.shouldAdd) {
+                addNoteData(
+                    {
+                        title: item.task.title,
+                        description: item.task.description,
+                        priority: item.task.priority,
+                        thumbColor: item.task.thumbColor,
+                        assigned: item.task.assigned
+                    },
+                    50,
+                    75,
+                    currentOffset.y -
+                        boardTop +
+                        (grabOffset?.y - sourceOffset?.y) +
+                        scrollPositionY,
+                    currentOffset.x -
+                        boardLeft +
+                        (grabOffset?.x - sourceOffset?.x - 100) +
+                        scrollPositionX,
+                    1
+                );
+            } else {
+                editNoteData(
+                    item.id,
+                    item.task,
+                    50,
+                    75,
+                    currentOffset.y -
+                        boardTop +
+                        (grabOffset?.y - sourceOffset?.y) +
+                        scrollPositionY,
+                    currentOffset.x -
+                        boardLeft +
+                        (grabOffset?.x - sourceOffset?.x - 100) +
+                        scrollPositionX,
+                    1
+                );
+            }
         }
     }); // task, height, width, top, left, zindex
 
@@ -100,40 +119,40 @@ export function CorkBoard({
     
     */
     //state that will be needed for when the board scales
-    const [boardTop, setBoardTop] = useState<number>(50);
-    const [boardLeft, setBoardLeft] = useState<number>(700);
+    const [boardTop] = useState<number>(50);
+    const [boardLeft] = useState<number>(700);
 
     ///*
 
     //*/
     //edits a note and position data associated with that note based on the parameters passed in
     //see noteData.ts for what these parameters are
-    // function editNoteData(
-    //     noteId: number,
-    //     newTask: Task,
-    //     height: number,
-    //     width: number,
-    //     top: number,
-    //     left: number,
-    //     zIndex: number
-    // ) {
-    //     setNotesAndPositionInfo(
-    //         notesAndPositionInfo.map((noteAndPosition: noteData): noteData => {
-    //             // DO NOT TURN THIS INTO A TERNARY PRETTIER AND ESLINT WILL HAVE AN ENDLESS WAR IF YOU DO
-    //             if (noteAndPosition.id === noteId)
-    //                 return {
-    //                     ...noteAndPosition,
-    //                     task: newTask,
-    //                     height: height,
-    //                     width: width,
-    //                     top: top,
-    //                     left: left,
-    //                     zIndex: zIndex
-    //                 };
-    //             return noteAndPosition;
-    //         })
-    //     );
-    // }
+    function editNoteData(
+        noteId: number,
+        newTask: Task,
+        height: number,
+        width: number,
+        top: number,
+        left: number,
+        zIndex: number
+    ) {
+        setNotesAndPositionInfo(
+            notesAndPositionInfo.map((noteAndPosition: noteData): noteData => {
+                // DO NOT TURN THIS INTO A TERNARY PRETTIER AND ESLINT WILL HAVE AN ENDLESS WAR IF YOU DO
+                if (noteAndPosition.id === noteId)
+                    return {
+                        ...noteAndPosition,
+                        task: newTask,
+                        height: height,
+                        width: width,
+                        top: top,
+                        left: left,
+                        zIndex: zIndex
+                    };
+                return noteAndPosition;
+            })
+        );
+    }
 
     //adds a note and position data associuated with that note based on the parameters passed in
     //see noteData.ts for what these parameters mean
@@ -145,44 +164,8 @@ export function CorkBoard({
         left: number,
         zIndex: number
     ) {
+        console.log("ID Added: " + currentId + "\n");
         setCurrentId(currentId + 1);
-        console.log(
-            /*
-            "WHAT WE ARE PASSING TO addNoteData: newTask = " +
-                newTask +
-                ", height = " +
-                height +
-                ", width = " +
-                width +
-                ", top = " +
-                top +
-                ", top - boardTop = " +
-                (top - boardTop) +
-                ", left = " +
-                left +
-                ", left - boardLeft = " +
-                (left - boardLeft) +
-                ", zIndex = " +
-                zIndex +
-                "\n" +
-                scrollPositionX +
-                " " +
-                scrollPositionY +
-                "\n"
-                */
-            "x: " +
-                currentOffset?.x +
-                "\n" +
-                "y: " +
-                currentOffset?.y +
-                "\n" +
-                "grabX: " +
-                (grabOffset?.x - sourceOffset?.x) +
-                "\n" +
-                "grabY: " +
-                (grabOffset?.y - sourceOffset?.y) +
-                "\n"
-        );
 
         setNotesAndPositionInfo([
             ...notesAndPositionInfo,
@@ -198,14 +181,19 @@ export function CorkBoard({
         ]);
     }
 
+    /*
     //deletes a note and position data associated with that note based on the id
-    // function deleteNoteAndPosition(noteId: number) {
-    //     setNotesAndPositionInfo(
-    //         notesAndPositionInfo.filter(
-    //             (noteData: noteData): boolean => noteId !== noteData.id
-    //         )
-    //     );
-    // }
+    function deleteNoteAndPosition(noteId: number) {
+        console.log(notesAndPositionInfo);
+        console.log("ID Removed: " + noteId + "\n");
+        setNotesAndPositionInfo(
+            notesAndPositionInfo.filter(
+                (noteData: noteData): boolean => noteId !== noteData.id
+            )
+        );
+        console.log(notesAndPositionInfo);
+    }
+    */
 
     return (
         <div

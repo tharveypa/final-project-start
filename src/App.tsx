@@ -4,7 +4,6 @@ import { CardList } from "./components/CardList";
 import { CorkBoard } from "./components/CorkBoard";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { DeleteNote } from "./components/DeleteNote";
 
 const sampleCorkBoard = [
     {
@@ -53,7 +52,7 @@ function App(): JSX.Element {
                     {/* CORKBOARD DIV : SIZE AND POSITION OF THE DIV DEFINES THAT OF THE CORKBOARD*/}
                     <div
                         style={{
-                            height: "1600px",
+                            height: "600px",
                             width: "800px",
                             left: "800px",
                             top: "50px",
@@ -63,7 +62,6 @@ function App(): JSX.Element {
                         <CorkBoard
                             startingNotesAndPositionInfo={sampleCorkBoard}
                         ></CorkBoard>
-                        <DeleteNote></DeleteNote>
                     </div>
                 </div>
             </DndProvider>

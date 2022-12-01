@@ -19,7 +19,7 @@ function CardComp({
 }): JSX.Element {
     const [, drag] = useDrag({
         //type is Card; Type determines where it can be dropped
-        item: { type: ItemTypes.Card, id: id, task: task }
+        item: { type: ItemTypes.Card, id: id, shouldAdd: true, task: task }
     });
 
     const assi = task.assigned.join(", ");
