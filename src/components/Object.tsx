@@ -10,7 +10,7 @@ import "./Object.css";
 function Object({ element }: { element: Element }): JSX.Element {
     const [{ isDragging }, drag] = useDrag({
         item: { type: ItemTypes.PROP, id: element },
-        collect: (monitor) => ({
+        collect: (monitor: { isDragging: () => any }) => ({
             isDragging: !!monitor.isDragging()
         })
     });
