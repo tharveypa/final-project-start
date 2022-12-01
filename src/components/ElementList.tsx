@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import { Element } from "../interfaces/element";
 import { elements } from "../elementList";
 import Prop from "./Object";
@@ -9,13 +11,18 @@ import "./ElementList.css";
 function PropList() {
     const [proplist, setProplist] = useState<Element[]>(elements);
 
+    function myFunction(d: Element) {
+        console.log(d.name);
+    }
+
     function generateList(prop: Element[]) {
         console.log(prop, "Generated");
         // eslint-disable-next-line no-extra-parens
         return prop.map((prop) => (
             <div key={prop.name} className="propcontainer">
                 <li>
-                    {prop.name} <Button></Button>
+                    {prop.name}{" "}
+                    <Button onClick={() => myFunction(prop)}></Button>
                 </li>
                 <Prop element={prop} />
             </div>
