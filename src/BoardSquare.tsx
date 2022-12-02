@@ -40,8 +40,8 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                 ref={drop}
                 style={{
                     position: "relative",
-                    width: "90%",
-                    height: "90%"
+                    width: "1000px",
+                    height: "200px"
                 }}
             >
                 yo

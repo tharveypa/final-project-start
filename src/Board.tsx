@@ -63,13 +63,15 @@ const Board: React.FC<BoardProps> = (props) => {
     const { picPosition } = props;
     const { pics } = props;
     const squares = [];
+    //
     //let i=0;
     //pics.map((p:string)=>( ));
     //squares.push(renderSquare(0, picPosition, pics));
     for (let i = 0; i < 2; i++) {
-        for (let j = 0; j < 2; j++) {
-            squares.push(renderSquare(j, i, pics, picPosition));
-        }
+        squares.push(renderSquare(i, 0, pics, picPosition));
+        // for (let j = 0; j < 2; j++) {
+        //     squares.push(renderSquare(0, i, pics, picPosition));
+        // }
     }
 
     return (
@@ -84,11 +86,11 @@ const Board: React.FC<BoardProps> = (props) => {
                     }}
                 >
                     {/* hey */}
-                    {/* {squares} */}
+                    {squares}
                 </div>
 
                 <div>
-                    {/* Choose a pic */}
+                    Choose a pic
                     <ul>
                         {pics.map(
                             // eslint-disable-next-line no-extra-parens

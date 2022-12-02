@@ -12,14 +12,11 @@ observe((picPosition: [number, number]) => {
         <React.StrictMode>
             <div
                 style={{
-                    width: "1250px",
-                    height: "100px",
+                    width: "100%",
+                    height: "100%",
                     border: "1px solid gray"
                 }}
             >
-                <App />
-                {/* x={picPosition[0]}
-                y={picPosition[1]} */}
                 <Board
                     pics={[
                         "Wipe Car",
@@ -30,6 +27,9 @@ observe((picPosition: [number, number]) => {
                     ]}
                     picPosition={picPosition}
                 />
+                <App />
+                {/* x={picPosition[0]}
+                y={picPosition[1]} */}
             </div>
         </React.StrictMode>,
         document.getElementById("root")
@@ -39,4 +39,4 @@ observe((picPosition: [number, number]) => {
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals(console.log);
