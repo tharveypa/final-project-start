@@ -48,11 +48,6 @@ export const CarSpace: React.FC<CarSpaceProps> = (props) => {
                 )}
             </div>
         </>
-        <div>
-            <Car color={0} clean={true} tirefill={0} window={true}></Car>
-            <div></div>
-            {renderDestroy(1000, 1000, props.DirtPosition)}
-        </div>
     );
 };
 export default CarSpace;

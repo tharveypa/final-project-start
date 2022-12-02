@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "./constants";
-import { canMovePic } from "./game";
+import { canAddPic, addPic, canMovePic, movePic } from "./game";
 import Pic from "./Pic";
 import Overlay from "./Overlay";
 import Square from "./Square";
 import { Button } from "react-bootstrap";
+import Zone from "./components/Zone";
 
 type BoardSquareProps = {
     x: number;
@@ -40,18 +41,20 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                 ref={drop}
                 style={{
                     position: "relative",
-                    width: "1000px",
-                    height: "200px"
+                    width: "90%",
+                    height: "90%"
                 }}
             >
                 yo
+                {/* <div>
+                    <Zone x={500} y={100}></Zone>
+                </div> */}
                 <Square black={black}>{children}</Square>
                 {isOver && !canDrop && <Overlay color="red" />}
                 {!isOver && canDrop && <Overlay color="yellow" />}
                 {isOver && canDrop && <Overlay color="green" />}
                 <ul>
                     {square.map(
-                        // eslint-disable-next-line no-extra-parens
                         (p: string): JSX.Element => (
                             <li key={p}>
                                 <Pic pic={p} />
@@ -61,7 +64,6 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                             </li>
                         )
                     )}
-                    ;
                 </ul>
             </div>
             <div>
