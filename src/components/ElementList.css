@@ -3,15 +3,10 @@
     padding-left: 20px;
     background-color: aliceblue;
     height: 85vh;
-    width: 150px;
+    width: 165px;
     border: 1px solid grey;
     font-family: "GestaRegular", Arial, Helvetica, sans-serif;
     overflow: scroll;
-}
-
-Button {
-    height: 40px;
-    width: 40px;
 }
 
 p {
@@ -24,3 +19,11 @@ p {
     margin-right: auto;
     width: 300px;
 }
+
+/* .row-new {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    border: 1px solid black;
+    width: auto;
+} */
