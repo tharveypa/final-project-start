@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable no-extra-parens */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-empty-function */
@@ -57,22 +58,29 @@ function ElementList() {
     return (
         <CardContext.Provider value={{ markAsDone }}>
             <div>
-                <div className="row">
-                    <div className="column-game">
-                        <strong> Element List</strong>
-                        <button onClick={() => Alphabetical()}></button>
-                        <button onClick={() => ByAtomicNum()}></button>
-                        <button onClick={() => Reset()}></button>
+                <div className="row-adj">
+                    <div className="column-sidebar" background-color="primary">
+                        <p>
+                            <strong> Element List</strong>
+                        </p>
+                        <p>
+                            <button onClick={() => Alphabetical()}></button>
+                            <button onClick={() => ByAtomicNum()}></button>
+                            <button onClick={() => Reset()}></button>
+                        </p>
                         <ul className="scroll-bar">{generateList(proplist)}</ul>
                     </div>
-                    <div className="column-game">
+                    <div className="column-center">
+                        <img
+                            className="logo"
+                            src={require("../images/logo.png")}
+                        />
                         <Container>
                             {inWorkSpace.map((task, i) => (
                                 <Object element={task} />
                             ))}
                         </Container>
                     </div>
-                    {console.log(inWorkSpace)};{console.log(proplist)}
                 </div>
             </div>
         </CardContext.Provider>

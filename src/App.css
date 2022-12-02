@@ -3,8 +3,20 @@
     height: 100vh;
 }
 
-.column-game {
-    float: center;
+.column-sidebar {
+    float: left;
     width: auto;
-    border-style: dotted;
+    padding: 10px;
+    /* border-style: dashed; */
+    height: auto;
+}
+.column-center {
+    float: left;
+    width: 100%;
+    padding: 10px;
+    height: auto;
+}
+
+.row-adj {
+    display: flex;
 }

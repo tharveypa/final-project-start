@@ -22,4 +22,5 @@
     content: "";
     display: table;
     clear: both;
+    border-style: dashed;
 }
