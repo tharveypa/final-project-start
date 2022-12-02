@@ -1,21 +1,21 @@
 import RedCar from "./images/redcar.png";
 import BlueCar from "./images/bluecar.png";
 import GreenCar from "./images/greencar.png";
-import React, { useCallback, useState, useEffect, useRef } from "react";
-//  { useState} from "react";
+import React, { useState, useEffect, useRef } from "react";
+//  { useCallback} from "react";
 import { Button } from "react-bootstrap";
 import Street from "./images/street.jpg";
 import City from "./images/city.jpg";
 import Forest from "./images/forest.jpg";
-import Dirt from "./images/dirt.png";
-import update from "immutability-helper";
-import type { CSSProperties, FC } from "react";
-import type { XYCoord } from "react-dnd";
-import { useDrop } from "react-dnd";
+// import Dirt from "./images/dirt.png";
+// import update from "immutability-helper";
+// import type { CSSProperties, FC } from "react";
+// import type { XYCoord } from "react-dnd";
+// import { useDrop } from "react-dnd";
 
-//import { Pic } from "../Pic";
-//import type { DragItem, Tool, Car } from "./interfaces";
-import { ItemTypes } from "../constants";
+// //import { Pic } from "../Pic";
+// //import type { DragItem, Tool, Car } from "./interfaces";
+// import { ItemTypes } from "../constants";
 
 // const styles: CSSProperties = {
 //     width: 500,
