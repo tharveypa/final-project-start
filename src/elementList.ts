@@ -5,7 +5,8 @@ const Nitrogen: Element = {
     id: 1,
     image: require("./images/7nitrogen.png"),
     chemAbr: "N",
-    atomicNum: 7
+    atomicNum: 7,
+    shown: false
 };
 
 const Chlorine: Element = {
@@ -13,7 +14,8 @@ const Chlorine: Element = {
     id: 2,
     image: require("./images/17 chlorine.png"),
     chemAbr: "Cl",
-    atomicNum: 17
+    atomicNum: 17,
+    shown: false
 };
 
 const Potassium: Element = {
@@ -21,7 +23,8 @@ const Potassium: Element = {
     id: 3,
     image: require("./images/19 potassium.png"),
     chemAbr: "K",
-    atomicNum: 19
+    atomicNum: 19,
+    shown: false
 };
 
 const Hydrogen: Element = {
@@ -29,7 +32,8 @@ const Hydrogen: Element = {
     id: 4,
     image: require("./images/1 hydrogen.png"),
     chemAbr: "H",
-    atomicNum: 1
+    atomicNum: 1,
+    shown: false
 };
 
 const Silver: Element = {
@@ -37,7 +41,8 @@ const Silver: Element = {
     id: 5,
     image: require("./images/47 silver.png"),
     chemAbr: "Ag",
-    atomicNum: 47
+    atomicNum: 47,
+    shown: false
 };
 
 const Iodine: Element = {
@@ -45,7 +50,8 @@ const Iodine: Element = {
     id: 6,
     image: require("./images/53 iodine.png"),
     chemAbr: "I",
-    atomicNum: 53
+    atomicNum: 53,
+    shown: false
 };
 
 const Aluminum: Element = {
@@ -53,7 +59,8 @@ const Aluminum: Element = {
     id: 7,
     image: require("./images/13 aluminum.png"),
     chemAbr: "Al",
-    atomicNum: 13
+    atomicNum: 13,
+    shown: false
 };
 
 const Cadmium: Element = {
@@ -61,7 +68,8 @@ const Cadmium: Element = {
     id: 8,
     image: require("./images/48 cadmium.png"),
     chemAbr: "Cd",
-    atomicNum: 48
+    atomicNum: 48,
+    shown: false
 };
 
 const Tellurium: Element = {
@@ -69,7 +77,8 @@ const Tellurium: Element = {
     id: 9,
     image: require("./images/52 tellurium.png"),
     chemAbr: "Te",
-    atomicNum: 52
+    atomicNum: 52,
+    shown: false
 };
 
 const Cesium: Element = {
@@ -77,7 +86,8 @@ const Cesium: Element = {
     id: 10,
     image: require("./images/55 cesium.png"),
     chemAbr: "Cs",
-    atomicNum: 55
+    atomicNum: 55,
+    shown: false
 };
 
 const Fluorine: Element = {
@@ -85,7 +95,8 @@ const Fluorine: Element = {
     id: 11,
     image: require("./images/9 flourine.png"),
     chemAbr: "Fl",
-    atomicNum: 9
+    atomicNum: 9,
+    shown: false
 };
 
 const Carbon: Element = {
@@ -93,7 +104,8 @@ const Carbon: Element = {
     id: 12,
     image: require("./images/6 carbon.png"),
     chemAbr: "C",
-    atomicNum: 6
+    atomicNum: 6,
+    shown: false
 };
 
 const Oxygen: Element = {
@@ -101,7 +113,8 @@ const Oxygen: Element = {
     id: 13,
     image: require("./images/8 oxygen.png"),
     chemAbr: "O",
-    atomicNum: 8
+    atomicNum: 8,
+    shown: false
 };
 
 const Lithium: Element = {
@@ -109,7 +122,8 @@ const Lithium: Element = {
     id: 14,
     image: require("./images/3 lithium.png"),
     chemAbr: "Li",
-    atomicNum: 3
+    atomicNum: 3,
+    shown: false
 };
 
 const Silcon: Element = {
@@ -117,7 +131,8 @@ const Silcon: Element = {
     id: 15,
     image: require("./images/14 silicon.png"),
     chemAbr: "Si",
-    atomicNum: 14
+    atomicNum: 14,
+    shown: false
 };
 
 export const elements = [

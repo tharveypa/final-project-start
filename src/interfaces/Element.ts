@@ -4,4 +4,5 @@ export interface Element {
     image: string;
     chemAbr: string;
     atomicNum: number;
+    shown: boolean;
 }

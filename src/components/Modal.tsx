@@ -29,16 +29,12 @@ function Moddal({ temp }: { temp: Element }) {
                             <h1> {temp.name} </h1>
                             <div>
                                 <strong>Chemical Formula: </strong>
-                                {temp.chemAbr}{" "}
+                                {temp.chemAbr}
                             </div>
                         </div>
                     </div>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        X
-                    </Button>
-                </Modal.Footer>
+                <Modal.Footer></Modal.Footer>
             </Modal>
         </>
     );
