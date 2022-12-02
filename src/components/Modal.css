@@ -1,6 +1,10 @@
-Button {
-    height: 30px;
-    width: 30px;
+.HelpButton {
+    height: 40px;
+    width: 40px;
+    background-image: url("../images/helpbutton.png");
+    background-color: aliceblue;
+    border-color: aliceblue;
+    float: inherit;
 }
 
 .info-box {
@@ -20,4 +24,9 @@ Button {
     content: "";
     display: table;
     clear: both;
+    border-style: dashed;
+}
+
+ul {
+    list-style-type: none;
 }

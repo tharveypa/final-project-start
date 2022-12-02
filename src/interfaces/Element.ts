@@ -2,5 +2,7 @@ export interface Element {
     name: string;
     id: number;
     image: string;
-    chemFormula: string;
+    chemAbr: string;
+    atomicNum: number;
+    shown: boolean;
 }
