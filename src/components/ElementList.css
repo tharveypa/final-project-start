@@ -8,3 +8,8 @@
     font-family: "GestaRegular", Arial, Helvetica, sans-serif;
     overflow: auto;
 }
+
+Button {
+    height: 40px;
+    width: 40px;
+}
