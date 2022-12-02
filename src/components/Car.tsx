@@ -1,10 +1,21 @@
 /* eslint-disable no-extra-parens */
 import RedCar from "./images/redcar.png";
+import RedCarLeftTire from "./images/redcar left tire.png";
+import RedCarRightTire from "./images/redcar right tire.png";
+import RedCarBothTires from "./images/redcar both tires.png";
 import BlueCar from "./images/bluecar.png";
+import BlueCarLeftTire from "./images/bluecar left tire.png";
+import BlueCarRightTire from "./images/bluecar right tire.png";
+import BlueCarBothTires from "./images/bluecar both tires.png";
 import GreenCar from "./images/greencar.png";
 import React, { useState } from "react";
 //  { useCallback, } from "react";
 import { Button, Col, Container } from "react-bootstrap";
+import GreenCarLeftTire from "./images/greencar left tire.png";
+import GreenCarRightTire from "./images/greencar right tire.png";
+import GreenCarBothTires from "./images/greencar both tires.png";
+import React, { useState, useEffect, useRef } from "react";
+import { Button } from "react-bootstrap";
 import Street from "./images/street.jpg";
 import City from "./images/city.jpg";
 import Forest from "./images/forest.jpg";
@@ -22,12 +33,18 @@ export type CarProps = {
     saveCar: (car: number, toolname: string, changes: CarChanges) => void;
     color: number;
     clean: boolean;
-    tirefill: boolean;
+    tirefill: number;
     window: boolean;
 };
 export const Car: React.FC<CarProps> = (props) => {
     const backgrounds = [Street, City, Forest];
+    const cars = [
+        [RedCar, RedCarLeftTire, RedCarRightTire, RedCarBothTires],
+        [GreenCar, GreenCarLeftTire, GreenCarRightTire, GreenCarBothTires],
+        [BlueCar, BlueCarLeftTire, BlueCarRightTire, BlueCarBothTires]
+    ];
     const [colorNum, setColorNum] = useState(0);
+    const [tireNum, setTireNum] = useState(0);
     const [backgroundIndex, setBackgroundIndex] = useState(0);
     const [aah, setAah] = useState<string>("");
     const [tools, setTools] = useState<CarChanges>({});
@@ -83,6 +100,13 @@ export const Car: React.FC<CarProps> = (props) => {
                         }}
                     >
                         {/* <div ref={drop} className="car">*/}
+            <div
+                style={{
+                    backgroundImage: `url(${backgrounds[backgroundIndex]})`
+                }}
+            >
+                <div ref={containerRef} className="container">
+                    <img src={cars[colorNum][tireNum]} alt="car model" />
 
                         {/* </div>  */}
                         {colorNum == 0 && <img src={RedCar} alt="red car" />}
@@ -133,6 +157,30 @@ export const Car: React.FC<CarProps> = (props) => {
                 </Col>
             </Container>
             {/* {props.children} */}
+                </div>
+            </div>
+            <div>
+                <Button onClick={() => setColorNum((colorNum + 1) % 3)}>
+                    Change Color (Red/Blue/Green)
+                </Button>
+                <Button onClick={() => setTireNum((tireNum + 1) % 4)}>
+                    Tire test (Left/Right/Both)
+                </Button>
+                <Button
+                    onClick={() =>
+                        setBackgroundIndex((backgroundIndex + 1) % 3)
+                    }
+                >
+                    Change Background (Street/City/Forest)
+                </Button>
+                {pause.map(
+                    // eslint-disable-next-line no-extra-parens
+                    (e: number): JSX.Element => (
+                        <div key={e}> {e} </div>
+                    )
+                )}
+            </div>
+            {props.children}
         </div>
     );
 };
