@@ -11,6 +11,11 @@ import Object from "./Object";
 import "./ElementList.css";
 import Modal from "./Modal";
 import Container from "./Container";
+import { Form } from "react-bootstrap";
+
+const AlphabeticalFunc = "1";
+const ByAtomicNumFunc = "2";
+const ResetFunc = "3";
 
 export const CardContext = createContext({
     // eslint-disable-next-line prettier/prettier
@@ -20,9 +25,22 @@ export const CardContext = createContext({
 function ElementList() {
     const [inWorkSpace, addtoWorkSpace] = useState<Element[]>([]);
     const [proplist, setProplist] = useState<Element[]>(elements);
+    const [numRep, setFunction] = useState<string>();
+
+    // This is the Control
+    function updateFunction(event: React.ChangeEvent<HTMLSelectElement>) {
+        console.log(event.target.value);
+        setFunction(event.target.value);
+        if (event.target.value == AlphabeticalFunc) {
+            Alphabetical();
+        } else if (event.target.value == ByAtomicNumFunc) {
+            ByAtomicNum();
+        } else if (event.target.value == ResetFunc) {
+            Reset();
+        }
+    }
 
     function Alphabetical() {
-        console.log("hi");
         const x = proplist.map((element: Element): Element => element);
         setProplist(x.sort((a, b) => a.name.localeCompare(b.name)));
     }
@@ -64,9 +82,17 @@ function ElementList() {
                             <strong> Element List</strong>
                         </p>
                         <p>
-                            <button onClick={() => Alphabetical()}></button>
-                            <button onClick={() => ByAtomicNum()}></button>
-                            <button onClick={() => Reset()}></button>
+                            <Form.Group controlId="Sorting/Filtering">
+                                <Form.Select
+                                    value={numRep}
+                                    onChange={updateFunction}
+                                >
+                                    <option>Sort/Filter</option>
+                                    <option value="1">Alphabetical</option>
+                                    <option value="2">By Atomic Number</option>
+                                    <option value="3">Reset</option>
+                                </Form.Select>
+                            </Form.Group>
                         </p>
                         <ul className="scroll-bar">{generateList(proplist)}</ul>
                     </div>
