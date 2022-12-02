@@ -13,3 +13,14 @@ Button {
     height: 40px;
     width: 40px;
 }
+
+p {
+    text-align: center;
+}
+
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+}

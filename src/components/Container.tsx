@@ -3,6 +3,7 @@ import { useDrop } from "react-dnd";
 import itemTypes from "../interfaces/itemTypes";
 
 import "./Container.css";
+import "../App.css";
 import { CardContext } from "./ElementList";
 
 export interface ContainerProps {

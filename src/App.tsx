@@ -10,14 +10,7 @@ function App(): JSX.Element {
     return (
         <DndProvider backend={HTML5Backend}>
             <div className="App">
-                <div className="row">
-                    <div className="column-game">
-                        <ElementList></ElementList>
-                    </div>
-                    {/* <div className="column-game">
-                        <Container>{}</Container>
-                    </div> */}
-                </div>
+                <ElementList></ElementList>
             </div>
         </DndProvider>
     );
