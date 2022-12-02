@@ -1,3 +1,5 @@
+/* eslint-disable no-extra-parens */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable react/jsx-key */
 import React, { createContext, useState } from "react";
@@ -34,8 +36,6 @@ function ElementList() {
     }
 
     function generateList(prop: Element[]) {
-        //console.log(prop, "Generated");
-        // eslint-disable-next-line no-extra-parens
         return prop.map((prop) => (
             <div>
                 <div key={prop.name} className="propcontainer">

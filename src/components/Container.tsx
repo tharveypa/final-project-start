@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from "react";
+import React, { useContext } from "react";
 import { useDrop } from "react-dnd";
 import itemTypes from "../interfaces/itemTypes";
 
@@ -16,9 +16,9 @@ interface ITEM {
 function Container(props: ContainerProps) {
     const { children } = props;
     const { markAsDone } = useContext(CardContext);
-    const [isOver, drop] = useDrop({
+    const [, drop] = useDrop({
         accept: itemTypes.ELEMENT,
-        drop: (item: ITEM, monitor) => markAsDone(item.ID),
+        drop: (item: ITEM) => markAsDone(item.ID),
         collect: (monitor) => ({
             isOver: !!monitor.isOver()
         })
