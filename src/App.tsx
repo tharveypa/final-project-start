@@ -5,8 +5,8 @@ import PimpVsDestroy from "./components/PimpVsDestroy";
 //import DirtTool from "./components/Destroy Tools/DirtTool";
 import CarSpace from "./components/CarSpace";
 import { Col, Row } from "react-bootstrap";
-import type { DragItem, ToolPos } from "./components/interfaces";
-
+import type { ToolPos } from "./components/interfaces";
+// DragItem,
 type CarChanges = Record<string, ToolPos>;
 function App(): JSX.Element {
     const [savedCars, setSavedCars] = useState<Record<number, CarChanges>>({});

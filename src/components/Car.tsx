@@ -1,9 +1,10 @@
+/* eslint-disable no-extra-parens */
 import RedCar from "./images/redcar.png";
 import BlueCar from "./images/bluecar.png";
 import GreenCar from "./images/greencar.png";
 import React, { useState } from "react";
 //  { useCallback, } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Col, Container } from "react-bootstrap";
 import Street from "./images/street.jpg";
 import City from "./images/city.jpg";
 import Forest from "./images/forest.jpg";
@@ -13,8 +14,8 @@ import Forest from "./images/forest.jpg";
 // import type { DropTargetMonitor, XYCoord } from "react-dnd";
 // import { useDrop } from "react-dnd";
 import Tool from "./Tool";
-import type { DragItem, ToolPos } from "./interfaces";
-// import { ItemTypes } from "../constants";
+import type { ToolPos } from "./interfaces";
+// import { ItemTypes } from "../constants";DragItem,
 
 type CarChanges = Record<string, ToolPos>;
 export type CarProps = {
@@ -74,45 +75,63 @@ export const Car: React.FC<CarProps> = (props) => {
     };
     return (
         <div>
-            <div
-                style={{
-                    backgroundImage: `url(${backgrounds[backgroundIndex]})`
-                }}
-            >
-                {/* <div ref={drop} className="car">*/}
-                {Object.values(tools).map((t: ToolPos) => (
-                    <Tool key={t.title} id={t.title} left={t.left} top={t.top}>
-                        {t.title}
-                    </Tool>
-                ))}
-                {/* </div>  */}
-                {colorNum == 0 && <img src={RedCar} alt="red car" />}
-                {colorNum == 1 && <img src={BlueCar} alt="blue car" />}
-                {colorNum == 2 && <img src={GreenCar} alt="green car" />}
+            <Container>
+                <Col>
+                    <div
+                        style={{
+                            backgroundImage: `url(${backgrounds[backgroundIndex]})`
+                        }}
+                    >
+                        {/* <div ref={drop} className="car">*/}
 
-                {/* <div ref={boxRef} className="box">
+                        {/* </div>  */}
+                        {colorNum == 0 && <img src={RedCar} alt="red car" />}
+                        {colorNum == 1 && <img src={BlueCar} alt="blue car" />}
+                        {colorNum == 2 && (
+                            <img src={GreenCar} alt="green car" />
+                        )}
+
+                        {/* <div ref={boxRef} className="box">
                         <img src={Dirt} alt="dirt" />
                     </div>*/}
-            </div>
-            <div>
-                <Button onClick={() => clearEffects}>clear Effects</Button>
-                <Button onClick={() => addEffect(0, 0, "meep")}>
-                    addEffect
-                </Button>
-                <Button onClick={() => setColorNum((colorNum + 1) % 3)}>
-                    Change Color (Red/Blue/Green)
-                </Button>
-                <Button
-                    onClick={() =>
-                        setBackgroundIndex((backgroundIndex + 1) % 3)
-                    }
-                >
-                    Change Background (Street/City/Forest)
-                </Button>
-                <Button variant="primary" onClick={saveIt}>
-                    Save Changes
-                </Button>
-            </div>
+                    </div>
+                </Col>
+                <Col>
+                    {Object.values(tools).map((t: ToolPos) => (
+                        <Tool
+                            key={t.title}
+                            id={t.title}
+                            left={t.left}
+                            top={t.top}
+                        >
+                            {t.title}
+                        </Tool>
+                    ))}
+                </Col>
+                <Col>
+                    <div>
+                        <Button onClick={() => clearEffects}>
+                            clear Effects
+                        </Button>
+                        <Button onClick={() => addEffect(0, 0, "meep")}>
+                            addEffect
+                        </Button>
+                        <Button onClick={() => setColorNum((colorNum + 1) % 3)}>
+                            Change Color (Red/Blue/Green)
+                        </Button>
+                        <Button
+                            onClick={() =>
+                                setBackgroundIndex((backgroundIndex + 1) % 3)
+                            }
+                        >
+                            Change Background (Street/City/Forest)
+                        </Button>
+                        <Button variant="primary" onClick={saveIt}>
+                            Save Changes
+                        </Button>
+                    </div>
+                </Col>
+            </Container>
             {/* {props.children} */}
         </div>
     );
