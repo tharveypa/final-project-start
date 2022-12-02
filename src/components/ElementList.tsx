@@ -11,7 +11,7 @@ import Object from "./Object";
 import "./ElementList.css";
 import Modal from "./Modal";
 import Container from "./Container";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import Trashbin from "./Trashbin";
 
 const AlphabeticalAtZFuncAtZ = "1";
@@ -29,6 +29,7 @@ function ElementList() {
     const [inWorkSpace, addtoWorkSpace] = useState<Element[]>([]);
     const [proplist, setProplist] = useState<Element[]>(elements);
     const [numRep, setFunction] = useState<string>();
+    const [search, changeSearch] = useState<string>("");
 
     // This is the Control
     function updateFunction(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -42,6 +43,15 @@ function ElementList() {
             Reset();
         } else if (event.target.value == AlphabeticalAtZFuncZtA) {
             AlphabeticalAtZZtA();
+        }
+    }
+
+    function Filter() {
+        const foundElement = elements.filter((task, i) => task.name == search);
+        if (search == "") {
+            setProplist(elements);
+        } else {
+            setProplist(foundElement);
         }
     }
 
@@ -108,6 +118,16 @@ function ElementList() {
                                     <option value="2">By Atomic Number</option>
                                     <option value="3">Reset</option>
                                 </Form.Select>
+                                <Form.Group controlId="formQuizId">
+                                    <Form.Control
+                                        placeholder="Search"
+                                        value={search}
+                                        onChange={(
+                                            e: React.ChangeEvent<HTMLInputElement>
+                                        ) => changeSearch(e.target.value)}
+                                    ></Form.Control>
+                                    <Button onClick={() => Filter()}></Button>
+                                </Form.Group>
                             </Form.Group>
                         </p>
                         <ul className="scroll-bar">{generateList(proplist)}</ul>
