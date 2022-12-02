@@ -14,7 +14,8 @@ import Container from "./Container";
 import { Form } from "react-bootstrap";
 import Trashbin from "./Trashbin";
 
-const AlphabeticalFunc = "1";
+const AlphabeticalAtZFuncAtZ = "1";
+const AlphabeticalAtZFuncZtA = "4";
 const ByAtomicNumFunc = "2";
 const ResetFunc = "3";
 
@@ -33,18 +34,25 @@ function ElementList() {
     function updateFunction(event: React.ChangeEvent<HTMLSelectElement>) {
         console.log(event.target.value);
         setFunction(event.target.value);
-        if (event.target.value == AlphabeticalFunc) {
-            Alphabetical();
+        if (event.target.value == AlphabeticalAtZFuncAtZ) {
+            AlphabeticalAtZ();
         } else if (event.target.value == ByAtomicNumFunc) {
             ByAtomicNum();
         } else if (event.target.value == ResetFunc) {
             Reset();
+        } else if (event.target.value == AlphabeticalAtZFuncZtA) {
+            AlphabeticalAtZZtA();
         }
     }
 
-    function Alphabetical() {
+    function AlphabeticalAtZ() {
         const x = proplist.map((element: Element): Element => element);
         setProplist(x.sort((a, b) => a.name.localeCompare(b.name)));
+    }
+
+    function AlphabeticalAtZZtA() {
+        const x = proplist.map((element: Element): Element => element);
+        setProplist(x.sort((a, b) => a.name.localeCompare(b.name)).reverse());
     }
 
     function ByAtomicNum() {
@@ -95,7 +103,8 @@ function ElementList() {
                                     onChange={updateFunction}
                                 >
                                     <option>Sort/Filter</option>
-                                    <option value="1">Alphabetical</option>
+                                    <option value="1">Alphabetical(A-Z)</option>
+                                    <option value="4">Alphabetical(Z-A)</option>
                                     <option value="2">By Atomic Number</option>
                                     <option value="3">Reset</option>
                                 </Form.Select>
