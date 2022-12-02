@@ -2,7 +2,9 @@
     height: 40px;
     width: 40px;
     background-image: url("../images/helpbutton.png");
-    background-image: white;
+    background-color: aliceblue;
+    border-color: aliceblue;
+    float: inherit;
 }
 
 .info-box {
@@ -23,4 +25,8 @@
     display: table;
     clear: both;
     border-style: dashed;
+}
+
+ul {
+    list-style-type: none;
 }

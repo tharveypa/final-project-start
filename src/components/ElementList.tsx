@@ -12,6 +12,7 @@ import "./ElementList.css";
 import Modal from "./Modal";
 import Container from "./Container";
 import { Form } from "react-bootstrap";
+import Trashbin from "./Trashbin";
 
 const AlphabeticalFunc = "1";
 const ByAtomicNumFunc = "2";
@@ -19,7 +20,8 @@ const ResetFunc = "3";
 
 export const CardContext = createContext({
     // eslint-disable-next-line prettier/prettier
-    markAsDone: (id: number) => {}
+    markAsDone: (id: number) => {},
+    removefromScreen: (id: number) => {}
 });
 
 function ElementList() {
@@ -73,8 +75,13 @@ function ElementList() {
         p.shown = true;
         addtoWorkSpace(inWorkSpace.concat(p));
     }
+
+    function removefromScreen(id: number) {
+        const draggedElement = inWorkSpace.filter((task, i) => task.id != id);
+        addtoWorkSpace(draggedElement);
+    }
     return (
-        <CardContext.Provider value={{ markAsDone }}>
+        <CardContext.Provider value={{ markAsDone, removefromScreen }}>
             <div>
                 <div className="row-adj">
                     <div className="column-sidebar" background-color="primary">
@@ -101,11 +108,16 @@ function ElementList() {
                             className="logo"
                             src={require("../images/logo.png")}
                         />
-                        <Container>
-                            {inWorkSpace.map((task, i) => (
-                                <Object element={task} />
-                            ))}
-                        </Container>
+                        <div>
+                            <Container>
+                                {inWorkSpace.map((task, i) => (
+                                    <Object element={task} />
+                                ))}
+                            </Container>
+                        </div>
+                    </div>
+                    <div className="column-right">
+                        <Trashbin>{}</Trashbin>
                     </div>
                 </div>
             </div>
