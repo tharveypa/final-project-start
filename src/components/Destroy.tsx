@@ -10,7 +10,7 @@ import Hammer from "./images/hammer.png";
 
 const Destroy = () => {
     return (
-        <div className="toolncar">
+        <div>
             <h1>Destroy Mode</h1>
             <p>
                 Destroy Mode Options:

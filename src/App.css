@@ -46,14 +46,26 @@
 .toolncar {
     display: inline-block;
 }
+.toolkit {
+    position: relative;
+    border: 1px solid pink;
+    height: 500px;
+    width: 200px;
+}
 
 .container {
     position: relative;
     border: 1px solid black;
     /* background-image: url("bluecar.png"); */
-    height: 400px;
+    height: 500px;
     width: 800px;
     overflow: hidden;
+}
+.car {
+    position: relative;
+    border: 1px solid black;
+    height: 300px;
+    width: 500px;
 }
 
 .box {

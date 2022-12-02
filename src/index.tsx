@@ -6,35 +6,34 @@ import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 
-observe((picPosition: [number, number]) => {
-    //const arr: string[] = ["goofy", "AAh"];
-    ReactDOM.render(
-        <React.StrictMode>
-            <div
-                style={{
-                    width: "100%",
-                    height: "100%",
-                    border: "1px solid gray"
-                }}
-            >
-                <Board
-                    pics={[
-                        "Wipe Car",
-                        "Shine Car",
-                        "Fill Tires",
-                        "Repair Windows",
-                        "etc"
-                    ]}
-                    picPosition={picPosition}
-                />
-                <App />
-                {/* x={picPosition[0]}
+//const arr: string[] = ["goofy", "AAh"];
+ReactDOM.render(
+    <React.StrictMode>
+        <div
+            style={{
+                width: "100%",
+                height: "100%",
+                border: "1px solid gray"
+            }}
+        >
+            {/* <Board
+                pics={[
+                    "Wipe Car",
+                    "Shine Car",
+                    "Fill Tires",
+                    "Repair Windows",
+                    "etc"
+                ]}
+                picPosition={picPosition}
+            /> */}
+            <App />
+            {/* x={picPosition[0]}
                 y={picPosition[1]} */}
-            </div>
-        </React.StrictMode>,
-        document.getElementById("root")
-    );
-});
+        </div>
+    </React.StrictMode>,
+    document.getElementById("root")
+);
+
 //vic was here
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

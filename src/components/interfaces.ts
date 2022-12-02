@@ -4,3 +4,14 @@ export interface DragItem {
     top: number;
     left: number;
 }
+export interface ToolPos {
+    top: number;
+    left: number;
+    title: string;
+}
+export interface CarProps {
+    color: number;
+    clean: boolean;
+    tirefill: boolean;
+    window: boolean;
+}
