@@ -18,7 +18,11 @@ export function FilterNote({
     ) => void;
 }): JSX.Element {
     const [show, setShow] = useState(false);
-    const [opt, setOpt] = useState<string[]>([]);
+    const [opt, setOpt] = useState<string[]>([]); //colors
+    const [prioOpt, setPriorityOpt] = useState<string>(""); //priorities, radio buttons exclusive
+    const [titleOpt, setTitleOpt] = useState<string>(""); //title, textbox
+    const [descriptionOpt, setDescriptionOpt] = useState<string>(""); //description, textbox
+    const [assignedOpt, setAssignedOpt] = useState<string[]>([]); //assigned, textbox
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -30,6 +34,22 @@ export function FilterNote({
         } else {
             setOpt([...opt, option]);
         }
+    }
+
+    function updateTitle(event: React.ChangeEvent<HTMLInputElement>) {
+        setTitleOpt(event.target.value);
+    }
+
+    function updateDescription(event: React.ChangeEvent<HTMLInputElement>) {
+        setDescriptionOpt(event.target.value);
+    }
+
+    function updatePriority(event: React.ChangeEvent<HTMLInputElement>){
+        setPriorityOpt(event.target.value);
+    }
+
+    function updateAssignedOpt(event: React.ChangeElement<HTMLInputElement>){
+        setAssignedOpt(["TEST FOR NOW"]); //need to split these by , as MakeNote does
     }
 
     const filtIt = () => {
@@ -53,8 +73,11 @@ export function FilterNote({
                 <Modal.Body>
                     <Form>
                         <Form.Label>
-                            Select the colors to filter out:
+                            Specify what you would like to have filtered out!
                         </Form.Label>
+                        <Form.Group className="TitleTextBox">
+                            
+                        </Form.Group>
                         <Form.Group className="FilterBoxes">
                             <Form.Check
                                 inline
