@@ -2,6 +2,7 @@ import React from "react";
 
 type OverlayProps = {
     color: string;
+    opacity: number;
 };
 
 const Overlay: React.FC<OverlayProps> = (props) => {
@@ -14,7 +15,7 @@ const Overlay: React.FC<OverlayProps> = (props) => {
                 height: "100%",
                 width: "100%",
                 zIndex: 1,
-                opacity: 0.5,
+                opacity: props.opacity,
                 backgroundColor: props.color
             }}
         />

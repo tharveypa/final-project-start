@@ -10,12 +10,23 @@ const renderPiece = (x: number, y: number, [picX, picY]: [number, number]) => {
     }
 };
 
-const renderSquare = (i: number, picPosition: [number, number]) => {
+const renderSquare = (
+    i: number,
+    picPosition: [number, number],
+    width: number,
+    height: number
+) => {
     const x = i;
     const y = 0;
 
     return (
-        <div key={i} style={{ width: "50%", height: "100%" }}>
+        <div
+            key={i}
+            style={{
+                width: width.toString() + "%",
+                height: height.toString() + "%"
+            }}
+        >
             <BoardSquare x={x} y={y}>
                 {renderPiece(x, y, picPosition)}
             </BoardSquare>
@@ -25,13 +36,17 @@ const renderSquare = (i: number, picPosition: [number, number]) => {
 
 type BoardProps = {
     picPosition: [number, number];
+    numSquares: number;
 };
 
 const Board: React.FC<BoardProps> = (props) => {
-    const { picPosition } = props;
+    const { picPosition, numSquares } = props;
+    const numCol = Math.ceil(Math.sqrt(numSquares));
+    const width = 100 / numCol;
+    const height = 100 / Math.ceil(numSquares / numCol);
     const squares = [];
-    for (let i = 0; i < 2; i++) {
-        squares.push(renderSquare(i, picPosition));
+    for (let i = 0; i < numSquares; i++) {
+        squares.push(renderSquare(i, picPosition, width, height));
     }
     return (
         <DndProvider backend={HTML5Backend}>
