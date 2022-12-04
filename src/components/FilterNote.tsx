@@ -11,6 +11,7 @@ export function FilterNote({
 }: {
     filterList: (
         titles: string[],
+        descriptions: string[],
         low: boolean,
         medium: boolean,
         high: boolean,
@@ -72,6 +73,7 @@ export function FilterNote({
         handleClose();
         filterList(
             titleOpt,
+            descriptionOpt,
             priorityOpt.includes("low"),
             priorityOpt.includes("medium"),
             priorityOpt.includes("high"),

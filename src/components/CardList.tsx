@@ -144,6 +144,7 @@ export function CardList(): JSX.Element {
     */
     function isFiltered(
         titles: string[],
+        descriptions: string[],
         card: cardData,
         low: boolean,
         medium: boolean,
@@ -156,6 +157,7 @@ export function CardList(): JSX.Element {
     ): boolean {
         return (
             titles.includes(card.task.title) ||
+            descriptions.includes(card.task.description) ||
             (card.task.priority === "low" && low) ||
             (card.task.priority === "medium" && medium) ||
             (card.task.priority === "high" && high) ||
@@ -168,6 +170,7 @@ export function CardList(): JSX.Element {
     }
     function filterList(
         titles: string[],
+        descriptions: string[],
         low: boolean,
         medium: boolean,
         high: boolean,
@@ -196,6 +199,7 @@ export function CardList(): JSX.Element {
                     -1 &&
                 !isFiltered(
                     titles,
+                    descriptions,
                     cardD,
                     low,
                     medium,
@@ -215,6 +219,36 @@ export function CardList(): JSX.Element {
             );
         }
         //filters the descriptions
+        if (descriptions.length === 0) {
+            //the "unchecked" conditon
+            currList.map((cardD: cardData) =>
+                displayList.findIndex(
+                    (card: cardData) => card.id === cardD.id
+                ) === -1 &&
+                newList.findIndex((card: cardData) => card.id === cardD.id) ===
+                    -1 &&
+                !isFiltered(
+                    titles,
+                    descriptions,
+                    cardD,
+                    low,
+                    medium,
+                    high,
+                    coral,
+                    pink,
+                    orange,
+                    moccasin,
+                    plum
+                )
+                    ? newList.push({ ...cardD, task: { ...cardD.task } })
+                    : console.log("")
+            );
+        } else {
+            newList = newList.filter(
+                (card: cardData) =>
+                    !descriptions.includes(card.task.description)
+            );
+        }
         //filters the priorities
         if (low) {
             newList = newList.filter(
@@ -231,6 +265,7 @@ export function CardList(): JSX.Element {
                     -1 &&
                 !isFiltered(
                     titles,
+                    descriptions,
                     cardD,
                     low,
                     medium,
@@ -260,6 +295,7 @@ export function CardList(): JSX.Element {
                     -1 &&
                 !isFiltered(
                     titles,
+                    descriptions,
                     cardD,
                     low,
                     medium,
@@ -289,6 +325,7 @@ export function CardList(): JSX.Element {
                     -1 &&
                 !isFiltered(
                     titles,
+                    descriptions,
                     cardD,
                     low,
                     medium,
@@ -319,6 +356,7 @@ export function CardList(): JSX.Element {
                     -1 &&
                 !isFiltered(
                     titles,
+                    descriptions,
                     cardD,
                     low,
                     medium,
@@ -347,6 +385,7 @@ export function CardList(): JSX.Element {
                     -1 &&
                 !isFiltered(
                     titles,
+                    descriptions,
                     cardD,
                     low,
                     medium,
@@ -375,6 +414,7 @@ export function CardList(): JSX.Element {
                     -1 &&
                 !isFiltered(
                     titles,
+                    descriptions,
                     cardD,
                     low,
                     medium,
@@ -403,6 +443,7 @@ export function CardList(): JSX.Element {
                     -1 &&
                 !isFiltered(
                     titles,
+                    descriptions,
                     cardD,
                     low,
                     medium,
@@ -431,6 +472,7 @@ export function CardList(): JSX.Element {
                     -1 &&
                 !isFiltered(
                     titles,
+                    descriptions,
                     cardD,
                     low,
                     medium,
