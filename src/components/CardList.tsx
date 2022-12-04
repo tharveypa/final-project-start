@@ -166,6 +166,7 @@ export function CardList(): JSX.Element {
     }
 
     function filterList(
+        titles: string[],
         low: boolean,
         medium: boolean,
         high: boolean,
@@ -183,6 +184,34 @@ export function CardList(): JSX.Element {
                 id: mapcard.id
             })
         );
+        //filters the titles
+        if (titles.length === 0) {
+            //the "unchecked" conditon
+            currList.map((cardD: cardData) =>
+                displayList.findIndex(
+                    (card: cardData) => card.id === cardD.id
+                ) === -1 &&
+                newList.findIndex((card: cardData) => card.id === cardD.id) ===
+                    -1 &&
+                !isFiltered(
+                    cardD,
+                    low,
+                    medium,
+                    high,
+                    coral,
+                    pink,
+                    orange,
+                    moccasin,
+                    plum
+                )
+                    ? newList.push({ ...cardD, task: { ...cardD.task } })
+                    : console.log("")
+            );
+        } else {
+            newList = newList.filter(
+                (card: cardData) => !titles.includes(card.task.title)
+            );
+        }
         //filters the priorities
         if (low) {
             newList = newList.filter(
