@@ -96,7 +96,10 @@ const Layout = () => {
                 >
                     <Container>
                         <Row>
-                            <Button onClick={() => clearRoomBoard()}>
+                            <Button
+                                style={{ backgroundColor: "#323f6c" }}
+                                onClick={() => clearRoomBoard()}
+                            >
                                 Clear Room
                             </Button>
                         </Row>
@@ -134,14 +137,13 @@ const Layout = () => {
                         <Row>
                             <Col>
                                 <Button
-                                    style={{ backgroundColor: "transparent" }}
+                                    style={{
+                                        backgroundColor: "#323f6c",
+                                        borderRadius: 0
+                                    }}
                                     onClick={() => createNewRoom()}
                                 >
-                                    <img
-                                        src={require("./images/newRoomButton.png")}
-                                        width="150"
-                                        height="40"
-                                    />
+                                    Create New Room
                                 </Button>
                             </Col>
                             <Col>
