@@ -18,48 +18,60 @@ export function FilterNote({
     ) => void;
 }): JSX.Element {
     const [show, setShow] = useState(false);
-    const [opt, setOpt] = useState<string[]>([]); //colors
-    const [prioOpt, setPriorityOpt] = useState<string>(""); //priorities, radio buttons exclusive
-    const [titleOpt, setTitleOpt] = useState<string>(""); //title, textbox
-    const [descriptionOpt, setDescriptionOpt] = useState<string>(""); //description, textbox
+    const [colorOpt, setColorOpt] = useState<string[]>([]); //colors
+    const [priorityOpt, setPriorityOpt] = useState<string[]>([]); //priorities, radio buttons checkbox
+    const [titleOpt, setTitleOpt] = useState<string[]>([]); //title, textbox
+    const [descriptionOpt, setDescriptionOpt] = useState<string[]>([]); //description, textbox
     const [assignedOpt, setAssignedOpt] = useState<string[]>([]); //assigned, textbox
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    function updateOpt(event: React.ChangeEvent<HTMLInputElement>): void {
-        const option = event.target.value;
-        if (opt.includes(option)) {
-            setOpt(opt.filter((o: string) => o !== event.target.value));
-        } else {
-            setOpt([...opt, option]);
-        }
-    }
-
     function updateTitle(event: React.ChangeEvent<HTMLInputElement>) {
-        setTitleOpt(event.target.value);
+        const splitTitle: string[] = event.target.value.split(",");
+        setTitleOpt(splitTitle);
     }
 
     function updateDescription(event: React.ChangeEvent<HTMLInputElement>) {
-        setDescriptionOpt(event.target.value);
+        const splitDescription: string[] = event.target.value.split(",");
+        setDescriptionOpt(splitDescription);
     }
 
-    function updatePriority(event: React.ChangeEvent<HTMLInputElement>){
-        setPriorityOpt(event.target.value);
+    function updatePriority(event: React.ChangeEvent<HTMLInputElement>) {
+        const option = event.target.value;
+        if (priorityOpt.includes(option)) {
+            setPriorityOpt(
+                priorityOpt.filter((o: string) => o !== event.target.value)
+            );
+        } else {
+            setPriorityOpt([...priorityOpt, option]);
+        }
     }
 
-    function updateAssignedOpt(event: React.ChangeElement<HTMLInputElement>){
-        setAssignedOpt(["TEST FOR NOW"]); //need to split these by , as MakeNote does
+    function updateColor(event: React.ChangeEvent<HTMLInputElement>): void {
+        const option = event.target.value;
+        if (colorOpt.includes(option)) {
+            setColorOpt(
+                colorOpt.filter((o: string) => o !== event.target.value)
+            );
+        } else {
+            setColorOpt([...colorOpt, option]);
+        }
+    }
+
+    function updateAssigned(event: React.ChangeEvent<HTMLInputElement>) {
+        const assignedSplit: string[] = event.target.value.split(",");
+        setAssignedOpt(assignedSplit);
     }
 
     const filtIt = () => {
         handleClose();
         filterList(
-            opt.includes("coral"),
-            opt.includes("pink"),
-            opt.includes("orange"),
-            opt.includes("moccasin"),
-            opt.includes("plum")
+            colorOpt.includes("coral"),
+            colorOpt.includes("pink"),
+            colorOpt.includes("orange"),
+            colorOpt.includes("moccasin"),
+            colorOpt.includes("plum")
         );
     };
 
@@ -76,7 +88,53 @@ export function FilterNote({
                             Specify what you would like to have filtered out!
                         </Form.Label>
                         <Form.Group className="TitleTextBox">
-                            
+                            <Form.Label>
+                                Input a comma separated list of titles to filter
+                                out
+                            </Form.Label>
+                            <Form.Control
+                                value={titleOpt}
+                                onChange={updateTitle}
+                            ></Form.Control>
+                        </Form.Group>
+                        <Form.Group className="Description">
+                            <Form.Label>
+                                Input a comma separated list of descriptions to
+                                filter out
+                            </Form.Label>
+                            <Form.Control
+                                value={descriptionOpt}
+                                onChange={updateDescription}
+                            ></Form.Control>
+                        </Form.Group>
+                        <Form.Group className="PriorityBoxes">
+                            <Form.Check
+                                inline
+                                type="checkbox"
+                                id="priority-check-low"
+                                label="low"
+                                value="low"
+                                checked={priorityOpt.includes("low")}
+                                onChange={updatePriority}
+                            ></Form.Check>
+                            <Form.Check
+                                inline
+                                type="checkbox"
+                                id="priority-check-medium"
+                                label="medium"
+                                value="medium"
+                                checked={priorityOpt.includes("medium")}
+                                onChange={updatePriority}
+                            ></Form.Check>
+                            <Form.Check
+                                inline
+                                type="checkbox"
+                                id="priority-check-high"
+                                label="high"
+                                value="high"
+                                checked={priorityOpt.includes("high")}
+                                onChange={updatePriority}
+                            ></Form.Check>
                         </Form.Group>
                         <Form.Group className="FilterBoxes">
                             <Form.Check
@@ -85,8 +143,8 @@ export function FilterNote({
                                 id="opt-check-Coral"
                                 label="Coral"
                                 value="coral"
-                                checked={opt.includes("coral")}
-                                onChange={updateOpt}
+                                checked={colorOpt.includes("coral")}
+                                onChange={updateColor}
                             ></Form.Check>
                             <Form.Check
                                 inline
@@ -94,8 +152,8 @@ export function FilterNote({
                                 id="opt-check-Pink"
                                 label="Pink"
                                 value="pink"
-                                checked={opt.includes("pink")}
-                                onChange={updateOpt}
+                                checked={colorOpt.includes("pink")}
+                                onChange={updateColor}
                             ></Form.Check>
                             <Form.Check
                                 inline
@@ -103,8 +161,8 @@ export function FilterNote({
                                 id="opt-check-Orange"
                                 label="Orange"
                                 value="orange"
-                                checked={opt.includes("orange")}
-                                onChange={updateOpt}
+                                checked={colorOpt.includes("orange")}
+                                onChange={updateColor}
                             ></Form.Check>
                             <Form.Check
                                 inline
@@ -112,8 +170,8 @@ export function FilterNote({
                                 id="opt-check-Moccasin"
                                 label="Moccasin"
                                 value="moccasin"
-                                checked={opt.includes("moccasin")}
-                                onChange={updateOpt}
+                                checked={colorOpt.includes("moccasin")}
+                                onChange={updateColor}
                             ></Form.Check>
                             <Form.Check
                                 inline
@@ -121,9 +179,19 @@ export function FilterNote({
                                 id="opt-check-Plum"
                                 label="Plum"
                                 value="plum"
-                                checked={opt.includes("plum")}
-                                onChange={updateOpt}
+                                checked={colorOpt.includes("plum")}
+                                onChange={updateColor}
                             ></Form.Check>
+                        </Form.Group>
+                        <Form.Group className="AssignedTextBox">
+                            <Form.Label>
+                                Input a comma separated list of assignees to
+                                filter out
+                            </Form.Label>
+                            <Form.Control
+                                value={assignedOpt}
+                                onChange={updateAssigned}
+                            ></Form.Control>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
