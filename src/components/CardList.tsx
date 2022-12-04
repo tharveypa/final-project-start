@@ -139,6 +139,32 @@ export function CardList(): JSX.Element {
         modDisList([]);
     }
 
+    /*
+        Returns true if the card is supposed to be filtered. Needed to know when a filter relaxed if a card should be added back to displayList
+    */
+    function isFiltered(
+        card: cardData,
+        low: boolean,
+        medium: boolean,
+        high: boolean,
+        coral: boolean,
+        pink: boolean,
+        orange: boolean,
+        moccasin: boolean,
+        plum: boolean
+    ): boolean {
+        return (
+            (card.task.priority === "low" && low) ||
+            (card.task.priority === "medium" && medium) ||
+            (card.task.priority === "high" && high) ||
+            (card.task.thumbColor === "Coral" && coral) ||
+            (card.task.thumbColor === "Pink" && pink) ||
+            (card.task.thumbColor === "Orange" && orange) ||
+            (card.task.thumbColor === "Moccasin" && moccasin) ||
+            (card.task.thumbColor === "Plum" && plum)
+        );
+    }
+
     function filterList(
         low: boolean,
         medium: boolean,
@@ -157,6 +183,91 @@ export function CardList(): JSX.Element {
                 id: mapcard.id
             })
         );
+        //filters the priorities
+        if (low) {
+            newList = newList.filter(
+                (cd: cardData) => cd.task.priority !== "low"
+            );
+        } else {
+            // ensures that if a priority is unfiltered it will appear back in the list
+            currList.map((cardD: cardData) =>
+                cardD.task.priority === "low" &&
+                displayList.findIndex(
+                    (card: cardData) => card.id === cardD.id
+                ) === -1 &&
+                newList.findIndex((card: cardData) => card.id === cardD.id) ===
+                    -1 &&
+                !isFiltered(
+                    cardD,
+                    low,
+                    medium,
+                    high,
+                    coral,
+                    pink,
+                    orange,
+                    moccasin,
+                    plum
+                )
+                    ? newList.push({ ...cardD, task: { ...cardD.task } })
+                    : console.log("")
+            );
+        }
+        if (medium) {
+            newList = newList.filter(
+                (cd: cardData) => cd.task.priority !== "medium"
+            );
+        } else {
+            // ensures that if a priority is unfiltered it will appear back in the list
+            currList.map((cardD: cardData) =>
+                cardD.task.priority === "medium" &&
+                displayList.findIndex(
+                    (card: cardData) => card.id === cardD.id
+                ) === -1 &&
+                newList.findIndex((card: cardData) => card.id === cardD.id) ===
+                    -1 &&
+                !isFiltered(
+                    cardD,
+                    low,
+                    medium,
+                    high,
+                    coral,
+                    pink,
+                    orange,
+                    moccasin,
+                    plum
+                )
+                    ? newList.push({ ...cardD, task: { ...cardD.task } })
+                    : console.log("")
+            );
+        }
+        if (high) {
+            newList = newList.filter(
+                (cd: cardData) => cd.task.priority !== "high"
+            );
+        } else {
+            // ensures that if a priority is unfiltered it will appear back in the list
+            currList.map((cardD: cardData) =>
+                cardD.task.priority === "high" &&
+                displayList.findIndex(
+                    (card: cardData) => card.id === cardD.id
+                ) === -1 &&
+                newList.findIndex((card: cardData) => card.id === cardD.id) ===
+                    -1 &&
+                !isFiltered(
+                    cardD,
+                    low,
+                    medium,
+                    high,
+                    coral,
+                    pink,
+                    orange,
+                    moccasin,
+                    plum
+                )
+                    ? newList.push({ ...cardD, task: { ...cardD.task } })
+                    : console.log("")
+            );
+        }
         //filters the colors
         if (coral) {
             newList = newList.filter(
@@ -168,7 +279,20 @@ export function CardList(): JSX.Element {
                 cardD.task.thumbColor === "Coral" &&
                 displayList.findIndex(
                     (card: cardData) => card.id === cardD.id
-                ) === -1
+                ) === -1 &&
+                newList.findIndex((card: cardData) => card.id === cardD.id) ===
+                    -1 &&
+                !isFiltered(
+                    cardD,
+                    low,
+                    medium,
+                    high,
+                    coral,
+                    pink,
+                    orange,
+                    moccasin,
+                    plum
+                )
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
                     : console.log("")
             );
@@ -182,7 +306,20 @@ export function CardList(): JSX.Element {
                 cardD.task.thumbColor === "Pink" &&
                 displayList.findIndex(
                     (card: cardData) => card.id === cardD.id
-                ) === -1
+                ) === -1 &&
+                newList.findIndex((card: cardData) => card.id === cardD.id) ===
+                    -1 &&
+                !isFiltered(
+                    cardD,
+                    low,
+                    medium,
+                    high,
+                    coral,
+                    pink,
+                    orange,
+                    moccasin,
+                    plum
+                )
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
                     : console.log("")
             );
@@ -196,7 +333,20 @@ export function CardList(): JSX.Element {
                 cardD.task.thumbColor === "Orange" &&
                 displayList.findIndex(
                     (card: cardData) => card.id === cardD.id
-                ) === -1
+                ) === -1 &&
+                newList.findIndex((card: cardData) => card.id === cardD.id) ===
+                    -1 &&
+                !isFiltered(
+                    cardD,
+                    low,
+                    medium,
+                    high,
+                    coral,
+                    pink,
+                    orange,
+                    moccasin,
+                    plum
+                )
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
                     : console.log("")
             );
@@ -210,7 +360,20 @@ export function CardList(): JSX.Element {
                 cardD.task.thumbColor === "Moccasin" &&
                 displayList.findIndex(
                     (card: cardData) => card.id === cardD.id
-                ) === -1
+                ) === -1 &&
+                newList.findIndex((card: cardData) => card.id === cardD.id) ===
+                    -1 &&
+                !isFiltered(
+                    cardD,
+                    low,
+                    medium,
+                    high,
+                    coral,
+                    pink,
+                    orange,
+                    moccasin,
+                    plum
+                )
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
                     : console.log("")
             );
@@ -224,7 +387,20 @@ export function CardList(): JSX.Element {
                 cardD.task.thumbColor === "Plum" &&
                 displayList.findIndex(
                     (card: cardData) => card.id === cardD.id
-                ) === -1
+                ) === -1 &&
+                newList.findIndex((card: cardData) => card.id === cardD.id) ===
+                    -1 &&
+                !isFiltered(
+                    cardD,
+                    low,
+                    medium,
+                    high,
+                    coral,
+                    pink,
+                    orange,
+                    moccasin,
+                    plum
+                )
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
                     : console.log("")
             );
