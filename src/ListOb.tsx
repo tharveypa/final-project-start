@@ -1,6 +1,7 @@
 /* eslint-disable no-extra-parens */
 import React from "react";
 import DeleteBin from "./DeleteBin";
+import { Button } from "react-bootstrap";
 import { tileItem } from "./interfaces";
 import Pic from "./Pic";
 
@@ -28,6 +29,30 @@ const ListOb: React.FC<listProps> = (props) => {
                 }}
             >
                 <DeleteBin deleteTile={props.deleteTile} />
+            </div>
+            <div>
+                <Button
+                    onClick={() =>
+                        props.setSourceTile(
+                            props.sourceTile.sort((a, b) =>
+                                a.name.localeCompare(b.name)
+                            )
+                        )
+                    }
+                >
+                    Sort By Name
+                </Button>
+                <Button
+                    onClick={() =>
+                        props.setSourceTile(
+                            props.sourceTile.sort((a, b) =>
+                                a.snap.localeCompare(b.snap)
+                            )
+                        )
+                    }
+                >
+                    Sort By Snap
+                </Button>
             </div>
             <div>
                 <input type="text" onChange={handleChange} />
