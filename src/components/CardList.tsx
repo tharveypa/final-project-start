@@ -143,6 +143,7 @@ export function CardList(): JSX.Element {
         Returns true if the card is supposed to be filtered. Needed to know when a filter relaxed if a card should be added back to displayList
     */
     function isFiltered(
+        titles: string[],
         card: cardData,
         low: boolean,
         medium: boolean,
@@ -154,6 +155,7 @@ export function CardList(): JSX.Element {
         plum: boolean
     ): boolean {
         return (
+            titles.includes(card.task.title) ||
             (card.task.priority === "low" && low) ||
             (card.task.priority === "medium" && medium) ||
             (card.task.priority === "high" && high) ||
@@ -164,7 +166,6 @@ export function CardList(): JSX.Element {
             (card.task.thumbColor === "Plum" && plum)
         );
     }
-
     function filterList(
         titles: string[],
         low: boolean,
@@ -194,6 +195,7 @@ export function CardList(): JSX.Element {
                 newList.findIndex((card: cardData) => card.id === cardD.id) ===
                     -1 &&
                 !isFiltered(
+                    titles,
                     cardD,
                     low,
                     medium,
@@ -212,6 +214,7 @@ export function CardList(): JSX.Element {
                 (card: cardData) => !titles.includes(card.task.title)
             );
         }
+        //filters the descriptions
         //filters the priorities
         if (low) {
             newList = newList.filter(
@@ -227,6 +230,7 @@ export function CardList(): JSX.Element {
                 newList.findIndex((card: cardData) => card.id === cardD.id) ===
                     -1 &&
                 !isFiltered(
+                    titles,
                     cardD,
                     low,
                     medium,
@@ -255,6 +259,7 @@ export function CardList(): JSX.Element {
                 newList.findIndex((card: cardData) => card.id === cardD.id) ===
                     -1 &&
                 !isFiltered(
+                    titles,
                     cardD,
                     low,
                     medium,
@@ -283,6 +288,7 @@ export function CardList(): JSX.Element {
                 newList.findIndex((card: cardData) => card.id === cardD.id) ===
                     -1 &&
                 !isFiltered(
+                    titles,
                     cardD,
                     low,
                     medium,
@@ -312,6 +318,7 @@ export function CardList(): JSX.Element {
                 newList.findIndex((card: cardData) => card.id === cardD.id) ===
                     -1 &&
                 !isFiltered(
+                    titles,
                     cardD,
                     low,
                     medium,
@@ -339,6 +346,7 @@ export function CardList(): JSX.Element {
                 newList.findIndex((card: cardData) => card.id === cardD.id) ===
                     -1 &&
                 !isFiltered(
+                    titles,
                     cardD,
                     low,
                     medium,
@@ -366,6 +374,7 @@ export function CardList(): JSX.Element {
                 newList.findIndex((card: cardData) => card.id === cardD.id) ===
                     -1 &&
                 !isFiltered(
+                    titles,
                     cardD,
                     low,
                     medium,
@@ -393,6 +402,7 @@ export function CardList(): JSX.Element {
                 newList.findIndex((card: cardData) => card.id === cardD.id) ===
                     -1 &&
                 !isFiltered(
+                    titles,
                     cardD,
                     low,
                     medium,
@@ -420,6 +430,7 @@ export function CardList(): JSX.Element {
                 newList.findIndex((card: cardData) => card.id === cardD.id) ===
                     -1 &&
                 !isFiltered(
+                    titles,
                     cardD,
                     low,
                     medium,
