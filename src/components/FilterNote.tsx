@@ -10,6 +10,9 @@ export function FilterNote({
     filterList
 }: {
     filterList: (
+        low: boolean,
+        medium: boolean,
+        high: boolean,
         coral: boolean,
         pink: boolean,
         orange: boolean,
@@ -18,10 +21,10 @@ export function FilterNote({
     ) => void;
 }): JSX.Element {
     const [show, setShow] = useState(false);
-    const [colorOpt, setColorOpt] = useState<string[]>([]); //colors
-    const [priorityOpt, setPriorityOpt] = useState<string[]>([]); //priorities, radio buttons checkbox
     const [titleOpt, setTitleOpt] = useState<string[]>([]); //title, textbox
     const [descriptionOpt, setDescriptionOpt] = useState<string[]>([]); //description, textbox
+    const [priorityOpt, setPriorityOpt] = useState<string[]>([]); //priorities, radio buttons checkbox
+    const [colorOpt, setColorOpt] = useState<string[]>([]); //colors
     const [assignedOpt, setAssignedOpt] = useState<string[]>([]); //assigned, textbox
 
     const handleClose = () => setShow(false);
@@ -67,6 +70,9 @@ export function FilterNote({
     const filtIt = () => {
         handleClose();
         filterList(
+            priorityOpt.includes("low"),
+            priorityOpt.includes("medium"),
+            priorityOpt.includes("high"),
             colorOpt.includes("coral"),
             colorOpt.includes("pink"),
             colorOpt.includes("orange"),

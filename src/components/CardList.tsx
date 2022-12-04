@@ -140,6 +140,9 @@ export function CardList(): JSX.Element {
     }
 
     function filterList(
+        low: boolean,
+        medium: boolean,
+        high: boolean,
         coral: boolean,
         pink: boolean,
         orange: boolean,
@@ -154,6 +157,7 @@ export function CardList(): JSX.Element {
                 id: mapcard.id
             })
         );
+        //filters the colors
         if (coral) {
             newList = newList.filter(
                 (cd: cardData) => cd.task.thumbColor !== "Coral"
