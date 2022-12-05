@@ -89,9 +89,12 @@ function ElementList() {
     }
     function markAsDone(id: number) {
         const draggedElement = proplist.filter((task, i) => task.id === id)[0];
-        const p = { ...draggedElement };
-        p.shown = true;
-        addtoWorkSpace(inWorkSpace.concat(p));
+        if (draggedElement.shown != true) {
+            const p = { ...draggedElement };
+            p.shown = true;
+            p.id = Math.random();
+            addtoWorkSpace(inWorkSpace.concat(p));
+        }
     }
 
     function removefromScreen(id: number) {
@@ -102,7 +105,7 @@ function ElementList() {
         <CardContext.Provider value={{ markAsDone, removefromScreen }}>
             <div>
                 <div className="row-adj">
-                    <div className="column-sidebar" background-color="primary">
+                    <div className="column-sidebar">
                         <p>
                             <strong> Element List</strong>
                         </p>
