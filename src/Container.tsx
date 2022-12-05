@@ -42,8 +42,9 @@ export const Container: FC<ContainerProps> = ({
         if (tankHeight !== undefined && tankWidth !== undefined) {
             const fishWidth = (height / 100) * tankWidth;
             const fishHeight = (height / 100) * tankHeight;
-            const top = Math.floor(Math.random() * (tankHeight - fishHeight));
-            const left = Math.floor(Math.random() * (tankWidth - fishWidth));
+            //Math.random() *
+            const top = Math.floor(tankHeight - fishHeight);
+            const left = Math.floor(tankWidth - fishWidth);
             const idVal = (numFish + 1).toString();
             const newFish = { left: left, top: top };
             setFishes(
@@ -74,6 +75,8 @@ export const Container: FC<ContainerProps> = ({
                             }
                         })
                     );
+                } else {
+                    addFish();
                 }
             }
         },
@@ -92,7 +95,7 @@ export const Container: FC<ContainerProps> = ({
                 const left = Math.round(item.left + delta.x);
                 const top = Math.round(item.top + delta.y);
                 moveFish(item.id, left, top);
-                return undefined;
+                return;
             }
         }),
         [moveFish]
