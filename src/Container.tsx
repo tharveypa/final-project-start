@@ -15,6 +15,11 @@ export interface ContainerProps {
     y: number;
     width: number;
     height: number;
+    incFish: () => void;
+    decFish: () => void;
+    numFish: number;
+    addFishToID: (x: number, id: string) => void;
+    removeFishNotInTank: (x: number, id: string) => void;
 }
 
 export interface ContainerState {
@@ -25,8 +30,27 @@ export const Container: FC<ContainerProps> = ({
     hideSourceOnDrag,
     x,
     width,
-    height
+    height,
+    incFish,
+    decFish,
+    numFish,
+    addFishToID,
+    removeFishNotInTank
 }) => {
+    const initializeFish = () => {
+        const tankWidth = document.getElementById("tank")?.offsetWidth;
+        const tankHeight = document.getElementById("tank")?.offsetHeight;
+        if (tankHeight !== undefined && tankWidth !== undefined) {
+            const fishWidth = (height / 100) * tankWidth;
+            const fishHeight = (height / 100) * tankHeight;
+            const top = Math.floor(tankHeight - fishHeight);
+            const left = Math.floor(tankWidth - fishWidth);
+            const newFish = { left: left, top: top };
+            return newFish;
+        }
+        const newFish = { left: 10, top: 10 };
+        return newFish;
+    };
     const [fishes, setFishes] = useState<{
         [key: string]: {
             top: number;
@@ -38,11 +62,9 @@ export const Container: FC<ContainerProps> = ({
         console.log("inside");
         const tankWidth = document.getElementById("tank")?.offsetWidth;
         const tankHeight = document.getElementById("tank")?.offsetHeight;
-        const numFish = Object.keys(fishes).length;
         if (tankHeight !== undefined && tankWidth !== undefined) {
             const fishWidth = (height / 100) * tankWidth;
             const fishHeight = (height / 100) * tankHeight;
-            //Math.random() *
             const top = Math.floor(tankHeight - fishHeight);
             const left = Math.floor(tankWidth - fishWidth);
             const idVal = (numFish + 1).toString();
@@ -50,6 +72,30 @@ export const Container: FC<ContainerProps> = ({
             setFishes(
                 update(fishes, { $set: { ...fishes, [idVal]: newFish } })
             );
+            incFish();
+            addFishToID(x, idVal);
+            console.log(idVal);
+        } else {
+            console.log("undefined");
+        }
+    };
+
+    const addFishNewTank = () => {
+        console.log("inside");
+        const tankWidth = document.getElementById("tank")?.offsetWidth;
+        const tankHeight = document.getElementById("tank")?.offsetHeight;
+        if (tankHeight !== undefined && tankWidth !== undefined) {
+            const fishWidth = (height / 100) * tankWidth;
+            const fishHeight = (height / 100) * tankHeight;
+            const top = Math.floor(tankHeight - fishHeight);
+            const left = Math.floor(tankWidth - fishWidth);
+            const idVal = numFish.toString();
+            const newFish = { left: left, top: top };
+            setFishes(
+                update(fishes, { $set: { ...fishes, [idVal]: newFish } })
+            );
+            addFishToID(x, idVal);
+            removeFishNotInTank(x, idVal);
         } else {
             console.log("undefined");
         }
@@ -76,15 +122,12 @@ export const Container: FC<ContainerProps> = ({
                         })
                     );
                 } else {
-                    addFish();
+                    addFishNewTank();
                 }
             }
         },
         [fishes, setFishes]
     );
-
-    // put else on line 68 that says if fish is moved out of tank and into another tank,
-    //delete the fish in this tank and put it into the other tank
 
     const [, drop] = useDrop(
         () => ({
