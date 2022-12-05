@@ -19,8 +19,7 @@ export function FilterNote({
         pink: boolean,
         orange: boolean,
         moccasin: boolean,
-        plum: boolean,
-        assignees: string[]
+        plum: boolean
     ) => void;
 }): JSX.Element {
     const [show, setShow] = useState(false);
@@ -28,8 +27,6 @@ export function FilterNote({
     const [descriptionOpt, setDescriptionOpt] = useState<string[]>([]); //description, textbox
     const [priorityOpt, setPriorityOpt] = useState<string[]>([]); //priorities, radio buttons checkbox
     const [colorOpt, setColorOpt] = useState<string[]>([]); //colors
-    const [assignedOpt, setAssignedOpt] = useState<string[]>([]); //assigned, textbox
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -65,11 +62,6 @@ export function FilterNote({
         }
     }
 
-    function updateAssigned(event: React.ChangeEvent<HTMLInputElement>) {
-        const assignedSplit: string[] = event.target.value.split(",");
-        setAssignedOpt(assignedSplit);
-    }
-
     const filtIt = () => {
         handleClose();
         filterList(
@@ -82,8 +74,7 @@ export function FilterNote({
             colorOpt.includes("pink"),
             colorOpt.includes("orange"),
             colorOpt.includes("moccasin"),
-            colorOpt.includes("plum"),
-            assignedOpt
+            colorOpt.includes("plum")
         );
     };
 
@@ -194,16 +185,6 @@ export function FilterNote({
                                 checked={colorOpt.includes("plum")}
                                 onChange={updateColor}
                             ></Form.Check>
-                        </Form.Group>
-                        <Form.Group className="AssignedTextBox">
-                            <Form.Label>
-                                Input a comma separated list of assignees to
-                                filter out
-                            </Form.Label>
-                            <Form.Control
-                                value={assignedOpt}
-                                onChange={updateAssigned}
-                            ></Form.Control>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
