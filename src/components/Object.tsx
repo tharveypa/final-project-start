@@ -14,33 +14,11 @@ function Object({ element }: { element: Element }): JSX.Element {
             type: itemTypes.ELEMENT,
             ID: element.id
         },
-        collect: (monitor: any) => ({
+        collect: (monitor) => ({
             isDragging: !!monitor.isDragging()
         })
     });
 
-    // if (element.shown == false) {
-    //     return (
-    //         <div>
-    //             <img
-    //                 id={element.id.toString()}
-    //                 ref={drag}
-    //                 src={element.image}
-    //                 alt={"element"}
-    //             />
-    //         </div>
-    //     );
-    // } else {
-    //     return (
-    //         <div>
-    //             <img
-    //                 id={element.id.toString()}
-    //                 src={element.image}
-    //                 alt={"element"}
-    //             />
-    //         </div>
-    //     );
-    // }
     return (
         <div>
             <img
