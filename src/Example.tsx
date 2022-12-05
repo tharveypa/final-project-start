@@ -7,9 +7,24 @@ export interface ExampleProps {
     y: number;
     width: number;
     height: number;
+    incFish: () => void;
+    decFish: () => void;
+    numFish: number;
+    addFishToID: (x: number, id: string) => void;
+    removeFishNotInTank: (x: number, id: string) => void;
 }
 
-export const Example: FC<ExampleProps> = ({ x, y, width, height }) => {
+export const Example: FC<ExampleProps> = ({
+    x,
+    y,
+    width,
+    height,
+    incFish,
+    decFish,
+    numFish,
+    addFishToID,
+    removeFishNotInTank
+}) => {
     return (
         <div>
             <Container
@@ -18,6 +33,11 @@ export const Example: FC<ExampleProps> = ({ x, y, width, height }) => {
                 y={y}
                 width={width}
                 height={height}
+                incFish={incFish}
+                decFish={decFish}
+                numFish={numFish}
+                addFishToID={addFishToID}
+                removeFishNotInTank={removeFishNotInTank}
             />
         </div>
     );

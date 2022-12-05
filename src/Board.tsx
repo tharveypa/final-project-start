@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import update from "immutability-helper";
 //import Pic from "./Pic";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -18,10 +19,16 @@ const renderSquare = (
     i: number,
     picPosition: [number, number],
     width: number,
-    height: number
+    height: number,
+    incFish: () => void,
+    decFish: () => void,
+    numFish: number,
+    addFishToID: (x: number, id: string) => void,
+    removeFishNotInTank: (x: number, id: string) => void
 ) => {
     const x = i;
     const y = 0;
+    console.log(numFish);
 
     return (
         <div
@@ -31,11 +38,21 @@ const renderSquare = (
                 height: height.toString() + "%"
             }}
         >
-            <Example x={x} y={y} width={width} height={height}></Example>
+            <Example
+                x={x}
+                y={y}
+                width={width}
+                height={height}
+                incFish={incFish}
+                decFish={decFish}
+                numFish={numFish}
+                addFishToID={addFishToID}
+                removeFishNotInTank={removeFishNotInTank}
+            ></Example>
         </div>
     );
 };
-// <BoardSquare x={x} y={y} ></BoardSquare> instead of example
+
 type BoardProps = {
     picPosition: [number, number];
     numSquares: number;
@@ -47,8 +64,58 @@ const Board: React.FC<BoardProps> = (props) => {
     const width = 100 / numCol;
     const height = 100 / Math.ceil(numSquares / numCol);
     const squares = [];
+    const [tank_ID, setTank_ID] = useState(
+        Array(numSquares).fill(Array(0).fill(null))
+    );
+    const addFishToID = (x: number, id: string) => {
+        console.log(x);
+        const newTank = [...tank_ID];
+        const new_TankID = [...newTank[x]];
+        console.log("mid");
+        console.log(new_TankID);
+        new_TankID.push(id);
+        console.log("end");
+        console.log(new_TankID);
+        newTank.splice(x, 1, new_TankID);
+        setTank_ID(newTank);
+    };
+    const removeFishFromID = (x: number, id: string) => {
+        const new_TankID = [...tank_ID];
+        new_TankID[x].filter((thisID: string): boolean => thisID != id);
+        setTank_ID(new_TankID);
+    };
+    const removeFishNotInTank = (x: number, id: string) => {
+        const new_TankID = [...tank_ID];
+        new_TankID.map((thisTank: [string]) =>
+            new_TankID.indexOf(thisTank) !== x
+                ? thisTank.filter((thisID: string): boolean => thisID != id)
+                : thisTank
+        );
+        setTank_ID(new_TankID);
+    };
+    console.log(tank_ID);
+    const [numFish, setNumFish] = useState(0);
+    const incFish = () => {
+        setNumFish(numFish + 1);
+    };
+
+    const decFish = () => {
+        setNumFish(numFish - 1);
+    };
     for (let i = 0; i < numSquares; i++) {
-        squares.push(renderSquare(i, picPosition, width, height));
+        squares.push(
+            renderSquare(
+                i,
+                picPosition,
+                width,
+                height,
+                incFish,
+                decFish,
+                numFish,
+                addFishToID,
+                removeFishNotInTank
+            )
+        );
     }
     return (
         <DndProvider backend={HTML5Backend}>
