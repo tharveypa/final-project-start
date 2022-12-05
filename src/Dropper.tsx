@@ -68,7 +68,7 @@ export const Dropper: FC = () => {
             width: 100,
             height: 100,
             top: 400,
-            left: 220,
+            left: 200,
             onBoard: false,
             reflected: false,
             image: "./Assets/Images/" + s + ".png"

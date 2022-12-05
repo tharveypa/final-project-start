@@ -14,8 +14,8 @@ describe("Dropper Tests", () => {
         button.click();
         //now expect the pieces position to be 150, 100, etc.
         const piece = screen.getByTestId("pieces");
-        expect(piece.clientTop).toBeEqual(150);
-        expect(piece.clientLeft).toBeEqual(100);
+        expect(piece.clientTop).toEqual(150);
+        expect(piece.clientLeft).toEqual(100);
     });
 
     test("Pieces Exist", () => {
