@@ -31,7 +31,7 @@ const Room: React.FC<RoomProps> = (props) => {
 
     const onDrop = (monitor: DropTargetMonitor) => {
         const newFurnitureBoxMap: Furniture = monitor.getItem().Furniture;
-        const existingFurnitureBoxMap = furnitures[newFurnitureBoxMap.name];
+        //const existingFurnitureBoxMap = furnitures[newFurnitureBoxMap.name];
         //if (existingFurnitureBoxMap === undefined) {
         setFurnitures(
             update(furnitures, {
