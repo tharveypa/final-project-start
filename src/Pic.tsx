@@ -32,7 +32,7 @@ const Pic: FC<BoxProps> = ({ id, left, top, image }) => {
                 ref={drag}
                 style={{
                     ...styleC,
-                    opacity: isDragging ? 0.75 : 1,
+                    opacity: isDragging ? 0.99 : 1,
                     //backgroundColor: "red",
                     top: top + "px",
                     left: left + "px"
