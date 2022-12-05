@@ -1,6 +1,5 @@
 .App {
     text-align: center;
-    display: grid;
 }
 
 .App-logo {
@@ -17,7 +16,7 @@
 .App-header {
     width: 100%;
     background-color: #282c34;
-    min-height: 10vh;
+    min-height: 40vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,148 +38,24 @@
     }
 }
 
-.app-drop-down {
+.dropdown-toggle {
+    height: 100px;
     width: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-.container {
-    position: relative;
-    border: 1px solid black;
-    height: 400px;
-    width: 800px;
-    top: 100px;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    background-image: url("../src/furniture/room_floor_1.png");
-}
-
-.app-drop-down button {
-    margin-left: 200px;
-    padding: 10px 20px;
-    background-color: lightslategray;
-    box-shadow: 0 0 25px -20px #dbdbdb;
-    flex: 1;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    border-radius: 4px;
-    border: 0.3px solid #919191;
-}
-
-.app-drop-down ul {
-    height: 500px;
-    margin-left: 200px;
-    padding: 10px;
     position: absolute;
-    top: calc(100% + 5px);
-    min-width: 100%;
-    width: max-content;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    border-radius: 4px;
-    box-shadow: 0 0 5px #d4d4d4;
-    list-style: none;
-    overflow-y: auto;
-}
-
-.app-drop-down ul li {
-    background-color: white;
-    padding: 10px 30px;
-    cursor: pointer;
-    transition: background-color ease 0.2s;
-}
-
-.app-drop-down ul li.Title {
-    background-color: white;
-    padding: 5px 15px;
-}
-
-.app-drop-down ul li.Title:hover {
-    background-color: white;
-    color: black;
-}
-
-.app-drop-down ul li:hover {
-    background-color: lightgrey;
-    color: black;
-}
-
-.app-drop-down button:hover {
-    background-color: darkslategrey;
-    color: white;
-}
-
-body {
-    font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
-    margin: 2em;
-}
-
-.box {
-    border: 0px solid #666;
-    background-image: url("../src/furniture/bathtub.png");
-    background-size: cover;
-    border-radius: 0em;
-    padding: 0px;
-    cursor: move;
-    position: absolute;
+    bottom: 0%;
+    top: auto !important;
+    background-color: transparent;
+    border: 1px solid #3498db00;
+    color: #3498db;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
     z-index: 1;
+    appearance: none;
+    transition: color 500s ease- in-out, background-color 500s ease-in-out,
+        border-color 500s ease-in-out;
 }
 
-.box .bathtub {
-    background-image: url("../src/furniture/bathtub.png");
-    background-size: cover;
-    width: 100px;
-    height: 50px;
-    cursor: move;
-    position: absolute;
-    z-index: 1;
-}
-
-.box .chair {
-    background-image: url("../src/furniture/chair.png");
-    background-size: cover;
-    width: 40px;
-    height: 30px;
-    cursor: move;
-    position: absolute;
-    top: 300px;
-    z-index: 1;
-}
-
-.box.over {
-    border: 3px dotted #666;
-}
-
-.box .rotate {
-    transform: rotate(90deg);
-}
-
-[draggable] {
-    user-select: none;
-}
-
-.bathtub {
-    background-image: url("../src/furniture/bathtub.png");
-    background-size: cover;
-    width: 100px;
-    height: 50px;
-    top: 200px;
-    cursor: move;
-    position: absolute;
-    z-index: 1;
-}
-
-.chair {
-    background-image: url("../src/furniture/chair.png");
-    background-size: cover;
-    width: 100px;
-    height: 50px;
-    cursor: move;
-    position: absolute;
+.dropdown-toggle::after {
+    content: none;
+    color: rgb(255, 255, 255);
+    appearance: none;
 }

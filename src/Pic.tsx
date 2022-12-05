@@ -1,10 +1,15 @@
 import React, { Fragment } from "react";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "./constants";
+import { Furniture } from "./Interfaces/furniture";
 
-const Pic: React.FC = () => {
+interface PicProps {
+    FurnitureItem: Furniture;
+}
+const Pic: React.FC<PicProps> = (props) => {
+    const { FurnitureItem } = props;
     const [{ isDragging }, drag] = useDrag({
-        item: { type: ItemTypes.PIC },
+        item: { type: ItemTypes.PIC, Furniture: FurnitureItem },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging
         })
@@ -22,12 +27,7 @@ const Pic: React.FC = () => {
                     textAlign: "center"
                 }}
             >
-                {/*♘*/}
-                <img
-                    src={require("./bosun_tally.jpg")}
-                    width="80"
-                    height="80"
-                />
+                <img src={FurnitureItem.image} width="80" height="80" />
             </div>
         </Fragment>
     );
