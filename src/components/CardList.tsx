@@ -153,8 +153,14 @@ export function CardList(): JSX.Element {
         pink: boolean,
         orange: boolean,
         moccasin: boolean,
-        plum: boolean
+        plum: boolean,
+        assignees: string[]
     ): boolean {
+        //needed to filter assigned
+        let assi = false;
+        card.task.assigned.map((assign: string) =>
+            assignees.includes(assign) ? (assi = true) : console.log("")
+        );
         return (
             titles.includes(card.task.title) ||
             descriptions.includes(card.task.description) ||
@@ -165,9 +171,19 @@ export function CardList(): JSX.Element {
             (card.task.thumbColor === "Pink" && pink) ||
             (card.task.thumbColor === "Orange" && orange) ||
             (card.task.thumbColor === "Moccasin" && moccasin) ||
-            (card.task.thumbColor === "Plum" && plum)
+            (card.task.thumbColor === "Plum" && plum) ||
+            assi
         );
     }
+
+    function assignedCheck(assignees: string[], card: cardData) {
+        let assi = false;
+        card.task.assigned.map((assign: string) =>
+            assignees.includes(assign) ? (assi = true) : console.log("")
+        );
+        return assi;
+    }
+
     function filterList(
         titles: string[],
         descriptions: string[],
@@ -178,7 +194,8 @@ export function CardList(): JSX.Element {
         pink: boolean,
         orange: boolean,
         moccasin: boolean,
-        plum: boolean
+        plum: boolean,
+        assignees: string[]
     ): void {
         // filters the list based on modal input
         let newList = displayList.map(
@@ -208,7 +225,8 @@ export function CardList(): JSX.Element {
                     pink,
                     orange,
                     moccasin,
-                    plum
+                    plum,
+                    assignees
                 )
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
                     : console.log("")
@@ -238,7 +256,8 @@ export function CardList(): JSX.Element {
                     pink,
                     orange,
                     moccasin,
-                    plum
+                    plum,
+                    assignees
                 )
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
                     : console.log("")
@@ -274,7 +293,8 @@ export function CardList(): JSX.Element {
                     pink,
                     orange,
                     moccasin,
-                    plum
+                    plum,
+                    assignees
                 )
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
                     : console.log("")
@@ -304,7 +324,8 @@ export function CardList(): JSX.Element {
                     pink,
                     orange,
                     moccasin,
-                    plum
+                    plum,
+                    assignees
                 )
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
                     : console.log("")
@@ -334,7 +355,8 @@ export function CardList(): JSX.Element {
                     pink,
                     orange,
                     moccasin,
-                    plum
+                    plum,
+                    assignees
                 )
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
                     : console.log("")
@@ -365,7 +387,8 @@ export function CardList(): JSX.Element {
                     pink,
                     orange,
                     moccasin,
-                    plum
+                    plum,
+                    assignees
                 )
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
                     : console.log("")
@@ -394,7 +417,8 @@ export function CardList(): JSX.Element {
                     pink,
                     orange,
                     moccasin,
-                    plum
+                    plum,
+                    assignees
                 )
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
                     : console.log("")
@@ -423,7 +447,8 @@ export function CardList(): JSX.Element {
                     pink,
                     orange,
                     moccasin,
-                    plum
+                    plum,
+                    assignees
                 )
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
                     : console.log("")
@@ -452,7 +477,8 @@ export function CardList(): JSX.Element {
                     pink,
                     orange,
                     moccasin,
-                    plum
+                    plum,
+                    assignees
                 )
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
                     : console.log("")
@@ -481,10 +507,42 @@ export function CardList(): JSX.Element {
                     pink,
                     orange,
                     moccasin,
-                    plum
+                    plum,
+                    assignees
                 )
                     ? newList.push({ ...cardD, task: { ...cardD.task } })
                     : console.log("")
+            );
+        }
+        //filters the assigned
+        if (assignees.length === 0) {
+            //the "unchecked" conditon
+            currList.map((cardD: cardData) =>
+                displayList.findIndex(
+                    (card: cardData) => card.id === cardD.id
+                ) === -1 &&
+                newList.findIndex((card: cardData) => card.id === cardD.id) ===
+                    -1 &&
+                !isFiltered(
+                    titles,
+                    descriptions,
+                    cardD,
+                    low,
+                    medium,
+                    high,
+                    coral,
+                    pink,
+                    orange,
+                    moccasin,
+                    plum,
+                    assignees
+                )
+                    ? newList.push({ ...cardD, task: { ...cardD.task } })
+                    : console.log("")
+            );
+        } else {
+            newList = newList.filter(
+                (card: cardData) => !assignedCheck(assignees, card)
             );
         }
         modDisList(newList);

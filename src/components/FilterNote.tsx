@@ -19,7 +19,8 @@ export function FilterNote({
         pink: boolean,
         orange: boolean,
         moccasin: boolean,
-        plum: boolean
+        plum: boolean,
+        assignees: string[]
     ) => void;
 }): JSX.Element {
     const [show, setShow] = useState(false);
@@ -81,7 +82,8 @@ export function FilterNote({
             colorOpt.includes("pink"),
             colorOpt.includes("orange"),
             colorOpt.includes("moccasin"),
-            colorOpt.includes("plum")
+            colorOpt.includes("plum"),
+            assignedOpt
         );
     };
 
