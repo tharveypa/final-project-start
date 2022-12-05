@@ -68,7 +68,7 @@ export const Dropper: FC = () => {
             width: 100,
             height: 100,
             top: 400,
-            left: 220,
+            left: 200,
             onBoard: false,
             reflected: false,
             image: "./Assets/Images/" + s + ".png"
@@ -155,6 +155,7 @@ export const Dropper: FC = () => {
     });
     return (
         <div ref={drop} style={{ ...style }} id="dustbin" data-testid="dustbin">
+            <header>Current Puzzle = {solutionImage.substring(19, 23)}</header>
             <Button onClick={setRandomPuzzle}>Randomize Puzzle</Button>
             <Button onClick={resetPieces}>Reset</Button>
             <div>
