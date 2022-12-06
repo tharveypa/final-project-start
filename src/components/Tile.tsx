@@ -41,7 +41,8 @@ export function Tile(dt: DragTile): JSX.Element {
                         hasFurniture: false,
                         hasPainting: false,
                         placeOnWall: false,
-                        isFill: false
+                        isFill: false,
+                        comments: []
                     })
                 }
             >
