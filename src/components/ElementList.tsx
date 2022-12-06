@@ -95,6 +95,7 @@ function ElementList() {
     }
     function putInWorkSpace(id: number, monitor: any) {
         const draggedElement = proplist.filter((task, i) => task.id === id)[0];
+<<<<<<< HEAD
         const p = { ...draggedElement };
         if (draggedElement == undefined) {
             const draggedElement = inWorkSpace.filter(
@@ -106,6 +107,10 @@ function ElementList() {
             const top = Math.round(p.top + delta.y);
             moveElement(p.id, left, top);
         } else if (draggedElement.shown == false) {
+=======
+        if (draggedElement.shown != true) {
+            const p = { ...draggedElement };
+>>>>>>> b64a166df64ce7fc63922c369e7f31665e6f2f1e
             p.shown = true;
             p.id = Math.random();
             addtoWorkSpace(inWorkSpace.concat(p));
