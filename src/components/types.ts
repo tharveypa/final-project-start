@@ -1,17 +1,6 @@
 export interface Bed {
     id: string;
-    name: "Blue Bed" | "Red Bed";
-    bunk: boolean;
-    height: number;
-    width: number;
-    top: number;
-    left: number;
-    color: string;
-}
-
-export interface RedBed {
-    id: string;
-    name: "Red Bed";
+    name: "Blue Bed" | "Red Bed" | "Yellow Bed";
     bunk: boolean;
     height: number;
     width: number;
@@ -52,7 +41,13 @@ export interface Dresser {
 
 export interface Rug {
     id: string;
-    name: "Small Rug" | "Medium Rug" | "Large Rug";
+    name:
+        | "Small Orange Rug"
+        | "Medium Orange Rug"
+        | "Large Orange Rug"
+        | "Small Blue Rug"
+        | "Medium Blue Rug"
+        | "Large Blue Rug";
     height: number;
     width: number;
     top: number;
@@ -102,7 +97,6 @@ export interface Fridge {
 
 export type Furniture =
     | Bed
-    | RedBed
     | Desk
     | Wardrobe
     | Dresser

@@ -9,7 +9,7 @@ import type {
 } from "./types";
 
 const blue_bed: Bed = {
-    id: "menu-bed",
+    id: "menu-blue-bed",
     name: "Blue Bed",
     height: 38 * 3,
     width: 80 * 3,
@@ -20,7 +20,7 @@ const blue_bed: Bed = {
 };
 
 const red_bed: Bed = {
-    id: "menu-bed",
+    id: "menu-red-bed",
     name: "Red Bed",
     height: 38 * 3,
     width: 80 * 3,
@@ -28,6 +28,17 @@ const red_bed: Bed = {
     top: 0,
     left: 0,
     color: "red"
+};
+
+const yellow_bed: Bed = {
+    id: "menu-yellow-bed",
+    name: "Yellow Bed",
+    height: 38 * 3,
+    width: 80 * 3,
+    bunk: false,
+    top: 0,
+    left: 0,
+    color: "yellow"
 };
 
 const desk: Desk = {
@@ -61,7 +72,7 @@ const dresser: Dresser = {
 };
 
 const trash_can: TrashCan = {
-    id: "menu-trash_can",
+    id: "menu-trash-can",
     name: "Trash Can",
     height: 15 * 3,
     width: 20 * 3,
@@ -70,9 +81,9 @@ const trash_can: TrashCan = {
     color: "grey"
 };
 
-const small_rug: Rug = {
+const orange_rug_small: Rug = {
     id: "menu-rug",
-    name: "Small Rug",
+    name: "Small Orange Rug",
     height: 50 * 3,
     width: 75 * 3,
     color: "coral",
@@ -80,9 +91,9 @@ const small_rug: Rug = {
     left: 0
 };
 
-const medium_rug: Rug = {
+const orange_rug_medium: Rug = {
     id: "menu-rug",
-    name: "Medium Rug",
+    name: "Medium Orange Rug",
     height: 65 * 3,
     width: 125 * 3,
     color: "coral",
@@ -90,12 +101,42 @@ const medium_rug: Rug = {
     left: 0
 };
 
-const large_rug: Rug = {
+const orange_rug_large: Rug = {
     id: "menu-rug",
-    name: "Large Rug",
+    name: "Large Orange Rug",
     height: 75 * 3,
     width: 150 * 3,
     color: "coral",
+    top: 0,
+    left: 0
+};
+
+const blue_rug_small: Rug = {
+    id: "menu-rug",
+    name: "Small Blue Rug",
+    height: 50 * 3,
+    width: 75 * 3,
+    color: "lightblue",
+    top: 0,
+    left: 0
+};
+
+const blue_rug_medium: Rug = {
+    id: "menu-rug",
+    name: "Medium Blue Rug",
+    height: 65 * 3,
+    width: 125 * 3,
+    color: "lightblue",
+    top: 0,
+    left: 0
+};
+
+const blue_rug_large: Rug = {
+    id: "menu-rug",
+    name: "Large Blue Rug",
+    height: 75 * 3,
+    width: 150 * 3,
+    color: "lightblue",
     top: 0,
     left: 0
 };
@@ -113,12 +154,16 @@ const microwave: Microwave = {
 export const furniture = [
     blue_bed,
     red_bed,
+    yellow_bed,
     desk,
     wardrobe,
     dresser,
     trash_can,
     microwave,
-    small_rug,
-    medium_rug,
-    large_rug
+    orange_rug_small,
+    orange_rug_medium,
+    orange_rug_large,
+    blue_rug_small,
+    blue_rug_medium,
+    blue_rug_large
 ];
