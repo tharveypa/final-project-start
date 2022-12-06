@@ -10,4 +10,5 @@ export interface DragTile {
     hasPainting: boolean;
     placeOnWall: boolean;
     isFill: boolean;
+    comments: string[];
 }
