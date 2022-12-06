@@ -8,10 +8,8 @@ import { Note } from "./Note";
 import TrashCan from "./TrashCan";
 
 export function CorkBoard({
-    cardWidth,
     startingNotesAndPositionInfo
 }: {
-    cardWidth: number;
     startingNotesAndPositionInfo: noteData[];
 }): JSX.Element {
     //state for holding our note and position infos
@@ -54,7 +52,8 @@ export function CorkBoard({
                         scrollPositionY,
                     currentOffset.x -
                         boardLeft +
-                        (grabOffset?.x - sourceOffset?.x - cardWidth / 2) +
+                        (grabOffset?.x - sourceOffset?.x) -
+                        100 +
                         scrollPositionX,
                     1
                 );

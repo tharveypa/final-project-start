@@ -6,7 +6,7 @@ import { MakeNote } from "./MakeNote";
 import { FilterNote } from "./FilterNote";
 import { cardData } from "../interfaces/cardData";
 
-export function CardList({ cardWidth }: { cardWidth: number }): JSX.Element {
+export function CardList(): JSX.Element {
     const [currList, modList] = useState<cardData[]>([]); // the entire list of tasks
     const [displayList, modDisList] = useState<cardData[]>([]); // what is going to be displayed (due to filter)
 
@@ -503,7 +503,6 @@ export function CardList({ cardWidth }: { cardWidth: number }): JSX.Element {
                     return (
                         <CardComp
                             key={"card #" + cardData.id}
-                            cardWidth={cardWidth}
                             task={cardData.task}
                             id={cardData.id}
                             editCard={editCard}

@@ -38,18 +38,26 @@ const sampleCorkBoard = [
     }
 ];
 
-const cardWidth = 400;
-
 function App(): JSX.Element {
     return (
         <>
             <DndProvider backend={HTML5Backend}>
                 <div className="App">
-                    <div>
+                    <div
+                        style={{
+                            height: "600px",
+                            width: "700px",
+                            position: "absolute"
+                            //backgroundColor: "red"
+                        }}
+                    >
                         <h3>CREATED BY: </h3>
                         <p>Blade Tyrrell, Brandon Branson, Michael Snead</p>
+                        {/* CARDLIST DIV : SIZE AND POSITION OF THE DIV DEFINES THAT OF THE CARDLIST*/}
+                        <div style={{}}>
+                            <CardList></CardList>
+                        </div>
                     </div>
-                    <CardList cardWidth={cardWidth}></CardList>
                     {/* CORKBOARD DIV : SIZE AND POSITION OF THE DIV DEFINES THAT OF THE CORKBOARD*/}
                     <div
                         style={{
@@ -61,7 +69,6 @@ function App(): JSX.Element {
                         }}
                     >
                         <CorkBoard
-                            cardWidth={cardWidth}
                             startingNotesAndPositionInfo={sampleCorkBoard}
                         ></CorkBoard>
                     </div>
