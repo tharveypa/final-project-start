@@ -1,6 +1,6 @@
-import type { Bed, Desk, Wardrobe, Dresser, Rug } from "./types";
+import type { Bed, Desk, Wardrobe, Dresser, Rug, TrashCan } from "./types";
 
-const bed: Bed = {
+const blue_bed: Bed = {
     id: "menu-bed",
     name: "bed",
     height: 38 * 3,
@@ -9,6 +9,17 @@ const bed: Bed = {
     top: 0,
     left: 0,
     color: "cadetblue"
+};
+
+const red_bed: Bed = {
+    id: "menu-bed",
+    name: "bed",
+    height: 38 * 3,
+    width: 80 * 3,
+    bunk: false,
+    top: 0,
+    left: 0,
+    color: "red"
 };
 
 const desk: Desk = {
@@ -41,14 +52,54 @@ const dresser: Dresser = {
     color: "darkslateblue"
 };
 
-const rug: Rug = {
+const trash_can: TrashCan = {
+    id: "menu-trash_can",
+    name: "Trash Can",
+    height: 15 * 3,
+    width: 20 * 3,
+    top: 0,
+    left: 0,
+    color: "grey"
+};
+
+const small_rug: Rug = {
     id: "menu-rug",
     name: "rug",
     height: 50 * 3,
+    width: 75 * 3,
+    color: "coral",
+    top: 0,
+    left: 0
+};
+
+const medium_rug: Rug = {
+    id: "menu-rug",
+    name: "rug",
+    height: 65 * 3,
+    width: 125 * 3,
+    color: "coral",
+    top: 0,
+    left: 0
+};
+
+const large_rug: Rug = {
+    id: "menu-rug",
+    name: "rug",
+    height: 75 * 3,
     width: 150 * 3,
     color: "coral",
     top: 0,
     left: 0
 };
 
-export const furniture = [bed, desk, wardrobe, dresser, rug];
+export const furniture = [
+    blue_bed,
+    red_bed,
+    desk,
+    wardrobe,
+    dresser,
+    trash_can,
+    small_rug,
+    medium_rug,
+    large_rug
+];
