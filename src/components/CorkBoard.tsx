@@ -5,6 +5,7 @@ import { ItemTypes } from "../constants";
 import { noteData } from "../interfaces/noteData";
 import { Task } from "../interfaces/task";
 import { Note } from "./Note";
+import TrashCan from "./TrashCan";
 
 export function CorkBoard({
     startingNotesAndPositionInfo
@@ -185,6 +186,15 @@ export function CorkBoard({
         ]);
     }
 
+    // deletes a note and position data associated with that note based on the id
+    function deleteNote(noteId: number) {
+        setNotesAndPositionInfo(
+            notesAndPositionInfo.filter(
+                (noteData: noteData): boolean => noteId !== noteData.id
+            )
+        );
+    }
+
     return (
         <div
             ref={drop}
@@ -215,6 +225,7 @@ export function CorkBoard({
                     </div>
                 );
             })}
+            <TrashCan deleteNote={deleteNote}></TrashCan>
         </div>
     );
 }

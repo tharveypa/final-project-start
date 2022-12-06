@@ -41,11 +41,28 @@ const sampleCorkBoard = [
 ];
 
 function App(): JSX.Element {
-    const [notes, setNote] = useState<noteData[]>([]);
+    const [notes, setNote] = useState<noteData[]>([
+        {
+            task: {
+                title: "",
+                description: "",
+                priority: "",
+                thumbColor: "",
+                assigned: [""]
+            },
+            id: 1,
+            height: 0,
+            width: 0,
+            top: 0,
+            left: 0,
+            zIndex: 0
+        }
+    ]);
 
     const deleteNote = (idd: number) => {
         setNote(notes.filter((note: noteData): boolean => note.id !== idd));
         console.log("Delete!");
+        return idd;
     };
     return (
         <>
