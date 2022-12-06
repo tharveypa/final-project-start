@@ -11,26 +11,36 @@ import Zone from "./components/Zone";
 type BoardSquareProps = {
     x: number;
     y: number;
-    pics: string[];
+    tools: string[];
 };
 
 const BoardSquare: React.FC<BoardSquareProps> = (props) => {
-    const { x, y, pics, children } = props;
+    const { x, y, tools, children } = props;
     const black = (x + y) % 2 === 1;
     const [square, setSquare] = useState<string[]>([]);
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.PIC,
         canDrop: () => canMovePic(x, y),
-        drop: (item: { type: string; pic: string }) =>
-            addImageToBoard(item.pic),
+        drop: (item: {
+            type: string;
+            pic: string;
+            top: number;
+            left: number;
+            title: string;
+        }) => addToolToBoard(item.pic, item.top, item.left, item.title),
         collect: (monitor) => ({
             isOver: !!monitor.isOver(),
             canDrop: !!monitor.canDrop()
         })
     });
-    const addImageToBoard = (pic: string) => {
-        const p = pics.filter((picture) => pic === picture);
-        setSquare((square) => [...square, p[0]]);
+    const addToolToBoard = (
+        tool: string,
+        top: number,
+        left: number,
+        title: string
+    ) => {
+        const t = tools.filter((toolery) => tool === toolery);
+        setSquare((square) => [...square, t[0]]);
     };
     const clear = () => {
         setSquare([]);
@@ -55,9 +65,10 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                 {isOver && canDrop && <Overlay color="green" />}
                 <ul>
                     {square.map(
+                        // eslint-disable-next-line no-extra-parens
                         (p: string): JSX.Element => (
                             <li key={p}>
-                                <Pic pic={p} />
+                                <Pic pic={p} top={y} left={x} title={p} />
                                 {
                                     //<Square black={black}>{p}</Square>
                                 }

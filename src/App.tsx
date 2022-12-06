@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import PimpVsDestroy from "./components/PimpVsDestroy";
+import Board from "./Board";
 //import Car from "./components/Car";
 //import DirtTool from "./components/Destroy Tools/DirtTool";
 import CarSpace from "./components/CarSpace";
@@ -31,7 +32,17 @@ function App(): JSX.Element {
 
             <header className="App-header">CAR APP </header>
             <div>
-                <Row></Row>
+                <Board
+                    tools={[
+                        "Wipe Car",
+                        "Shine Car",
+                        "Fill Tires",
+                        "Repair Windows",
+                        "etc"
+                    ]}
+                    picPosition={[0, 0]}
+                />
+                {/* <Row></Row>
                 <Row>
                     <Col>
                         <PimpVsDestroy></PimpVsDestroy>
@@ -39,7 +50,7 @@ function App(): JSX.Element {
                     <Col>
                         <CarSpace saveCar={saveCar}></CarSpace>
                     </Col>
-                </Row>
+                </Row> */}
             </div>
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will

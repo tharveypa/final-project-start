@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import Board from "./Board";
+import Board from "./Board";
 import "./index.css";
 // import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
@@ -16,16 +16,6 @@ ReactDOM.render(
                 border: "1px solid gray"
             }}
         >
-            {/* <Board
-                pics={[
-                    "Wipe Car",
-                    "Shine Car",
-                    "Fill Tires",
-                    "Repair Windows",
-                    "etc"
-                ]}
-                picPosition={picPosition}
-            /> */}
             <App />
             {/* x={picPosition[0]}
                 y={picPosition[1]} */}

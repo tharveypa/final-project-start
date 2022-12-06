@@ -4,12 +4,21 @@ import { ItemTypes } from "./constants";
 
 type PicProps = {
     pic: string;
+    top: number;
+    left: number;
+    title: string;
 };
 
 const Pic: React.FC<PicProps> = (props) => {
-    const { pic } = props;
+    const { pic, top, left, title } = props;
     const [{ isDragging }, drag] = useDrag({
-        item: { type: ItemTypes.PIC, pic: pic },
+        item: {
+            type: ItemTypes.PIC,
+            pic: pic,
+            top: top,
+            left: left,
+            title: title
+        },
         collect: (monitor: DragSourceMonitor) => ({
             isDragging: !!monitor.isDragging()
         })
@@ -28,7 +37,7 @@ const Pic: React.FC<PicProps> = (props) => {
                 }}
             >
                 {/*♘*/}
-                <header>{pic}</header>
+                <p>{pic + " and " + title}</p>
                 <img
                     src={require("./bosun_tally.jpg")}
                     width="80"

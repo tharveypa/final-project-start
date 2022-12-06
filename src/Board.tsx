@@ -13,7 +13,7 @@ export const renderPiece = (
 ) => {
     if (x === picX && y === picY) {
         //addTool();
-        return <Pic pic={pic} />;
+        return <Pic pic={pic} top={y} left={x} title={pic} />;
     }
 };
 
@@ -38,7 +38,7 @@ const renderSquare = (
             <div>
                 {/* | board squares x={x}-{picPosition[0]}, y={y}-{picPosition[1]} */}
                 <div key={i} style={{ width: "50%", height: "50%" }}>
-                    <BoardSquare x={x} y={y} pics={pics}>
+                    <BoardSquare x={x} y={y} tools={pics}>
                         {renderPiece(x, y, "yeet", picPosition)}
                     </BoardSquare>
                     {
@@ -55,23 +55,23 @@ const renderSquare = (
 };
 
 type BoardProps = {
-    pics: string[];
+    tools: string[];
     picPosition: [number, number];
 };
 
 const Board: React.FC<BoardProps> = (props) => {
     const { picPosition } = props;
-    const { pics } = props;
+    const { tools } = props;
     const squares = [];
     //
     //let i=0;
     //pics.map((p:string)=>( ));
     //squares.push(renderSquare(0, picPosition, pics));
     for (let i = 0; i < 2; i++) {
-        squares.push(renderSquare(i, 0, pics, picPosition));
-        // for (let j = 0; j < 2; j++) {
-        //     squares.push(renderSquare(0, i, pics, picPosition));
-        // }
+        //squares.push(renderSquare(i, 0, pics, picPosition));
+        for (let j = 0; j < 2; j++) {
+            squares.push(renderSquare(j, i, tools, picPosition));
+        }
     }
 
     return (
@@ -92,11 +92,11 @@ const Board: React.FC<BoardProps> = (props) => {
                 <div>
                     Choose a pic
                     <ul>
-                        {pics.map(
+                        {tools.map(
                             // eslint-disable-next-line no-extra-parens
                             (p: string): JSX.Element => (
                                 <li key={p}>
-                                    <Pic pic={p} />
+                                    <Pic pic={p} top={0} left={0} title={p} />
                                 </li>
                             )
                         )}
