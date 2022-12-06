@@ -16,10 +16,10 @@ interface ITEM {
 }
 function Container(props: ContainerProps) {
     const { children } = props;
-    const { markAsDone } = useContext(CardContext);
+    const { putInWorkSpace } = useContext(CardContext);
     const [, drop] = useDrop({
         accept: itemTypes.ELEMENT,
-        drop: (item: ITEM) => markAsDone(item.ID),
+        drop: (item: ITEM, monitor) => putInWorkSpace(item.ID, monitor), //ternary
         collect: (monitor) => ({
             isOver: !!monitor.isOver()
         })
