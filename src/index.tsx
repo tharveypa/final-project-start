@@ -18,9 +18,7 @@ observe((picPosition: [number, number]) => {
                 }}
             >
                 <App />
-                x={picPosition[0]}
-                y={picPosition[1]}
-                <Board
+                {/* <Board
                     pics={[
                         "Wipe Car",
                         "Shine Car",
@@ -29,7 +27,7 @@ observe((picPosition: [number, number]) => {
                         "etc"
                     ]}
                     picPosition={picPosition}
-                />
+                /> */}
             </div>
         </React.StrictMode>,
         document.getElementById("root")

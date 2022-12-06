@@ -6,6 +6,8 @@ import Pic from "./Pic";
 import Overlay from "./Overlay";
 import Square from "./Square";
 import { Button } from "react-bootstrap";
+import CarSquare from "./components/CarSquare";
+import Car from "./components/Car";
 
 type BoardSquareProps = {
     x: number;
@@ -14,7 +16,7 @@ type BoardSquareProps = {
 };
 
 const BoardSquare: React.FC<BoardSquareProps> = (props) => {
-    const { x, y, pics, children } = props;
+    const { x, y, children } = props;
     const black = (x + y) % 2 === 1;
     const [square, setSquare] = useState<string[]>([]);
     const [{ isOver, canDrop }, drop] = useDrop({
@@ -28,43 +30,46 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
         })
     });
     const addImageToBoard = (pic: string) => {
-        const p = pics.filter((picture) => pic === picture);
-        setSquare((square) => [...square, p[0]]);
+        const p = props.pics.filter((picture) => pic === picture);
+        setSquare((square) => [...square, props.pics[0]]);
     };
-    const clear = () => {
-        setSquare([]);
-    };
+    // const clear = () => {
+    //     setSquare([]);
+    // };
     return (
         <>
             <div
-                ref={drop}
+                //ref={drop}
                 style={{
                     position: "relative",
-                    width: "90%",
-                    height: "90%"
+                    width: "200%",
+                    height: "150%"
                 }}
             >
-                yo
-                <Square black={black}>{children}</Square>
-                {isOver && !canDrop && <Overlay color="red" />}
+                {/* <Square black={black}>{children}</Square> */}
+                <Car
+                    color={0}
+                    clean={true}
+                    tirefill={true}
+                    window={true}
+                    pics={props.pics}
+                    x={1}
+                    y={2}
+                ></Car>
+                {/* {isOver && !canDrop && <Overlay color="red" />}
                 {!isOver && canDrop && <Overlay color="yellow" />}
-                {isOver && canDrop && <Overlay color="green" />}
+                {isOver && canDrop && <Overlay color="green" />} */}
                 <ul>
                     {square.map(
                         (p: string): JSX.Element => (
-                            <li key={p}>
-                                <Pic pic={p} />
-                                {
-                                    //<Square black={black}>{p}</Square>
-                                }
-                            </li>
+                            <div key={p}>
+                                <CarSquare pic={p} />
+                            </div>
                         )
                     )}
                 </ul>
             </div>
-            <div>
-                <Button onClick={clear}>Clear</Button>
-            </div>
+            <div>{/* <Button onClick={clear}>Clear</Button> */}</div>
         </>
     );
 };

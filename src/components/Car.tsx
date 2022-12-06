@@ -7,21 +7,45 @@ import Street from "./images/street.jpg";
 import City from "./images/city.jpg";
 import Forest from "./images/forest.jpg";
 import Dirt from "./images/dirt.png";
+import BoardSquare from "../BoardSquare";
+import { useDrop } from "react-dnd";
+import { ItemTypes } from "../constants";
+import { canAddPic, addPic, canMovePic, movePic } from "../game";
+import Overlay from "../Overlay";
+import CarSquare from "./CarSquare";
 
 type CarProps = {
     color: number;
     clean: boolean;
     tirefill: boolean;
     window: boolean;
+    pics: string[];
+    x: number;
+    y: number;
 };
 
 const Car: React.FC<CarProps> = (props) => {
+    const { color, clean, tirefill, window, pics, x, y, children } = props;
     const backgrounds = [Street, City, Forest];
     const [colorNum, setColorNum] = useState(0);
     const [backgroundIndex, setBackgroundIndex] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
     const boxRef = useRef<HTMLDivElement>(null);
-
+    const [square, setSquare] = useState<string[]>([]);
+    const [{ isOver, canDrop }, drop] = useDrop({
+        accept: ItemTypes.PIC,
+        canDrop: () => canMovePic(x, y),
+        drop: (item: { type: string; pic: string }) =>
+            addImageToBoard(item.pic),
+        collect: (monitor) => ({
+            isOver: !!monitor.isOver(),
+            canDrop: !!monitor.canDrop()
+        })
+    });
+    const addImageToBoard = (pic: string) => {
+        const p = pics.filter((picture) => pic === picture);
+        setSquare((square) => [...square, pics[0]]);
+    };
     const isClicked = useRef<boolean>(false);
 
     const [pause, setPause] = useState<number[]>([]);
@@ -88,18 +112,19 @@ const Car: React.FC<CarProps> = (props) => {
     return (
         <div>
             <div
+                ref={drop}
                 style={{
                     backgroundImage: `url(${backgrounds[backgroundIndex]})`
                 }}
             >
+                {isOver && !canDrop && <Overlay color="red" />}
+                {!isOver && canDrop && <Overlay color="yellow" />}
+                {isOver && canDrop && <Overlay color="green" />}
                 <div ref={containerRef} className="container">
                     {colorNum == 0 && <img src={RedCar} alt="red car" />}
                     {colorNum == 1 && <img src={BlueCar} alt="blue car" />}
                     {colorNum == 2 && <img src={GreenCar} alt="green car" />}
-
-                    <div ref={boxRef} className="box">
-                        <img src={Dirt} alt="dirt" />
-                    </div>
+                    {square}
                 </div>
             </div>
             <div>
