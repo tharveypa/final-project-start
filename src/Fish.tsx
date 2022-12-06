@@ -16,6 +16,7 @@ export interface FishProps {
     id: any;
     left: number;
     top: number;
+    name: number;
     hideSourceOnDrag?: boolean;
     children?: ReactNode;
     height: number;
@@ -25,6 +26,7 @@ export const Fish: FC<FishProps> = ({
     id,
     left,
     top,
+    name,
     hideSourceOnDrag,
     children,
     height
@@ -32,12 +34,12 @@ export const Fish: FC<FishProps> = ({
     const [{ isDragging }, drag] = useDrag(
         () => ({
             type: ItemTypes.FISH,
-            item: { id, left, top },
+            item: { id, left, top, name },
             collect: (monitor) => ({
                 isDragging: monitor.isDragging()
             })
         }),
-        [id, left, top]
+        [id, left, top, name]
     );
 
     if (isDragging && hideSourceOnDrag) {
@@ -46,7 +48,7 @@ export const Fish: FC<FishProps> = ({
 
     return (
         <div
-            className="fish"
+            className={"fish" + id.toString()}
             ref={drag}
             style={{
                 ...style,
@@ -55,7 +57,7 @@ export const Fish: FC<FishProps> = ({
                 width: height.toString() + "%",
                 height: height.toString() + "%"
             }}
-            data-testid="fish"
+            data-testid={"fish" + id.toString()}
         >
             {children}
             <img
