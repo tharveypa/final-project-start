@@ -52,7 +52,7 @@ export interface Dresser {
 
 export interface Rug {
     id: string;
-    name: "Rug";
+    name: "Small Rug" | "Medium Rug" | "Large Rug";
     height: number;
     width: number;
     top: number;

@@ -64,7 +64,7 @@ const trash_can: TrashCan = {
 
 const small_rug: Rug = {
     id: "menu-rug",
-    name: "Rug",
+    name: "Small Rug",
     height: 50 * 3,
     width: 75 * 3,
     color: "coral",
@@ -74,7 +74,7 @@ const small_rug: Rug = {
 
 const medium_rug: Rug = {
     id: "menu-rug",
-    name: "Rug",
+    name: "Medium Rug",
     height: 65 * 3,
     width: 125 * 3,
     color: "coral",
@@ -84,7 +84,7 @@ const medium_rug: Rug = {
 
 const large_rug: Rug = {
     id: "menu-rug",
-    name: "Rug",
+    name: "Large Rug",
     height: 75 * 3,
     width: 150 * 3,
     color: "coral",
