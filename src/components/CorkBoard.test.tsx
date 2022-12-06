@@ -73,9 +73,8 @@ describe("CorkBoard Component tests", () => {
     test("CorkBoard displays a note", () => {
         render(
             <CorkBoard
+                cardWidth={300}
                 startingNotesAndPositionInfo={testNote}
-                xSize={800}
-                ySize={600}
             ></CorkBoard>
         );
 
@@ -85,9 +84,8 @@ describe("CorkBoard Component tests", () => {
     test("CorkBoard displays multiple notes", () => {
         render(
             <CorkBoard
+                cardWidth={300}
                 startingNotesAndPositionInfo={testNotes}
-                xSize={800}
-                ySize={600}
             ></CorkBoard>
         );
         const firstNote = screen.getByText("Complete CISC 275 Project");

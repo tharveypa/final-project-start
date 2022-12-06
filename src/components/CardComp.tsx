@@ -7,11 +7,13 @@ import { useDrag } from "react-dnd";
 import { Button } from "react-bootstrap";
 
 function CardComp({
+    cardWidth,
     task,
     id,
     editCard,
     deleteCard
 }: {
+    cardWidth: number;
     task: Task;
     id: number;
     editCard: (id: number, newTask: Task) => void;
@@ -28,8 +30,8 @@ function CardComp({
         <div>
             <Card
                 style={{
-                    width: "200px",
-                    height: "100px",
+                    width: cardWidth + "px",
+                    //height: "190px",
                     backgroundColor: task.thumbColor
                 }}
                 //ref makes the dragging of the Card Work
@@ -48,7 +50,7 @@ function CardComp({
                         X
                     </Button>
                 </div>
-                <Card.Body>
+                <Card.Body style={{ whiteSpace: "pre" }}>
                     <Card.Title>{task.title}</Card.Title>
                     <Card.Text>{task.description}</Card.Text>
                     <Card.Text>Priority: {task.priority}</Card.Text>

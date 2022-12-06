@@ -5,15 +5,14 @@ import { ItemTypes } from "../constants";
 import { noteData } from "../interfaces/noteData";
 import { Task } from "../interfaces/task";
 import { Note } from "./Note";
+import TrashCan from "./TrashCan";
 
 export function CorkBoard({
-    startingNotesAndPositionInfo,
-    xSize,
-    ySize
+    cardWidth,
+    startingNotesAndPositionInfo
 }: {
+    cardWidth: number;
     startingNotesAndPositionInfo: noteData[];
-    xSize: number;
-    ySize: number;
 }): JSX.Element {
     //state for holding our note and position infos
     const [notesAndPositionInfo, setNotesAndPositionInfo] = useState<
@@ -55,7 +54,7 @@ export function CorkBoard({
                         scrollPositionY,
                     currentOffset.x -
                         boardLeft +
-                        (grabOffset?.x - sourceOffset?.x - 100) +
+                        (grabOffset?.x - sourceOffset?.x - cardWidth / 2) +
                         scrollPositionX,
                     1
                 );
@@ -120,8 +119,7 @@ export function CorkBoard({
     //state that will be needed for when the board scales
     const [boardTop] = useState<number>(50);
     const [boardLeft] = useState<number>(700); // MODIFYING this results in issues, but the BoardSize is not 700 wide
-    const [xScaleFactor] = useState<number>(xSize / 800);
-    const [yScaleFactor] = useState<number>(ySize / 600);
+    const [xScaleFactor] = useState<number>(1);
 
     ///*
 
@@ -182,6 +180,15 @@ export function CorkBoard({
         ]);
     }
 
+    // deletes a note and position data associated with that note based on the id
+    function deleteNote(noteId: number) {
+        setNotesAndPositionInfo(
+            notesAndPositionInfo.filter(
+                (noteData: noteData): boolean => noteId !== noteData.id
+            )
+        );
+    }
+
     return (
         <div
             ref={drop}
@@ -199,19 +206,33 @@ export function CorkBoard({
                     <div
                         key={"note: " + noteData.id}
                         style={{
-                            height: noteData.height / yScaleFactor + "px",
-                            width: noteData.width / xScaleFactor + "px",
+                            //height: noteData.height + "px",
+                            //width: noteData.width + "px",
                             backgroundColor: "yellow",
                             position: "absolute",
                             top: noteData.top + "px",
                             left: noteData.left + "px",
-                            zIndex: noteData.zIndex + "%"
+                            zIndex: noteData.zIndex + "%",
+                            fontSize: 12 / xScaleFactor + "px",
+                            aspectRatio: "1",
+                            wordWrap: "break-word",
+                            whiteSpace: "pre"
                         }}
                     >
                         <Note task={noteData.task} id={noteData.id}></Note>
                     </div>
                 );
             })}
+            <div
+                style={{
+                    position: "absolute",
+                    bottom: "0",
+                    height: "10%",
+                    aspectRatio: "1"
+                }}
+            >
+                <TrashCan deleteNote={deleteNote}></TrashCan>
+            </div>
         </div>
     );
 }

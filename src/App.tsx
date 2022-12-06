@@ -38,6 +38,8 @@ const sampleCorkBoard = [
     }
 ];
 
+const cardWidth = 400;
+
 function App(): JSX.Element {
     return (
         <>
@@ -47,8 +49,7 @@ function App(): JSX.Element {
                         <h3>CREATED BY: </h3>
                         <p>Blade Tyrrell, Brandon Branson, Michael Snead</p>
                     </div>
-                    <CardList></CardList>
-
+                    <CardList cardWidth={cardWidth}></CardList>
                     {/* CORKBOARD DIV : SIZE AND POSITION OF THE DIV DEFINES THAT OF THE CORKBOARD*/}
                     <div
                         style={{
@@ -60,9 +61,8 @@ function App(): JSX.Element {
                         }}
                     >
                         <CorkBoard
+                            cardWidth={cardWidth}
                             startingNotesAndPositionInfo={sampleCorkBoard}
-                            xSize={1600}
-                            ySize={1200}
                         ></CorkBoard>
                     </div>
                 </div>
