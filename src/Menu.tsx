@@ -1,13 +1,21 @@
 /* eslint-disable no-extra-parens */
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Modal, Table } from "react-bootstrap";
+import { Fish } from "./interfaces/Fish";
 import { allList } from "./interfaces/fishpics";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
 export function Menu() {
-    const viewList = ["All", "Saltwater", "Freshwater", "Predator", "Prey"];
+    const viewList = [
+        "All",
+        "Saltwater",
+        "Freshwater",
+        "Predator",
+        "Prey",
+        "Size"
+    ];
     const [view, setView] = useState(viewList[0]);
     const [option, setOption] = useState(allList[0]);
     const [showModal, setShowModal] = useState(false);
@@ -22,8 +30,10 @@ export function Menu() {
             setOption(allList[2]);
         } else if (view === "Predator") {
             setOption(allList[3]);
-        } else {
+        } else if (view === "Prey") {
             setOption(allList[4]);
+        } else {
+            setOption(allList[5]);
         }
         handleCloseModal();
     }
@@ -98,8 +108,8 @@ export function Menu() {
                         </tr>
                     </thead>
                     <tbody>
-                        {option.map((s: string) => (
-                            <tr key={s}>
+                        {option.map((s: Fish) => (
+                            <tr key={s.image}>
                                 <td>
                                     <Button
                                         style={{
@@ -107,7 +117,7 @@ export function Menu() {
                                         }}
                                     >
                                         <img
-                                            src={require(s + "")}
+                                            src={require(s.image + "")}
                                             width="25%"
                                             height="25%"
                                         />
