@@ -1,5 +1,6 @@
 /* eslint-disable no-extra-parens */
 import React, { useEffect, useState } from "react";
+import { Form } from "react-bootstrap";
 import { useDragLayer, useDrop, XYCoord } from "react-dnd";
 import { ItemTypes } from "../constants";
 import { noteData } from "../interfaces/noteData";
@@ -118,7 +119,7 @@ export function CorkBoard({
     //state that will be needed for when the board scales
     const [boardTop] = useState<number>(50);
     const [boardLeft] = useState<number>(700); // MODIFYING this results in issues, but the BoardSize is not 700 wide
-    const [xScaleFactor] = useState<number>(1);
+    const [xScaleFactor, setxScaleFactor] = useState<number>(1);
 
     ///*
 
@@ -188,6 +189,10 @@ export function CorkBoard({
         );
     }
 
+    function scaleHandler(event: React.ChangeEvent<HTMLInputElement>) {
+        setxScaleFactor(event.target.value as unknown as number);
+    }
+
     return (
         <div
             ref={drop}
@@ -212,7 +217,7 @@ export function CorkBoard({
                             top: noteData.top + "px",
                             left: noteData.left + "px",
                             zIndex: noteData.zIndex + "%",
-                            fontSize: 12 / xScaleFactor + "px",
+                            fontSize: 12 * xScaleFactor + "px",
                             maxWidth: "25%",
                             //aspectRatio: "1",
                             wordBreak: "break-word",
@@ -233,6 +238,19 @@ export function CorkBoard({
                 }}
             >
                 <TrashCan deleteNote={deleteNote}></TrashCan>
+            </div>
+            <div style={{ position: "absolute", top: "100%" }}>
+                {/* Form that sets the scale factor of the board */}
+                <Form.Group className="makeNoteDesc">
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control
+                        as="textarea"
+                        placeholder="Scale"
+                        rows={1}
+                        value={xScaleFactor}
+                        onChange={scaleHandler}
+                    />
+                </Form.Group>
             </div>
         </div>
     );
