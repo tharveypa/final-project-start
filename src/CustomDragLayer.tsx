@@ -10,14 +10,15 @@ export function CustomDragLayer(): JSX.Element {
         type: "string",
         design: "string",
         pos: [40, 0],
-        graphic: "string", //file name
+        graphic: "string",
         name: "Couch",
         size: [50, 20],
         id: 0,
         hasFurniture: false,
         hasPainting: false,
         placeOnWall: false,
-        isFill: false
+        isFill: false,
+        comments: []
     };
     const [{ item, offset }, drop] = useDrop({
         accept: ItemTypes.DragTile,
@@ -37,14 +38,15 @@ export function CustomDragLayer(): JSX.Element {
                         50 +
                         (notnull(grabOffset).y - notnull(sourceOffset).y)
                 ],
-                graphic: "string", //file name
+                graphic: "string",
                 name: "test",
                 size: [50, 75],
                 id: 1,
                 hasFurniture: false,
                 hasPainting: false,
                 placeOnWall: false,
-                isFill: false
+                isFill: false,
+                comments: []
             });
             //console.log("x: " + notnull(currentOffset).x);
             //console.log("x real: " + BoxArray[size - 1].pos[0]);
