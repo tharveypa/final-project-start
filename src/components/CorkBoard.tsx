@@ -225,7 +225,9 @@ export function CorkBoard({
                     </div>
                 );
             })}
-            <TrashCan deleteNote={deleteNote}></TrashCan>
+            <div style={{ position: "absolute", top: "100%" }}>
+                <TrashCan deleteNote={deleteNote}></TrashCan>
+            </div>
         </div>
     );
 }

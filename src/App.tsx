@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import { CardList } from "./components/CardList";
 import { CorkBoard } from "./components/CorkBoard";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import DeleteItem from "./components/TrashCan";
-import { noteData } from "./interfaces/noteData";
 
 const sampleCorkBoard = [
     {
@@ -41,29 +39,6 @@ const sampleCorkBoard = [
 ];
 
 function App(): JSX.Element {
-    const [notes, setNote] = useState<noteData[]>([
-        {
-            task: {
-                title: "",
-                description: "",
-                priority: "",
-                thumbColor: "",
-                assigned: [""]
-            },
-            id: 1,
-            height: 0,
-            width: 0,
-            top: 0,
-            left: 0,
-            zIndex: 0
-        }
-    ]);
-
-    const deleteNote = (idd: number) => {
-        setNote(notes.filter((note: noteData): boolean => note.id !== idd));
-        console.log("Delete!");
-        return idd;
-    };
     return (
         <>
             <DndProvider backend={HTML5Backend}>
@@ -73,8 +48,6 @@ function App(): JSX.Element {
                         <p>Blade Tyrrell, Brandon Branson, Michael Snead</p>
                     </div>
                     <CardList></CardList>
-                    <DeleteItem deleteNote={deleteNote}></DeleteItem>
-
                     {/* CORKBOARD DIV : SIZE AND POSITION OF THE DIV DEFINES THAT OF THE CORKBOARD*/}
                     <div
                         style={{
