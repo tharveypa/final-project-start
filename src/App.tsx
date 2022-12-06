@@ -61,8 +61,8 @@ function App(): JSX.Element {
                     >
                         <CorkBoard
                             startingNotesAndPositionInfo={sampleCorkBoard}
-                            xSize={800}
-                            ySize={600}
+                            xSize={1600}
+                            ySize={1200}
                         ></CorkBoard>
                     </div>
                 </div>
