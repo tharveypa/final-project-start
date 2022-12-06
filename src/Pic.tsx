@@ -7,6 +7,7 @@ export interface BoxProps {
     top: number;
     id: string;
     image: string;
+    angle: number;
 }
 
 const styleC: CSSProperties = {
@@ -17,7 +18,7 @@ const styleC: CSSProperties = {
     //padding: "1rem"
 };
 
-const Pic: FC<BoxProps> = ({ id, left, top, image }) => {
+const Pic: FC<BoxProps> = ({ id, left, top, image, angle }) => {
     const [isDragging, drag, preview] = useDrag({
         item: { type: ItemTypes.PIC, id: id, left: left, top: top },
         collect: (monitor) => ({
@@ -35,7 +36,8 @@ const Pic: FC<BoxProps> = ({ id, left, top, image }) => {
                     opacity: isDragging ? 0.99 : 1,
                     //backgroundColor: "red",
                     top: top + "px",
-                    left: left + "px"
+                    left: left + "px",
+                    transform: "rotate(" + angle + "deg)"
                 }}
             >
                 <img src={require(`${image}`)} />
