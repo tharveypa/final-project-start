@@ -3,7 +3,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useDrop, DragSourceMonitor, DragObjectWithType } from "react-dnd";
 import FurnitureItem from "./FurnitureItem";
-import type { Bed, Furniture } from "./types";
+import type { Furniture } from "./types";
 
 import "./styles.css";
 

@@ -2,7 +2,7 @@ import type { Bed, Desk, Wardrobe, Dresser, Rug, TrashCan } from "./types";
 
 const blue_bed: Bed = {
     id: "menu-bed",
-    name: "bed",
+    name: "Blue Bed",
     height: 38 * 3,
     width: 80 * 3,
     bunk: false,
@@ -13,7 +13,7 @@ const blue_bed: Bed = {
 
 const red_bed: Bed = {
     id: "menu-bed",
-    name: "bed",
+    name: "Red Bed",
     height: 38 * 3,
     width: 80 * 3,
     bunk: false,
@@ -24,7 +24,7 @@ const red_bed: Bed = {
 
 const desk: Desk = {
     id: "menu-desk",
-    name: "desk",
+    name: "Desk",
     height: 24 * 3,
     width: 42 * 3,
     top: 0,
@@ -34,7 +34,7 @@ const desk: Desk = {
 
 const wardrobe: Wardrobe = {
     id: "menu-wardrobe",
-    name: "wardrobe",
+    name: "Wardrobe",
     height: 24.5 * 3,
     width: 36 * 3,
     top: 0,
@@ -44,7 +44,7 @@ const wardrobe: Wardrobe = {
 
 const dresser: Dresser = {
     id: "menu-dresser",
-    name: "dresser",
+    name: "Dresser",
     height: 20 * 3,
     width: 30 * 3,
     top: 0,
@@ -64,7 +64,7 @@ const trash_can: TrashCan = {
 
 const small_rug: Rug = {
     id: "menu-rug",
-    name: "rug",
+    name: "Rug",
     height: 50 * 3,
     width: 75 * 3,
     color: "coral",
@@ -74,7 +74,7 @@ const small_rug: Rug = {
 
 const medium_rug: Rug = {
     id: "menu-rug",
-    name: "rug",
+    name: "Rug",
     height: 65 * 3,
     width: 125 * 3,
     color: "coral",
@@ -84,7 +84,7 @@ const medium_rug: Rug = {
 
 const large_rug: Rug = {
     id: "menu-rug",
-    name: "rug",
+    name: "Rug",
     height: 75 * 3,
     width: 150 * 3,
     color: "coral",
