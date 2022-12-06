@@ -130,9 +130,22 @@ export const Dropper: FC = () => {
         setPieceBank(newPieces);
     }
 
+    function anglePiece(id: string, angle: number): void {
+        const newPieces = PieceBank.map(
+            (piece: Piece): Piece =>
+                piece.id === id ? { ...piece, angle: angle } : piece
+        );
+        setPieceBank(newPieces);
+    }
+
     function resetPieces(): void {
         const newPieces = PieceBank.map(
-            (piece: Piece): Piece => ({ ...piece, top: 440, left: 220 })
+            (piece: Piece): Piece => ({
+                ...piece,
+                top: 440,
+                left: 220,
+                angle: 0
+            })
         );
         setPieceBank(newPieces);
     }
@@ -147,6 +160,7 @@ export const Dropper: FC = () => {
             const ileft = item.left + delta.x;
             const itop = item.top + delta.y;
             movePiece(item.id, ileft, itop);
+            anglePiece(item.id, 90); //remove this
         },
         collect: (monitor) => ({
             isOver: monitor.isOver(),
@@ -170,6 +184,7 @@ export const Dropper: FC = () => {
                             top={p.top}
                             left={p.left}
                             image={p.image}
+                            angle={p.angle}
                         />
                     </div>
                 );
