@@ -6,7 +6,8 @@ import type {
     Rug,
     TrashCan,
     Microwave,
-    LaundryBasket
+    LaundryBasket,
+    Fridge
 } from "./types";
 
 const blue_bed: Bed = {
@@ -86,10 +87,20 @@ const laundry_basket: LaundryBasket = {
     id: "menu-laundry-basket",
     name: "Laundry Basket",
     height: 25 * 3,
-    width: 30 * 3,
+    width: 25 * 3,
     top: 0,
     left: 0,
     color: "white"
+};
+
+const fridge: Fridge = {
+    id: "menu-fridge",
+    name: "Fridge",
+    height: 30 * 3,
+    width: 25 * 3,
+    top: 0,
+    left: 0,
+    color: "lightyellow"
 };
 
 const orange_rug_small: Rug = {
@@ -172,6 +183,7 @@ export const furniture = [
     trash_can,
     microwave,
     laundry_basket,
+    fridge,
     orange_rug_small,
     orange_rug_medium,
     orange_rug_large,
