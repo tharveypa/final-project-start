@@ -96,6 +96,8 @@ export const Dropper: FC = () => {
         setPieceBank(newBank);
     }
 
+    const [selected, setSelected] = useState<string>("Z");
+
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     function rotatePiece(rotId: string, rotation: number) {
         const newBank: Piece[] = PieceBank.map(
@@ -130,10 +132,10 @@ export const Dropper: FC = () => {
         setPieceBank(newPieces);
     }
 
-    function anglePiece(id: string, angle: number): void {
+    function anglePiece(id: string): void {
         const newPieces = PieceBank.map(
             (piece: Piece): Piece =>
-                piece.id === id ? { ...piece, angle: angle } : piece
+                piece.id === id ? { ...piece, angle: piece.angle + 90 } : piece
         );
         setPieceBank(newPieces);
     }
@@ -159,8 +161,8 @@ export const Dropper: FC = () => {
             const delta = monitor.getDifferenceFromInitialOffset() as XYCoord;
             const ileft = item.left + delta.x;
             const itop = item.top + delta.y;
+            setSelected(item.id);
             movePiece(item.id, ileft, itop);
-            anglePiece(item.id, 90); //remove this
         },
         collect: (monitor) => ({
             isOver: monitor.isOver(),
@@ -172,6 +174,9 @@ export const Dropper: FC = () => {
             <header>Current Puzzle = {solutionImage.substring(19, 23)}</header>
             <Button onClick={setRandomPuzzle}>Randomize Puzzle</Button>
             <Button onClick={resetPieces}>Reset</Button>
+            <Button onClick={() => anglePiece(selected)}>
+                Rotate Last Piece
+            </Button>
             <div>
                 {" "}
                 <img src={require(`${solutionImage}`)} />
