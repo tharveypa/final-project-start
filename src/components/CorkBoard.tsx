@@ -213,7 +213,9 @@ export function CorkBoard({
                             left: noteData.left + "px",
                             zIndex: noteData.zIndex + "%",
                             fontSize: 12 / xScaleFactor + "px",
-                            aspectRatio: "1",
+                            maxWidth: "25%",
+                            //aspectRatio: "1",
+                            wordBreak: "break-word",
                             wordWrap: "break-word",
                             whiteSpace: "pre"
                         }}
