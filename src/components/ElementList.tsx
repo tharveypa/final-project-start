@@ -91,7 +91,12 @@ function ElementList() {
     }
 
     function moveElement(id: number, left: number, top: number) {
-        //update element in array with new values
+        const draggedElement = inWorkSpace.filter(
+            (task, i) => task.id === id
+        )[0];
+        draggedElement.left = left;
+        draggedElement.top = top;
+        console.log(inWorkSpace);
     }
     function putInWorkSpace(id: number, monitor: any) {
         const draggedElement = proplist.filter((task, i) => task.id === id)[0];
