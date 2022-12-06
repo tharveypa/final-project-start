@@ -5,4 +5,6 @@ export interface Element {
     chemAbr: string;
     atomicNum: number;
     shown: boolean;
+    top: number;
+    left: number;
 }

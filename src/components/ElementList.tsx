@@ -1,18 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable no-extra-parens */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable react/jsx-key */
-import React, { createContext, useState } from "react";
+import React, { createContext, useCallback, useState } from "react";
 import { Element } from "../interfaces/Element";
 import { elements } from "../elementList";
-import Object from "./Object";
+import ElementObject from "./ElementObject";
 
 import "./ElementList.css";
 import Modal from "./Modal";
 import Container from "./Container";
 import { Button, Form } from "react-bootstrap";
 import Trashbin from "./Trashbin";
+import { XYCoord } from "react-dnd";
 
 const AlphabeticalAtZFuncAtZ = "1";
 const AlphabeticalAtZFuncZtA = "4";
@@ -21,7 +23,7 @@ const ResetFunc = "3";
 
 export const CardContext = createContext({
     // eslint-disable-next-line prettier/prettier
-    markAsDone: (id: number) => {},
+    putInWorkSpace: (id: number, monitor: any) => {},
     removefromScreen: (id: number) => {}
 });
 
@@ -82,15 +84,28 @@ function ElementList() {
                         {prop.name + "             "}
                         <Modal temp={prop}></Modal>
                     </li>
-                    <Object element={prop} />
+                    <ElementObject element={prop} />
                 </div>
             </div>
         ));
     }
-    function markAsDone(id: number) {
+
+    function moveElement(id: number, left: number, top: number) {
+        //update element in array with new values
+    }
+    function putInWorkSpace(id: number, monitor: any) {
         const draggedElement = proplist.filter((task, i) => task.id === id)[0];
-        if (draggedElement.shown != true) {
+        const p = { ...draggedElement };
+        if (draggedElement == undefined) {
+            const draggedElement = inWorkSpace.filter(
+                (task, i) => task.id === id
+            )[0];
             const p = { ...draggedElement };
+            const delta = monitor.getDifferenceFromInitialOffset() as XYCoord;
+            const left = Math.round(p.left + delta.x);
+            const top = Math.round(p.top + delta.y);
+            moveElement(p.id, left, top);
+        } else if (draggedElement.shown == false) {
             p.shown = true;
             p.id = Math.random();
             addtoWorkSpace(inWorkSpace.concat(p));
@@ -102,7 +117,7 @@ function ElementList() {
         addtoWorkSpace(draggedElement);
     }
     return (
-        <CardContext.Provider value={{ markAsDone, removefromScreen }}>
+        <CardContext.Provider value={{ putInWorkSpace, removefromScreen }}>
             <div>
                 <div className="row-adj">
                     <div className="column-sidebar">
@@ -143,7 +158,7 @@ function ElementList() {
                         <div>
                             <Container>
                                 {inWorkSpace.map((task, i) => (
-                                    <Object element={task} />
+                                    <ElementObject element={task} />
                                 ))}
                             </Container>
                         </div>

@@ -6,7 +6,9 @@ const Nitrogen: Element = {
     image: require("./images/7nitrogen.png"),
     chemAbr: "N",
     atomicNum: 7,
-    shown: false
+    shown: false,
+    left: 50,
+    top: 50
 };
 
 const Chlorine: Element = {
@@ -15,7 +17,9 @@ const Chlorine: Element = {
     image: require("./images/17 chlorine.png"),
     chemAbr: "Cl",
     atomicNum: 17,
-    shown: false
+    shown: false,
+    left: 50,
+    top: 50
 };
 
 const Potassium: Element = {
@@ -24,7 +28,9 @@ const Potassium: Element = {
     image: require("./images/19 potassium.png"),
     chemAbr: "K",
     atomicNum: 19,
-    shown: false
+    shown: false,
+    left: 50,
+    top: 50
 };
 
 const Hydrogen: Element = {
@@ -33,7 +39,9 @@ const Hydrogen: Element = {
     image: require("./images/1 hydrogen.png"),
     chemAbr: "H",
     atomicNum: 1,
-    shown: false
+    shown: false,
+    left: 50,
+    top: 50
 };
 
 const Silver: Element = {
@@ -42,7 +50,9 @@ const Silver: Element = {
     image: require("./images/47 silver.png"),
     chemAbr: "Ag",
     atomicNum: 47,
-    shown: false
+    shown: false,
+    left: 50,
+    top: 50
 };
 
 const Iodine: Element = {
@@ -51,7 +61,9 @@ const Iodine: Element = {
     image: require("./images/53 iodine.png"),
     chemAbr: "I",
     atomicNum: 53,
-    shown: false
+    shown: false,
+    left: 50,
+    top: 50
 };
 
 const Aluminum: Element = {
@@ -60,7 +72,9 @@ const Aluminum: Element = {
     image: require("./images/13 aluminum.png"),
     chemAbr: "Al",
     atomicNum: 13,
-    shown: false
+    shown: false,
+    left: 50,
+    top: 50
 };
 
 const Cadmium: Element = {
@@ -69,7 +83,9 @@ const Cadmium: Element = {
     image: require("./images/48 cadmium.png"),
     chemAbr: "Cd",
     atomicNum: 48,
-    shown: false
+    shown: false,
+    left: 50,
+    top: 50
 };
 
 const Tellurium: Element = {
@@ -78,7 +94,9 @@ const Tellurium: Element = {
     image: require("./images/52 tellurium.png"),
     chemAbr: "Te",
     atomicNum: 52,
-    shown: false
+    shown: false,
+    left: 50,
+    top: 50
 };
 
 const Cesium: Element = {
@@ -87,7 +105,9 @@ const Cesium: Element = {
     image: require("./images/55 cesium.png"),
     chemAbr: "Cs",
     atomicNum: 55,
-    shown: false
+    shown: false,
+    left: 50,
+    top: 50
 };
 
 const Fluorine: Element = {
@@ -96,7 +116,9 @@ const Fluorine: Element = {
     image: require("./images/9 flourine.png"),
     chemAbr: "Fl",
     atomicNum: 9,
-    shown: false
+    shown: false,
+    left: 50,
+    top: 50
 };
 
 const Carbon: Element = {
@@ -105,7 +127,9 @@ const Carbon: Element = {
     image: require("./images/6 carbon.png"),
     chemAbr: "C",
     atomicNum: 6,
-    shown: false
+    shown: false,
+    left: 50,
+    top: 50
 };
 
 const Oxygen: Element = {
@@ -114,7 +138,9 @@ const Oxygen: Element = {
     image: require("./images/8 oxygen.png"),
     chemAbr: "O",
     atomicNum: 8,
-    shown: false
+    shown: false,
+    left: 50,
+    top: 50
 };
 
 const Lithium: Element = {
@@ -123,16 +149,20 @@ const Lithium: Element = {
     image: require("./images/3 lithium.png"),
     chemAbr: "Li",
     atomicNum: 3,
-    shown: false
+    shown: false,
+    left: 50,
+    top: 50
 };
 
-const Silcon: Element = {
-    name: "Silcon",
+const Silicon: Element = {
+    name: "Silicon",
     id: 15,
     image: require("./images/14 silicon.png"),
     chemAbr: "Si",
     atomicNum: 14,
-    shown: false
+    shown: false,
+    left: 50,
+    top: 50
 };
 
 export const elements = [
@@ -150,5 +180,5 @@ export const elements = [
     Carbon,
     Oxygen,
     Lithium,
-    Silcon
+    Silicon
 ];
