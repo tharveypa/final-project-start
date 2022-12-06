@@ -79,25 +79,31 @@ export const Container: FC<ContainerProps> = ({
         }
     };
 
-    const addFishNewTank = (id: number) => {
+    const addFishNewTank = (id: number, left: number, top: number) => {
         const tankWidth = document.getElementById("tank")?.offsetWidth;
         const tankHeight = document.getElementById("tank")?.offsetHeight;
-        const newFishes = [...fishes];
-        for (let i = 0; i < fishes.length; i++) {
-            newFishes[i] = fishes[i];
-        }
         if (tankHeight !== undefined && tankWidth !== undefined) {
-            const fishWidth = (height / 100) * tankWidth;
-            const fishHeight = (height / 100) * tankHeight;
-            const top = Math.floor(tankHeight - fishHeight);
-            const left = Math.floor(tankWidth - fishWidth);
+            let leftAdjusted = 0;
+            let topAdjusted = 0;
+            if (left < 0) {
+                leftAdjusted = tankWidth + (left % tankWidth);
+            } else if (left > 0) {
+                leftAdjusted = left % tankWidth;
+            }
+            if (top < 0) {
+                topAdjusted = tankHeight + (top % tankHeight);
+            } else if (top > 0) {
+                topAdjusted = top % tankHeight;
+            }
+            const newFishes = [...fishes];
+            for (let i = 0; i < fishes.length; i++) {
+                newFishes[i] = fishes[i];
+            }
             const idVal = id.toString();
-            const newFish = [id, left, top];
+            const newFish = [id, leftAdjusted, topAdjusted];
             newFishes.push(newFish);
             setFishes(newFishes);
             setDeleteVal(x, idVal);
-        } else {
-            console.log("undefined");
         }
     };
 
@@ -121,7 +127,7 @@ export const Container: FC<ContainerProps> = ({
                     newFishes[id] = [name, left, top];
                     setFishes(newFishes);
                 } else {
-                    addFishNewTank(name);
+                    addFishNewTank(name, left, top);
                 }
             }
         },
