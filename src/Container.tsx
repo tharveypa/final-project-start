@@ -1,4 +1,3 @@
-import update from "immutability-helper";
 import type { FC } from "react";
 import { useCallback, useState } from "react";
 import type { XYCoord } from "react-dnd";
@@ -18,12 +17,9 @@ export interface ContainerProps {
     incFish: () => void;
     decFish: () => void;
     numFish: number;
-    addFishToID: (x: number, id: string) => void;
-    removeFishNotInTank: (x: number, id: string) => void;
-}
-
-export interface ContainerState {
-    fishes: { [key: string]: { top: number; left: number } };
+    deleteThisFish: [number, number];
+    setDeleteVal: (x: number, id: string) => void;
+    resetDeleteVal: () => void;
 }
 
 export const Container: FC<ContainerProps> = ({
@@ -32,79 +28,87 @@ export const Container: FC<ContainerProps> = ({
     width,
     height,
     incFish,
-    decFish,
     numFish,
-    addFishToID,
-    removeFishNotInTank
+    deleteThisFish,
+    setDeleteVal,
+    resetDeleteVal
 }) => {
-    const initializeFish = () => {
-        const tankWidth = document.getElementById("tank")?.offsetWidth;
-        const tankHeight = document.getElementById("tank")?.offsetHeight;
-        if (tankHeight !== undefined && tankWidth !== undefined) {
-            const fishWidth = (height / 100) * tankWidth;
-            const fishHeight = (height / 100) * tankHeight;
-            const top = Math.floor(tankHeight - fishHeight);
-            const left = Math.floor(tankWidth - fishWidth);
-            const newFish = { left: left, top: top };
-            return newFish;
-        }
-        const newFish = { left: 10, top: 10 };
-        return newFish;
-    };
-    const [fishes, setFishes] = useState<{
-        [key: string]: {
-            top: number;
-            left: number;
-        };
-    }>({});
+    const [fishes, setFishes] = useState(Array(0).fill(Array(0).fill(null)));
 
+    console.log("deleteThisFish", deleteThisFish, "x", x);
+    console.log("Fish", fishes);
+    const newFishes = [...fishes];
+    let index = -1;
+    let bool_delete = false;
+    for (let i = 0; i < fishes.length; i++) {
+        newFishes[i] = fishes[i];
+    }
+    for (let i = 0; i < fishes.length; i++) {
+        if (newFishes[i][0] === deleteThisFish[1]) {
+            bool_delete = true;
+            index = i;
+        }
+    }
+    if (deleteThisFish[0] !== x && bool_delete) {
+        console.log("inside delete this fish", deleteThisFish);
+        newFishes.splice(index, 1);
+        index = -1;
+        bool_delete = false;
+        resetDeleteVal();
+        setFishes(newFishes);
+    }
     const addFish = () => {
-        console.log("inside");
+        console.log("inside add fish");
         const tankWidth = document.getElementById("tank")?.offsetWidth;
         const tankHeight = document.getElementById("tank")?.offsetHeight;
+        const newFishes = [...fishes];
+        for (let i = 0; i < fishes.length; i++) {
+            newFishes[i] = fishes[i];
+        }
         if (tankHeight !== undefined && tankWidth !== undefined) {
             const fishWidth = (height / 100) * tankWidth;
             const fishHeight = (height / 100) * tankHeight;
             const top = Math.floor(tankHeight - fishHeight);
             const left = Math.floor(tankWidth - fishWidth);
-            const idVal = (numFish + 1).toString();
-            const newFish = { left: left, top: top };
-            setFishes(
-                update(fishes, { $set: { ...fishes, [idVal]: newFish } })
-            );
+            const newFish = [numFish, left, top];
+            newFishes.push(newFish);
+            setFishes(newFishes);
             incFish();
-            addFishToID(x, idVal);
-            console.log(idVal);
         } else {
             console.log("undefined");
         }
     };
 
-    const addFishNewTank = () => {
-        console.log("inside");
+    const addFishNewTank = (id: number) => {
         const tankWidth = document.getElementById("tank")?.offsetWidth;
         const tankHeight = document.getElementById("tank")?.offsetHeight;
+        const newFishes = [...fishes];
+        for (let i = 0; i < fishes.length; i++) {
+            newFishes[i] = fishes[i];
+        }
         if (tankHeight !== undefined && tankWidth !== undefined) {
             const fishWidth = (height / 100) * tankWidth;
             const fishHeight = (height / 100) * tankHeight;
             const top = Math.floor(tankHeight - fishHeight);
             const left = Math.floor(tankWidth - fishWidth);
-            const idVal = numFish.toString();
-            const newFish = { left: left, top: top };
-            setFishes(
-                update(fishes, { $set: { ...fishes, [idVal]: newFish } })
-            );
-            addFishToID(x, idVal);
-            removeFishNotInTank(x, idVal);
+            const idVal = id.toString();
+            const newFish = [id, left, top];
+            newFishes.push(newFish);
+            setFishes(newFishes);
+            setDeleteVal(x, idVal);
         } else {
             console.log("undefined");
         }
     };
 
     const moveFish = useCallback(
-        (id: number, left: number, top: number) => {
+        (id: number, left: number, top: number, name: number) => {
             const tankWidth = document.getElementById("tank")?.offsetWidth;
             const tankHeight = document.getElementById("tank")?.offsetHeight;
+            const newFishes = [...fishes];
+            for (let i = 0; i < fishes.length; i++) {
+                newFishes[i] = fishes[i];
+            }
             if (tankWidth !== undefined && tankHeight !== undefined) {
                 const fishWidth = (height / 100) * tankWidth;
                 const fishHeight = (height / 100) * tankHeight;
@@ -114,15 +118,10 @@ export const Container: FC<ContainerProps> = ({
                     top + fishHeight < tankHeight &&
                     top > 0
                 ) {
-                    setFishes(
-                        update(fishes, {
-                            [id]: {
-                                $merge: { left, top }
-                            }
-                        })
-                    );
+                    newFishes[id] = [name, left, top];
+                    setFishes(newFishes);
                 } else {
-                    addFishNewTank();
+                    addFishNewTank(name);
                 }
             }
         },
@@ -137,7 +136,8 @@ export const Container: FC<ContainerProps> = ({
                     monitor.getDifferenceFromInitialOffset() as XYCoord;
                 const left = Math.round(item.left + delta.x);
                 const top = Math.round(item.top + delta.y);
-                moveFish(item.id, left, top);
+                const name = item.name;
+                moveFish(item.id, left, top, name);
                 return;
             }
         }),
@@ -172,15 +172,15 @@ export const Container: FC<ContainerProps> = ({
                 height="100%"
             />
             {pred && <Overlay color="red" opacity={0.25} />}
-            {Object.keys(fishes).map((key) => {
-                const { left, top } = fishes[key] as {
-                    top: number;
-                    left: number;
-                };
+            {fishes.map((thisFish: [number, number, number]) => {
+                const left = thisFish[1];
+                const top = thisFish[2];
+                const id = thisFish[0];
                 return (
                     <Fish
-                        key={key}
-                        id={parseInt(key)}
+                        key={fishes.indexOf(thisFish)}
+                        id={fishes.indexOf(thisFish)}
+                        name={id}
                         left={left}
                         top={top}
                         hideSourceOnDrag={hideSourceOnDrag}

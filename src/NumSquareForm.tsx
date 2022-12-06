@@ -10,6 +10,29 @@ export function NumSquareForm({
     picPosition
 }: NumSquareFormProps): JSX.Element {
     const [numSquares, setNumSquares] = useState(12);
+    const [numFish, setNumFish] = useState(0);
+    const incFish = () => {
+        setNumFish(numFish + 1);
+    };
+
+    const decFish = () => {
+        setNumFish(numFish - 1);
+    };
+    const [tank_ID, setTank_ID] = useState(
+        Array(numSquares).fill(Array(0).fill(null))
+    );
+    const addFishToID = (x: number, id: string) => {
+        const newTank = [...tank_ID];
+        for (let i = 0; i < tank_ID.length; i++) {
+            newTank[i] = [...tank_ID[i]];
+        }
+        const pushedTank = newTank.map((thisTank: number[]) =>
+            newTank.indexOf(thisTank) === x
+                ? [...thisTank, parseInt(id)]
+                : thisTank
+        );
+        setTank_ID(pushedTank);
+    };
     return (
         <div>
             <div>
@@ -43,7 +66,15 @@ export function NumSquareForm({
                     backgroundColor: "gray"
                 }}
             >
-                <Board picPosition={picPosition} numSquares={numSquares} />
+                <Board
+                    picPosition={picPosition}
+                    numSquares={numSquares}
+                    tank_ID={tank_ID}
+                    addFishToID={addFishToID}
+                    numFish={numFish}
+                    decFish={decFish}
+                    incFish={incFish}
+                />
             </div>
         </div>
     );

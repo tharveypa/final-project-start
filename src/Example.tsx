@@ -10,8 +10,9 @@ export interface ExampleProps {
     incFish: () => void;
     decFish: () => void;
     numFish: number;
-    addFishToID: (x: number, id: string) => void;
-    removeFishNotInTank: (x: number, id: string) => void;
+    deleteThisFish: [number, number];
+    setDeleteVal: (x: number, id: string) => void;
+    resetDeleteVal: () => void;
 }
 
 export const Example: FC<ExampleProps> = ({
@@ -22,8 +23,9 @@ export const Example: FC<ExampleProps> = ({
     incFish,
     decFish,
     numFish,
-    addFishToID,
-    removeFishNotInTank
+    deleteThisFish,
+    setDeleteVal,
+    resetDeleteVal
 }) => {
     return (
         <div>
@@ -36,8 +38,9 @@ export const Example: FC<ExampleProps> = ({
                 incFish={incFish}
                 decFish={decFish}
                 numFish={numFish}
-                addFishToID={addFishToID}
-                removeFishNotInTank={removeFishNotInTank}
+                deleteThisFish={deleteThisFish}
+                setDeleteVal={setDeleteVal}
+                resetDeleteVal={resetDeleteVal}
             />
         </div>
     );
