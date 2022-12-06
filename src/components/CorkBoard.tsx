@@ -7,9 +7,13 @@ import { Task } from "../interfaces/task";
 import { Note } from "./Note";
 
 export function CorkBoard({
-    startingNotesAndPositionInfo
+    startingNotesAndPositionInfo,
+    xSize,
+    ySize
 }: {
     startingNotesAndPositionInfo: noteData[];
+    xSize: number;
+    ySize: number;
 }): JSX.Element {
     //state for holding our note and position infos
     const [notesAndPositionInfo, setNotesAndPositionInfo] = useState<
@@ -113,18 +117,11 @@ export function CorkBoard({
             window.removeEventListener("scroll", handleScroll);
         };
     });
-
-    /* 
-    HAHA MICHAEL IS RIGHT TERNARYS ARE IMPOSSIBLE I LOVE THIS!! Need to set zindex based on low medium or high
-
-    code for top: document.getElementById(item.id).getBoundingClientRect().y
-    code for left: document.getElementById(item.id).getBoundingClientRect().y
-
-    
-    */
     //state that will be needed for when the board scales
     const [boardTop] = useState<number>(50);
-    const [boardLeft] = useState<number>(700);
+    const [boardLeft] = useState<number>(700); // MODIFYING this results in issues, but the BoardSize is not 700 wide
+    const [xScaleFactor] = useState<number>(xSize / 800);
+    const [yScaleFactor] = useState<number>(ySize / 600);
 
     ///*
 
@@ -202,8 +199,8 @@ export function CorkBoard({
                     <div
                         key={"note: " + noteData.id}
                         style={{
-                            height: noteData.height + "px",
-                            width: noteData.width + "px",
+                            height: noteData.height / yScaleFactor + "px",
+                            width: noteData.width / xScaleFactor + "px",
                             backgroundColor: "yellow",
                             position: "absolute",
                             top: noteData.top + "px",

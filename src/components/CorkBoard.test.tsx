@@ -71,14 +71,24 @@ const testNotes = [
 
 describe("CorkBoard Component tests", () => {
     test("CorkBoard displays a note", () => {
-        render(<CorkBoard startingNotesAndPositionInfo={testNote}></CorkBoard>);
+        render(
+            <CorkBoard
+                startingNotesAndPositionInfo={testNote}
+                xSize={800}
+                ySize={600}
+            ></CorkBoard>
+        );
 
         const firstNote = screen.getByText("Complete CISC 275 Project");
         expect(firstNote).toBeInTheDocument();
     });
     test("CorkBoard displays multiple notes", () => {
         render(
-            <CorkBoard startingNotesAndPositionInfo={testNotes}></CorkBoard>
+            <CorkBoard
+                startingNotesAndPositionInfo={testNotes}
+                xSize={800}
+                ySize={600}
+            ></CorkBoard>
         );
         const firstNote = screen.getByText("Complete CISC 275 Project");
         expect(firstNote).toBeInTheDocument();
