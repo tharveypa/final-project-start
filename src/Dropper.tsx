@@ -93,7 +93,13 @@ export const Dropper: FC = () => {
             (p: Piece): Piece =>
                 p.id === reflId ? { ...p, reflected: !p.reflected } : p
         );
-        setPieceBank(newBank);
+        const picBank: Piece[] = newBank.map(
+            (p: Piece): Piece =>
+                p.reflected
+                    ? { ...p, image: "./Assets/Images/" + p.id + ".png" }
+                    : { ...p, image: "./Assets/Images/" + p.id + "2.png" }
+        );
+        setPieceBank(picBank);
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
