@@ -1,18 +1,20 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import Board from "./Board";
 import { CustomDragLayer } from "./CustomDragLayer";
 import { DndArray } from "./components/dndarr";
 //import { Dropdown } from "./components/dropdown";
 //import Dndarr from "./components/dndarr";
 import { FilterDropdown, SortDropdown } from "./components/dropdown";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Form } from "react-bootstrap";
 import "./App.css";
 import { Box } from "./components/Box";
 import { DndContext, DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { setConstantValue } from "typescript";
 
 function App(): JSX.Element {
+    const [scale, setScale] = useState<number>(1);
     return (
         <div
             style={{
@@ -31,10 +33,26 @@ function App(): JSX.Element {
                         position: "absolute"
                     }}
                 >
-                    <CustomDragLayer></CustomDragLayer>
+                    <CustomDragLayer scale={scale}></CustomDragLayer>
                     {/*<Box name="couch" id={1}></Box>*/}
                 </div>
                 <h1> Harleen Chahal, Sean OSullivan, Matthew Hansen </h1>
+                <Form.Group>
+                    <Form.Label>Scale</Form.Label>
+                    <Form.Control
+                        type="number"
+                        value={scale}
+                        onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>
+                        ) =>
+                            setScale(
+                                parseInt(event.target.value)
+                                    ? parseInt(event.target.value)
+                                    : 1
+                            )
+                        }
+                    />
+                </Form.Group>
                 <DndArray />
                 {/*<Row style={{ height: "700px" }}>
                     <Col>

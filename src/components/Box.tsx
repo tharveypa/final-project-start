@@ -4,21 +4,18 @@ import { useDrag } from "react-dnd";
 import { ItemTypes } from "../constants";
 import { DragTile } from "../Interfaces/DragTile";
 
-type BoxProps = { name: string; id: number };
+type BoxProps = { name: string; dt: DragTile };
 
 export function Box(bp: BoxProps): JSX.Element {
     const [{ offset }, drag] = useDrag({
-        //type is note; Type determines where it can be dropped
-        item: { type: ItemTypes.DragTile, id: bp.id },
+        item: { type: ItemTypes.DragTile, data: bp.dt },
         collect: (monitor) => ({
             offset: monitor.getClientOffset()
         })
     });
     return (
         <div
-            //makes the dragging of the note work
             ref={drag}
-            //style controls how the note looks
             style={{
                 height: "20%",
                 width: "20%",
