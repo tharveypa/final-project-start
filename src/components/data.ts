@@ -1,4 +1,12 @@
-import type { Bed, Desk, Wardrobe, Dresser, Rug, TrashCan } from "./types";
+import type {
+    Bed,
+    Desk,
+    Wardrobe,
+    Dresser,
+    Rug,
+    TrashCan,
+    Microwave
+} from "./types";
 
 const blue_bed: Bed = {
     id: "menu-bed",
@@ -92,6 +100,16 @@ const large_rug: Rug = {
     left: 0
 };
 
+const microwave: Microwave = {
+    id: "menu-microwave",
+    name: "Microwave",
+    height: 20 * 3,
+    width: 25 * 3,
+    color: "black",
+    top: 0,
+    left: 0
+};
+
 export const furniture = [
     blue_bed,
     red_bed,
@@ -99,6 +117,7 @@ export const furniture = [
     wardrobe,
     dresser,
     trash_can,
+    microwave,
     small_rug,
     medium_rug,
     large_rug
