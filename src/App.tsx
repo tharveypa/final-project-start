@@ -6,7 +6,7 @@ import { DndArray } from "./components/dndarr";
 //import { Dropdown } from "./components/dropdown";
 //import Dndarr from "./components/dndarr";
 import { FilterDropdown, SortDropdown } from "./components/dropdown";
-import { Row, Col, Form } from "react-bootstrap";
+import { Row, Col, Form, Button, Table } from "react-bootstrap";
 import "./App.css";
 import { Box } from "./components/Box";
 import { DndContext, DndProvider } from "react-dnd";
@@ -53,6 +53,61 @@ function App(): JSX.Element {
                         }
                     />
                 </Form.Group>
+                <Row xs={4} md={8} lg={12}>
+                    <Col>
+                        <FilterDropdown
+                            filterOptions={["Kitchen", "Bathroom", "Bedroom"]}
+                        ></FilterDropdown>
+                    </Col>
+                    <Col>
+                        <SortDropdown
+                            sortOptions={[
+                                "Alphabetical",
+                                "Tile Type",
+                                "Design Type"
+                            ]}
+                        ></SortDropdown>
+                    </Col>
+                </Row>
+                <div>
+                    <Table
+                        className="table-fixed table-responsive"
+                        style={{
+                            width: "50%",
+                            border: "2px solid gray"
+                        }}
+                    >
+                        <thead>
+                            <tr>
+                                <th>Tiles</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {[
+                                    "./red_couch.png",
+                                    "./door.jpg",
+                                    "./bosun_tally.jpg"
+                                ].map((s: string) => (
+                                    <td key={s}>
+                                        <Button
+                                            style={{
+                                                height: "70px",
+                                                width: "60%"
+                                            }}
+                                        >
+                                            <img
+                                                src={require(s + "")}
+                                                width="100%"
+                                                height="100%"
+                                            />
+                                        </Button>
+                                    </td>
+                                ))}
+                            </tr>
+                        </tbody>
+                    </Table>
+                </div>
                 <DndArray />
                 {/*<Row style={{ height: "700px" }}>
                     <Col>

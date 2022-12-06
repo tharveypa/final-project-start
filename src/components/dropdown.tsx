@@ -35,15 +35,26 @@ export function FilterDropdown({
 
     return (
         <div>
-            <h3>Filter</h3>
-            <div>
+            <h3>
+                <b>Filter</b>
+            </h3>
+            <div
+                className="bg-grey border m-2 p-2"
+                style={{
+                    bottom: "10%",
+                    left: "0%",
+                    height: "20%",
+                    width: "100%"
+                }}
+            >
                 <Form.Group controlId="formChoice">
                     <Form.Select value={choice} onChange={updateChoice}>
-                        {filterOptions.map((option1: string) => {
+                        {/*eslint-disable-next-line no-extra-parens*/}
+                        {filterOptions.map((option1: string) => (
                             <option key={option1} value={option1}>
                                 {option1}
-                            </option>;
-                        })}
+                            </option>
+                        ))}
                     </Form.Select>
                 </Form.Group>
             </div>
@@ -65,16 +76,26 @@ export function SortDropdown({
 
     return (
         <div>
-            <h3>Sort</h3>
-            <div>
+            <h3>
+                <b>Sort</b>
+            </h3>
+            <div
+                className="bg-grey border m-2 p-2"
+                style={{
+                    bottom: "70%",
+                    left: "0%",
+                    height: "20%",
+                    width: "100%"
+                }}
+            >
                 <Form.Group controlId="formChoice">
                     <Form.Select value={choice} onChange={updateChoice}>
-                        {sortOptions.map((option1: string) => {
-                            //Matt, if you change this to a (, I will be very upset
+                        {/*eslint-disable-next-line no-extra-parens*/}
+                        {sortOptions.map((option1: string) => (
                             <option key={option1} value={option1}>
                                 {option1}
-                            </option>;
-                        })}
+                            </option>
+                        ))}
                     </Form.Select>
                 </Form.Group>
             </div>
