@@ -20,8 +20,8 @@ const DeleteItem: React.FC<deleteCardProps> = (props) => {
         }) => props.deleteNote(item.id)
     });
     return (
-        <div ref={drop}>
-            <img src={trash}></img>
+        <div ref={drop} style={{ height: "100%", width: "100%" }}>
+            <img src={trash} style={{ height: "100%", width: "100%" }}></img>
         </div>
     );
 };

@@ -212,20 +212,31 @@ export function CorkBoard({
                     <div
                         key={"note: " + noteData.id}
                         style={{
-                            height: noteData.height + "px",
-                            width: noteData.width + "px",
+                            //height: noteData.height + "px",
+                            //width: noteData.width + "px",
                             backgroundColor: "yellow",
                             position: "absolute",
                             top: noteData.top + "px",
                             left: noteData.left + "px",
-                            zIndex: noteData.zIndex + "%"
+                            zIndex: noteData.zIndex + "%",
+                            fontSize: "10" + "px",
+                            aspectRatio: "1",
+                            wordWrap: "break-word",
+                            whiteSpace: "pre"
                         }}
                     >
                         <Note task={noteData.task} id={noteData.id}></Note>
                     </div>
                 );
             })}
-            <div style={{ position: "absolute", top: "100%" }}>
+            <div
+                style={{
+                    position: "absolute",
+                    bottom: "0",
+                    height: "10%",
+                    aspectRatio: "1"
+                }}
+            >
                 <TrashCan deleteNote={deleteNote}></TrashCan>
             </div>
         </div>
