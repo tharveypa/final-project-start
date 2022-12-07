@@ -30,7 +30,7 @@ const Container: React.FC<ContainerProps> = ({
     roomWidth
 }) => {
     const moveBox = useCallback(
-        (id: string, left: number, top: number) => {
+        (id: number, left: number, top: number) => {
             const FurnitureItem = furnitures[id].FurnitureItem;
             setFurnitures(
                 update(furnitures, {

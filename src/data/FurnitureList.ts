@@ -48,6 +48,7 @@ import squaresink from "../furnitures/square_sink.png";
 export const FURNITURE_LIST: Furniture[] = [
     {
         name: "Bathtub",
+        id: 0,
         price: 0,
         image: bathtub,
         //display: true
@@ -55,6 +56,7 @@ export const FURNITURE_LIST: Furniture[] = [
     },
     {
         name: "Coffee Table",
+        id: 1,
         price: 0,
         image: coffeetable,
         //display: true
@@ -62,6 +64,7 @@ export const FURNITURE_LIST: Furniture[] = [
     },
     {
         name: "Couch",
+        id: 2,
         price: 0,
         image: couch,
         //display: true
@@ -69,6 +72,7 @@ export const FURNITURE_LIST: Furniture[] = [
     },
     {
         name: "Dinner Table",
+        id: 3,
         price: 0,
         image: dinnertable,
         //display: true
@@ -76,6 +80,7 @@ export const FURNITURE_LIST: Furniture[] = [
     },
     {
         name: "Double Bed",
+        id: 4,
         price: 0,
         image: doublebed,
         //display: true
@@ -83,6 +88,7 @@ export const FURNITURE_LIST: Furniture[] = [
     },
     {
         name: "Flat TV",
+        id: 5,
         price: 0,
         image: flattv,
         //display: true
@@ -90,6 +96,7 @@ export const FURNITURE_LIST: Furniture[] = [
     },
     {
         name: "Fridge",
+        id: 6,
         price: 0,
         image: fridge,
         //display: true
@@ -97,6 +104,7 @@ export const FURNITURE_LIST: Furniture[] = [
     },
     {
         name: "Plant",
+        id: 7,
         price: 0,
         image: plant,
         //display: true
@@ -104,6 +112,7 @@ export const FURNITURE_LIST: Furniture[] = [
     },
     {
         name: "Lamp",
+        id: 8,
         price: 0,
         image: lamp,
         //display: true
@@ -111,6 +120,7 @@ export const FURNITURE_LIST: Furniture[] = [
     },
     {
         name: "Single Bed",
+        id: 9,
         price: 0,
         image: singlebed,
         //display: true
@@ -118,6 +128,7 @@ export const FURNITURE_LIST: Furniture[] = [
     },
     {
         name: "Sink",
+        id: 10,
         price: 0,
         image: sink,
         //display: true
@@ -125,6 +136,7 @@ export const FURNITURE_LIST: Furniture[] = [
     },
     {
         name: "Stove",
+        id: 11,
         price: 0,
         image: stove,
         //display: true
@@ -132,6 +144,7 @@ export const FURNITURE_LIST: Furniture[] = [
     },
     {
         name: "Toilet",
+        id: 12,
         price: 0,
         image: toilet,
         //display: true
@@ -139,6 +152,7 @@ export const FURNITURE_LIST: Furniture[] = [
     },
     {
         name: "Chair",
+        id: 13,
         price: 0,
         image: chair,
         //display: true
@@ -146,6 +160,7 @@ export const FURNITURE_LIST: Furniture[] = [
     },
     {
         name: "Rectangle Table",
+        id: 14,
         price: 0,
         image: recttable,
         //display: true
@@ -153,6 +168,7 @@ export const FURNITURE_LIST: Furniture[] = [
     },
     {
         name: "Round Sink",
+        id: 15,
         price: 0,
         image: roundsink,
         //display: true
@@ -160,6 +176,7 @@ export const FURNITURE_LIST: Furniture[] = [
     },
     {
         name: "Round Table",
+        id: 16,
         price: 0,
         image: roundtable,
         //display: true
@@ -167,6 +184,7 @@ export const FURNITURE_LIST: Furniture[] = [
     },
     {
         name: "Square Sink",
+        id: 17,
         price: 0,
         image: squaresink,
         //display: true

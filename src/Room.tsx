@@ -9,6 +9,8 @@ import { Furniture } from "./Interfaces/furniture";
 import { BoxMap } from "./Interfaces/BoxMap";
 import update from "immutability-helper";
 
+let ID_UPDATE = 1;
+
 type RoomProps = {
     x: number;
     FurnitureInRoom: Furniture[];
@@ -33,13 +35,24 @@ const Room: React.FC<RoomProps> = (props) => {
         const newFurnitureBoxMap: Furniture = monitor.getItem().Furniture;
         //const existingFurnitureBoxMap = furnitures[newFurnitureBoxMap.name];
         //if (existingFurnitureBoxMap === undefined) {
+        if (furnitures[newFurnitureBoxMap.name]) {
+            newFurnitureBoxMap.id += 18 * ID_UPDATE; // from Ren
+            ID_UPDATE++;
+            newFurnitureBoxMap.name += "a";
+        }
         setFurnitures(
             update(furnitures, {
                 $merge: {
                     [newFurnitureBoxMap.name]: {
                         top: 0,
                         left: 0,
-                        FurnitureItem: newFurnitureBoxMap
+                        FurnitureItem: {
+                            name: newFurnitureBoxMap.name,
+                            id: newFurnitureBoxMap.id,
+                            price: newFurnitureBoxMap.price,
+                            image: newFurnitureBoxMap.image,
+                            color: newFurnitureBoxMap.color
+                        }
                     }
                 }
             })
@@ -64,7 +77,10 @@ const Room: React.FC<RoomProps> = (props) => {
             canDrop: !!monitor.canDrop()
         })
     });
-
+    console.log(furnitures);
+    if (furnitures["Coffee Table"]) {
+        console.log("hi");
+    }
     return (
         <div>
             <div

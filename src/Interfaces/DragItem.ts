@@ -1,5 +1,5 @@
 export interface DragItem {
-    id: string;
+    id: number;
     type: string;
     left: number;
     top: number;

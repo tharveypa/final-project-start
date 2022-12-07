@@ -49,7 +49,12 @@ export const DraggableBox: FC<RoomProps> = ({
         })
     });
     return (
-        <div ref={drag} style={styles(top, left, isDragging)} role="PIC">
+        <div
+            id={id}
+            ref={drag}
+            style={styles(top, left, isDragging)}
+            role="PIC"
+        >
             <div
                 style={{
                     fontSize: 50,
