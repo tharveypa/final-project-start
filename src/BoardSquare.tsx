@@ -50,7 +50,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                 <Car
                     color={0}
                     clean={true}
-                    tirefill={true}
+                    tirefill={0}
                     window={true}
                     pics={props.pics}
                     x={1}
