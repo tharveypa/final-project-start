@@ -1,6 +1,4 @@
 import React from "react";
-import DirtTool from "./Destroy Tools/DirtTool";
-import Car from "./Car";
 
 type CarSpaceProps = {
     DirtPosition: number[];

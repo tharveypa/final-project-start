@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Pic from "./Pic";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -36,6 +36,10 @@ const renderSquare = (
     return (
         <>
             <div>
+<<<<<<< HEAD
+=======
+                {/* | board squares x={x}-{picPosition[0]}, y={y}-{picPosition[1]} */}
+>>>>>>> 8088512cff19cdcf7b202a4039303f3b1a85ee6d
                 <div key={i} style={{ width: "50%", height: "50%" }}>
                     <BoardSquare x={x} y={y} pics={pics}></BoardSquare>
                     {
@@ -79,6 +83,7 @@ const Board: React.FC<BoardProps> = (props) => {
                         display: "flex",
                         flexWrap: "wrap"
                     }}
+<<<<<<< HEAD
                 ></div>
                 <PimpVsDestroy></PimpVsDestroy>
                 {/* <div>
@@ -91,6 +96,26 @@ const Board: React.FC<BoardProps> = (props) => {
                     )}
                 </div> */}
                 {squares}
+=======
+                >
+                    {/* hey */}
+                    {/* {squares} */}
+                </div>
+
+                <div>
+                    {/* Choose a pic */}
+                    <ul>
+                        {pics.map(
+                            // eslint-disable-next-line no-extra-parens
+                            (p: string): JSX.Element => (
+                                <li key={p}>
+                                    <Pic pic={p} />
+                                </li>
+                            )
+                        )}
+                    </ul>
+                </div>
+>>>>>>> 8088512cff19cdcf7b202a4039303f3b1a85ee6d
             </DndProvider>
         </>
     );

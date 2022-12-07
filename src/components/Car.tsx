@@ -17,9 +17,8 @@ import City from "./images/city.jpg";
 import Forest from "./images/forest.jpg";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../constants";
-import { canAddPic, addPic, canMovePic, movePic } from "../game";
+import { canMovePic } from "../game";
 import Overlay from "../Overlay";
-import CarSquare from "./CarSquare";
 
 type CarProps = {
     color: number;
@@ -151,6 +150,7 @@ const Car: React.FC<CarProps> = (props) => {
                     Change Background (Street/City/Forest)
                 </Button>
                 {pause.map(
+                    // eslint-disable-next-line no-extra-parens
                     (e: number): JSX.Element => (
                         <div key={e}> {e} </div>
                     )
