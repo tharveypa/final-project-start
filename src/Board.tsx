@@ -3,17 +3,17 @@ import Pic from "./Pic";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import BoardSquare from "./BoardSquare";
+import CarSquare from "./components/CarSquare";
+import PimpVsDestroy from "./components/PimpVsDestroy";
 
 export const renderPiece = (
     x: number,
     y: number,
     pic: string,
-    //addTool: () => void,
     [picX, picY]: [number, number]
 ) => {
     if (x === picX && y === picY) {
-        //addTool();
-        return <Pic pic={pic} />;
+        // return <CarSquare pic={pic} />;
     }
 };
 
@@ -36,11 +36,12 @@ const renderSquare = (
     return (
         <>
             <div>
+<<<<<<< HEAD
+=======
                 {/* | board squares x={x}-{picPosition[0]}, y={y}-{picPosition[1]} */}
+>>>>>>> 8088512cff19cdcf7b202a4039303f3b1a85ee6d
                 <div key={i} style={{ width: "50%", height: "50%" }}>
-                    <BoardSquare x={x} y={y} pics={pics}>
-                        {renderPiece(x, y, "yeet", picPosition)}
-                    </BoardSquare>
+                    <BoardSquare x={x} y={y} pics={pics}></BoardSquare>
                     {
                         //each square needs 2 states
                         //image name
@@ -63,14 +64,14 @@ const Board: React.FC<BoardProps> = (props) => {
     const { picPosition } = props;
     const { pics } = props;
     const squares = [];
-    //let i=0;
     //pics.map((p:string)=>( ));
-    //squares.push(renderSquare(0, picPosition, pics));
-    for (let i = 0; i < 2; i++) {
-        for (let j = 0; j < 2; j++) {
-            squares.push(renderSquare(j, i, pics, picPosition));
-        }
-    }
+    //squares.push(renderSquare(0, 0, pics, picPosition));
+    // for (let i = 0; i < 2; i++) {
+    //     for (let j = 0; j < 1; j++) {
+    //         squares.push(renderSquare(j, i, pics, picPosition));
+    //     }
+    // }
+    squares.push(renderSquare(1, 2, pics, picPosition));
 
     return (
         <>
@@ -82,6 +83,20 @@ const Board: React.FC<BoardProps> = (props) => {
                         display: "flex",
                         flexWrap: "wrap"
                     }}
+<<<<<<< HEAD
+                ></div>
+                <PimpVsDestroy></PimpVsDestroy>
+                {/* <div>
+                    {pics.map(
+                        (p: string): JSX.Element => (
+                            <p key={p}>
+                                <CarSquare pic={p} />
+                            </p>
+                        )
+                    )}
+                </div> */}
+                {squares}
+=======
                 >
                     {/* hey */}
                     {/* {squares} */}
@@ -100,6 +115,7 @@ const Board: React.FC<BoardProps> = (props) => {
                         )}
                     </ul>
                 </div>
+>>>>>>> 8088512cff19cdcf7b202a4039303f3b1a85ee6d
             </DndProvider>
         </>
     );

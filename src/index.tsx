@@ -18,9 +18,13 @@ observe((picPosition: [number, number]) => {
                 }}
             >
                 <App />
+<<<<<<< HEAD
+                {/* <Board
+=======
                 {/* x={picPosition[0]}
                 y={picPosition[1]} */}
                 <Board
+>>>>>>> 8088512cff19cdcf7b202a4039303f3b1a85ee6d
                     pics={[
                         "Wipe Car",
                         "Shine Car",
@@ -29,7 +33,7 @@ observe((picPosition: [number, number]) => {
                         "etc"
                     ]}
                     picPosition={picPosition}
-                />
+                /> */}
             </div>
         </React.StrictMode>,
         document.getElementById("root")

@@ -18,7 +18,7 @@ const Square: React.FC<SquareProps> = (props) => {
             }}
         >
             {props.children}
-            {props.black ? "black" : "white"} Square
+            {props.black ? "black" : "white"}
         </div>
     );
 };

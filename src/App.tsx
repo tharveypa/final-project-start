@@ -4,6 +4,8 @@ import PimpVsDestroy from "./components/PimpVsDestroy";
 //import Car from "./components/Car";
 //import DirtTool from "./components/Destroy Tools/DirtTool";
 import CarSpace from "./components/CarSpace";
+import CarSquare from "./components/CarSquare";
+import Board from "./Board";
 
 function App(): JSX.Element {
     return (
@@ -13,12 +15,13 @@ function App(): JSX.Element {
             </header>
 
             <header className="App-header">CAR APP </header>
-            <PimpVsDestroy></PimpVsDestroy>
-
+            <Board
+                pics={["./images/birdpoop.png"]}
+                picPosition={[0, 0]}
+            ></Board>
             <div>
                 <CarSpace DirtPosition={[1000, 1000]}></CarSpace>
             </div>
-
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload.
