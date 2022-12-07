@@ -59,7 +59,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                 {/* {isOver && !canDrop && <Overlay color="red" />}
                 {!isOver && canDrop && <Overlay color="yellow" />}
                 {isOver && canDrop && <Overlay color="green" />} */}
-                <ul>
+                {/* <ul>
                     {square.map(
                         (p: string): JSX.Element => (
                             <div key={p}>
@@ -67,7 +67,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                             </div>
                         )
                     )}
-                </ul>
+                </ul> */}
             </div>
             <div>{/* <Button onClick={clear}>Clear</Button> */}</div>
         </>

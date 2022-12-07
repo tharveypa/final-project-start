@@ -13,7 +13,7 @@ export const renderPiece = (
     [picX, picY]: [number, number]
 ) => {
     if (x === picX && y === picY) {
-        return <CarSquare pic={pic} />;
+        // return <CarSquare pic={pic} />;
     }
 };
 
@@ -81,7 +81,7 @@ const Board: React.FC<BoardProps> = (props) => {
                     }}
                 ></div>
                 <PimpVsDestroy></PimpVsDestroy>
-                <div>
+                {/* <div>
                     {pics.map(
                         (p: string): JSX.Element => (
                             <p key={p}>
@@ -89,7 +89,7 @@ const Board: React.FC<BoardProps> = (props) => {
                             </p>
                         )
                     )}
-                </div>
+                </div> */}
                 {squares}
             </DndProvider>
         </>

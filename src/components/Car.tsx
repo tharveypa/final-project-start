@@ -43,8 +43,8 @@ const Car: React.FC<CarProps> = (props) => {
         })
     });
     const addImageToBoard = (pic: string) => {
-        const p = pics.filter((picture) => pic === picture);
-        setSquare((square) => [...square, pics[0]]);
+        //const p = pics.filter((picture) => pic === picture);
+        //setSquare((square) => [...square, pics[0]]);
     };
     const isClicked = useRef<boolean>(false);
 
@@ -117,8 +117,6 @@ const Car: React.FC<CarProps> = (props) => {
                     backgroundImage: `url(${backgrounds[backgroundIndex]})`
                 }}
             >
-                {isOver && !canDrop && <Overlay color="red" />}
-                {!isOver && canDrop && <Overlay color="yellow" />}
                 {isOver && canDrop && <Overlay color="green" />}
                 <div ref={containerRef} className="container">
                     {colorNum == 0 && <img src={RedCar} alt="red car" />}

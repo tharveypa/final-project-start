@@ -1,13 +1,16 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { DragSourceMonitor, useDrag } from "react-dnd";
 import { ItemTypes } from "../constants";
+import Pimp from "./Pimp";
 import PimpVsDestroy from "./PimpVsDestroy";
 
 type CarSquareProps = {
     pic: string;
+    description: string;
 };
 
-const CarSquare: React.FC<CarSquareProps> = ({ pic }) => {
+const CarSquare: React.FC<CarSquareProps> = (props) => {
+    const { pic, description } = props;
     const [{ isDragging }, drag] = useDrag({
         item: { type: ItemTypes.PIC, pic: pic },
         collect: (monitor: DragSourceMonitor) => ({
@@ -16,12 +19,12 @@ const CarSquare: React.FC<CarSquareProps> = ({ pic }) => {
     });
 
     return (
-        <div>
-            <div
+        <span className="toolncar">
+            <span
                 ref={drag}
                 style={{
-                    opacity: isDragging ? 1 : 0.5,
-                    fontSize: 50,
+                    opacity: isDragging ? 0.5 : 1,
+                    fontSize: 20,
                     fontWeight: "bold",
                     cursor: "move",
                     textAlign: "center",
@@ -32,12 +35,13 @@ const CarSquare: React.FC<CarSquareProps> = ({ pic }) => {
             >
                 {/* <header>{pic}</header> */}
                 <img
-                    src={require("./images/dirt.png")}
-                    width="80"
-                    height="80"
+                    src={require("./images/" + pic + ".png")}
+                    width="50"
+                    height="50"
                 />
-            </div>
-        </div>
+            </span>
+            {description}
+        </span>
     );
 };
 

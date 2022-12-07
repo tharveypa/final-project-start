@@ -1,32 +1,21 @@
 import React from "react";
-import Dirt from "./images/dirt.png";
-import BirdPoop from "./images/birdpoop.png";
-import Slash from "./images/slash.png";
-import Hammer from "./images/hammer.png";
+import CarSquare from "./CarSquare";
+
+const destroy = ["dirt", "birdpoop", "slash", "hammer"];
+const str = ["Dirty Car", "Bird Poop", "Slash Tires", "Break Windows"];
 
 const Destroy = () => {
     return (
-        <div className="toolncar">
+        <div>
             <h1>Destroy Mode</h1>
             <p>
-                Destroy Mode Options:
-                <div>
-                    <img src={Dirt} alt="dirt" />
-                    Dirty Car
-                </div>
-                <div>
-                    <img src={BirdPoop} alt="bird poop" />
-                    Bird Poop
-                </div>
-                <div>
-                    <img src={Slash} alt="slash tires" />
-                    Slash Tires
-                </div>
-                <div>
-                    <img src={Hammer} alt="break windows" />
-                    Break Windows
-                </div>
-                <div>etc</div>
+                {destroy.map(
+                    (t: string, i: number): JSX.Element => (
+                        <div key={t.toString()}>
+                            <CarSquare pic={t} description={str[i]}></CarSquare>
+                        </div>
+                    )
+                )}
             </p>
         </div>
     );
