@@ -44,5 +44,5 @@ export const canMovePic = (toX: number, toY: number) => {
     const [x, y] = picPosition[0];
     const dx = toX - x;
     const dy = toY - y;
-    return dx !== 0 || dy !== 0;
+    return true;
 };

@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import Car from "./Car";
+import Pic from "../Pic";
+import Board from "../Board";
 import type { ToolPos } from "./interfaces";
 type CarChanges = Record<string, ToolPos>;
 type CarSpaceProps = {
+    tools: string[];
     saveCar: (car: number, toolname: string, changes: CarChanges) => void;
 };
 
@@ -12,6 +15,7 @@ type CarSpaceProps = {
 //     return <span>{piece}</span>;
 // }
 export const CarSpace: React.FC<CarSpaceProps> = (props) => {
+    const { tools } = props;
     const [pos, setPos] = useState<number[]>([]);
     const containerRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
@@ -30,15 +34,21 @@ export const CarSpace: React.FC<CarSpaceProps> = (props) => {
     }, []);
     return (
         <>
-            <div ref={containerRef} className="container">
+            {/* <div ref={containerRef} className="container">
                 <Car
                     saveCar={props.saveCar}
                     color={0}
                     clean={true}
                     tirefill={true}
                     window={true}
-                ></Car>
+                ></Car> 
+            </div> */}
+            <div>
+                <Board tools={tools} />
             </div>
+            {/* <div ref={containerRef} className="container">
+                <Board tools={tools} />
+            </div> */}
             <div>
                 {pos.map(
                     // eslint-disable-next-line no-extra-parens
@@ -47,6 +57,15 @@ export const CarSpace: React.FC<CarSpaceProps> = (props) => {
                     )
                 )}
             </div>
+            {/* <div>
+                Choose a pic
+                {tools.map(
+                    // eslint-disable-next-line no-extra-parens
+                    (p: string): JSX.Element => (
+                        <Pic key={p} pic={p} top={400} left={0} title={p} />
+                    )
+                )}
+            </div> */}
         </>
     );
 };

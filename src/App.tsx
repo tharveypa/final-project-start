@@ -32,7 +32,7 @@ function App(): JSX.Element {
 
             <header className="App-header">CAR APP </header>
             <div>
-                <Board
+                {/* <Board
                     tools={[
                         "Wipe Car",
                         "Shine Car",
@@ -41,14 +41,24 @@ function App(): JSX.Element {
                         "etc"
                     ]}
                     picPosition={[0, 0]}
-                />
+                /> */}
+                <CarSpace
+                    saveCar={saveCar}
+                    tools={[
+                        "Wipe Car",
+                        "Shine Car",
+                        "Fill Tires",
+                        "Repair Windows",
+                        "etc"
+                    ]}
+                ></CarSpace>
                 {/* <Row></Row>
                 <Row>
                     <Col>
                         <PimpVsDestroy></PimpVsDestroy>
                     </Col>
                     <Col>
-                        <CarSpace saveCar={saveCar}></CarSpace>
+                        
                     </Col>
                 </Row> */}
             </div>

@@ -29,19 +29,24 @@ const Pic: React.FC<PicProps> = (props) => {
             <div
                 ref={drag}
                 style={{
+                    position: "relative",
+                    border: "1px dashed gray",
+                    padding: "0.5 rem 1rem",
                     opacity: isDragging ? 1 : 0.5,
-                    fontSize: 50,
+                    fontSize: 10,
                     fontWeight: "bold",
                     cursor: "move",
-                    textAlign: "center"
+                    textAlign: "center",
+                    left: left,
+                    top: top
                 }}
             >
                 {/*♘*/}
-                <p>{pic + " and " + title}</p>
+                <p>{pic + " and " + top}</p>
                 <img
                     src={require("./bosun_tally.jpg")}
-                    width="80"
-                    height="80"
+                    width="30"
+                    height="30"
                 />
             </div>
         </Fragment>

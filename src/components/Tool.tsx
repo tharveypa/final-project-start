@@ -1,16 +1,19 @@
-import React, { Fragment } from "react";
+import React, { CSSProperties, Fragment } from "react";
 import type { FC, ReactNode } from "react";
-// import { DragSourceMonitor, useDrag } from "react-dnd";
-// //import "../App.css";
-// import { ItemTypes } from "../constants";
+import { DragSourceMonitor, useDrag } from "react-dnd";
+import "../App.css";
+import { ItemTypes } from "../constants";
 // CSSProperties,
-// const style: CSSProperties = {
-//     position: "absolute",
-//     border: "1px dashed gray",
-//     backgroundColor: "white",
-//     padding: "0.5rem 1rem",
-//     cursor: "move"
-// };
+const style: CSSProperties = {
+    position: "absolute",
+    border: "1px dashed gray",
+    padding: "0.5 rem 1rem",
+    //opacity: isDragging ? 1 : 0.5,
+    fontSize: 10,
+    fontWeight: "bold",
+    cursor: "move",
+    textAlign: "center"
+};
 
 type ToolProps = {
     id: string;
@@ -22,6 +25,18 @@ type ToolProps = {
 export const Tool: FC<ToolProps> = (props) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { id, left, top, children } = props;
+    const [{ isDragging }, drag] = useDrag({
+        item: {
+            type: ItemTypes.DIRT,
+            id: id,
+            top: top,
+            left: left
+        },
+        collect: (monitor: DragSourceMonitor) => ({
+            isDragging: !!monitor.isDragging()
+        })
+    });
+
     // const [{ isDragging }, drag] = useDrag({
     //     item: { type: ItemTypes.PIC, pic: pic },
     //     collect: (monitor) => ({
@@ -42,18 +57,24 @@ export const Tool: FC<ToolProps> = (props) => {
     return (
         <Fragment>
             <div
-                // ref={drag}
+                ref={drag}
                 style={{
-                    // opacity: isDragging ? 1 : 0.5,
-                    fontSize: 50,
+                    position: "relative",
+                    border: "1px dashed gray",
+                    padding: "0.5 rem 1rem",
+                    opacity: isDragging ? 1 : 0.5,
+                    fontSize: 10,
                     fontWeight: "bold",
                     cursor: "move",
-                    textAlign: "center"
-                    // left,
-                    // top
+                    textAlign: "center",
+                    background: "red",
+                    width: "30px",
+                    height: "30px",
+                    left: left,
+                    top: top
                 }}
             >
-                <header>{id}</header>
+                <p>{id}</p>
                 {/* {children} */}
             </div>
         </Fragment>
