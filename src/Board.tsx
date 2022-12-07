@@ -1,24 +1,23 @@
-import React, { useState } from "react";
+import React, { MutableRefObject, useRef, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Example from "./Example";
 
 const renderSquare = (
     i: number,
-    picPosition: [number, number],
     width: number,
     height: number,
     incFish: () => void,
     decFish: () => void,
     numFish: number,
-    deleteThisFish: [number, number],
+    delFishX: MutableRefObject<number>,
+    delFishID: MutableRefObject<number>,
     setDeleteVal: (x: number, id: string) => void,
-    resetDeleteVal: () => void
+    resetDeleteVal: () => void,
+    renderDeleteVal: () => void
 ) => {
     const x = i;
     const y = 0;
-    console.log("numFish", numFish);
-
     return (
         <div
             key={i}
@@ -35,59 +34,72 @@ const renderSquare = (
                 incFish={incFish}
                 decFish={decFish}
                 numFish={numFish}
-                deleteThisFish={deleteThisFish}
+                deleteThisFish={[delFishX.current, delFishID.current]}
+                delFishX={delFishX}
+                delFishID={delFishID}
                 setDeleteVal={setDeleteVal}
                 resetDeleteVal={resetDeleteVal}
+                renderDeleteVal={renderDeleteVal}
             ></Example>
         </div>
     );
 };
 
 type BoardProps = {
-    picPosition: [number, number];
     numSquares: number;
-    tank_ID: [][];
-    addFishToID: (x: number, id: string) => void;
     numFish: number;
     incFish: () => void;
     decFish: () => void;
 };
 
 const Board: React.FC<BoardProps> = (props) => {
-    const { picPosition, numSquares, numFish, incFish, decFish } = props;
+    const { numSquares, numFish, incFish, decFish } = props;
     const numCol = Math.ceil(Math.sqrt(numSquares));
     const width = 100 / numCol;
     const height = 100 / Math.ceil(numSquares / numCol);
     const squares = [];
-    const [deleteThisFish, setDeleteThisFish] = useState<[number, number]>([
-        -1, -1
-    ]);
-    console.log(deleteThisFish);
+    const delFishX = useRef(-1);
+    const delFishID = useRef(-1);
+    const [renderDelete, setRenderDelete] = useState(true);
+    const renderDeleteVal = () => {
+        console.log("render delete before", renderDelete);
+        console.log("render delete opposite", !renderDelete);
+        setRenderDelete(!renderDelete);
+        console.log("render delete after", renderDelete);
+    };
 
     const setDeleteVal = (x: number, id: string) => {
-        setDeleteThisFish([x, parseInt(id)]);
+        delFishX.current = x;
+        delFishID.current = parseInt(id);
+        console.log("delFishX", delFishX.current);
+        console.log("delFishID", delFishID.current);
     };
 
     const resetDeleteVal = () => {
-        setDeleteThisFish([-1, -1]);
+        delFishX.current = -1;
+        delFishID.current = -1;
     };
 
     for (let i = 0; i < numSquares; i++) {
         squares.push(
             renderSquare(
                 i,
-                picPosition,
                 width,
                 height,
                 incFish,
                 decFish,
                 numFish,
-                deleteThisFish,
+                delFishX,
+                delFishID,
                 setDeleteVal,
-                resetDeleteVal
+                resetDeleteVal,
+                renderDeleteVal
             )
         );
     }
+    console.log("deleteX board", delFishX);
+    console.log("deleteID board", delFishID);
+
     return (
         <DndProvider backend={HTML5Backend}>
             <div

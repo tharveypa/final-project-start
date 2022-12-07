@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { FC, MutableRefObject } from "react";
 import React from "react";
 import { Container } from "./Container";
 
@@ -11,8 +11,11 @@ export interface ExampleProps {
     decFish: () => void;
     numFish: number;
     deleteThisFish: [number, number];
+    delFishX: MutableRefObject<number>;
+    delFishID: MutableRefObject<number>;
     setDeleteVal: (x: number, id: string) => void;
     resetDeleteVal: () => void;
+    renderDeleteVal: () => void;
 }
 
 export const Example: FC<ExampleProps> = ({
@@ -24,8 +27,11 @@ export const Example: FC<ExampleProps> = ({
     decFish,
     numFish,
     deleteThisFish,
+    delFishX,
+    delFishID,
     setDeleteVal,
-    resetDeleteVal
+    resetDeleteVal,
+    renderDeleteVal
 }) => {
     return (
         <div>
@@ -39,8 +45,11 @@ export const Example: FC<ExampleProps> = ({
                 decFish={decFish}
                 numFish={numFish}
                 deleteThisFish={deleteThisFish}
+                delFishX={delFishX}
+                delFishID={delFishID}
                 setDeleteVal={setDeleteVal}
                 resetDeleteVal={resetDeleteVal}
+                renderDeleteVal={renderDeleteVal}
             />
         </div>
     );

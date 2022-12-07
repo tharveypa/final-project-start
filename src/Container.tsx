@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { FC, MutableRefObject } from "react";
 import { useCallback, useState } from "react";
 import type { XYCoord } from "react-dnd";
 import { useDrop } from "react-dnd";
@@ -20,6 +20,9 @@ export interface ContainerProps {
     deleteThisFish: [number, number];
     setDeleteVal: (x: number, id: string) => void;
     resetDeleteVal: () => void;
+    delFishX: MutableRefObject<number>;
+    delFishID: MutableRefObject<number>;
+    renderDeleteVal: () => void;
 }
 
 export const Container: FC<ContainerProps> = ({
@@ -28,34 +31,37 @@ export const Container: FC<ContainerProps> = ({
     width,
     height,
     incFish,
+    decFish,
     numFish,
-    deleteThisFish,
     setDeleteVal,
-    resetDeleteVal
+    delFishX,
+    delFishID
 }) => {
     const [fishes, setFishes] = useState(Array(0).fill(Array(0).fill(null)));
-
-    console.log("deleteThisFish", deleteThisFish, "x", x);
-    console.log("Fish", fishes);
     const newFishes = [...fishes];
     let index = -1;
     let bool_delete = false;
     for (let i = 0; i < fishes.length; i++) {
-        newFishes[i] = fishes[i];
+        newFishes[i] = [...fishes[i]];
     }
     for (let i = 0; i < fishes.length; i++) {
-        if (newFishes[i][0] === deleteThisFish[1]) {
+        if (fishes[i][0] === delFishID.current) {
             bool_delete = true;
             index = i;
         }
     }
-    if (deleteThisFish[0] !== x && bool_delete) {
-        console.log("inside delete this fish", deleteThisFish);
-        newFishes.splice(index, 1);
+    console.log("Rerender?" + delFishX.current + bool_delete);
+    if (delFishX.current !== x && bool_delete) {
+        console.log("deleteX inside delete", delFishX.current);
+        console.log("deleteID inside delete", delFishID.current);
+        console.log("delete index", index);
+        console.log("fishes before", fishes, "x", 0);
+        setFishes(fishes.splice(index, 1));
+        console.log("fishes after", fishes);
         index = -1;
         bool_delete = false;
-        resetDeleteVal();
-        setFishes(newFishes);
+        delFishX.current = -1;
+        delFishID.current = -1;
     }
     const addFish = () => {
         console.log("inside add fish");
@@ -80,6 +86,7 @@ export const Container: FC<ContainerProps> = ({
     };
 
     const addFishNewTank = (id: number, left: number, top: number) => {
+        console.log("inside add fish new tank");
         const tankWidth = document.getElementById("tank")?.offsetWidth;
         const tankHeight = document.getElementById("tank")?.offsetHeight;
         if (tankHeight !== undefined && tankWidth !== undefined) {
@@ -104,6 +111,8 @@ export const Container: FC<ContainerProps> = ({
             newFishes.push(newFish);
             setFishes(newFishes);
             setDeleteVal(x, idVal);
+            console.log("deleteX after set", delFishX.current);
+            console.log("deleteID after set", delFishID.current);
         }
     };
 
@@ -128,6 +137,8 @@ export const Container: FC<ContainerProps> = ({
                     setFishes(newFishes);
                 } else {
                     addFishNewTank(name, left, top);
+                    incFish();
+                    decFish();
                 }
             }
         },

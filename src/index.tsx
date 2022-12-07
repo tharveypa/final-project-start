@@ -5,7 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import NumSquareForm from "./NumSquareForm";
 import { Menu } from "./Menu";
 
-observe((picPosition: [number, number]) => {
+observe(() => {
     ReactDOM.render(
         <React.StrictMode>
             <h1
@@ -22,7 +22,7 @@ observe((picPosition: [number, number]) => {
                 <Menu></Menu>
             </div>
             <div>
-                <NumSquareForm picPosition={picPosition}></NumSquareForm>
+                <NumSquareForm></NumSquareForm>
             </div>
             <div className="App"></div>
         </React.StrictMode>,
