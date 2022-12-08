@@ -1,10 +1,12 @@
 /* eslint-disable no-extra-parens */
 import React, { useEffect, useState } from "react";
+import { Form } from "react-bootstrap";
 import { useDragLayer, useDrop, XYCoord } from "react-dnd";
 import { ItemTypes } from "../constants";
 import { noteData } from "../interfaces/noteData";
 import { Task } from "../interfaces/task";
 import { Note } from "./Note";
+import TrashCan from "./TrashCan";
 
 export function CorkBoard({
     startingNotesAndPositionInfo
@@ -51,7 +53,8 @@ export function CorkBoard({
                         scrollPositionY,
                     currentOffset.x -
                         boardLeft +
-                        (grabOffset?.x - sourceOffset?.x - 100) +
+                        (grabOffset?.x - sourceOffset?.x) -
+                        100 +
                         scrollPositionX,
                     1
                 );
@@ -113,18 +116,10 @@ export function CorkBoard({
             window.removeEventListener("scroll", handleScroll);
         };
     });
-
-    /* 
-    HAHA MICHAEL IS RIGHT TERNARYS ARE IMPOSSIBLE I LOVE THIS!! Need to set zindex based on low medium or high
-
-    code for top: document.getElementById(item.id).getBoundingClientRect().y
-    code for left: document.getElementById(item.id).getBoundingClientRect().y
-
-    
-    */
     //state that will be needed for when the board scales
     const [boardTop] = useState<number>(50);
-    const [boardLeft] = useState<number>(700);
+    const [boardLeft] = useState<number>(700); // MODIFYING this results in issues, but the BoardSize is not 700 wide
+    const [xScaleFactor, setxScaleFactor] = useState<number>(1);
 
     ///*
 
@@ -185,6 +180,19 @@ export function CorkBoard({
         ]);
     }
 
+    // deletes a note and position data associated with that note based on the id
+    function deleteNote(noteId: number) {
+        setNotesAndPositionInfo(
+            notesAndPositionInfo.filter(
+                (noteData: noteData): boolean => noteId !== noteData.id
+            )
+        );
+    }
+
+    function scaleHandler(event: React.ChangeEvent<HTMLInputElement>) {
+        setxScaleFactor(event.target.value as unknown as number);
+    }
+
     return (
         <div
             ref={drop}
@@ -202,19 +210,48 @@ export function CorkBoard({
                     <div
                         key={"note: " + noteData.id}
                         style={{
-                            height: noteData.height + "px",
-                            width: noteData.width + "px",
+                            //height: noteData.height + "px",
+                            //width: noteData.width + "px",
                             backgroundColor: "yellow",
                             position: "absolute",
                             top: noteData.top + "px",
                             left: noteData.left + "px",
-                            zIndex: noteData.zIndex + "%"
+                            zIndex: noteData.zIndex + "%",
+                            fontSize: 12 * xScaleFactor + "px",
+                            maxWidth: "25%",
+                            //aspectRatio: "1",
+                            wordBreak: "break-word",
+                            wordWrap: "break-word",
+                            whiteSpace: "pre"
                         }}
                     >
                         <Note task={noteData.task} id={noteData.id}></Note>
                     </div>
                 );
             })}
+            <div
+                style={{
+                    position: "absolute",
+                    bottom: "0",
+                    height: "10%",
+                    aspectRatio: "1"
+                }}
+            >
+                <TrashCan deleteNote={deleteNote}></TrashCan>
+            </div>
+            <div style={{ position: "absolute", top: "100%" }}>
+                {/* Form that sets the scale factor of the board */}
+                <Form.Group className="makeCorkScale">
+                    <Form.Label>Scale:</Form.Label>
+                    <Form.Control
+                        as="textarea"
+                        placeholder="Scale"
+                        rows={1}
+                        value={xScaleFactor}
+                        onChange={scaleHandler}
+                    />
+                </Form.Group>
+            </div>
         </div>
     );
 }

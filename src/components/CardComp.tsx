@@ -28,9 +28,12 @@ function CardComp({
         <div>
             <Card
                 style={{
-                    width: "200px",
-                    height: "100px",
-                    backgroundColor: task.thumbColor
+                    width: "100%",
+                    display: "inline-block",
+                    backgroundColor: task.thumbColor,
+                    wordBreak: "break-all",
+                    wordWrap: "break-word",
+                    whiteSpace: "initial"
                 }}
                 //ref makes the dragging of the Card Work
                 ref={drag}
@@ -48,11 +51,43 @@ function CardComp({
                         X
                     </Button>
                 </div>
-                <Card.Body>
-                    <Card.Title>{task.title}</Card.Title>
-                    <Card.Text>{task.description}</Card.Text>
-                    <Card.Text>Priority: {task.priority}</Card.Text>
-                    <Card.Text>Assignees: {assi}</Card.Text>
+                <Card.Body style={{ whiteSpace: "pre" }}>
+                    <Card.Title
+                        style={{
+                            wordBreak: "break-all",
+                            wordWrap: "break-word",
+                            whiteSpace: "initial"
+                        }}
+                    >
+                        {task.title}
+                    </Card.Title>
+                    <Card.Text
+                        style={{
+                            wordBreak: "break-all",
+                            wordWrap: "break-word",
+                            whiteSpace: "initial"
+                        }}
+                    >
+                        {task.description}
+                    </Card.Text>
+                    <Card.Text
+                        style={{
+                            wordBreak: "break-all",
+                            wordWrap: "break-word",
+                            whiteSpace: "initial"
+                        }}
+                    >
+                        Priority: {task.priority}
+                    </Card.Text>
+                    <Card.Text
+                        style={{
+                            wordBreak: "break-all",
+                            wordWrap: "break-word",
+                            whiteSpace: "initial"
+                        }}
+                    >
+                        Assignees: {assi}
+                    </Card.Text>
                 </Card.Body>
             </Card>
         </div>

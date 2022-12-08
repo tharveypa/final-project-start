@@ -43,12 +43,21 @@ function App(): JSX.Element {
         <>
             <DndProvider backend={HTML5Backend}>
                 <div className="App">
-                    <div>
+                    <div
+                        style={{
+                            height: "600px",
+                            width: "700px",
+                            position: "absolute"
+                            //backgroundColor: "red"
+                        }}
+                    >
                         <h3>CREATED BY: </h3>
                         <p>Blade Tyrrell, Brandon Branson, Michael Snead</p>
+                        {/* CARDLIST DIV : SIZE AND POSITION OF THE DIV DEFINES THAT OF THE CARDLIST*/}
+                        <div style={{}}>
+                            <CardList></CardList>
+                        </div>
                     </div>
-                    <CardList></CardList>
-
                     {/* CORKBOARD DIV : SIZE AND POSITION OF THE DIV DEFINES THAT OF THE CORKBOARD*/}
                     <div
                         style={{
