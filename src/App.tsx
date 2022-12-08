@@ -6,6 +6,7 @@ import PimpVsDestroy from "./components/PimpVsDestroy";
 import CarSpace from "./components/CarSpace";
 import CarSquare from "./components/CarSquare";
 import Board from "./Board";
+import ToolinBox from "./components/ToolinBox";
 
 function App(): JSX.Element {
     return (
