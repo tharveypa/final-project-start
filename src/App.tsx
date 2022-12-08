@@ -34,7 +34,7 @@ function App(): JSX.Element {
             </header>
 
             <header className="App-header">CAR APP </header>
-            <Board pics={[]} picPosition={[0, 0]}></Board>
+            {/* <Board pics={[]} picPosition={[0, 0]}></Board> */}
             <div>
                 <Board
                     tools={[

@@ -72,11 +72,11 @@ export const Car: React.FC<CarProps> = (props) => {
         })
     });
     const addImageToBoard = (pic: string) => {
-        pics.push(pic);
-        const p = pics.filter((picture) => pic === picture);
+        //pics.push(pic);
+        //const p = pics.filter((picture) => pic === picture);
         console.log(pic);
-        setSquare((square) => [...square, p[0]]);
-        console.log(pics);
+        //setSquare((square) => [...square, p[0]]);
+        //console.log(pics);
     };
     // const moveTool = useCallback(
     //     (id: string, left: number, top: number) => {
