@@ -51,8 +51,13 @@ function App(): JSX.Element {
                             //backgroundColor: "red"
                         }}
                     >
-                        <h3>CREATED BY: </h3>
-                        <p>Blade Tyrrell, Brandon Branson, Michael Snead</p>
+                        <h2>
+                            <b>THE CORKBOARD OF ALL TIME</b>
+                        </h2>
+                        <p>
+                            <h5>CREATED BY: </h5>
+                            Blade Tyrrell, Brandon Branson, Michael Snead
+                        </p>
                         {/* CARDLIST DIV : SIZE AND POSITION OF THE DIV DEFINES THAT OF THE CARDLIST*/}
                         <div style={{}}>
                             <CardList></CardList>

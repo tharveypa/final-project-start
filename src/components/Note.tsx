@@ -20,21 +20,23 @@ export function Note({ task, id }: { task: Task; id: number }): JSX.Element {
             style={{
                 height: "100%",
                 width: "100%",
-                backgroundColor: "yellow",
+                backgroundColor: "#ee964d",
                 //wordBreak: "break-word",
                 wordBreak: "break-all",
                 wordWrap: "break-word",
-                whiteSpace: "initial"
+                whiteSpace: "initial",
+                border: "2px solid white",
+                borderRadius: "5px"
                 //flex: "1 0 0"
             }}
         >
-            Title: {task.title}
+            <b>Title</b>: {task.title}
             <br />
-            Description: {task.description}
+            <b>Description</b>: {task.description}
             <br />
-            Priority: {task.priority}
+            <b>Priority</b>: {task.priority}
             <br />
-            Assignees: {task.assigned.join(", ")}
+            <b>Assignees</b>: {task.assigned.join(", ")}
             <br />
         </div>
     );
