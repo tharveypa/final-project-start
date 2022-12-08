@@ -201,8 +201,8 @@ export function CardList(): JSX.Element {
         },
         {
             task: {
-                title: "H",
-                description: "Gotta get my stuff",
+                title: "Apply for Scholarships",
+                description: "I can't take it anymore",
                 priority: "low",
                 thumbColor: "Coral",
                 assigned: ["Blade", "Zach", "Miguel"]
@@ -513,8 +513,8 @@ export function CardList(): JSX.Element {
         },
         {
             task: {
-                title: "H",
-                description: "Gotta get my stuff",
+                title: "Apply for Scholarships",
+                description: "I can't take it anymore",
                 priority: "low",
                 thumbColor: "Coral",
                 assigned: ["Blade", "Zach", "Miguel"]
