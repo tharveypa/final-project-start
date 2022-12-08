@@ -16,7 +16,7 @@ type BoardSquareProps = {
 };
 
 const BoardSquare: React.FC<BoardSquareProps> = (props) => {
-    const { x, y, children } = props;
+    const { x, y, pics } = props;
     const black = (x + y) % 2 === 1;
     const [square, setSquare] = useState<string[]>([]);
     const [{ isOver, canDrop }, drop] = useDrop({
@@ -42,8 +42,8 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                 //ref={drop}
                 style={{
                     position: "relative",
-                    width: "200%",
-                    height: "150%"
+                    width: "125%",
+                    height: "125%"
                 }}
             >
                 {/* <Square black={black}>{children}</Square> */}
@@ -52,7 +52,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                     clean={true}
                     tirefill={0}
                     window={true}
-                    pics={props.pics}
+                    pics={pics}
                     x={1}
                     y={2}
                 ></Car>
@@ -68,16 +68,9 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                             </div>
                         )
                     )}
-<<<<<<< HEAD
                 </ul> */}
-=======
-                    ;
-                </ul>
             </div>
-            <div>
-                <Button onClick={clear}>Clear</Button>
->>>>>>> 8088512cff19cdcf7b202a4039303f3b1a85ee6d
-            </div>
+            {/* {square} */}
             <div>{/* <Button onClick={clear}>Clear</Button> */}</div>
         </>
     );

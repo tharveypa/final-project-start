@@ -15,10 +15,7 @@ function App(): JSX.Element {
             </header>
 
             <header className="App-header">CAR APP </header>
-            <Board
-                pics={["./images/birdpoop.png"]}
-                picPosition={[0, 0]}
-            ></Board>
+            <Board pics={[]} picPosition={[0, 0]}></Board>
             <div>
                 <CarSpace DirtPosition={[1000, 1000]}></CarSpace>
             </div>

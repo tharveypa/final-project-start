@@ -55,8 +55,10 @@ const Car: React.FC<CarProps> = (props) => {
         })
     });
     const addImageToBoard = (pic: string) => {
-        //const p = pics.filter((picture) => pic === picture);
-        //setSquare((square) => [...square, pics[0]]);
+        pics.push(pic);
+        const p = pics.filter((picture) => pic === picture);
+        setSquare((square) => [...square, p[0]]);
+        console.log(pics);
     };
     const isClicked = useRef<boolean>(false);
 
