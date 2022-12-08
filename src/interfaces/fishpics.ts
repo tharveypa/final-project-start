@@ -17,7 +17,7 @@ export const Squid: Fish = {
     predator: true,
     size: 4,
     position: [0, 0],
-    image: "./images/squid.png"
+    image: "./images/squidward.png"
 };
 
 export const Beta: Fish = {
@@ -37,7 +37,7 @@ export const Minnow: Fish = {
     predator: true,
     size: 1,
     position: [0, 0],
-    image: "./images/freshprey.jpeg"
+    image: "./images/freshprey.png"
 };
 
 export const Octopus: Fish = {
@@ -97,7 +97,7 @@ export const Sponge: Fish = {
     predator: false,
     size: 1,
     position: [0, 0],
-    image: "./images/sponge.png"
+    image: "./images/spongebob.png"
 };
 
 export const Crab: Fish = {
@@ -107,7 +107,7 @@ export const Crab: Fish = {
     predator: true,
     size: 1,
     position: [0, 0],
-    image: "./images/mr crab.png"
+    image: "./images/mrkrab.png"
 };
 
 export const Tang: Fish = {
@@ -167,7 +167,7 @@ export const Koi: Fish = {
     predator: false,
     size: 2,
     position: [0, 0],
-    image: "./images/koifish.jpeg"
+    image: "./images/koifish.png"
 };
 
 export const Trout: Fish = {
@@ -177,7 +177,7 @@ export const Trout: Fish = {
     predator: false,
     size: 2,
     position: [0, 0],
-    image: "./images/troutfish.jpeg"
+    image: "./images/troutfish.png"
 };
 
 export const Catfish: Fish = {
@@ -187,7 +187,7 @@ export const Catfish: Fish = {
     predator: false,
     size: 2,
     position: [0, 0],
-    image: "./images/catfish.jpeg"
+    image: "./images/catfish.png"
 };
 
 export const Seahorse: Fish = {
@@ -197,7 +197,7 @@ export const Seahorse: Fish = {
     predator: false,
     size: 1,
     position: [0, 0],
-    image: "./images/seahorse.jpeg"
+    image: "./images/seahorse.png"
 };
 
 export const Lionfish: Fish = {
@@ -227,7 +227,7 @@ export const Crocodile: Fish = {
     predator: true,
     size: 7,
     position: [0, 0],
-    image: "./images/crocodile.jpeg"
+    image: "./images/crocodile.png"
 };
 
 export const Eel: Fish = {
@@ -237,7 +237,7 @@ export const Eel: Fish = {
     predator: true,
     size: 4,
     position: [0, 0],
-    image: "./images/eel.jpeg"
+    image: "./images/eel.png"
 };
 
 export const Lobster: Fish = {
@@ -277,7 +277,7 @@ export const Anglerfish: Fish = {
     predator: false,
     size: 3,
     position: [0, 0],
-    image: "./images/anglerfish.jpeg"
+    image: "./images/anglerfish.png"
 };
 
 export const Sunfish: Fish = {
@@ -297,7 +297,7 @@ export const Swordfish: Fish = {
     predator: true,
     size: 6,
     position: [0, 0],
-    image: "./images/swordfish.jpeg"
+    image: "./images/swordfish.png"
 };
 
 export const Whaleshark: Fish = {
@@ -307,7 +307,7 @@ export const Whaleshark: Fish = {
     predator: false,
     size: 20,
     position: [0, 0],
-    image: "./images/whaleshark.jpeg"
+    image: "./images/whaleshark.png"
 };
 
 export const FishList = [

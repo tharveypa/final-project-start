@@ -173,7 +173,7 @@ export const Container: FC<ContainerProps> = ({
     return (
         <div
             ref={drop}
-            id={"tank"}
+            data-testId={"tank"}
             style={{
                 height: height.toString() + "%",
                 width: width.toString() + "%",
