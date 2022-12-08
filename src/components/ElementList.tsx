@@ -94,7 +94,7 @@ function ElementList() {
                     element.top < e.top + 100 &&
                     element.top + 100 > e.top &&
                     element.left < e.left + 100 &&
-                    e.left + 100 > element.left
+                    element.left + 100 > e.left
             );
         const p = { ...draggedElement };
         console.log(p);
