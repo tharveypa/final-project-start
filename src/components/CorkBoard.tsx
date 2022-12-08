@@ -241,8 +241,8 @@ export function CorkBoard({
             </div>
             <div style={{ position: "absolute", top: "100%" }}>
                 {/* Form that sets the scale factor of the board */}
-                <Form.Group className="makeNoteDesc">
-                    <Form.Label>Description</Form.Label>
+                <Form.Group className="makeCorkScale">
+                    <Form.Label>Scale:</Form.Label>
                     <Form.Control
                         as="textarea"
                         placeholder="Scale"
