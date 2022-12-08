@@ -1,22 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Board from "./Board";
-import "./index.css";
 import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
+import NumSquareForm from "./NumSquareForm";
+import { Menu } from "./Menu";
 
-observe((picPosition: [number, number]) => {
+observe(() => {
     ReactDOM.render(
         <React.StrictMode>
-            <div
+            <h1
+                className="text-center"
                 style={{
-                    width: "500px",
-                    height: "500px",
-                    border: "1px solid gray"
+                    fontStyle: "Bold",
+                    fontFamily: "Impact",
+                    fontSize: "80px"
                 }}
             >
-                <Board picPosition={picPosition} />
+                FISHDOM: Shreeya, Daniel, Jason
+            </h1>
+            <div>
+                <Menu></Menu>
             </div>
+            <div>
+                <NumSquareForm></NumSquareForm>
+            </div>
+            <div className="App"></div>
         </React.StrictMode>,
         document.getElementById("root")
     );
