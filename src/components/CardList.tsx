@@ -5,6 +5,7 @@ import CardComp from "./CardComp";
 import { MakeNote } from "./MakeNote";
 import { FilterNote } from "./FilterNote";
 import { cardData } from "../interfaces/cardData";
+import "../CardList.css";
 
 export function CardList(): JSX.Element {
     const [currList, modList] = useState<cardData[]>([
@@ -107,6 +108,216 @@ export function CardList(): JSX.Element {
                 assigned: ["Michael"]
             },
             id: 9
+        },
+        {
+            task: {
+                title: "Video Game Backlog",
+                description: "Danganronpa!",
+                priority: "low",
+                thumbColor: "Orange",
+                assigned: ["Michael"]
+            },
+            id: 10
+        },
+        {
+            task: {
+                title: "Video Game Backlog",
+                description: "Final Fantasy 8",
+                priority: "medium",
+                thumbColor: "Pink",
+                assigned: ["Blade"]
+            },
+            id: 11
+        },
+        {
+            task: {
+                title: "Video Game Backlog",
+                description: "Hollow Knight",
+                priority: "low",
+                thumbColor: "Orange",
+                assigned: ["Brandon", "Michael"]
+            },
+            id: 12
+        },
+        {
+            task: {
+                title: "Video Game Backlog",
+                description: "Nocturne",
+                priority: "high",
+                thumbColor: "Orange",
+                assigned: ["Michael"]
+            },
+            id: 13
+        },
+        {
+            task: {
+                title: "CISC320 - HW",
+                description: "That was due like 4 days ago....",
+                priority: "high",
+                thumbColor: "Coral",
+                assigned: ["Michael", "Harleen"]
+            },
+            id: 14
+        },
+        {
+            task: {
+                title: "Pack my Things for Winter Break",
+                description: "Gotta get my stuff",
+                priority: "low",
+                thumbColor: "Coral",
+                assigned: ["Blade", "Zach", "Miguel"]
+            },
+            id: 15
+        },
+        {
+            task: {
+                title: "Become a YouTuber",
+                description: "Gotta get my stuff",
+                priority: "low",
+                thumbColor: "Plum",
+                assigned: ["Frank"]
+            },
+            id: 16
+        },
+        {
+            task: {
+                title: "Prevent Frank from Becoming a YouTuber",
+                description: "Through LITERALLY any means",
+                priority: "low",
+                thumbColor: "Plum",
+                assigned: ["Meadow", "Frank's Mom"]
+            },
+            id: 17
+        },
+        {
+            task: {
+                title: "Get to Gold in OW2",
+                description: "I cannot stay bronze",
+                priority: "high",
+                thumbColor: "Orange",
+                assigned: ["Frank"]
+            },
+            id: 18
+        },
+        {
+            task: {
+                title: "H",
+                description: "Gotta get my stuff",
+                priority: "low",
+                thumbColor: "Coral",
+                assigned: ["Blade", "Zach", "Miguel"]
+            },
+            id: 19
+        },
+        {
+            task: {
+                title: "Delete Herobrine",
+                description: "Get him out of the game",
+                priority: "high",
+                thumbColor: "Plum",
+                assigned: ["Blade", "Michael", "Brandon"]
+            },
+            id: 20
+        },
+        {
+            task: {
+                title: "Change Magic Numbers",
+                description: "I want an A",
+                priority: "high",
+                thumbColor: "Moccasin",
+                assigned: ["Blade", "Michael", "Brandon"]
+            },
+            id: 21
+        },
+        {
+            task: {
+                title: "Make Brownies",
+                description: "mmmmm yummy",
+                priority: "medium",
+                thumbColor: "Moccasin",
+                assigned: ["Brandon"]
+            },
+            id: 22
+        },
+        {
+            task: {
+                title: "Build a Table",
+                description: "IKEA Table for my wife",
+                priority: "low",
+                thumbColor: "Pink",
+                assigned: ["Blade", "Zach"]
+            },
+            id: 23
+        },
+        {
+            task: {
+                title: "Find a New Job",
+                description: "Please",
+                priority: "high",
+                thumbColor: "Plum",
+                assigned: ["Katherine Burke"]
+            },
+            id: 24
+        },
+        {
+            task: {
+                title: "Terraria Calamity Mods Installation",
+                description: "Rogue ftw !!",
+                priority: "medium",
+                thumbColor: "Pink",
+                assigned: ["Blade", "Jaylen", "Billy", "Zavier"]
+            },
+            id: 25
+        },
+        {
+            task: {
+                title: "Buy Flowers",
+                description: "Valentine's is coming up",
+                priority: "medium",
+                thumbColor: "Pink",
+                assigned: ["Zavier"]
+            },
+            id: 26
+        },
+        {
+            task: {
+                title: "Make the Tasks",
+                description: "I NEED sample data",
+                priority: "low",
+                thumbColor: "Coral",
+                assigned: ["Blade"]
+            },
+            id: 27
+        },
+        {
+            task: {
+                title: "Harpoon Fishing",
+                description: "Fish don't feel pain",
+                priority: "low",
+                thumbColor: "Plum",
+                assigned: ["Shreeya"]
+            },
+            id: 28
+        },
+        {
+            task: {
+                title: "Finish the Project",
+                description: "I need it done",
+                priority: "high",
+                thumbColor: "Pink",
+                assigned: ["Blade", "Michael", "Brandon"]
+            },
+            id: 29
+        },
+        {
+            task: {
+                title: "Make a Halloween Costume",
+                description: "For the 31st task!",
+                priority: "low",
+                thumbColor: "Orange",
+                assigned: ["Brandon"]
+            },
+            id: 30
         }
     ]);
     const [displayList, modDisList] = useState<cardData[]>([
@@ -209,6 +420,216 @@ export function CardList(): JSX.Element {
                 assigned: ["Michael"]
             },
             id: 9
+        },
+        {
+            task: {
+                title: "Video Game Backlog",
+                description: "Danganronpa!",
+                priority: "low",
+                thumbColor: "Orange",
+                assigned: ["Michael"]
+            },
+            id: 10
+        },
+        {
+            task: {
+                title: "Video Game Backlog",
+                description: "Final Fantasy 8",
+                priority: "medium",
+                thumbColor: "Pink",
+                assigned: ["Blade"]
+            },
+            id: 11
+        },
+        {
+            task: {
+                title: "Video Game Backlog",
+                description: "Hollow Knight",
+                priority: "low",
+                thumbColor: "Orange",
+                assigned: ["Brandon", "Michael"]
+            },
+            id: 12
+        },
+        {
+            task: {
+                title: "Video Game Backlog",
+                description: "Nocturne",
+                priority: "high",
+                thumbColor: "Orange",
+                assigned: ["Michael"]
+            },
+            id: 13
+        },
+        {
+            task: {
+                title: "CISC320 - HW",
+                description: "That was due like 4 days ago....",
+                priority: "high",
+                thumbColor: "Coral",
+                assigned: ["Michael", "Harleen"]
+            },
+            id: 14
+        },
+        {
+            task: {
+                title: "Pack my Things for Winter Break",
+                description: "Gotta get my stuff",
+                priority: "low",
+                thumbColor: "Coral",
+                assigned: ["Blade", "Zach", "Miguel"]
+            },
+            id: 15
+        },
+        {
+            task: {
+                title: "Become a YouTuber",
+                description: "Gotta get my stuff",
+                priority: "low",
+                thumbColor: "Plum",
+                assigned: ["Frank"]
+            },
+            id: 16
+        },
+        {
+            task: {
+                title: "Prevent Frank from Becoming a YouTuber",
+                description: "Through LITERALLY any means",
+                priority: "low",
+                thumbColor: "Plum",
+                assigned: ["Meadow", "Frank's Mom"]
+            },
+            id: 17
+        },
+        {
+            task: {
+                title: "Get to Gold in OW2",
+                description: "I cannot stay bronze",
+                priority: "high",
+                thumbColor: "Orange",
+                assigned: ["Frank"]
+            },
+            id: 18
+        },
+        {
+            task: {
+                title: "H",
+                description: "Gotta get my stuff",
+                priority: "low",
+                thumbColor: "Coral",
+                assigned: ["Blade", "Zach", "Miguel"]
+            },
+            id: 19
+        },
+        {
+            task: {
+                title: "Delete Herobrine",
+                description: "Get him out of the game",
+                priority: "high",
+                thumbColor: "Plum",
+                assigned: ["Blade", "Michael", "Brandon"]
+            },
+            id: 20
+        },
+        {
+            task: {
+                title: "Change Magic Numbers",
+                description: "I want an A",
+                priority: "high",
+                thumbColor: "Moccasin",
+                assigned: ["Blade", "Michael", "Brandon"]
+            },
+            id: 21
+        },
+        {
+            task: {
+                title: "Make Brownies",
+                description: "mmmmm yummy",
+                priority: "medium",
+                thumbColor: "Moccasin",
+                assigned: ["Brandon"]
+            },
+            id: 22
+        },
+        {
+            task: {
+                title: "Build a Table",
+                description: "IKEA Table for my wife",
+                priority: "low",
+                thumbColor: "Pink",
+                assigned: ["Blade", "Zach"]
+            },
+            id: 23
+        },
+        {
+            task: {
+                title: "Find a New Job",
+                description: "Please",
+                priority: "high",
+                thumbColor: "Plum",
+                assigned: ["Katherine Burke"]
+            },
+            id: 24
+        },
+        {
+            task: {
+                title: "Terraria Calamity Mods Installation",
+                description: "Rogue ftw !!",
+                priority: "medium",
+                thumbColor: "Pink",
+                assigned: ["Blade", "Jaylen", "Billy", "Zavier"]
+            },
+            id: 25
+        },
+        {
+            task: {
+                title: "Buy Flowers",
+                description: "Valentine's is coming up",
+                priority: "medium",
+                thumbColor: "Pink",
+                assigned: ["Zavier"]
+            },
+            id: 26
+        },
+        {
+            task: {
+                title: "Make the Tasks",
+                description: "I NEED sample data",
+                priority: "low",
+                thumbColor: "Coral",
+                assigned: ["Blade"]
+            },
+            id: 27
+        },
+        {
+            task: {
+                title: "Harpoon Fishing",
+                description: "Fish don't feel pain",
+                priority: "low",
+                thumbColor: "Plum",
+                assigned: ["Shreeya"]
+            },
+            id: 28
+        },
+        {
+            task: {
+                title: "Finish the Project",
+                description: "I need it done",
+                priority: "high",
+                thumbColor: "Pink",
+                assigned: ["Blade", "Michael", "Brandon"]
+            },
+            id: 29
+        },
+        {
+            task: {
+                title: "Make a Halloween Costume",
+                description: "For the 31st task!",
+                priority: "low",
+                thumbColor: "Orange",
+                assigned: ["Brandon"]
+            },
+            id: 30
         }
     ]); // what is going to be displayed (due to filter)
 
@@ -700,7 +1121,7 @@ export function CardList(): JSX.Element {
             <Button onClick={resetList}>Clear the list</Button>
             <Button onClick={() => sortIt(true)}>Sort by Priority</Button>
             <Button onClick={() => sortIt(false)}>Sort by Color</Button>
-            <div id="CardList">
+            <div id="CardList" className="scroll">
                 {displayList.map((cardData: cardData) => {
                     return (
                         <CardComp
