@@ -27,10 +27,11 @@ type BoardSquareProps = {
     x: number;
     y: number;
     toolery: string[];
+    saveCar: (toolname: string, changes: CarChanges) => void;
 };
 
 const BoardSquare: React.FC<BoardSquareProps> = (props) => {
-    const { x, y, toolery, children } = props;
+    const { x, y, toolery, saveCar, children } = props;
     const black = (x + y) % 2 === 1;
     const [square, setSquare] = useState<string[]>([]);
     const [pos, setPos] = useState<number[]>([]);
@@ -79,7 +80,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
         // setAah(aah + "a");
         // setTools({ ...tools, [aah]: { top: top, left: left, title: title } });
 
-        setSquare((square) => [...square, t[0]]);
+        setSquare((square) => [t[0], ...square]);
     };
     const clear = () => {
         setSquare([]);
@@ -100,7 +101,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                     {/* <Car
                     saveCar={props.saveCar}
                 ></Car> */}
-                    <Zone x={0} y={0} tool={"meep"}></Zone>
+                    <Zone x={0} y={0} effects={square} saveCar={saveCar} />
                 </div>
                 yo
                 {/* <div>

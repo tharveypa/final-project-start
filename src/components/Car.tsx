@@ -147,6 +147,7 @@ export const Car: React.FC<CarProps> = (props) => {
                                 id={t.title}
                                 left={t.left}
                                 top={t.top}
+                                title={t.title}
                             >
                                 {t.title}
                             </Tool>

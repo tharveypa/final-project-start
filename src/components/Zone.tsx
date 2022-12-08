@@ -29,11 +29,12 @@ type CarChanges = Record<string, ToolPos>;
 type ZoneProps = {
     x: number;
     y: number;
-    tool: string;
+    effects: string[];
+    saveCar: (toolname: string, changes: CarChanges) => void;
 };
 
 const Zone: React.FC<ZoneProps> = (props) => {
-    const { x, y, tool, children } = props;
+    const { x, y, effects, saveCar, children } = props;
     //const [square, setSquare] = useState<string[]>([]);
     const [aah, setAah] = useState<string>("");
     const [tools, setTools] = useState<CarChanges>({});
@@ -61,6 +62,10 @@ const Zone: React.FC<ZoneProps> = (props) => {
             canDrop: !!monitor.canDrop()
         })
     });
+    const saveChanges = () => {
+        saveCar(aah, tools);
+    };
+
     const moveTool = useCallback(
         (id: string, left: number, top: number) => {
             setTools(
@@ -143,7 +148,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
 
     //     return cleanup;
     // }, []);
-    const addTool = () => {
+    const addTool = (t: string) => {
         //tool: string,
         // top: number,
         // left: number,
@@ -155,23 +160,25 @@ const Zone: React.FC<ZoneProps> = (props) => {
         // );
         setAah(aah + "a");
         //setTools({ ...tools, [aah]: { top: top, left: left, title: title } });
-        setTools({ ...tools, [aah]: { top: 0, left: 0, title: aah } });
+        setTools({ ...tools, [aah]: { top: 0, left: 0, title: t } });
         //setTools({});
     };
+    // if (effects[0] !== tools["a"].title) addTool(effects[0]);
     return (
         <>
             <div ref={drop} style={styles}>
-                {Object.values(tools).map((t: ToolPos) => (
+                {Object.keys(tools).map((key: string) => (
                     <Tool
-                        key={t.title}
-                        id={t.title}
-                        left={t.left}
-                        top={t.top}
+                        key={key}
+                        id={key}
+                        left={tools[key].left}
+                        top={tools[key].top}
+                        title={tools[key].title}
                     />
                 ))}
             </div>
             <div>
-                <Button onClick={addTool}>addtool</Button>
+                <Button onClick={() => addTool("meep")}>addtool</Button>
             </div>
         </>
     );
