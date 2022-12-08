@@ -6,6 +6,7 @@ import React, { createContext, useCallback, useState } from "react";
 import { Element } from "../interfaces/Element";
 import { elements } from "../elementList";
 import ElementObject from "./ElementObject";
+import { compounds } from "../compoundList";
 
 import "./ElementList.css";
 import Modal from "./Modal";
@@ -13,6 +14,7 @@ import Container from "./Container";
 import { Button, Form } from "react-bootstrap";
 import Trashbin from "./Trashbin";
 import { XYCoord } from "react-dnd";
+import { Compound } from "../interfaces/Compound";
 
 const AlphabeticalAtZFuncAtZ = "1";
 const AlphabeticalAtZFuncZtA = "4";
@@ -86,6 +88,12 @@ function ElementList() {
         ));
     }
 
+    function addCompoundtoWorkspace(compound: Compound, p: Element) {
+        // compound.left = p.left;
+        // compound.top = p.top;
+        //add compound to left side
+    }
+
     function combineElements(element: Element) {
         const draggedElement = inWorkSpace
             .filter((e) => e.id != element.id)
@@ -95,9 +103,20 @@ function ElementList() {
                     element.top + 100 > e.top &&
                     element.left < e.left + 100 &&
                     element.left + 100 > e.left
-            );
+            )[0];
         const p = { ...draggedElement };
-        console.log(p);
+        if (element.neededforCompound != undefined) {
+            if (p.name == element.neededforCompound[0]) {
+                const x = element.neededforCompound[1];
+                const foundCompound = compounds.filter(
+                    (e: Compound) => e.name === x
+                )[0];
+                console.log(foundCompound);
+                removefromScreen(p.id, element.id);
+                addCompoundtoWorkspace(foundCompound, p);
+                //removefromScreen(element.id);
+            }
+        }
     }
 
     function moveElement(id: number, left: number, top: number) {
@@ -106,6 +125,7 @@ function ElementList() {
         draggedElement.top = top;
         combineElements(draggedElement);
     }
+
     function putInWorkSpace(id: number, monitor: any) {
         const draggedElement = elementlist.filter((e) => e.id === id)[0];
         const p = { ...draggedElement };
@@ -123,8 +143,11 @@ function ElementList() {
         }
     }
 
-    function removefromScreen(id: number) {
-        const draggedElement = inWorkSpace.filter((e, i) => e.id != id);
+    function removefromScreen(id: number, id2?: number) {
+        let draggedElement = inWorkSpace.filter((e, i) => e.id != id);
+        if (id2) {
+            draggedElement = draggedElement.filter((e, i) => e.id != id2);
+        }
         addtoWorkSpace(draggedElement);
     }
     return (
