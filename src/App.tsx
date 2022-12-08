@@ -12,6 +12,7 @@ import { Box } from "./components/Box";
 import { DndContext, DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { setConstantValue } from "typescript";
+import { Menu } from "./Menu";
 
 function App(): JSX.Element {
     const [scale, setScale] = useState<number>(1);
@@ -69,47 +70,9 @@ function App(): JSX.Element {
                         ></SortDropdown>
                     </Col>
                 </Row>
-                <div>
-                    <Table
-                        className="table-fixed table-responsive"
-                        style={{
-                            width: "50%",
-                            border: "2px solid gray"
-                        }}
-                    >
-                        <thead>
-                            <tr>
-                                <th>Tiles</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                {[
-                                    "./red_couch.png",
-                                    "./door.jpg",
-                                    "./bosun_tally.jpg"
-                                ].map((s: string) => (
-                                    <td key={s}>
-                                        <Button
-                                            style={{
-                                                height: "70px",
-                                                width: "60%"
-                                            }}
-                                        >
-                                            <img
-                                                src={require(s + "")}
-                                                width="100%"
-                                                height="100%"
-                                            />
-                                        </Button>
-                                    </td>
-                                ))}
-                            </tr>
-                        </tbody>
-                    </Table>
-                </div>
-                <DndArray />
-                {/*<Row style={{ height: "700px" }}>
+                <Menu></Menu>
+                {/*<DndArray />
+                <Row style={{ height: "700px" }}>
                     <Col>
                         <FilterDropdown
                             filterOptions={["Kitchen", "Bathroom", "Bedroom"]}

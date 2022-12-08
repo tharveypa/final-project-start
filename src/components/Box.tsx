@@ -6,9 +6,9 @@ import { DragTile } from "../Interfaces/DragTile";
 
 type BoxProps = { name: string; dt: DragTile };
 
-export function Box(bp: BoxProps): JSX.Element {
+export function Box({ name, dt }: BoxProps): JSX.Element {
     const [{ offset }, drag] = useDrag({
-        item: { type: ItemTypes.DragTile, data: bp.dt },
+        item: { type: ItemTypes.DragTile, data: dt },
         collect: (monitor) => ({
             offset: monitor.getClientOffset()
         })
@@ -17,12 +17,14 @@ export function Box(bp: BoxProps): JSX.Element {
         <div
             ref={drag}
             style={{
-                height: "20%",
-                width: "20%",
-                backgroundColor: "yellow"
+                height: "60px",
+                width: "60px",
+                backgroundColor: "yellow",
+                display: "inline-block"
             }}
         >
-            {bp.name}
+            {console.log(dt.graphic)}
+            <img src={require(dt.graphic + "")} width="100%" height="100%" />
         </div>
     );
 }
