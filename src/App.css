@@ -48,14 +48,26 @@
     font-size: large;
     font-weight: 500;
 }
+.toolkit {
+    position: relative;
+    border: 1px solid pink;
+    height: 500px;
+    width: 200px;
+}
 
 .container {
     position: relative;
     border: 1px solid black;
     /* background-image: url("bluecar.png"); */
-    height: 400px;
-    width: 800px;
+    height: 300px;
+    width: 300px;
     overflow: hidden;
+}
+.car {
+    position: relative;
+    border: 1px solid black;
+    height: 300px;
+    width: 500px;
 }
 
 .box {
@@ -67,4 +79,5 @@
     height: 60px;
     width: 40px;
     cursor: pointer;
+    filter: drop-shadow(0 6mm 4mm red);
 }
