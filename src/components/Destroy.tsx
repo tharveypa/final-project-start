@@ -12,7 +12,12 @@ const Destroy = () => {
                 {destroy.map(
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
-                            <CarSquare pic={t} description={str[i]}></CarSquare>
+                            <CarSquare
+                                pic={t}
+                                title={str[i]}
+                                top={0}
+                                left={0}
+                            ></CarSquare>
                         </div>
                     )
                 )}
