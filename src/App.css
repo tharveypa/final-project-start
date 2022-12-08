@@ -15,7 +15,7 @@
 
 .App-header {
     width: 100%;
-    background-color: #de9bd6;
+    background-color: #e091d7;
     min-height: 10vh;
     display: flex;
     flex-direction: column;
@@ -37,4 +37,124 @@
     to {
         transform: rotate(360deg);
     }
+}
+
+.cropTop1 {
+    position: absolute;
+    width: "100px";
+    height: "100px";
+    border-radius: 0%;
+    top: 0;
+    left: 0;
+    background-color: white;
+}
+
+.jacket1 {
+    position: absolute;
+    width: "100px";
+    height: "100px";
+    border-radius: 0%;
+    top: 0;
+    left: 0;
+    background-color: white;
+}
+
+.pants1 {
+    position: absolute;
+    width: "100px";
+    height: "100px";
+    border-radius: 0%;
+    top: 0;
+    left: 0;
+    background-color: white;
+}
+
+.pants2 {
+    position: absolute;
+    width: "100px";
+    height: "100px";
+    border-radius: 0%;
+    top: 0;
+    left: 0;
+    background-color: white;
+}
+
+.pants3 {
+    position: absolute;
+    width: "100px";
+    height: "100px";
+    border-radius: 0%;
+    top: 0;
+    left: 0;
+    background-color: white;
+}
+
+.skirt1 {
+    position: absolute;
+    width: "100px";
+    height: "100px";
+    border-radius: 0%;
+    top: 0;
+    left: 0;
+    background-color: white;
+}
+
+.skirt2 {
+    position: absolute;
+    width: "100px";
+    height: "100px";
+    border-radius: 0%;
+    top: 0;
+    left: 0;
+    background-color: white;
+}
+
+.skirt3 {
+    position: absolute;
+    width: "100px";
+    height: "100px";
+    border-radius: 0%;
+    top: 0;
+    left: 0;
+    background-color: white;
+}
+
+.sweatshirt1 {
+    position: absolute;
+    width: "100px";
+    height: "100px";
+    border-radius: 0%;
+    top: 0;
+    left: 0;
+    background-color: white;
+}
+
+.sweatshirt2 {
+    position: absolute;
+    width: "100px";
+    height: "100px";
+    border-radius: 0%;
+    top: 0;
+    left: 0;
+    background-color: white;
+}
+
+.top1 {
+    position: absolute;
+    width: "100px";
+    height: "100px";
+    border-radius: 0%;
+    top: 0;
+    left: 0;
+    background-color: white;
+}
+
+.top2 {
+    position: absolute;
+    width: "100px";
+    height: "100px";
+    border-radius: 0%;
+    top: 0;
+    left: 0;
+    background-color: white;
 }
