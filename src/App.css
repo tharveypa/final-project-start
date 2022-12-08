@@ -59,8 +59,8 @@
     position: relative;
     border: 1px solid black;
     /* background-image: url("bluecar.png"); */
-    height: 300px;
-    width: 300px;
+    height: 500px;
+    width: 800px;
     overflow: hidden;
 }
 .car {

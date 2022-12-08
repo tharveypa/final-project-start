@@ -12,7 +12,6 @@ import Pic from "./Pic";
 import Overlay from "./Overlay";
 import Square from "./Square";
 import { Button } from "react-bootstrap";
-import Zone from "./components/Zone";
 import type { ToolPos } from "./components/interfaces";
 import update from "immutability-helper";
 import CarSquare from "./components/CarSquare";
@@ -26,35 +25,24 @@ type CarChanges = Record<string, ToolPos>;
 type BoardSquareProps = {
     x: number;
     y: number;
-    toolery: string[];
+    toolery: CarChanges;
+    currAah: string;
     saveCar: (toolname: string, changes: CarChanges) => void;
+    setAah: (aah: string) => void;
+    setTools: (tools: CarChanges) => void;
 };
 
 const BoardSquare: React.FC<BoardSquareProps> = (props) => {
-    const { x, y, toolery, saveCar, children } = props;
-    const black = (x + y) % 2 === 1;
+    const { x, y, toolery, currAah, saveCar, setAah, setTools, children } =
+        props;
+    //currAah = currAah + "a";
+    //const black = (x + y) % 2 === 1;
     const [square, setSquare] = useState<string[]>([]);
-    const [pos, setPos] = useState<number[]>([]);
     // const [aah, setAah] = useState<string>("");
     // const [tools, setTools] = useState<CarChanges>({});
-    const containerRef = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-        if (!containerRef.current) return;
-        const container = containerRef.current;
-        const MouseTracker = (e: MouseEvent) => {
-            setPos([e.clientX, e.clientY]);
-        };
-        container.addEventListener("mousemove", MouseTracker);
-
-        const cleanup = () => {
-            container.removeEventListener("mousemove", MouseTracker);
-        };
-
-        return cleanup;
-    }, []);
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.PIC,
-        canDrop: () => canMovePic(x, y),
+        //canDrop: () => canMovePic(x, y),
         //move: () => moveTool(item.title, item.top, item.left),
         drop: (item: {
             type: string;
@@ -74,13 +62,16 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
         left: number,
         title: string
     ) => {
-        const t = toolery.filter((toolname) => title === toolname);
+        //const t = toolery.filter((toolname) => title === toolname);
         //const exist = Object.keys(tools).map((toolna) => title === toolname);
         // if(tools[aah])
-        // setAah(aah + "a");
-        // setTools({ ...tools, [aah]: { top: top, left: left, title: title } });
+        setAah(currAah + "a");
+        setTools({
+            ...toolery,
+            [currAah]: { top: top, left: left, title: title }
+        });
 
-        setSquare((square) => [t[0], ...square]);
+        //setSquare((square) => [t[0], ...square]);
     };
     const clear = () => {
         setSquare([]);
@@ -90,6 +81,11 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
         <>
             <div
                 ref={drop}
+                style={{
+                    width: "100px",
+                    height: "100px",
+                    border: "1px solid black"
+                }}
                 // style={{
                 //     position: "relative",
                 //     width: "90%",
@@ -97,12 +93,12 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                 //     border: "1px solid black"
                 // }}
             >
-                <div ref={containerRef} className="container">
-                    {/* <Car
+                {/* <div ref={containerRef} className="container">
+                    <Car
                     saveCar={props.saveCar}
-                ></Car> */}
+                ></Car> 
                     <Zone x={0} y={0} effects={square} saveCar={saveCar} />
-                </div>
+                </div> */}
                 yo
                 {/* <div>
                     <Zone x={500} y={100}></Zone>
