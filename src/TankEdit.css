@@ -1,0 +1,42 @@
+.edit_footer {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.save_edit_btn {
+    margin-right: 1rem;
+    margin-left: 1rem;
+    color: rgb(5, 98, 153);
+}
+
+.freshwater_check {
+    align-self: center;
+}
+
+.freshwater_flex {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.predator_check {
+    align-self: center;
+}
+
+.predator_flex {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+
+.add_question_button {
+    display: block;
+    margin: 0 auto;
+}
+
+.type_dropdown {
+    min-width: 10rem;
+}
