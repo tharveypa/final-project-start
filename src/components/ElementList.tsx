@@ -114,7 +114,6 @@ function ElementList() {
                 console.log(foundCompound);
                 removefromScreen(p.id, element.id);
                 addCompoundtoWorkspace(foundCompound, p);
-                //removefromScreen(element.id);
             }
         }
     }
