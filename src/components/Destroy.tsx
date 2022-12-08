@@ -1,8 +1,34 @@
 import React from "react";
 import CarSquare from "./CarSquare";
+import BrownDirt from "./images/browndirt.png";
+import BlackDirt from "./images/blackdirt.png";
+import TanDirt from "./images/tandirt.png";
+import WhitePoop from "./images/whitepoop.png";
+import BrownPoop from "./images/brownpoop.png";
+import GreenPoop from "./images/greenpoop.png";
+import SlashTires from "./images/slash.png";
+import BreakWindows from "./images/hammer.png";
 
-const destroy = ["dirt", "birdpoop", "slash", "hammer"];
-const str = ["Dirty Car", "Bird Poop", "Slash Tires", "Break Windows"];
+const destroy = [
+    BrownDirt,
+    BlackDirt,
+    TanDirt,
+    WhitePoop,
+    BrownPoop,
+    GreenPoop,
+    SlashTires,
+    BreakWindows
+];
+const str = [
+    "browndirt",
+    "blackdirt",
+    "tandirt",
+    "whitepoop",
+    "brownpoop",
+    "greenpoop",
+    "slash",
+    "breakwindows"
+];
 
 const Destroy = () => {
     return (
@@ -12,7 +38,11 @@ const Destroy = () => {
                 {destroy.map(
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
-                            <CarSquare pic={t} description={str[i]}></CarSquare>
+                            {console.log(t)}
+                            <CarSquare
+                                pic={destroy[i]}
+                                description={str[i]}
+                            ></CarSquare>
                         </div>
                     )
                 )}

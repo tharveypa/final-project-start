@@ -1,7 +1,7 @@
 import React from "react";
 import { DragSourceMonitor, useDrag } from "react-dnd";
 import { ItemTypes } from "../constants";
-import Pimp from "./Pimp";
+import Pimp from "./Clean";
 import PimpVsDestroy from "./PimpVsDestroy";
 
 type ToolinBoxProps = {

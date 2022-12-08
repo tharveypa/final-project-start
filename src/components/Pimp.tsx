@@ -1,8 +1,40 @@
 import React from "react";
 import CarSquare from "./CarSquare";
+import Wing from "./images/wing.png";
+import Red from "./images/red.png";
+import Blue from "./images/blue.png";
+import Green from "./images/green.png";
+import Yellow from "./images/yellow.png";
+import Purple from "./images/purple.png";
+import Orange from "./images/orange.png";
+import LightTint from "./images/lighttint.png";
+import MidTint from "./images/mediumtint.png";
+import DarkTint from "./images/darktint.png";
 
-const pimp = ["towel", "shine", "pump", "glassrepair"];
-const str = ["Wipe Car", "Shine Car", "Fill Tires", "Repair Glass"];
+const pimp = [
+    Wing,
+    Red,
+    Yellow,
+    Green,
+    Blue,
+    Purple,
+    Orange,
+    LightTint,
+    MidTint,
+    DarkTint
+];
+const str = [
+    "wing",
+    "red",
+    "yellow",
+    "green",
+    "blue",
+    "purple",
+    "orange",
+    "lighttint",
+    "midtint",
+    "darktint"
+];
 
 const Pimp = () => {
     return (
@@ -12,7 +44,11 @@ const Pimp = () => {
                 {pimp.map(
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
-                            <CarSquare pic={t} description={str[i]}></CarSquare>
+                            {console.log(t)}
+                            <CarSquare
+                                pic={pimp[i]}
+                                description={str[i]}
+                            ></CarSquare>
                         </div>
                     )
                 )}

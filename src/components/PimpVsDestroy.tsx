@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import Destroy from "./Destroy";
+import Clean from "./Clean";
 import Pimp from "./Pimp";
+import Edit from "./Edit";
 
 export function PimpVsDestroy(): JSX.Element {
-    const [isPimp, setIsPimp] = useState(true);
+    const [modeNum, setModeNum] = useState(0);
     return (
-        <div className="toolkit">
-            {isPimp && <div>{Pimp()}</div>}
-            {isPimp || <div>{Destroy()}</div>}
-            <Button onClick={() => setIsPimp(!isPimp)}>Pimp Vs Destroy</Button>
+        <div>
+            {modeNum == 0 && <div>{Edit()}</div>}
+            {modeNum == 1 && <div>{Pimp()}</div>}
+            {modeNum == 2 && <div>{Destroy()}</div>}
+            {modeNum == 3 && <div>{Clean()}</div>}
+            <Button onClick={() => setModeNum((modeNum + 1) % 4)}>
+                Change Mode (Edit / Destroy / Clean / Pimp)
+            </Button>
         </div>
     );
 }
