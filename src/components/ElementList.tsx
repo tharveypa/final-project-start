@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react/no-unknown-property */
-/* eslint-disable no-extra-parens */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable react/jsx-key */
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { createContext, useCallback, useState } from "react";
 import { Element } from "../interfaces/Element";
 import { elements } from "../elementList";
@@ -22,18 +20,16 @@ const ByAtomicNumFunc = "2";
 const ResetFunc = "3";
 
 export const CardContext = createContext({
-    // eslint-disable-next-line prettier/prettier
     putInWorkSpace: (id: number, monitor: any) => {},
     removefromScreen: (id: number) => {}
 });
 
 function ElementList() {
     const [inWorkSpace, addtoWorkSpace] = useState<Element[]>([]);
-    const [proplist, setProplist] = useState<Element[]>(elements);
+    const [elementlist, setProplist] = useState<Element[]>(elements);
     const [numRep, setFunction] = useState<string>();
     const [search, changeSearch] = useState<string>("");
 
-    // This is the Control
     function updateFunction(event: React.ChangeEvent<HTMLSelectElement>) {
         console.log(event.target.value);
         setFunction(event.target.value);
@@ -49,7 +45,7 @@ function ElementList() {
     }
 
     function Filter() {
-        const foundElement = elements.filter((task, i) => task.name == search);
+        const foundElement = elements.filter((e) => e.name == search);
         if (search == "") {
             setProplist(elements);
         } else {
@@ -58,17 +54,17 @@ function ElementList() {
     }
 
     function AlphabeticalAtZ() {
-        const x = proplist.map((element: Element): Element => element);
+        const x = elementlist.map((element: Element): Element => element);
         setProplist(x.sort((a, b) => a.name.localeCompare(b.name)));
     }
 
     function AlphabeticalAtZZtA() {
-        const x = proplist.map((element: Element): Element => element);
+        const x = elementlist.map((element: Element): Element => element);
         setProplist(x.sort((a, b) => a.name.localeCompare(b.name)).reverse());
     }
 
     function ByAtomicNum() {
-        const x = proplist.map((element: Element): Element => element);
+        const x = elementlist.map((element: Element): Element => element);
         setProplist(x.sort((a, b) => a.atomicNum - b.atomicNum));
     }
 
@@ -76,35 +72,45 @@ function ElementList() {
         setProplist(elements);
     }
 
-    function generateList(prop: Element[]) {
-        return prop.map((prop) => (
+    function generateList(element: Element[]) {
+        return element.map((element) => (
             <div>
-                <div key={prop.name} className="propcontainer">
+                <div key={element.name} className="elementcontainer">
                     <li>
-                        {prop.name + "             "}
-                        <Modal temp={prop}></Modal>
+                        {element.name + "             "}
+                        <Modal temp={element}></Modal>
                     </li>
-                    <ElementObject element={prop} />
+                    <ElementObject element={element} />
                 </div>
             </div>
         ));
     }
 
+    function combineElements(element: Element) {
+        const draggedElement = inWorkSpace
+            .filter((e) => e.id != element.id)
+            .filter(
+                (e) =>
+                    element.top < e.top + 100 &&
+                    element.top + 100 > e.top &&
+                    element.left < e.left + 100 &&
+                    e.left + 100 > element.left
+            );
+        const p = { ...draggedElement };
+        console.log(p);
+    }
+
     function moveElement(id: number, left: number, top: number) {
-        const draggedElement = inWorkSpace.filter(
-            (task, i) => task.id === id
-        )[0];
+        const draggedElement = inWorkSpace.filter((e) => e.id === id)[0];
         draggedElement.left = left;
         draggedElement.top = top;
-        console.log(inWorkSpace);
+        combineElements(draggedElement);
     }
     function putInWorkSpace(id: number, monitor: any) {
-        const draggedElement = proplist.filter((task, i) => task.id === id)[0];
+        const draggedElement = elementlist.filter((e) => e.id === id)[0];
         const p = { ...draggedElement };
         if (draggedElement == undefined) {
-            const draggedElement = inWorkSpace.filter(
-                (task, i) => task.id === id
-            )[0];
+            const draggedElement = inWorkSpace.filter((e, i) => e.id === id)[0];
             const p = { ...draggedElement };
             const delta = monitor.getDifferenceFromInitialOffset() as XYCoord;
             const left = Math.round(p.left + delta.x);
@@ -118,7 +124,7 @@ function ElementList() {
     }
 
     function removefromScreen(id: number) {
-        const draggedElement = inWorkSpace.filter((task, i) => task.id != id);
+        const draggedElement = inWorkSpace.filter((e, i) => e.id != id);
         addtoWorkSpace(draggedElement);
     }
     return (
@@ -153,7 +159,9 @@ function ElementList() {
                                 </Form.Group>
                             </Form.Group>
                         </p>
-                        <ul className="scroll-bar">{generateList(proplist)}</ul>
+                        <ul className="scroll-bar">
+                            {generateList(elementlist)}
+                        </ul>
                     </div>
                     <div className="column-center">
                         <img
@@ -162,8 +170,8 @@ function ElementList() {
                         />
                         <div>
                             <Container>
-                                {inWorkSpace.map((task, i) => (
-                                    <ElementObject element={task} />
+                                {inWorkSpace.map((e) => (
+                                    <ElementObject element={e} />
                                 ))}
                             </Container>
                         </div>

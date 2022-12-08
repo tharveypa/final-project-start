@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -18,7 +17,9 @@ function Moddal({ temp }: { temp: Element }) {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Let's Learn about {temp.name}!</Modal.Title>
+                    <Modal.Title>
+                        Let{"'"}s Learn about {temp.name}!
+                    </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className="row">

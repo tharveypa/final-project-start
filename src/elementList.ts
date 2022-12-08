@@ -7,8 +7,8 @@ const Nitrogen: Element = {
     chemAbr: "N",
     atomicNum: 7,
     shown: false,
-    left: 50,
-    top: 50
+    left: 225,
+    top: 118
 };
 
 const Chlorine: Element = {
@@ -18,8 +18,8 @@ const Chlorine: Element = {
     chemAbr: "Cl",
     atomicNum: 17,
     shown: false,
-    left: 50,
-    top: 50
+    left: 225,
+    top: 118
 };
 
 const Potassium: Element = {
@@ -29,8 +29,8 @@ const Potassium: Element = {
     chemAbr: "K",
     atomicNum: 19,
     shown: false,
-    left: 50,
-    top: 50
+    left: 225,
+    top: 118
 };
 
 const Hydrogen: Element = {
@@ -40,8 +40,8 @@ const Hydrogen: Element = {
     chemAbr: "H",
     atomicNum: 1,
     shown: false,
-    left: 50,
-    top: 50
+    left: 225,
+    top: 118
 };
 
 const Silver: Element = {
@@ -51,8 +51,8 @@ const Silver: Element = {
     chemAbr: "Ag",
     atomicNum: 47,
     shown: false,
-    left: 50,
-    top: 50
+    left: 225,
+    top: 118
 };
 
 const Iodine: Element = {
@@ -62,8 +62,8 @@ const Iodine: Element = {
     chemAbr: "I",
     atomicNum: 53,
     shown: false,
-    left: 50,
-    top: 50
+    left: 225,
+    top: 118
 };
 
 const Aluminum: Element = {
@@ -73,8 +73,8 @@ const Aluminum: Element = {
     chemAbr: "Al",
     atomicNum: 13,
     shown: false,
-    left: 50,
-    top: 50
+    left: 225,
+    top: 118
 };
 
 const Cadmium: Element = {
@@ -84,8 +84,8 @@ const Cadmium: Element = {
     chemAbr: "Cd",
     atomicNum: 48,
     shown: false,
-    left: 50,
-    top: 50
+    left: 225,
+    top: 118
 };
 
 const Tellurium: Element = {
@@ -95,8 +95,8 @@ const Tellurium: Element = {
     chemAbr: "Te",
     atomicNum: 52,
     shown: false,
-    left: 50,
-    top: 50
+    left: 225,
+    top: 118
 };
 
 const Cesium: Element = {
@@ -106,8 +106,8 @@ const Cesium: Element = {
     chemAbr: "Cs",
     atomicNum: 55,
     shown: false,
-    left: 50,
-    top: 50
+    left: 225,
+    top: 118
 };
 
 const Fluorine: Element = {
@@ -117,8 +117,8 @@ const Fluorine: Element = {
     chemAbr: "Fl",
     atomicNum: 9,
     shown: false,
-    left: 50,
-    top: 50
+    left: 225,
+    top: 118
 };
 
 const Carbon: Element = {
@@ -128,8 +128,8 @@ const Carbon: Element = {
     chemAbr: "C",
     atomicNum: 6,
     shown: false,
-    left: 50,
-    top: 50
+    left: 225,
+    top: 118
 };
 
 const Oxygen: Element = {
@@ -139,8 +139,8 @@ const Oxygen: Element = {
     chemAbr: "O",
     atomicNum: 8,
     shown: false,
-    left: 50,
-    top: 50
+    left: 225,
+    top: 118
 };
 
 const Lithium: Element = {
@@ -150,8 +150,8 @@ const Lithium: Element = {
     chemAbr: "Li",
     atomicNum: 3,
     shown: false,
-    left: 50,
-    top: 50
+    left: 225,
+    top: 118
 };
 
 const Silicon: Element = {
@@ -161,8 +161,8 @@ const Silicon: Element = {
     chemAbr: "Si",
     atomicNum: 14,
     shown: false,
-    left: 50,
-    top: 50
+    left: 225,
+    top: 118
 };
 
 export const elements = [
