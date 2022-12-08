@@ -3,6 +3,7 @@ import { Task } from "../interfaces/task";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import "../Buttons.css";
 
 export function MakeNote({
     // input parameter from CardList ; Used for the creating of card so that it gets added to CardList

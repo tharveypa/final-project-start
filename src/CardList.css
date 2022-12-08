@@ -1,7 +1,7 @@
 div.scroll {
     margin: 4px, 4px;
-    padding: 10px;
-    background-color: gray;
+    background-color: palegoldenrod;
+    border: 3px solid #422311;
     height: 550px;
     width: 500px;
     overflow-x: hidden;

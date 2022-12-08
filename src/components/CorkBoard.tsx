@@ -200,7 +200,8 @@ export function CorkBoard({
                 height: "100%",
                 width: "100%",
                 backgroundColor: "#7E481C",
-                position: "relative"
+                position: "relative",
+                border: "4px solid #422311"
             }}
             id={"CorkBoard"}
         >
@@ -242,7 +243,7 @@ export function CorkBoard({
             <div style={{ position: "absolute", top: "100%" }}>
                 {/* Form that sets the scale factor of the board */}
                 <Form.Group className="makeCorkScale">
-                    <Form.Label>Scale:</Form.Label>
+                    <b>Scale: </b>
                     <Form.Control
                         as="textarea"
                         placeholder="Scale"
