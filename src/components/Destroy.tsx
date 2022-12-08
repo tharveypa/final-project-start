@@ -38,10 +38,11 @@ const Destroy = () => {
                 {destroy.map(
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
-                            {console.log(t)}
                             <CarSquare
-                                pic={destroy[i]}
-                                description={str[i]}
+                                pic={t}
+                                title={str[i]}
+                                top={0}
+                                left={0}
                             ></CarSquare>
                         </div>
                     )

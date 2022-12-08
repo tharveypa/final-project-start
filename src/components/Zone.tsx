@@ -18,23 +18,44 @@ import type { ToolPos } from "./interfaces";
 import Tool from "./Tool";
 import { Button } from "react-bootstrap";
 // import { ItemTypes } from "../constants";DragItem,
+import Car from "./Car";
+import RedCar from "./images/redcar.png";
+import RedCarLeftTire from "./images/redcar left tire.png";
+import RedCarRightTire from "./images/redcar right tire.png";
+import RedCarBothTires from "./images/redcar both tires.png";
+import BlueCar from "./images/bluecar.png";
+import BlueCarLeftTire from "./images/bluecar left tire.png";
+import BlueCarRightTire from "./images/bluecar right tire.png";
+import BlueCarBothTires from "./images/bluecar both tires.png";
+import GreenCar from "./images/greencar.png";
+import GreenCarLeftTire from "./images/greencar left tire.png";
+import GreenCarRightTire from "./images/greencar right tire.png";
+import GreenCarBothTires from "./images/greencar both tires.png";
 
+const cars = [
+    [RedCar, RedCarLeftTire, RedCarRightTire, RedCarBothTires],
+    [GreenCar, GreenCarLeftTire, GreenCarRightTire, GreenCarBothTires],
+    [BlueCar, BlueCarLeftTire, BlueCarRightTire, BlueCarBothTires]
+];
 const styles: CSSProperties = {
-    width: "200px",
-    height: "200px",
-    border: "1px solid black",
-    position: "relative"
+    //width: "200px",
+    //height: "300px",
+    //border: "1px solid black",
+    //position: "relative"
 };
 type CarChanges = Record<string, ToolPos>;
 type ZoneProps = {
     x: number;
     y: number;
-    //effects: string[];
+    toolery: CarChanges;
+    currAah: string;
     saveCar: (toolname: string, changes: CarChanges) => void;
+    //setAah: (aah: string) => void;
+    //setTools: (tools: CarChanges) => void;
 };
 
 const Zone: React.FC<ZoneProps> = (props) => {
-    const { x, y, saveCar, children } = props;
+    const { x, y, saveCar, toolery, currAah } = props;
     //const [square, setSquare] = useState<string[]>([]);
     const [aah, setAah] = useState<string>("");
     const [tools, setTools] = useState<CarChanges>({});
@@ -62,6 +83,39 @@ const Zone: React.FC<ZoneProps> = (props) => {
             canDrop: !!monitor.canDrop()
         })
     });
+    const [{ isOverr, canDropp }, dropp] = useDrop({
+        accept: ItemTypes.PIC,
+        //canDrop: () => canMovePic(x, y),
+        //move: () => moveTool(item.title, item.top, item.left),
+        drop: (item: {
+            type: string;
+            pic: string;
+            top: number;
+            left: number;
+            title: string;
+        }) => addPicToBoard(item.pic, item.top, item.left, item.title),
+        collect: (monitor) => ({
+            isOverr: !!monitor.isOver(),
+            canDropp: !!monitor.canDrop()
+        })
+    });
+    const addPicToBoard = (
+        tool: string,
+        top: number,
+        left: number,
+        title: string
+    ) => {
+        //const t = toolery.filter((toolname) => title === toolname);
+        //const exist = Object.keys(tools).map((toolna) => title === toolname);
+        // if(tools[aah])
+        setAah(currAah + "a");
+        setTools({
+            ...toolery,
+            [currAah]: { top: top, left: left, title: title }
+        });
+
+        //setSquare((square) => [t[0], ...square]);
+    };
     const saveChanges = () => {
         saveCar(aah, tools);
     };
@@ -170,33 +224,29 @@ const Zone: React.FC<ZoneProps> = (props) => {
     return (
         <>
             {" "}
-            <div
-            // style={{
-            //     width: "200px",
-            //     height: "250px",
-            //     border: "1px solid black"
-            // }}
-            >
-                <BoardSquare
-                    x={0}
-                    y={0}
-                    toolery={tools}
-                    currAah={aah}
-                    saveCar={saveCar}
-                    setAah={setAah}
-                    setTools={setTools}
-                ></BoardSquare>
-
-                <div ref={drop} style={styles}>
-                    {Object.keys(tools).map((key: string) => (
-                        <Tool
-                            key={key}
-                            id={key}
-                            left={tools[key].left}
-                            top={tools[key].top}
-                            title={tools[key].title}
-                        />
-                    ))}
+            <div>
+                <div ref={dropp} className="toolncar">
+                    <div ref={drop} style={styles}>
+                        <img src={RedCar} alt="car model" />
+                        {/* <BoardSquare
+                            x={0}
+                            y={0}
+                            toolery={tools}
+                            currAah={aah}
+                            saveCar={saveCar}
+                            setAah={setAah}
+                            setTools={setTools}
+                        ></BoardSquare> */}
+                        {Object.keys(tools).map((key: string) => (
+                            <Tool
+                                key={key}
+                                id={key}
+                                left={tools[key].left}
+                                top={tools[key].top}
+                                title={tools[key].title}
+                            />
+                        ))}
+                    </div>
                 </div>
                 <div>
                     <Button onClick={() => addTool("meep")}>Add Effect</Button>
