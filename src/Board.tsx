@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Pic from "./Pic";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -7,6 +7,7 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import CarSquare from "./components/CarSquare";
 import PimpVsDestroy from "./components/PimpVsDestroy";
 import type { ToolPos } from "./components/interfaces";
+import Zone from "./components/Zone";
 
 export const renderPiece = (
     x: number,
@@ -59,6 +60,22 @@ const Board: React.FC<BoardProps> = (props) => {
     const squares = [];
     const [carId, setCarId] = useState<number>(0);
     const [cars, setCars] = useState<Cars>({});
+    const [pos, setPos] = useState<number[]>([]);
+    const containerRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        if (!containerRef.current) return;
+        const container = containerRef.current;
+        const MouseTracker = (e: MouseEvent) => {
+            setPos([e.clientX, e.clientY]);
+        };
+        container.addEventListener("mousemove", MouseTracker);
+
+        const cleanup = () => {
+            container.removeEventListener("mousemove", MouseTracker);
+        };
+
+        return cleanup;
+    }, []);
     //squares.push(renderSquare(0, picPosition, pics));
     //for (let i = 0; i < 2; i++) {
     //squares.push(renderSquare(0, 0, tools));
@@ -121,7 +138,13 @@ const Board: React.FC<BoardProps> = (props) => {
                         {
                             //squares[0]
                         }
-                        <div
+                        <div ref={containerRef} className="container">
+                            {/* <Car
+                    saveCar={props.saveCar}
+                ></Car> */}
+                            <Zone x={0} y={0} saveCar={saveCar} />
+                        </div>
+                        {/* <div
                             //key={i}
                             style={{ width: "300px", height: "300px" }}
                         >
@@ -135,7 +158,7 @@ const Board: React.FC<BoardProps> = (props) => {
                                     //renderPiece(x, y, "yeet", picPosition)
                                 }
                             </BoardSquare>
-                        </div>
+                        </div> */}
                     </Col>
                 </div>
             </DndProvider>

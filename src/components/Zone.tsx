@@ -20,8 +20,8 @@ import { Button } from "react-bootstrap";
 // import { ItemTypes } from "../constants";DragItem,
 
 const styles: CSSProperties = {
-    width: 200,
-    height: 200,
+    width: "200px",
+    height: "200px",
     border: "1px solid black",
     position: "relative"
 };
@@ -29,12 +29,12 @@ type CarChanges = Record<string, ToolPos>;
 type ZoneProps = {
     x: number;
     y: number;
-    effects: string[];
+    //effects: string[];
     saveCar: (toolname: string, changes: CarChanges) => void;
 };
 
 const Zone: React.FC<ZoneProps> = (props) => {
-    const { x, y, effects, saveCar, children } = props;
+    const { x, y, saveCar, children } = props;
     //const [square, setSquare] = useState<string[]>([]);
     const [aah, setAah] = useState<string>("");
     const [tools, setTools] = useState<CarChanges>({});
@@ -163,22 +163,45 @@ const Zone: React.FC<ZoneProps> = (props) => {
         setTools({ ...tools, [aah]: { top: 0, left: 0, title: t } });
         //setTools({});
     };
+    const clear = () => {
+        setTools({});
+    };
     // if (effects[0] !== tools["a"].title) addTool(effects[0]);
     return (
         <>
-            <div ref={drop} style={styles}>
-                {Object.keys(tools).map((key: string) => (
-                    <Tool
-                        key={key}
-                        id={key}
-                        left={tools[key].left}
-                        top={tools[key].top}
-                        title={tools[key].title}
-                    />
-                ))}
-            </div>
-            <div>
-                <Button onClick={() => addTool("meep")}>addtool</Button>
+            {" "}
+            <div
+            // style={{
+            //     width: "200px",
+            //     height: "250px",
+            //     border: "1px solid black"
+            // }}
+            >
+                <BoardSquare
+                    x={0}
+                    y={0}
+                    toolery={tools}
+                    currAah={aah}
+                    saveCar={saveCar}
+                    setAah={setAah}
+                    setTools={setTools}
+                ></BoardSquare>
+
+                <div ref={drop} style={styles}>
+                    {Object.keys(tools).map((key: string) => (
+                        <Tool
+                            key={key}
+                            id={key}
+                            left={tools[key].left}
+                            top={tools[key].top}
+                            title={tools[key].title}
+                        />
+                    ))}
+                </div>
+                <div>
+                    <Button onClick={() => addTool("meep")}>Add Effect</Button>
+                    <Button onClick={clear}>Clear Car</Button>
+                </div>
             </div>
         </>
     );
