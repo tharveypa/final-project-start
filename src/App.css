@@ -47,6 +47,8 @@
     display: inline-block;
     font-size: large;
     font-weight: 500;
+    border: 1px solid black
+
 }
 .toolkit {
     position: relative;
@@ -59,8 +61,8 @@
     position: relative;
     border: 1px solid black;
     /* background-image: url("bluecar.png"); */
-    height: 500px;
-    width: 800px;
+    height: 1000px;
+    width: 1000px;
     overflow: hidden;
 }
 .car {

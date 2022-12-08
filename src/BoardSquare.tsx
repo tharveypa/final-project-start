@@ -14,7 +14,6 @@ import Square from "./Square";
 import { Button } from "react-bootstrap";
 import type { ToolPos } from "./components/interfaces";
 import CarSquare from "./components/CarSquare";
-import Car from "./components/Car";
 
 // import type { DropTargetMonitor, XYCoord } from "react-dnd";
 // import { useDrop } from "react-dnd";
@@ -39,7 +38,7 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
     const [square, setSquare] = useState<string[]>([]);
     // const [aah, setAah] = useState<string>("");
     // const [tools, setTools] = useState<CarChanges>({});
-    const [{ isOver, canDrop }, drop] = useDrop({
+    const [{ isOver, canDrop }, dropp] = useDrop({
         accept: ItemTypes.PIC,
         //canDrop: () => canMovePic(x, y),
         //move: () => moveTool(item.title, item.top, item.left),
@@ -79,9 +78,9 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
     return (
         <>
             <div
-                ref={drop}
+                ref={dropp}
                 style={{
-                    width: "100px",
+                    width: "200px",
                     height: "100px",
                     border: "1px solid black"
                 }}
@@ -102,9 +101,6 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                 {/* <div>
                     <Zone x={500} y={100}></Zone>
                 </div> */}
-                {square.map((p: string) => (
-                    <Pic key={p} pic={p} top={0} left={0} title={p} />
-                ))}
                 {/* <Square black={black}>{children}</Square>
                 {isOver && !canDrop && <Overlay color="red" />}
                 {!isOver && canDrop && <Overlay color="yellow" />}

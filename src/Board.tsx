@@ -56,7 +56,9 @@ type BoardProps = {
     tools: string[];
 };
 const Board: React.FC<BoardProps> = (props) => {
+    const [toolss, setTools] = useState<CarChanges>({});
     const { tools } = props;
+    const [aah, setAah] = useState<string>("");
     const squares = [];
     const [carId, setCarId] = useState<number>(0);
     const [cars, setCars] = useState<Cars>({});
@@ -117,7 +119,7 @@ const Board: React.FC<BoardProps> = (props) => {
                 //     flexWrap: "wrap"
                 // }}
                 >
-                    <Col>
+                    {/* <Col>
                         Choose a pic
                         {tools.map(
                             // eslint-disable-next-line no-extra-parens
@@ -131,7 +133,8 @@ const Board: React.FC<BoardProps> = (props) => {
                                 />
                             )
                         )}
-                    </Col>
+                    </Col> */}
+                    <PimpVsDestroy></PimpVsDestroy>
                     <Col>
                         {/*  <PimpVsDestroy></PimpVsDestroy> */}
                         {/* hey */}
@@ -142,7 +145,13 @@ const Board: React.FC<BoardProps> = (props) => {
                             {/* <Car
                     saveCar={props.saveCar}
                 ></Car> */}
-                            <Zone x={0} y={0} saveCar={saveCar} />
+                            <Zone
+                                x={0}
+                                y={0}
+                                toolery={toolss}
+                                currAah={aah}
+                                saveCar={saveCar}
+                            />
                         </div>
                         {/* <div
                             //key={i}
