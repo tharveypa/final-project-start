@@ -32,7 +32,10 @@ export function Note({ task, id }: { task: Task; id: number }): JSX.Element {
             <br />
             Description: {task.description}
             <br />
-            Priortity: {task.priority}
+            Priority: {task.priority}
+            <br />
+            Assignees: {task.assigned.join(", ")}
+            <br />
         </div>
     );
 }
