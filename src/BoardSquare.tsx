@@ -13,7 +13,6 @@ import Overlay from "./Overlay";
 import Square from "./Square";
 import { Button } from "react-bootstrap";
 import type { ToolPos } from "./components/interfaces";
-import update from "immutability-helper";
 import CarSquare from "./components/CarSquare";
 import Car from "./components/Car";
 

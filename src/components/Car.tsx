@@ -30,6 +30,8 @@ import { useDrop } from "react-dnd";
 import { ItemTypes } from "../constants";
 import { canMovePic } from "../game";
 import Overlay from "../Overlay";
+import CarSquare from "./CarSquare";
+import ToolinBox from "./ToolinBox";
 
 type CarChanges = Record<string, ToolPos>;
 export type CarProps = {
@@ -70,8 +72,11 @@ export const Car: React.FC<CarProps> = (props) => {
         })
     });
     const addImageToBoard = (pic: string) => {
+        //pics.push(pic);
         //const p = pics.filter((picture) => pic === picture);
-        //setSquare((square) => [...square, pics[0]]);
+        console.log(pic);
+        //setSquare((square) => [...square, p[0]]);
+        //console.log(pics);
     };
     // const moveTool = useCallback(
     //     (id: string, left: number, top: number) => {
@@ -192,7 +197,6 @@ export const Car: React.FC<CarProps> = (props) => {
                 {isOver && canDrop && <Overlay color="green" />}
                 <div ref={containerRef} className="container">
                     <img src={cars[colorNum][tireNum]} alt="car model" />
-                    {square}
                 </div>
             </div>*/}
             </div>
