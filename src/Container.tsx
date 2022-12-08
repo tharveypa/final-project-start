@@ -128,17 +128,66 @@ export const Container: FC<ContainerProps> = ({
                 const fishWidth = (height / 100) * tankWidth;
                 const fishHeight = (height / 100) * tankHeight;
                 if (
-                    left + fishWidth < tankWidth &&
-                    left > 0 &&
-                    top + fishHeight < tankHeight &&
-                    top > 0
+                    left + fishWidth <= tankWidth &&
+                    left >= 0 &&
+                    top + fishHeight <= tankHeight &&
+                    top >= 0
                 ) {
                     newFishes[id] = [name, left, top];
                     setFishes(newFishes);
-                } else {
+                } else if (
+                    ((left < 0 && Math.abs(left)) > fishWidth ||
+                        left > tankWidth ||
+                        (top < 0 && Math.abs(top)) > fishHeight ||
+                        top > tankHeight) &&
+                    ((left < 0 && Math.abs(left) % tankWidth > fishWidth) ||
+                        (left % tankWidth > 0 &&
+                            left % tankWidth < tankWidth - fishWidth)) &&
+                    ((top < 0 && Math.abs(top) % tankHeight > fishHeight) ||
+                        (top % tankHeight > 0 &&
+                            top % tankHeight < tankHeight - fishHeight))
+                ) {
                     addFishNewTank(name, left, top);
                     incFish();
                     decFish();
+                }
+                if (left < 0) {
+                    console.log(
+                        "left < 0: ",
+                        left < 0,
+                        "left%tankWidth: ",
+                        Math.abs(left) % tankWidth,
+                        "fishWidth: ",
+                        fishWidth
+                    );
+                } else {
+                    console.log(
+                        "left<0: ",
+                        left < 0,
+                        "left%tankWidth",
+                        left % tankWidth,
+                        "fishWidth: ",
+                        fishWidth
+                    );
+                }
+                if (top < 0) {
+                    console.log(
+                        "top<0: ",
+                        top < 0,
+                        "top%tankHeight: ",
+                        Math.abs(top) % tankHeight,
+                        "fishHeight: ",
+                        fishHeight
+                    );
+                } else {
+                    console.log(
+                        "top<0: ",
+                        top < 0,
+                        "top%tankHeight",
+                        top % tankHeight,
+                        "fishHeight: ",
+                        fishHeight
+                    );
                 }
             }
         },
@@ -170,6 +219,7 @@ export const Container: FC<ContainerProps> = ({
     } else {
         tankPic = "fresh.png";
     }
+    console.log("fishes tank ", x, ": ", fishes);
     return (
         <div
             ref={drop}
