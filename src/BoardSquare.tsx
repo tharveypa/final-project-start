@@ -111,9 +111,6 @@ const BoardSquare: React.FC<BoardSquareProps> = (props) => {
                 {!isOver && canDrop && <Overlay color="yellow" />}
                 {isOver && canDrop && <Overlay color="green" />} */}
             </div>
-            <div>
-                <Button onClick={clear}>Clear</Button>
-            </div>
         </>
     );
 };

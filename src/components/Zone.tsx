@@ -163,6 +163,9 @@ const Zone: React.FC<ZoneProps> = (props) => {
         setTools({ ...tools, [aah]: { top: 0, left: 0, title: t } });
         //setTools({});
     };
+    const clear = () => {
+        setTools({});
+    };
     // if (effects[0] !== tools["a"].title) addTool(effects[0]);
     return (
         <>
@@ -196,7 +199,8 @@ const Zone: React.FC<ZoneProps> = (props) => {
                     ))}
                 </div>
                 <div>
-                    <Button onClick={() => addTool("meep")}>addtool</Button>
+                    <Button onClick={() => addTool("meep")}>Add Effect</Button>
+                    <Button onClick={clear}>Clear Car</Button>
                 </div>
             </div>
         </>
