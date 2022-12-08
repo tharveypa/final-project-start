@@ -19,12 +19,13 @@ type ToolProps = {
     id: string;
     left: number;
     top: number;
+    title: string;
     children?: ReactNode;
 };
 
 export const Tool: FC<ToolProps> = (props) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { id, left, top, children } = props;
+    const { id, left, top, title, children } = props;
     const [{ isDragging }, drag] = useDrag({
         item: {
             type: ItemTypes.DIRT,
@@ -74,7 +75,7 @@ export const Tool: FC<ToolProps> = (props) => {
                     top: top
                 }}
             >
-                <p>{id}</p>
+                <p>{title}</p>
                 {/* {children} */}
             </div>
         </Fragment>

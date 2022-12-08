@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Pic from "./Pic";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import BoardSquare from "./BoardSquare";
-import { Col, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import CarSquare from "./components/CarSquare";
 import PimpVsDestroy from "./components/PimpVsDestroy";
+import type { ToolPos } from "./components/interfaces";
 
 export const renderPiece = (
     x: number,
@@ -21,42 +22,46 @@ export const renderPiece = (
     }
 };
 
-const renderSquare = (j: number, i: number, pics: string[]) => {
-    const x = j;
-    const y = i;
+// const renderSquare = (j: number, i: number, pics: string[]) => {
+//     const x = j;
+//     const y = i;
 
-    // const [tool, setTool] = useState<number>(0);
+//     // const [tool, setTool] = useState<number>(0);
 
-    // function moreTools(): void {
-    //     setTool(tool + 1);
-    //     // tool;
-    // }
+//     // function moreTools(): void {
+//     //     setTool(tool + 1);
+//     //     // tool;
+//     // }
 
-    return (
-        <>
-            <div>
-                {/* | board squares x={x}-{picPosition[0]}, y={y}-{picPosition[1]} */}
-                <div key={i} style={{ width: "300px", height: "300px" }}>
-                    <BoardSquare x={x} y={y} toolery={pics}>
-                        {
-                            //renderPiece(x, y, "yeet", picPosition)
-                        }
-                    </BoardSquare>
-                </div>
-            </div>
-        </>
-    );
-};
+//     return (
+//         <>
+//             <div>
+//                 {/* | board squares x={x}-{picPosition[0]}, y={y}-{picPosition[1]} */}
+//                 <div key={i} style={{ width: "300px", height: "300px" }}>
+//                     <BoardSquare x={x} y={y} toolery={pics} saveCar={saveCar}>
+//                         {
+//                             //renderPiece(x, y, "yeet", picPosition)
+//                         }
+//                     </BoardSquare>
+//                 </div>
+//             </div>
+//         </>
+//     );
+// };
 
+type CarChanges = Record<string, ToolPos>;
+type Cars = Record<number, CarChanges>;
 type BoardProps = {
     tools: string[];
 };
 const Board: React.FC<BoardProps> = (props) => {
     const { tools } = props;
     const squares = [];
+    const [carId, setCarId] = useState<number>(0);
+    const [cars, setCars] = useState<Cars>({});
     //squares.push(renderSquare(0, picPosition, pics));
     //for (let i = 0; i < 2; i++) {
-    squares.push(renderSquare(0, 0, tools));
+    //squares.push(renderSquare(0, 0, tools));
     // for (let j = 0; j < 2; j++) {
     //     squares.push(renderSquare(j, i, tools));
     //squares.push(renderSquare(0, 0, pics, picPosition));
@@ -65,27 +70,74 @@ const Board: React.FC<BoardProps> = (props) => {
     //         squares.push(renderSquare(j, i, pics, picPosition));
     //     }
     // }
-
+    function saveCar(toolname: string, changes: CarChanges) {
+        setCarId(carId + 1);
+        setCars({
+            ...cars,
+            [carId]: {
+                ...cars[carId],
+                [toolname]: {
+                    top: changes[toolname].top,
+                    left: changes[toolname].left,
+                    title: changes[toolname].title
+                }
+            }
+        });
+    }
     return (
         <>
+            <div>
+                {Object.keys(cars).map((key: string) => (
+                    <Button key={key}>Car {key}</Button>
+                ))}
+            </div>
             <DndProvider backend={HTML5Backend}>
                 <div
-                    style={{
-                        width: "200%",
-                        height: "100%",
-                        display: "flex",
-                        flexWrap: "wrap"
-                    }}
-                ></div>
-                <PimpVsDestroy></PimpVsDestroy>
-                {/* <div>
-                    {pics.map(
-                        (p: string): JSX.Element => (
-                            <Pic key={p} pic={p} top={0} left={0} title={p} />
-                        )
-                    )}
-                </div> */}
-                {squares}
+                // style={{
+                //     width: "500px",
+                //     height: "500px",
+                //     display: "flex",
+                //     flexWrap: "wrap"
+                // }}
+                >
+                    <Col>
+                        Choose a pic
+                        {tools.map(
+                            // eslint-disable-next-line no-extra-parens
+                            (p: string): JSX.Element => (
+                                <Pic
+                                    key={p}
+                                    pic={p}
+                                    top={0}
+                                    left={0}
+                                    title={p}
+                                />
+                            )
+                        )}
+                    </Col>
+                    <Col>
+                        {/*  <PimpVsDestroy></PimpVsDestroy> */}
+                        {/* hey */}
+                        {
+                            //squares[0]
+                        }
+                        <div
+                            //key={i}
+                            style={{ width: "300px", height: "300px" }}
+                        >
+                            <BoardSquare
+                                x={0}
+                                y={0}
+                                toolery={tools}
+                                saveCar={saveCar}
+                            >
+                                {
+                                    //renderPiece(x, y, "yeet", picPosition)
+                                }
+                            </BoardSquare>
+                        </div>
+                    </Col>
+                </div>
             </DndProvider>
         </>
     );
