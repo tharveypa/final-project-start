@@ -14,18 +14,6 @@ import DarkTint from "./images/darktint.png";
 */
 
 const str = [
-    "Wing",
-    "Red",
-    "Blue",
-    "Green",
-    "Yellow",
-    "Purple",
-    "Orange",
-    "LightTint",
-    "MediumTint",
-    "DarkTint"
-];
-const pimp = [
     "wing",
     "red",
     "blue",
@@ -38,12 +26,27 @@ const pimp = [
     "darktint"
 ];
 
+/*
+const pimp = [
+    "wing",
+    "red",
+    "blue",
+    "green",
+    "yellow",
+    "purple",
+    "orange",
+    "lighttint",
+    "mediumtint",
+    "darktint"
+];
+*/
+
 const Pimp = () => {
     return (
         <div>
             <h1>Pimp Mode</h1>
             <p>
-                {pimp.map(
+                {str.map(
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
                             {console.log(t)}

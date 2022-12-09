@@ -12,16 +12,6 @@ import Garage from "./images/garage.png";
 */
 
 const str = [
-    "City",
-    "Forest",
-    "Street",
-    "Dump",
-    "Mountain",
-    "Alley",
-    "Cave",
-    "Garage"
-];
-const edit = [
     "city",
     "forest",
     "street",
@@ -32,12 +22,25 @@ const edit = [
     "garage"
 ];
 
+/*
+const edit = [
+    "city",
+    "forest",
+    "street",
+    "dump",
+    "mountain",
+    "alley",
+    "cave",
+    "garage"
+];
+*/
+
 const Edit = () => {
     return (
         <div>
             <h1>Edit Mode</h1>
             <p>
-                {edit.map(
+                {str.map(
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
                             {console.log(t)}

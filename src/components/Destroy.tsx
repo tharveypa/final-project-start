@@ -12,17 +12,6 @@ import BreakWindows from "./images/hammer.png";
 */
 
 const str = [
-    "BrownDirt",
-    "BlackDirt",
-    "TanDirt",
-    "WhitePoop",
-    "BrownPoop",
-    "GreenPoop",
-    "SlashTires",
-    "BreakWindows"
-];
-
-const destroy = [
     "browndirt",
     "blackdirt",
     "tandirt",
@@ -33,12 +22,25 @@ const destroy = [
     "BreakWindows"
 ];
 
+/*
+const destroy = [
+    "browndirt",
+    "blackdirt",
+    "tandirt",
+    "whitepoop",
+    "brownpoop",
+    "greenpoop",
+    "SlashTires",
+    "BreakWindows"
+];
+*/
+
 const Destroy = () => {
     return (
         <div>
             <h1>Destroy Mode</h1>
             <p>
-                {destroy.map(
+                {str.map(
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
                             {console.log(t)}
