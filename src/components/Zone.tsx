@@ -60,6 +60,8 @@ const Zone: React.FC<ZoneProps> = (props) => {
     //const [square, setSquare] = useState<string[]>([]);
     const [aah, setAah] = useState<string>("");
     const [tools, setTools] = useState<CarChanges>({});
+    const [backgroundIndex, setBackgroundIndex] = useState<number>(0);
+    const [color, setColor] = useState<number>(0);
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.TOOL,
         //move: () => moveTool(item.title, item.top, item.left),
@@ -111,6 +113,8 @@ const Zone: React.FC<ZoneProps> = (props) => {
         //const t = toolery.filter((toolname) => title === toolname);
         //const exist = Object.keys(tools).map((toolna) => title === toolname);
         // if(tools[aah])
+        setColor(0);
+        setBackgroundIndex(0);
         setAah(aah + "a");
         setTools({
             ...tools,
@@ -153,7 +157,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
     const clear = () => {
         setTools({});
     };
-    const [backgroundIndex, setBackgroundIndex] = useState(0);
+
     return (
         <>
             {" "}
@@ -165,7 +169,18 @@ const Zone: React.FC<ZoneProps> = (props) => {
                     //     backgroundImage: `url(${backgrounds[backgroundIndex]})`
                     // }}
                 >
-                    <div ref={drop} style={styles}>
+                    <div
+                        ref={drop}
+                        style={{
+                            width: " 650px",
+                            height: "400px",
+                            border: "1px solid black",
+                            backgroundImage: `url(${cars[color][0]})`,
+                            backgroundRepeat: "no repeat"
+                            //position: "relative"
+                        }}
+                    >
+                        {/* <img src={RedCar} alt="car model" /> */}
                         {Object.keys(tools).map((key: string) => (
                             <Tool
                                 key={key}
@@ -175,7 +190,6 @@ const Zone: React.FC<ZoneProps> = (props) => {
                                 title={tools[key].title}
                             />
                         ))}
-                        <img src={RedCar} alt="car model" />
                     </div>
                 </div>
                 <div>
