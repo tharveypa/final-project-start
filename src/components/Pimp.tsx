@@ -8,7 +8,7 @@ import Yellow from "./images/yellow.png";
 import Purple from "./images/purple.png";
 import Orange from "./images/orange.png";
 import LightTint from "./images/lighttint.png";
-import MidTint from "./images/mediumtint.png";
+import MediumTint from "./images/mediumtint.png";
 import DarkTint from "./images/darktint.png";
 
 const str = [
@@ -21,7 +21,7 @@ const str = [
     "Orange",
     "Light Tint",
     "Medium Tint",
-    "DarkTint"
+    "Dark Tint"
 ];
 const pimp = [
     "wing",
