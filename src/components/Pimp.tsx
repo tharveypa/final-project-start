@@ -1,5 +1,6 @@
 import React from "react";
 import CarSquare from "./CarSquare";
+/*
 import Wing from "./images/wing.png";
 import Red from "./images/red.png";
 import Blue from "./images/blue.png";
@@ -8,21 +9,24 @@ import Yellow from "./images/yellow.png";
 import Purple from "./images/purple.png";
 import Orange from "./images/orange.png";
 import LightTint from "./images/lighttint.png";
-import MidTint from "./images/mediumtint.png";
+import MediumTint from "./images/mediumtint.png";
 import DarkTint from "./images/darktint.png";
+*/
 
 const str = [
-    "Wing",
-    "Red",
-    "Blue",
-    "Green",
-    "Yellow",
-    "Purple",
-    "Orange",
-    "LightTint",
-    "MediumTint",
-    "DarkTint"
+    "wing",
+    "red",
+    "blue",
+    "green",
+    "yellow",
+    "purple",
+    "orange",
+    "lighttint",
+    "mediumtint",
+    "darktint"
 ];
+
+/*
 const pimp = [
     "wing",
     "red",
@@ -35,6 +39,7 @@ const pimp = [
     "mediumtint",
     "darktint"
 ];
+*/
 
 const Pimp = () => {
     return (

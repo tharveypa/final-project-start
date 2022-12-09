@@ -1,5 +1,6 @@
 import React from "react";
 import CarSquare from "./CarSquare";
+/*
 import City from "./images/city.png";
 import Forest from "./images/forest.png";
 import Street from "./images/street.png";
@@ -8,17 +9,20 @@ import Mountain from "./images/mountain.png";
 import Alley from "./images/alley.png";
 import Cave from "./images/cave.png";
 import Garage from "./images/garage.png";
+*/
 
 const str = [
-    "City",
-    "Forest",
-    "Street",
-    "Dump",
-    "Mountain",
-    "Alley",
-    "Cave",
-    "Garage"
+    "city",
+    "forest",
+    "street",
+    "dump",
+    "mountain",
+    "alley",
+    "cave",
+    "garage"
 ];
+
+/*
 const edit = [
     "city",
     "forest",
@@ -29,6 +33,7 @@ const edit = [
     "cave",
     "garage"
 ];
+*/
 
 const Edit = () => {
     return (

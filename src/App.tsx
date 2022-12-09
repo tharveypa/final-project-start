@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import PimpVsDestroy from "./components/PimpVsDestroy";
+//import PimpVsDestroy from "./components/PimpVsDestroy";
 import Board from "./Board";
 //import Car from "./components/Car";
 //import DirtTool from "./components/Destroy Tools/DirtTool";

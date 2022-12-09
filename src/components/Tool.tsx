@@ -31,6 +31,7 @@ export const Tool: FC<ToolProps> = (props) => {
     const [{ isDragging }, drag] = useDrag({
         item: {
             type: ItemTypes.BACKS,
+
             id: id,
             top: top,
             left: left

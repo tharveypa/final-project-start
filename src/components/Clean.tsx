@@ -2,7 +2,7 @@ import React from "react";
 import CarSquare from "./CarSquare";
 
 const str = ["WipeCar", "ShineCar", "FillTires", "RepairWindows"];
-const clean = ["WipeCar", "ShineCar", "FillTires", "RepairWindows"];
+//const clean = ["WipeCar", "ShineCar", "FillTires", "RepairWindows"];
 
 const Clean = () => {
     return (

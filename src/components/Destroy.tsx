@@ -1,5 +1,6 @@
 import React from "react";
 import CarSquare from "./CarSquare";
+/*
 import BrownDirt from "./images/browndirt.png";
 import BlackDirt from "./images/blackdirt.png";
 import TanDirt from "./images/tandirt.png";
@@ -8,17 +9,31 @@ import BrownPoop from "./images/brownpoop.png";
 import GreenPoop from "./images/greenpoop.png";
 import SlashTires from "./images/slash.png";
 import BreakWindows from "./images/hammer.png";
+*/
 
 const str = [
-    "BrownDirt",
-    "BlackDirt",
-    "TanDirt",
-    "WhitePoop",
-    "BrownPoop",
-    "GreenPoop",
+    "browndirt",
+    "blackdirt",
+    "tandirt",
+    "whitepoop",
+    "brownpoop",
+    "greenpoop",
     "SlashTires",
     "BreakWindows"
 ];
+
+/*
+const destroy = [
+    "browndirt",
+    "blackdirt",
+    "tandirt",
+    "whitepoop",
+    "brownpoop",
+    "greenpoop",
+    "SlashTires",
+    "BreakWindows"
+];
+*/
 
 const Destroy = () => {
     return (
