@@ -30,7 +30,8 @@ export const Tool: FC<ToolProps> = (props) => {
     const { id, left, top, title, children } = props;
     const [{ isDragging }, drag] = useDrag({
         item: {
-            type: ItemTypes.TOOL,
+            type: ItemTypes.BACKS,
+
             id: id,
             top: top,
             left: left
@@ -39,24 +40,6 @@ export const Tool: FC<ToolProps> = (props) => {
             isDragging: !!monitor.isDragging()
         })
     });
-
-    // const [{ isDragging }, drag] = useDrag({
-    //     item: { type: ItemTypes.PIC, pic: pic },
-    //     collect: (monitor) => ({
-    //         isDragging: !!monitor.isDragging()
-    //     })
-    // });
-    //sus
-    // const [{ isDragging }, drag] = useDrag({
-    //     item: { type: ItemTypes.DIRT, t: { id, left, top } },
-    //     collect: (monitor: DragSourceMonitor) => ({
-    //         isDragging: !!monitor.isDragging()
-    //     })
-    // });
-
-    // if (isDragging) {
-    //     return <div ref={drag}/>;
-    // }
     return (
         <Fragment>
             <div
