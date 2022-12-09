@@ -108,10 +108,10 @@ const Zone: React.FC<ZoneProps> = (props) => {
         //const t = toolery.filter((toolname) => title === toolname);
         //const exist = Object.keys(tools).map((toolna) => title === toolname);
         // if(tools[aah])
-        setAah(currAah + "a");
+        setAah(aah + "a");
         setTools({
             ...toolery,
-            [currAah]: { top: top, left: left, title: title }
+            [aah]: { top: top, left: left, title: title }
         });
 
         //setSquare((square) => [t[0], ...square]);
@@ -227,16 +227,6 @@ const Zone: React.FC<ZoneProps> = (props) => {
             <div>
                 <div ref={dropp} className="toolncar">
                     <div ref={drop} style={styles}>
-                        <img src={RedCar} alt="car model" />
-                        {/* <BoardSquare
-                            x={0}
-                            y={0}
-                            toolery={tools}
-                            currAah={aah}
-                            saveCar={saveCar}
-                            setAah={setAah}
-                            setTools={setTools}
-                        ></BoardSquare> */}
                         {Object.keys(tools).map((key: string) => (
                             <Tool
                                 key={key}
@@ -246,6 +236,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
                                 title={tools[key].title}
                             />
                         ))}
+                        <img src={RedCar} alt="car model" />
                     </div>
                 </div>
                 <div>

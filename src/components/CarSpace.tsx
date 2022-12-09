@@ -43,9 +43,7 @@ export const CarSpace: React.FC<CarSpaceProps> = (props) => {
                     window={true}
                 ></Car> 
             </div> */}
-            <div>
-                <Board tools={tools} />
-            </div>
+            <div>{/* <Board tools={tools} /> */}</div>
             {/* <div ref={containerRef} className="container">
                 <Board tools={tools} />
             </div> */}

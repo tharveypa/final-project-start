@@ -6,22 +6,22 @@ import PimpVsDestroy from "./PimpVsDestroy";
 
 type CarSquareProps = {
     pic: string;
-    //description: string;
+    description: string;
     top: number;
     left: number;
     title: string;
 };
 
 const CarSquare: React.FC<CarSquareProps> = (props) => {
-    const { pic, left, top, title } = props;
+    const { pic, left, top, title, description } = props;
     const [{ isDragging }, drag] = useDrag({
         item: {
             type: ItemTypes.PIC,
             pic: pic,
             top: top,
             left: left,
-            title: title
-            // description: description
+            title: title,
+            description: description
         },
         collect: (monitor: DragSourceMonitor) => ({
             isDragging: !!monitor.isDragging()
@@ -29,14 +29,13 @@ const CarSquare: React.FC<CarSquareProps> = (props) => {
     });
 
     return (
-        <span className="toolncar">
+        <span className="getinlineplz">
             <span
                 ref={drag}
                 style={{
                     position: "relative",
-                    border: "1px dashed gray",
                     padding: "0.5 rem 1rem",
-                    opacity: isDragging ? 1 : 0.5,
+                    opacity: isDragging ? 0.5 : 1,
                     fontSize: 10,
                     fontWeight: "bold",
                     cursor: "move",
@@ -52,7 +51,7 @@ const CarSquare: React.FC<CarSquareProps> = (props) => {
                     height="50"
                 />
             </span>
-            {title}
+            {pic}
         </span>
     );
 };

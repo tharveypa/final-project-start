@@ -3,6 +3,8 @@ import type { FC, ReactNode } from "react";
 import { DragSourceMonitor, useDrag } from "react-dnd";
 import "../App.css";
 import { ItemTypes } from "../constants";
+import RedCar from "./images/redcar.png";
+import WipeCar from "./images/towel.png";
 // CSSProperties,
 const style: CSSProperties = {
     position: "absolute",
@@ -61,21 +63,22 @@ export const Tool: FC<ToolProps> = (props) => {
                 ref={drag}
                 style={{
                     position: "relative",
-                    border: "1px dashed gray",
+                    //border: "1px dashed gray",
                     padding: "0.5 rem 1rem",
                     //opacity: isDragging ? 1 : 0.5,
                     fontSize: 10,
                     fontWeight: "bold",
                     cursor: "move",
                     textAlign: "center",
-                    background: "red",
+                    //background: "white",
                     width: "30px",
                     height: "30px",
                     left: left,
                     top: top
                 }}
             >
-                <p>{title}</p>
+                <img src={require("./images/" + title + ".png")} />
+                {/* <p>{title}</p> */}
                 {/* {children} */}
             </div>
         </Fragment>
