@@ -31,21 +31,21 @@ import Cave from "./images/Cave.png";
 import Garage from "./images/Garage.png";
 // import RedCarLeftTire from "./images/redcar left tire.png";
 // import RedCarRightTire from "./images/redcar right tire.png";
-import RedCarBothTires from "./images/redcar both tires.png";
-import BlueCar from "./images/bluecar.png";
+import RedCarBothTires from "./images/RedCarBothTires.png";
+import BlueCar from "./images/BlueCar.png";
 // import BlueCarLeftTire from "./images/bluecar left tire.png";
 // import BlueCarRightTire from "./images/bluecar right tire.png";
-import BlueCarBothTires from "./images/bluecar both tires.png";
-import GreenCar from "./images/greencar.png";
+import BlueCarBothTires from "./images/BlueCarBothTires.png";
+import GreenCar from "./images/GreenCar.png";
 // import GreenCarLeftTire from "./images/greencar left tire.png";
 // import GreenCarRightTire from "./images/greencar right tire.png";
-import GreenCarBothTires from "./images/greencar both tires.png";
-import YellowCar from "./images/yellow car.png";
-import YellowCarBothTires from "./images/yellow car both tires.png";
-import PurpleCar from "./images/purple car.png";
-import PurpleCarBothTires from "./images/purple car both tires.png";
-import OrangeCar from "./images/orange car.png";
-import OrangeCarBothTires from "./images/orange car both tires.png";
+import GreenCarBothTires from "./images/GreenCarBothTires.png";
+import YellowCar from "./images/YellowCar.png";
+import YellowCarBothTires from "./images/YellowCarBothTires.png";
+import PurpleCar from "./images/PurpleCar.png";
+import PurpleCarBothTires from "./images/PurpleCarBothTires.png";
+import OrangeCar from "./images/OrangeCar.png";
+import OrangeCarBothTires from "./images/OrangeCarBothTires.png";
 
 // const cars = [
 //     [RedCar, RedCarLeftTire, RedCarRightTire, RedCarBothTires],
