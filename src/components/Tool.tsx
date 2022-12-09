@@ -30,7 +30,7 @@ export const Tool: FC<ToolProps> = (props) => {
     const { id, left, top, title, children } = props;
     const [{ isDragging }, drag] = useDrag({
         item: {
-            type: ItemTypes.DIRT,
+            type: ItemTypes.DROPS,
             id: id,
             top: top,
             left: left
@@ -65,7 +65,7 @@ export const Tool: FC<ToolProps> = (props) => {
                     position: "relative",
                     //border: "1px dashed gray",
                     padding: "0.5 rem 1rem",
-                    opacity: isDragging ? 1 : 0.5,
+                    //opacity: isDragging ? 1 : 0.5,
                     fontSize: 10,
                     fontWeight: "bold",
                     cursor: "move",
