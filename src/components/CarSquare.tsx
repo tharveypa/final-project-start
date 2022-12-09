@@ -15,7 +15,6 @@ type CarSquareProps = {
 
 const CarSquare: React.FC<CarSquareProps> = (props) => {
     const { pic, left, top, title, description } = props;
-    //let drag, isDragging;
     if (
         description === "BrownDirt" ||
         description === "BlackDirt" ||
@@ -23,7 +22,6 @@ const CarSquare: React.FC<CarSquareProps> = (props) => {
         description === "WhitePoop" ||
         description === "BrownPoop" ||
         description === "GreenPoop" ||
-        description === "BreakWindows" ||
         description === "WipeCar"
     ) {
         const [{ isDragging }, drag] = useDrag({
