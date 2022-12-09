@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {
     useState,
     useEffect,
@@ -224,7 +225,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
                             backgroundImage: `url(${backgrounds[background]}`
                         }}
                     >
-                        {console.log(background)}
+
                         {Object.keys(tools).map((key: string) => (
                             <Tool
                                 key={key}
