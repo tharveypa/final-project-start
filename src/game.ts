@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 //import Pic from "./Pic";
 import { renderPiece } from "./Board";
 const picPosition = [
