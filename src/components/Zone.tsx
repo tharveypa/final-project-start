@@ -47,11 +47,12 @@ import PurpleCarBothTires from "./images/PurpleCarBothTires.png";
 import OrangeCar from "./images/OrangeCar.png";
 import OrangeCarBothTires from "./images/OrangeCarBothTires.png";
 
-// const cars = [
-//     [RedCar, RedCarLeftTire, RedCarRightTire, RedCarBothTires],
-//     [GreenCar, GreenCarLeftTire, GreenCarRightTire, GreenCarBothTires],
-//     [BlueCar, BlueCarLeftTire, BlueCarRightTire, BlueCarBothTires]
-// ];
+
+const cars = [
+    [RedCar, RedCarLeftTire, RedCarRightTire, RedCarBothTires],
+    [GreenCar, GreenCarLeftTire, GreenCarRightTire, GreenCarBothTires],
+    [BlueCar, BlueCarLeftTire, BlueCarRightTire, BlueCarBothTires]
+];
 const styles: CSSProperties = {
     //width: "200px",
     //height: "300px",
@@ -191,13 +192,23 @@ const Zone: React.FC<ZoneProps> = (props) => {
         ],
         //canDrop: () => canMovePic(x, y),
         //move: () => moveTool(item.title, item.top, item.left),
-        drop: (item: {
-            type: string;
-            pic: string;
-            top: number;
-            left: number;
-            title: string;
-        }) => addPicToBoard(item.pic, item.top, item.left, item.title),
+        drop: (
+            item: {
+                type: string;
+                pic: string;
+                top: number;
+                left: number;
+                title: string;
+            },
+            monitor: DropTargetMonitor
+        ) => {
+            //monitor.getClientOffset
+            const delta = monitor.getDifferenceFromInitialOffset() as XYCoord;
+            const leftt = Math.round(delta.x);
+            const topp = Math.round(delta.y);
+            console.log(item.left, item.top);
+            addPicToBoard(item.pic, topp, leftt, item.title);
+        },
         collect: (monitor) => ({
             isOverr: !!monitor.isOver(),
             canDropp: !!monitor.canDrop()
@@ -262,15 +273,17 @@ const Zone: React.FC<ZoneProps> = (props) => {
                 <div
                     ref={dropp}
                     //className="toolncar"
-                    // style={{
-                    //     backgroundImage: `url(${backgrounds[backgroundIndex]})`
-                    // }}
+                    style={{
+                        backgroundImage: `url(${backgrounds[background]})`
+                    }}
                 >
                     <div
                         ref={drop}
                         className="toolncar"
                         style={{
-                            backgroundImage: `url(${backgrounds[background]}`
+                            backgroundImage: `url(${cars[0][0]}`,
+                            width: 650,
+                            height: 400
                         }}
                     >
                         {Object.keys(tools).map((key: string) => (
@@ -282,7 +295,8 @@ const Zone: React.FC<ZoneProps> = (props) => {
                                 title={tools[key].title}
                             />
                         ))}
-                        <img src={cars[colorNum][tireNum]} alt="car model" />
+                        {/* <img src={RedCar} alt="car model" /> */}
+
                     </div>
                 </div>
                 <div>
