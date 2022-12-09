@@ -1,27 +1,21 @@
 import React from "react";
 import CarSquare from "./CarSquare";
-/*
-import WipeCar from "./images/towel.png";
-import ShineCar from "./images/shine.png";
-import FillTires from "./images/pump.png";
-import RepairWindows from "./images/glassrepair.png";
-*/
 
-const str = ["Wipe Car", "Shine Car", "Fill Tires", "Repair Windows"];
-const clean = ["towel", "shine", "pump", "glassrepair"];
+const str = ["WipeCar", "ShineCar", "FillTires", "RepairWindows"];
+const clean = ["WipeCar", "ShineCar", "FillTires", "RepairWindows"];
 
 const Clean = () => {
     return (
         <div>
             <h1>Clean Mode</h1>
             <p>
-                {clean.map(
-                    // eslint-disable-next-line no-extra-parens
+                {str.map(
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
                             {console.log(t)}
                             <CarSquare
                                 pic={t}
+                                description={str[i]}
                                 title={str[i]}
                                 top={0}
                                 left={0}

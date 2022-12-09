@@ -21,9 +21,9 @@ const str = [
     "Yellow",
     "Purple",
     "Orange",
-    "Light Tint",
-    "Medium Tint",
-    "Dark Tint"
+    "LightTint",
+    "MediumTint",
+    "DarkTint"
 ];
 const pimp = [
     "wing",
@@ -43,14 +43,14 @@ const Pimp = () => {
         <div>
             <h1>Pimp Mode</h1>
             <p>
-                {pimp.map(
-                    // eslint-disable-next-line no-extra-parens
+                {str.map(
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
                             {console.log(t)}
                             <CarSquare
                                 pic={t}
                                 title={str[i]}
+                                description={str[i]}
                                 top={0}
                                 left={0}
                             ></CarSquare>
