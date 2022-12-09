@@ -38,14 +38,16 @@ function App(): JSX.Element {
             <div>
                 {/*<PimpVsDestroy></PimpVsDestroy>*/}
                 <div></div>
-                <Board
-                    tools={[
-                        "Wipe Car",
-                        "Shine Car",
-                        "Fill Tires",
-                        "Repair Windows"
-                    ]}
-                />
+                {
+                    <Board
+                        tools={[
+                            "Wipe Car",
+                            "Shine Car",
+                            "Fill Tires",
+                            "Repair Windows"
+                        ]}
+                    />
+                }
                 {/* <CarSpace
                     saveCar={saveCar}
                     tools={[

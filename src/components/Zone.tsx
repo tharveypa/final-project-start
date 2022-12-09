@@ -19,7 +19,7 @@ import Tool from "./Tool";
 import { Button } from "react-bootstrap";
 // // import { ItemTypes } from "../constants";DragItem,
 // import Car from "./Car";
-import RedCar from "./images/Redcar.png";
+import RedCar from "./images/redcar.png";
 // import RedCarLeftTire from "./images/redcar left tire.png";
 // import RedCarRightTire from "./images/redcar right tire.png";
 // import RedCarBothTires from "./images/redcar both tires.png";
