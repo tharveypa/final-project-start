@@ -55,7 +55,7 @@ const Pic: React.FC<PicProps> = (props) => {
             >
                 {/*♘*/}
                 <p>{pic + " and " + top}</p>
-                <img src={pic} width="30" height="30" />
+                <img src={pic} />
             </div>
         </Fragment>
     );

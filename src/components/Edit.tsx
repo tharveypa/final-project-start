@@ -37,14 +37,14 @@ const Edit = () => {
         <div>
             <h1>Edit Mode</h1>
             <p>
-                {edit.map(
-                    // eslint-disable-next-line no-extra-parens
+                {str.map(
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
                             {console.log(t)}
                             <CarSquare
                                 pic={t}
                                 title={str[i]}
+                                description={str[i]}
                                 top={0}
                                 left={0}
                             ></CarSquare>
