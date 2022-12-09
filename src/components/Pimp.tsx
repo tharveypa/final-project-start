@@ -14,16 +14,16 @@ import DarkTint from "./images/darktint.png";
 */
 
 const str = [
-    "wing",
-    "red",
-    "blue",
-    "green",
-    "yellow",
-    "purple",
-    "orange",
-    "lighttint",
-    "mediumtint",
-    "darktint"
+    "Wing",
+    "Red",
+    "Blue",
+    "Green",
+    "Yellow",
+    "Purple",
+    "Orange",
+    "LightTint",
+    "Mediumtint",
+    "Darktint"
 ];
 
 /*

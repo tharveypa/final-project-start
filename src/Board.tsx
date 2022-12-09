@@ -112,13 +112,21 @@ const Board: React.FC<BoardProps> = (props) => {
                     <Button key={key}>Car {key}</Button>
                 ))}
             </div>
+            <div>
+                {pos.map(
+                    // eslint-disable-next-line no-extra-parens
+                    (e: number): JSX.Element => (
+                        <div key={e}> {e} </div>
+                    )
+                )}
+            </div>
             <DndProvider backend={HTML5Backend}>
                 <div>
                     <PimpVsDestroy />
 
                     <div className="getinlineplz">
                         <Zone
-                            x={0}
+                            x={10}
                             y={0}
                             toolery={toolss}
                             currAah={aah}
