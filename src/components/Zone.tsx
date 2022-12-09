@@ -28,23 +28,23 @@ import Mountain from "./images/Mountain.png";
 import Alley from "./images/Alley.png";
 import Cave from "./images/Cave.png";
 import Garage from "./images/Garage.png";
-// import RedCarLeftTire from "./images/redcar left tire.png";
-// import RedCarRightTire from "./images/redcar right tire.png";
-// import RedCarBothTires from "./images/redcar both tires.png";
-// import BlueCar from "./images/bluecar.png";
-// import BlueCarLeftTire from "./images/bluecar left tire.png";
-// import BlueCarRightTire from "./images/bluecar right tire.png";
-// import BlueCarBothTires from "./images/bluecar both tires.png";
-// import GreenCar from "./images/greencar.png";
-// import GreenCarLeftTire from "./images/greencar left tire.png";
-// import GreenCarRightTire from "./images/greencar right tire.png";
-// import GreenCarBothTires from "./images/greencar both tires.png";
+import RedCarLeftTire from "./images/RedCarLeftTire.png";
+import RedCarRightTire from "./images/redcar right tire.png";
+import RedCarBothTires from "./images/redcar both tires.png";
+import BlueCar from "./images/BlueCar.png";
+import BlueCarLeftTire from "./images/bluecar left tire.png";
+import BlueCarRightTire from "./images/bluecar right tire.png";
+import BlueCarBothTires from "./images/bluecar both tires.png";
+import GreenCar from "./images/GreenCar.png";
+import GreenCarLeftTire from "./images/greencar left tire.png";
+import GreenCarRightTire from "./images/greencar right tire.png";
+import GreenCarBothTires from "./images/greencar both tires.png";
 
-// const cars = [
-//     [RedCar, RedCarLeftTire, RedCarRightTire, RedCarBothTires],
-//     [GreenCar, GreenCarLeftTire, GreenCarRightTire, GreenCarBothTires],
-//     [BlueCar, BlueCarLeftTire, BlueCarRightTire, BlueCarBothTires]
-// ];
+const cars = [
+    [RedCar, RedCarLeftTire, RedCarRightTire, RedCarBothTires],
+    [GreenCar, GreenCarLeftTire, GreenCarRightTire, GreenCarBothTires],
+    [BlueCar, BlueCarLeftTire, BlueCarRightTire, BlueCarBothTires]
+];
 const styles: CSSProperties = {
     //width: "200px",
     //height: "300px",
@@ -143,13 +143,23 @@ const Zone: React.FC<ZoneProps> = (props) => {
         ],
         //canDrop: () => canMovePic(x, y),
         //move: () => moveTool(item.title, item.top, item.left),
-        drop: (item: {
-            type: string;
-            pic: string;
-            top: number;
-            left: number;
-            title: string;
-        }) => addPicToBoard(item.pic, item.top, item.left, item.title),
+        drop: (
+            item: {
+                type: string;
+                pic: string;
+                top: number;
+                left: number;
+                title: string;
+            },
+            monitor: DropTargetMonitor
+        ) => {
+            //monitor.getClientOffset
+            const delta = monitor.getDifferenceFromInitialOffset() as XYCoord;
+            const leftt = Math.round(delta.x);
+            const topp = Math.round(delta.y);
+            console.log(item.left, item.top);
+            addPicToBoard(item.pic, topp, leftt, item.title);
+        },
         collect: (monitor) => ({
             isOverr: !!monitor.isOver(),
             canDropp: !!monitor.canDrop()
@@ -213,15 +223,17 @@ const Zone: React.FC<ZoneProps> = (props) => {
                 <div
                     ref={dropp}
                     //className="toolncar"
-                    // style={{
-                    //     backgroundImage: `url(${backgrounds[backgroundIndex]})`
-                    // }}
+                    style={{
+                        backgroundImage: `url(${backgrounds[background]})`
+                    }}
                 >
                     <div
                         ref={drop}
                         className="toolncar"
                         style={{
-                            backgroundImage: `url(${backgrounds[background]}`
+                            backgroundImage: `url(${cars[0][0]}`,
+                            width: 650,
+                            height: 400
                         }}
                     >
                         {console.log(background)}
@@ -234,7 +246,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
                                 title={tools[key].title}
                             />
                         ))}
-                        <img src={RedCar} alt="car model" />
+                        {/* <img src={RedCar} alt="car model" /> */}
                     </div>
                 </div>
                 <div>
