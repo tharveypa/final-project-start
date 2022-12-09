@@ -20,6 +20,14 @@ import { Button } from "react-bootstrap";
 // // import { ItemTypes } from "../constants";DragItem,
 // import Car from "./Car";
 import RedCar from "./images/Redcar.png";
+import City from "./images/City.png";
+import Forest from "./images/Forest.png";
+import Street from "./images/Street.png";
+import Dump from "./images/Dump.png";
+import Mountain from "./images/Mountain.png";
+import Alley from "./images/Alley.png";
+import Cave from "./images/Cave.png";
+import Garage from "./images/Garage.png";
 // import RedCarLeftTire from "./images/redcar left tire.png";
 // import RedCarRightTire from "./images/redcar right tire.png";
 // import RedCarBothTires from "./images/redcar both tires.png";
@@ -55,6 +63,16 @@ type ZoneProps = {
 };
 
 const Zone: React.FC<ZoneProps> = (props) => {
+    const backgrounds = [
+        City,
+        Forest,
+        Street,
+        Dump,
+        Mountain,
+        Alley,
+        Cave,
+        Garage
+    ];
     const { x, y, saveCar, toolery, currAah } = props;
     //const [square, setSquare] = useState<string[]>([]);
     const [aah, setAah] = useState<string>("");
@@ -95,9 +113,25 @@ const Zone: React.FC<ZoneProps> = (props) => {
             canDrop: !!monitor.canDrop()
         })
     });
-    const [background, setBackground] = useState("");
+    const [background, setBackground] = useState(NaN);
     const addBackground = (name: string) => {
-        setBackground("./images/" + name + ".png");
+        if (name === "City") {
+            setBackground(0);
+        } else if (name === "Forest") {
+            setBackground(1);
+        } else if (name === "Street") {
+            setBackground(2);
+        } else if (name === "Dump") {
+            setBackground(3);
+        } else if (name === "Mountain") {
+            setBackground(4);
+        } else if (name === "Alley") {
+            setBackground(5);
+        } else if (name === "Cave") {
+            setBackground(6);
+        } else if (name === "Garage") {
+            setBackground(7);
+        }
     };
 
     const [{ isOverr, canDropp }, dropp] = useDrop({
@@ -179,12 +213,18 @@ const Zone: React.FC<ZoneProps> = (props) => {
                 <div
                     ref={dropp}
                     //className="toolncar"
-                    style={{ backgroundImage: "./images/City.png" }}
                     // style={{
                     //     backgroundImage: `url(${backgrounds[backgroundIndex]})`
                     // }}
                 >
-                    <div ref={drop}>
+                    <div
+                        ref={drop}
+                        className="toolncar"
+                        style={{
+                            backgroundImage: `url(${backgrounds[background]}`
+                        }}
+                    >
+                        {console.log(background)}
                         {Object.keys(tools).map((key: string) => (
                             <Tool
                                 key={key}
