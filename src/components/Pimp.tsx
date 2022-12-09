@@ -14,17 +14,19 @@ import DarkTint from "./images/darktint.png";
 */
 
 const str = [
-    "Wing",
-    "Red",
-    "Blue",
-    "Green",
-    "Yellow",
-    "Purple",
-    "Orange",
-    "LightTint",
-    "MediumTint",
-    "DarkTint"
+    "wing",
+    "red",
+    "blue",
+    "green",
+    "yellow",
+    "purple",
+    "orange",
+    "lighttint",
+    "mediumtint",
+    "darktint"
 ];
+
+/*
 const pimp = [
     "wing",
     "red",
@@ -37,6 +39,7 @@ const pimp = [
     "mediumtint",
     "darktint"
 ];
+*/
 
 const Pimp = () => {
     return (

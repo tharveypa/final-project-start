@@ -44,7 +44,6 @@ const styles: CSSProperties = {
     //position: "relative"
 };
 type CarChanges = Record<string, ToolPos>;
-//type Changes = itemTy
 type ZoneProps = {
     x: number;
     y: number;
@@ -63,7 +62,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
     const [backgroundIndex, setBackgroundIndex] = useState<number>(0);
     const [color, setColor] = useState<number>(0);
     const [{ isOver, canDrop }, drop] = useDrop({
-        accept: ItemTypes.TOOL,
+        accept: [ItemTypes.ONEPOS, ItemTypes.CARS, ItemTypes.BACKS],
         //move: () => moveTool(item.title, item.top, item.left),
         drop: (
             item: {
@@ -75,8 +74,13 @@ const Zone: React.FC<ZoneProps> = (props) => {
             },
             monitor: DropTargetMonitor
         ) => {
-            // if (tl)
-            // addBackground(item.pic, item.type)
+            if (item.type === ItemTypes.BACKS) {
+                //addBackground(something something);
+            } else if (item.type === ItemTypes.CARS) {
+                //changeCar(something something)
+            } else if (item.type === ItemTypes.ONEPOS) {
+                //putOnCar(something something)
+            }
             const delta = monitor.getDifferenceFromInitialOffset() as XYCoord;
             const left = Math.round(item.left + delta.x);
             const top = Math.round(item.top + delta.y);
@@ -89,7 +93,12 @@ const Zone: React.FC<ZoneProps> = (props) => {
         })
     });
     const [{ isOverr, canDropp }, dropp] = useDrop({
-        accept: ItemTypes.PIC,
+        accept: [
+            ItemTypes.DROPS
+            // ItemTypes.ONEPOS,
+            // ItemTypes.CARS,
+            // ItemTypes.BACKS
+        ],
         //canDrop: () => canMovePic(x, y),
         //move: () => moveTool(item.title, item.top, item.left),
         drop: (item: {

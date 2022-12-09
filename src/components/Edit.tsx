@@ -12,15 +12,17 @@ import Garage from "./images/garage.png";
 */
 
 const str = [
-    "City",
-    "Forest",
-    "Street",
-    "Dump",
-    "Mountain",
-    "Alley",
-    "Cave",
-    "Garage"
+    "city",
+    "forest",
+    "street",
+    "dump",
+    "mountain",
+    "alley",
+    "cave",
+    "garage"
 ];
+
+/*
 const edit = [
     "city",
     "forest",
@@ -31,6 +33,7 @@ const edit = [
     "cave",
     "garage"
 ];
+*/
 
 const Edit = () => {
     return (

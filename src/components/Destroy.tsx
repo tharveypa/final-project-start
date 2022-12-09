@@ -12,15 +12,28 @@ import BreakWindows from "./images/hammer.png";
 */
 
 const str = [
-    "BrownDirt",
-    "BlackDirt",
-    "TanDirt",
-    "WhitePoop",
-    "BrownPoop",
-    "GreenPoop",
+    "browndirt",
+    "blackdirt",
+    "tandirt",
+    "whitepoop",
+    "brownpoop",
+    "greenpoop",
     "SlashTires",
     "BreakWindows"
 ];
+
+/*
+const destroy = [
+    "browndirt",
+    "blackdirt",
+    "tandirt",
+    "whitepoop",
+    "brownpoop",
+    "greenpoop",
+    "SlashTires",
+    "BreakWindows"
+];
+*/
 
 const Destroy = () => {
     return (

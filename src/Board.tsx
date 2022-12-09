@@ -114,6 +114,7 @@ const Board: React.FC<BoardProps> = (props) => {
             <DndProvider backend={HTML5Backend}>
                 <div>
                     <PimpVsDestroy />
+
                     <div className="getinlineplz">
                         <Zone
                             x={0}
