@@ -5,8 +5,8 @@ import ShineCar from "./images/shine.png";
 import FillTires from "./images/pump.png";
 import RepairWindows from "./images/glassrepair.png";
 
-const clean = [WipeCar, ShineCar, FillTires, RepairWindows];
-const str = ["towel", "shine", "pump", "glassrepair"];
+const str = ["Wipe Car", "Shine Car", "Fill Tires", "Repair Windows"];
+const clean = ["towel", "shine", "pump", "glassrepair"];
 
 const Clean = () => {
     return (
@@ -18,8 +18,10 @@ const Clean = () => {
                         <div key={t.toString()}>
                             {console.log(t)}
                             <CarSquare
-                                pic={clean[i]}
-                                description={str[i]}
+                                pic={t}
+                                title={str[i]}
+                                top={0}
+                                left={0}
                             ></CarSquare>
                         </div>
                     )

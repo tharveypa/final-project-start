@@ -1,16 +1,25 @@
 import React from "react";
 import CarSquare from "./CarSquare";
-import City from "./images/city.jpg";
-import Forest from "./images/forest.jpg";
-import Street from "./images/street.jpg";
-import Dump from "./images/dump.jpg";
-import Mountain from "./images/mountain.jpg";
-import Alley from "./images/alley.jpg";
-import Cave from "./images/cave.jpg";
-import Garage from "./images/garage.jpg";
+import City from "./images/city.png";
+import Forest from "./images/forest.png";
+import Street from "./images/street.png";
+import Dump from "./images/dump.png";
+import Mountain from "./images/mountain.png";
+import Alley from "./images/alley.png";
+import Cave from "./images/cave.png";
+import Garage from "./images/garage.png";
 
-const edit = [City, Forest, Street, Dump, Mountain, Alley, Cave, Garage];
 const str = [
+    "City",
+    "Forest",
+    "Street",
+    "Dump",
+    "Mountain",
+    "Alley",
+    "Cave",
+    "Garage"
+];
+const edit = [
     "city",
     "forest",
     "street",
@@ -31,8 +40,10 @@ const Edit = () => {
                         <div key={t.toString()}>
                             {console.log(t)}
                             <CarSquare
-                                pic={edit[i]}
-                                description={str[i]}
+                                pic={t}
+                                title={str[i]}
+                                top={0}
+                                left={0}
                             ></CarSquare>
                         </div>
                     )

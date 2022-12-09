@@ -14,7 +14,7 @@ export function PimpVsDestroy(): JSX.Element {
             {modeNum == 2 && <div>{Destroy()}</div>}
             {modeNum == 3 && <div>{Clean()}</div>}
             <Button onClick={() => setModeNum((modeNum + 1) % 4)}>
-                Change Mode (Edit / Destroy / Clean / Pimp)
+                Change Mode (Edit / Pimp / Destroy / Clean)
             </Button>
         </div>
     );

@@ -9,17 +9,17 @@ import GreenPoop from "./images/greenpoop.png";
 import SlashTires from "./images/slash.png";
 import BreakWindows from "./images/hammer.png";
 
-const destroy = [
-    BrownDirt,
-    BlackDirt,
-    TanDirt,
-    WhitePoop,
-    BrownPoop,
-    GreenPoop,
-    SlashTires,
-    BreakWindows
-];
 const str = [
+    "Brown Dirt",
+    "Black Dirt",
+    "Tan Dirt",
+    "White Poop",
+    "Brown Poop",
+    "Green Poop",
+    "Slash Tires",
+    "Break Windows"
+];
+const destroy = [
     "browndirt",
     "blackdirt",
     "tandirt",
@@ -27,7 +27,7 @@ const str = [
     "brownpoop",
     "greenpoop",
     "slash",
-    "breakwindows"
+    "hammer"
 ];
 
 const Destroy = () => {
@@ -38,6 +38,7 @@ const Destroy = () => {
                 {destroy.map(
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
+                            {console.log(t)}
                             <CarSquare
                                 pic={t}
                                 title={str[i]}

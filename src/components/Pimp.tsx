@@ -11,28 +11,28 @@ import LightTint from "./images/lighttint.png";
 import MidTint from "./images/mediumtint.png";
 import DarkTint from "./images/darktint.png";
 
-const pimp = [
-    Wing,
-    Red,
-    Yellow,
-    Green,
-    Blue,
-    Purple,
-    Orange,
-    LightTint,
-    MidTint,
-    DarkTint
-];
 const str = [
+    "Wing",
+    "Red",
+    "Blue",
+    "Green",
+    "Yellow",
+    "Purple",
+    "Orange",
+    "Light Tint",
+    "Medium Tint",
+    "DarkTint"
+];
+const pimp = [
     "wing",
     "red",
-    "yellow",
-    "green",
     "blue",
+    "green",
+    "yellow",
     "purple",
     "orange",
     "lighttint",
-    "midtint",
+    "mediumtint",
     "darktint"
 ];
 
@@ -44,6 +44,7 @@ const Pimp = () => {
                 {pimp.map(
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
+                            {console.log(t)}
                             <CarSquare
                                 pic={t}
                                 title={str[i]}
