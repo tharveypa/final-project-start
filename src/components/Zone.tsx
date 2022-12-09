@@ -29,16 +29,16 @@ import Alley from "./images/Alley.png";
 import Cave from "./images/Cave.png";
 import Garage from "./images/Garage.png";
 import RedCarLeftTire from "./images/RedCarLeftTire.png";
-import RedCarRightTire from "./images/redcar right tire.png";
-import RedCarBothTires from "./images/redcar both tires.png";
+import RedCarRightTire from "./images/RedCarRightTire.png";
+import RedCarBothTires from "./images/RedCarBothTires.png";
 import BlueCar from "./images/BlueCar.png";
-import BlueCarLeftTire from "./images/bluecar left tire.png";
-import BlueCarRightTire from "./images/bluecar right tire.png";
-import BlueCarBothTires from "./images/bluecar both tires.png";
+import BlueCarLeftTire from "./images/BlueCarLeftTire.png";
+import BlueCarRightTire from "./images/BlueCarRightTire.png";
+import BlueCarBothTires from "./images/BlueCarBothTires.png";
 import GreenCar from "./images/GreenCar.png";
-import GreenCarLeftTire from "./images/greencar left tire.png";
-import GreenCarRightTire from "./images/greencar right tire.png";
-import GreenCarBothTires from "./images/greencar both tires.png";
+import GreenCarLeftTire from "./images/GreenCarLeftTire.png";
+import GreenCarRightTire from "./images/GreenCarRightTire.png";
+import GreenCarBothTires from "./images/GreenCarBothTires.png";
 
 const cars = [
     [RedCar, RedCarLeftTire, RedCarRightTire, RedCarBothTires],
