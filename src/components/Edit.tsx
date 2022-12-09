@@ -1,5 +1,6 @@
 import React from "react";
 import CarSquare from "./CarSquare";
+/*
 import City from "./images/city.png";
 import Forest from "./images/forest.png";
 import Street from "./images/street.png";
@@ -8,6 +9,7 @@ import Mountain from "./images/mountain.png";
 import Alley from "./images/alley.png";
 import Cave from "./images/cave.png";
 import Garage from "./images/garage.png";
+*/
 
 const str = [
     "City",
@@ -36,6 +38,7 @@ const Edit = () => {
             <h1>Edit Mode</h1>
             <p>
                 {edit.map(
+                    // eslint-disable-next-line no-extra-parens
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
                             {console.log(t)}

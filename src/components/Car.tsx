@@ -33,6 +33,7 @@ import Overlay from "../Overlay";
 import CarSquare from "./CarSquare";
 import ToolinBox from "./ToolinBox";
 
+
 type CarChanges = Record<string, ToolPos>;
 export type CarProps = {
     saveCar: (car: number, toolname: string, changes: CarChanges) => void;
