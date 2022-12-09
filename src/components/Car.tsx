@@ -1,4 +1,5 @@
 /* eslint-disable no-extra-parens */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import RedCar from "./images/redcar.png";
 import RedCarLeftTire from "./images/redcar left tire.png";
 import RedCarRightTire from "./images/redcar right tire.png";

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import { DragSourceMonitor, useDrag } from "react-dnd";
 import { ItemTypes } from "../constants";
