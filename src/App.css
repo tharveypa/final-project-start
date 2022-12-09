@@ -59,10 +59,10 @@
 .container {
     display: inline-block;
     position: relative;
-    border: 1px solid black;
+    border: 5px solid black;
     /* background-image: url("bluecar.png"); */
     height: 700px;
-    width: 700px;
+    width: 1000px;
     overflow: hidden;
 }
 .car {

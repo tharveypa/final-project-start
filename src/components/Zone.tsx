@@ -110,7 +110,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
         // if(tools[aah])
         setAah(aah + "a");
         setTools({
-            ...toolery,
+            ...tools,
             [aah]: { top: top, left: left, title: title }
         });
 
