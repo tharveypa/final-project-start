@@ -9,9 +9,9 @@ export function PimpVsDestroy(): JSX.Element {
     const [modeNum, setModeNum] = useState<number>(0);
     return (
         <div>
-            {/* {modeNum == 0 && <div>{Edit()}</div>}
+            {modeNum == 0 && <div>{Edit()}</div>}
             {modeNum == 1 && <div>{Pimp()}</div>}
-            {modeNum == 2 && <div>{Destroy()}</div>} */}
+            {modeNum == 2 && <div>{Destroy()}</div>}
             {modeNum == 3 && <div>{Clean()}</div>}
             <Button onClick={() => setModeNum((modeNum + 1) % 4)}>
                 Change Mode (Edit / Pimp / Destroy / Clean)

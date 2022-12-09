@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {
     useState,
     useEffect,
@@ -189,7 +190,6 @@ const Zone: React.FC<ZoneProps> = (props) => {
                             //position: "relative"
                         }}
                     >
-                        {/* <img src={RedCar} alt="car model" /> */}
                         {Object.keys(tools).map((key: string) => (
                             <Tool
                                 key={key}
