@@ -9,7 +9,7 @@ const Clean = () => {
         <div>
             <h1>Clean Mode</h1>
             <p>
-                {str.map(
+                {clean.map(
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
                             {console.log(t)}

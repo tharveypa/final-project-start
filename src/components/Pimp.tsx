@@ -43,7 +43,7 @@ const Pimp = () => {
         <div>
             <h1>Pimp Mode</h1>
             <p>
-                {str.map(
+                {pimp.map(
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
                             {console.log(t)}
