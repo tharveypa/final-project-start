@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {
     useState,
     useEffect,
@@ -28,17 +29,24 @@ import Mountain from "./images/Mountain.png";
 import Alley from "./images/Alley.png";
 import Cave from "./images/Cave.png";
 import Garage from "./images/Garage.png";
-import RedCarLeftTire from "./images/RedCarLeftTire.png";
-import RedCarRightTire from "./images/RedCarRightTire.png";
+// import RedCarLeftTire from "./images/redcar left tire.png";
+// import RedCarRightTire from "./images/redcar right tire.png";
 import RedCarBothTires from "./images/RedCarBothTires.png";
 import BlueCar from "./images/BlueCar.png";
-import BlueCarLeftTire from "./images/BlueCarLeftTire.png";
-import BlueCarRightTire from "./images/BlueCarRightTire.png";
+// import BlueCarLeftTire from "./images/bluecar left tire.png";
+// import BlueCarRightTire from "./images/bluecar right tire.png";
 import BlueCarBothTires from "./images/BlueCarBothTires.png";
 import GreenCar from "./images/GreenCar.png";
-import GreenCarLeftTire from "./images/GreenCarLeftTire.png";
-import GreenCarRightTire from "./images/GreenCarRightTire.png";
+// import GreenCarLeftTire from "./images/greencar left tire.png";
+// import GreenCarRightTire from "./images/greencar right tire.png";
 import GreenCarBothTires from "./images/GreenCarBothTires.png";
+import YellowCar from "./images/YellowCar.png";
+import YellowCarBothTires from "./images/YellowCarBothTires.png";
+import PurpleCar from "./images/PurpleCar.png";
+import PurpleCarBothTires from "./images/PurpleCarBothTires.png";
+import OrangeCar from "./images/OrangeCar.png";
+import OrangeCarBothTires from "./images/OrangeCarBothTires.png";
+
 
 const cars = [
     [RedCar, RedCarLeftTire, RedCarRightTire, RedCarBothTires],
@@ -73,6 +81,15 @@ const Zone: React.FC<ZoneProps> = (props) => {
         Cave,
         Garage
     ];
+    const cars = [
+        [RedCar, RedCarBothTires],
+        [BlueCar, BlueCarBothTires],
+        [GreenCar, GreenCarBothTires],
+        [YellowCar, YellowCarBothTires],
+        [PurpleCar, PurpleCarBothTires],
+        [OrangeCar, OrangeCarBothTires]
+    ];
+    
     const { x, y, saveCar, toolery, currAah } = props;
     //const [square, setSquare] = useState<string[]>([]);
     const [aah, setAah] = useState<string>("");
@@ -98,10 +115,14 @@ const Zone: React.FC<ZoneProps> = (props) => {
             if (item.type === ItemTypes.BACKS) {
                 addBackground(item.title);
             } else if (item.type === ItemTypes.CARS) {
-                //changeCar(something something)
-            } else if (item.type === ItemTypes.ONEPOS) {
+                changeCarImage(item.title);
+                }
+            }
+            /* 
+            else if (item.type === ItemTypes.ONEPOS) {
                 //putOnCar(something something)
             }
+            */
             const delta = monitor.getDifferenceFromInitialOffset() as XYCoord;
             const left = Math.round(item.left + delta.x);
             const top = Math.round(item.top + delta.y);
@@ -133,6 +154,34 @@ const Zone: React.FC<ZoneProps> = (props) => {
             setBackground(7);
         }
     };
+    const [colorNum, setColorNum] = useState(0);
+    const [tireNum, setTireNum] = useState(0);
+    const changeCarImage = (name: string) => {
+        if (name === "FillTires"){
+            setTireNum(0);
+        }
+        else if (name === "SlashTires"){
+            setTireNum(1);
+        }
+        else if (name === "Red"){
+            setColorNum(0);
+        }
+        else if (name === "Blue"){
+            setColorNum(1);
+        }
+        else if (name === "Green"){
+            setColorNum(2);
+        }
+        else if (name === "Yellow"){
+            setColorNum(3);
+        }
+        else if (name === "Purple"){
+            setColorNum(4);
+        }
+        else if (name === "Orange"){
+            setColorNum(5);
+        }
+    }
 
     const [{ isOverr, canDropp }, dropp] = useDrop({
         accept: [
@@ -216,6 +265,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
     const clear = () => {
         setTools({});
     };
+
     return (
         <>
             {" "}
@@ -236,7 +286,6 @@ const Zone: React.FC<ZoneProps> = (props) => {
                             height: 400
                         }}
                     >
-                        {console.log(background)}
                         {Object.keys(tools).map((key: string) => (
                             <Tool
                                 key={key}
@@ -247,6 +296,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
                             />
                         ))}
                         {/* <img src={RedCar} alt="car model" /> */}
+
                     </div>
                 </div>
                 <div>

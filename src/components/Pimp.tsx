@@ -1,5 +1,6 @@
 import React from "react";
 import CarSquare from "./CarSquare";
+/*
 import Wing from "./images/wing.png";
 import Red from "./images/red.png";
 import Blue from "./images/blue.png";
@@ -8,8 +9,9 @@ import Yellow from "./images/yellow.png";
 import Purple from "./images/purple.png";
 import Orange from "./images/orange.png";
 import LightTint from "./images/lighttint.png";
-import MidTint from "./images/mediumtint.png";
+import MediumTint from "./images/mediumtint.png";
 import DarkTint from "./images/darktint.png";
+*/
 
 const str = [
     "Wing",
@@ -20,9 +22,11 @@ const str = [
     "Purple",
     "Orange",
     "LightTint",
-    "MediumTint",
-    "DarkTint"
+    "Mediumtint",
+    "Darktint"
 ];
+
+/*
 const pimp = [
     "wing",
     "red",
@@ -35,6 +39,7 @@ const pimp = [
     "mediumtint",
     "darktint"
 ];
+*/
 
 const Pimp = () => {
     return (
@@ -42,6 +47,7 @@ const Pimp = () => {
             <h1>Pimp Mode</h1>
             <p>
                 {str.map(
+                    // eslint-disable-next-line no-extra-parens
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
                             {console.log(t)}
