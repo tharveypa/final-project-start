@@ -106,6 +106,7 @@ const Board: React.FC<BoardProps> = (props) => {
     return (
         <>
             <div>
+                {/* eslint-disable-next-line no-extra-parens*/}
                 {Object.keys(cars).map((key: string) => (
                     <Button key={key}>Car {key}</Button>
                 ))}
