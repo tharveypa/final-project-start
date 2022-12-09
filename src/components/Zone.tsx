@@ -17,26 +17,26 @@ import type { ToolPos } from "./interfaces";
 // import { useDrop } from "react-dnd";
 import Tool from "./Tool";
 import { Button } from "react-bootstrap";
-// import { ItemTypes } from "../constants";DragItem,
-import Car from "./Car";
-import RedCar from "./images/redcar.png";
-import RedCarLeftTire from "./images/redcar left tire.png";
-import RedCarRightTire from "./images/redcar right tire.png";
-import RedCarBothTires from "./images/redcar both tires.png";
-import BlueCar from "./images/bluecar.png";
-import BlueCarLeftTire from "./images/bluecar left tire.png";
-import BlueCarRightTire from "./images/bluecar right tire.png";
-import BlueCarBothTires from "./images/bluecar both tires.png";
-import GreenCar from "./images/greencar.png";
-import GreenCarLeftTire from "./images/greencar left tire.png";
-import GreenCarRightTire from "./images/greencar right tire.png";
-import GreenCarBothTires from "./images/greencar both tires.png";
+// // import { ItemTypes } from "../constants";DragItem,
+// import Car from "./Car";
+import RedCar from "./images/Redcar.png";
+// import RedCarLeftTire from "./images/redcar left tire.png";
+// import RedCarRightTire from "./images/redcar right tire.png";
+// import RedCarBothTires from "./images/redcar both tires.png";
+// import BlueCar from "./images/bluecar.png";
+// import BlueCarLeftTire from "./images/bluecar left tire.png";
+// import BlueCarRightTire from "./images/bluecar right tire.png";
+// import BlueCarBothTires from "./images/bluecar both tires.png";
+// import GreenCar from "./images/greencar.png";
+// import GreenCarLeftTire from "./images/greencar left tire.png";
+// import GreenCarRightTire from "./images/greencar right tire.png";
+// import GreenCarBothTires from "./images/greencar both tires.png";
 
-const cars = [
-    [RedCar, RedCarLeftTire, RedCarRightTire, RedCarBothTires],
-    [GreenCar, GreenCarLeftTire, GreenCarRightTire, GreenCarBothTires],
-    [BlueCar, BlueCarLeftTire, BlueCarRightTire, BlueCarBothTires]
-];
+// const cars = [
+//     [RedCar, RedCarLeftTire, RedCarRightTire, RedCarBothTires],
+//     [GreenCar, GreenCarLeftTire, GreenCarRightTire, GreenCarBothTires],
+//     [BlueCar, BlueCarLeftTire, BlueCarRightTire, BlueCarBothTires]
+// ];
 const styles: CSSProperties = {
     //width: "200px",
     //height: "300px",
@@ -78,7 +78,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
             monitor: DropTargetMonitor
         ) => {
             if (item.type === ItemTypes.BACKS) {
-                //addBackground(something something);
+                addBackground(item.title);
             } else if (item.type === ItemTypes.CARS) {
                 //changeCar(something something)
             } else if (item.type === ItemTypes.ONEPOS) {
@@ -95,6 +95,11 @@ const Zone: React.FC<ZoneProps> = (props) => {
             canDrop: !!monitor.canDrop()
         })
     });
+    const [background, setBackground] = useState("");
+    const addBackground = (name: string) => {
+        setBackground("./images/" + name + ".png");
+    };
+
     const [{ isOverr, canDropp }, dropp] = useDrop({
         accept: [
             ItemTypes.DROPS
@@ -149,76 +154,6 @@ const Zone: React.FC<ZoneProps> = (props) => {
         },
         [tools, setTools]
     );
-    // const addImageToBoard = (pic: string) => {
-    //     const p = pics.filter((picture) => pic === picture);
-    //     setSquare((square) => [...square, p[0]]);
-    // };
-    // const containerRef = useRef<HTMLDivElement>(null);
-    // const boxRef = useRef<HTMLDivElement>(null);
-    // // const dirt = (
-    // //     <div ref={boxRef} className="box">
-    // //         <img src={Dirt} alt="dirt" />
-    // //     </div>
-    // // );
-    // const [tools, setTools] = useState<JSX.Element[]>([]);
-    // const isClicked = useRef<boolean>(false);
-
-    // const coords = useRef<{
-    //     startX: number;
-    //     startY: number;
-    //     lastX: number;
-    //     lastY: number;
-    // }>({
-    //     startX: props.x,
-    //     startY: props.y,
-    //     lastX: 0,
-    //     lastY: 0
-    // });
-
-    // useEffect(() => {
-    //     if (!boxRef.current || !containerRef.current) return;
-
-    //     const box = boxRef.current;
-    //     const container = containerRef.current;
-
-    //     const onMouseDown = (e: MouseEvent) => {
-    //         isClicked.current = true;
-    //         coords.current.startX = e.clientX;
-    //         coords.current.startY = e.clientY;
-    //     };
-
-    //     const onMouseUp = (e: MouseEvent) => {
-    //         isClicked.current = false;
-    //         coords.current.lastX = box.offsetLeft;
-    //         coords.current.lastY = box.offsetTop;
-    //     };
-
-    //     const onMouseMove = (e: MouseEvent) => {
-    //         if (!isClicked.current) return;
-
-    //         const nextX =
-    //             e.clientX - coords.current.startX + coords.current.lastX;
-    //         const nextY =
-    //             e.clientY - coords.current.startY + coords.current.lastY;
-
-    //         box.style.top = `${nextY}px`;
-    //         box.style.left = `${nextX}px`;
-    //     };
-
-    //     box.addEventListener("mousedown", onMouseDown);
-    //     box.addEventListener("mouseup", onMouseUp);
-    //     container.addEventListener("mousemove", onMouseMove);
-    //     container.addEventListener("mouseleave", onMouseUp);
-
-    //     const cleanup = () => {
-    //         box.removeEventListener("mousedown", onMouseDown);
-    //         box.removeEventListener("mouseup", onMouseUp);
-    //         container.removeEventListener("mousemove", onMouseMove);
-    //         container.removeEventListener("mouseleave", onMouseUp);
-    //     };
-
-    //     return cleanup;
-    // }, []);
     const addTool = (t: string) => {
         //tool: string,
         // top: number,
@@ -237,19 +172,19 @@ const Zone: React.FC<ZoneProps> = (props) => {
     const clear = () => {
         setTools({});
     };
-    const [backgroundIndex, setBackgroundIndex] = useState(0);
     return (
         <>
             {" "}
             <div>
                 <div
                     ref={dropp}
-                    className="toolncar"
+                    //className="toolncar"
+                    style={{ backgroundImage: "./images/City.png" }}
                     // style={{
                     //     backgroundImage: `url(${backgrounds[backgroundIndex]})`
                     // }}
                 >
-                    <div ref={drop} style={styles}>
+                    <div ref={drop}>
                         {Object.keys(tools).map((key: string) => (
                             <Tool
                                 key={key}
