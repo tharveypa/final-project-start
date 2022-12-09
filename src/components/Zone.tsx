@@ -251,6 +251,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
                     // }}
                 >
                     <div ref={drop} style={styles}>
+                        {/* eslint-disable-next-line no-extra-parens*/}
                         {Object.keys(tools).map((key: string) => (
                             <Tool
                                 key={key}
