@@ -152,6 +152,14 @@ const Board: React.FC<BoardProps> = (props) => {
                                 currAah={aah}
                                 saveCar={saveCar}
                             />
+                            <div>
+                                {pos.map(
+                                    // eslint-disable-next-line no-extra-parens
+                                    (e: number): JSX.Element => (
+                                        <div key={e}> {e} </div>
+                                    )
+                                )}
+                            </div>
                         </div>
                         {/* <div
                             //key={i}
