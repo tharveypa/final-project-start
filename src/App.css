@@ -46,7 +46,8 @@
 .toolncar {
     font-size: large;
     font-weight: 500;
-    border: 1px solid black
+    border: 1px solid black;
+    background-image: "./images/City.png"
 
 }
 .toolkit {
@@ -62,7 +63,7 @@
     border: 5px solid black;
     /* background-image: url("bluecar.png"); */
     height: 700px;
-    width: 1000px;
+    width: 700px;
     overflow: hidden;
 }
 .car {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { CSSProperties, Fragment } from "react";
 import type { FC, ReactNode } from "react";
 import { DragSourceMonitor, useDrag } from "react-dnd";
@@ -31,6 +32,7 @@ export const Tool: FC<ToolProps> = (props) => {
     const [{ isDragging }, drag] = useDrag({
         item: {
             type: ItemTypes.BACKS,
+
             id: id,
             top: top,
             left: left

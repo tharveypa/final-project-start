@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {
     useState,
     useEffect,
@@ -19,18 +20,32 @@ import Tool from "./Tool";
 import { Button } from "react-bootstrap";
 // // import { ItemTypes } from "../constants";DragItem,
 // import Car from "./Car";
-import RedCar from "./images/redcar.png";
+import RedCar from "./images/RedCar.png";
+import City from "./images/City.png";
+import Forest from "./images/Forest.png";
+import Street from "./images/Street.png";
+import Dump from "./images/Dump.png";
+import Mountain from "./images/Mountain.png";
+import Alley from "./images/Alley.png";
+import Cave from "./images/Cave.png";
+import Garage from "./images/Garage.png";
 // import RedCarLeftTire from "./images/redcar left tire.png";
 // import RedCarRightTire from "./images/redcar right tire.png";
-// import RedCarBothTires from "./images/redcar both tires.png";
-// import BlueCar from "./images/bluecar.png";
+import RedCarBothTires from "./images/redcar both tires.png";
+import BlueCar from "./images/bluecar.png";
 // import BlueCarLeftTire from "./images/bluecar left tire.png";
 // import BlueCarRightTire from "./images/bluecar right tire.png";
-// import BlueCarBothTires from "./images/bluecar both tires.png";
-// import GreenCar from "./images/greencar.png";
+import BlueCarBothTires from "./images/bluecar both tires.png";
+import GreenCar from "./images/greencar.png";
 // import GreenCarLeftTire from "./images/greencar left tire.png";
 // import GreenCarRightTire from "./images/greencar right tire.png";
-// import GreenCarBothTires from "./images/greencar both tires.png";
+import GreenCarBothTires from "./images/greencar both tires.png";
+import YellowCar from "./images/yellow car.png";
+import YellowCarBothTires from "./images/yellow car both tires.png";
+import PurpleCar from "./images/purple car.png";
+import PurpleCarBothTires from "./images/purple car both tires.png";
+import OrangeCar from "./images/orange car.png";
+import OrangeCarBothTires from "./images/orange car both tires.png";
 
 // const cars = [
 //     [RedCar, RedCarLeftTire, RedCarRightTire, RedCarBothTires],
@@ -55,6 +70,25 @@ type ZoneProps = {
 };
 
 const Zone: React.FC<ZoneProps> = (props) => {
+    const backgrounds = [
+        City,
+        Forest,
+        Street,
+        Dump,
+        Mountain,
+        Alley,
+        Cave,
+        Garage
+    ];
+    const cars = [
+        [RedCar, RedCarBothTires],
+        [BlueCar, BlueCarBothTires],
+        [GreenCar, GreenCarBothTires],
+        [YellowCar, YellowCarBothTires],
+        [PurpleCar, PurpleCarBothTires],
+        [OrangeCar, OrangeCarBothTires]
+    ];
+    
     const { x, y, saveCar, toolery, currAah } = props;
     //const [square, setSquare] = useState<string[]>([]);
     const [aah, setAah] = useState<string>("");
@@ -80,10 +114,14 @@ const Zone: React.FC<ZoneProps> = (props) => {
             if (item.type === ItemTypes.BACKS) {
                 addBackground(item.title);
             } else if (item.type === ItemTypes.CARS) {
-                //changeCar(something something)
-            } else if (item.type === ItemTypes.ONEPOS) {
+                changeCarImage(item.title);
+                }
+            }
+            /* 
+            else if (item.type === ItemTypes.ONEPOS) {
                 //putOnCar(something something)
             }
+            */
             const delta = monitor.getDifferenceFromInitialOffset() as XYCoord;
             const left = Math.round(item.left + delta.x);
             const top = Math.round(item.top + delta.y);
@@ -95,10 +133,54 @@ const Zone: React.FC<ZoneProps> = (props) => {
             canDrop: !!monitor.canDrop()
         })
     });
-    const [background, setBackground] = useState("");
+    const [background, setBackground] = useState(NaN);
     const addBackground = (name: string) => {
-        setBackground("./images/" + name + ".png");
+        if (name === "City") {
+            setBackground(0);
+        } else if (name === "Forest") {
+            setBackground(1);
+        } else if (name === "Street") {
+            setBackground(2);
+        } else if (name === "Dump") {
+            setBackground(3);
+        } else if (name === "Mountain") {
+            setBackground(4);
+        } else if (name === "Alley") {
+            setBackground(5);
+        } else if (name === "Cave") {
+            setBackground(6);
+        } else if (name === "Garage") {
+            setBackground(7);
+        }
     };
+    const [colorNum, setColorNum] = useState(0);
+    const [tireNum, setTireNum] = useState(0);
+    const changeCarImage = (name: string) => {
+        if (name === "FillTires"){
+            setTireNum(0);
+        }
+        else if (name === "SlashTires"){
+            setTireNum(1);
+        }
+        else if (name === "Red"){
+            setColorNum(0);
+        }
+        else if (name === "Blue"){
+            setColorNum(1);
+        }
+        else if (name === "Green"){
+            setColorNum(2);
+        }
+        else if (name === "Yellow"){
+            setColorNum(3);
+        }
+        else if (name === "Purple"){
+            setColorNum(4);
+        }
+        else if (name === "Orange"){
+            setColorNum(5);
+        }
+    }
 
     const [{ isOverr, canDropp }, dropp] = useDrop({
         accept: [
@@ -172,6 +254,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
     const clear = () => {
         setTools({});
     };
+
     return (
         <>
             {" "}
@@ -179,12 +262,17 @@ const Zone: React.FC<ZoneProps> = (props) => {
                 <div
                     ref={dropp}
                     //className="toolncar"
-                    style={{ backgroundImage: "./images/City.png" }}
                     // style={{
                     //     backgroundImage: `url(${backgrounds[backgroundIndex]})`
                     // }}
                 >
-                    <div ref={drop}>
+                    <div
+                        ref={drop}
+                        className="toolncar"
+                        style={{
+                            backgroundImage: `url(${backgrounds[background]}`
+                        }}
+                    >
                         {Object.keys(tools).map((key: string) => (
                             <Tool
                                 key={key}
@@ -194,7 +282,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
                                 title={tools[key].title}
                             />
                         ))}
-                        <img src={RedCar} alt="car model" />
+                        <img src={cars[colorNum][tireNum]} alt="car model" />
                     </div>
                 </div>
                 <div>

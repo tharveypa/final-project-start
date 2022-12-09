@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useRef, useState } from "react";
 import Pic from "./Pic";
 import { DndProvider } from "react-dnd";
@@ -106,6 +107,7 @@ const Board: React.FC<BoardProps> = (props) => {
     return (
         <>
             <div>
+                {/* eslint-disable-next-line no-extra-parens*/}
                 {Object.keys(cars).map((key: string) => (
                     <Button key={key}>Car {key}</Button>
                 ))}

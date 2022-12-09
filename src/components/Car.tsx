@@ -1,4 +1,5 @@
 /* eslint-disable no-extra-parens */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import RedCar from "./images/redcar.png";
 import RedCarLeftTire from "./images/redcar left tire.png";
 import RedCarRightTire from "./images/redcar right tire.png";
@@ -44,6 +45,7 @@ export type CarProps = {
 export const Car: React.FC<CarProps> = (props) => {
     const { color, clean, tirefill, window } = props;
     const backgrounds = [Street, City, Forest];
+    /*
     const cars = [
         [RedCar, RedCarLeftTire, RedCarRightTire, RedCarBothTires],
         [GreenCar, GreenCarLeftTire, GreenCarRightTire, GreenCarBothTires],
@@ -51,6 +53,7 @@ export const Car: React.FC<CarProps> = (props) => {
     ];
     const [colorNum, setColorNum] = useState(0);
     const [tireNum, setTireNum] = useState(0);
+    */
     const [backgroundIndex, setBackgroundIndex] = useState(0);
     const [aah, setAah] = useState<string>("");
     const [tools, setTools] = useState<CarChanges>({});
