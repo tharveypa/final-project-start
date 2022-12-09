@@ -22,12 +22,23 @@ const str = [
     "BreakWindows"
 ];
 
+const destroy = [
+    "browndirt",
+    "blackdirt",
+    "tandirt",
+    "whitepoop",
+    "brownpoop",
+    "greenpoop",
+    "SlashTires",
+    "BreakWindows"
+];
+
 const Destroy = () => {
     return (
         <div>
             <h1>Destroy Mode</h1>
             <p>
-                {str.map(
+                {destroy.map(
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
                             {console.log(t)}

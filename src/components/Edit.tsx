@@ -37,8 +37,7 @@ const Edit = () => {
         <div>
             <h1>Edit Mode</h1>
             <p>
-                {str.map(
-
+                {edit.map(
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
                             {console.log(t)}
