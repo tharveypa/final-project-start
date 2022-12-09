@@ -30,7 +30,7 @@ export const Tool: FC<ToolProps> = (props) => {
     const { id, left, top, title, children } = props;
     const [{ isDragging }, drag] = useDrag({
         item: {
-            type: ItemTypes.DROPS,
+            type: ItemTypes.TOOL,
             id: id,
             top: top,
             left: left
