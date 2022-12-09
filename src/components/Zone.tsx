@@ -237,6 +237,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
                             setAah={setAah}
                             setTools={setTools}
                         ></BoardSquare> */}
+                        {/* eslint-disable-next-line no-extra-parens */}
                         {Object.keys(tools).map((key: string) => (
                             <Tool
                                 key={key}
