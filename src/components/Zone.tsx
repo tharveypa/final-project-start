@@ -18,9 +18,10 @@ import type { ToolPos } from "./interfaces";
 // import { useDrop } from "react-dnd";
 import Tool from "./Tool";
 import { Button } from "react-bootstrap";
-
+import Overlay from "../Overlay";
 import { backgrounds, cars } from "./interfacing/ImageRenders";
 
+import "./images/RedCar.png";
 const styles: CSSProperties = {
     //width: "200px",
     //height: "300px",
@@ -52,6 +53,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
     const [color, setColor] = useState<number>(0);
     const [colorNum, setColorNum] = useState(0);
     const [tireNum, setTireNum] = useState(0);
+    const [tintNum, setTintNum] = useState(0);
     const [background, setBackground] = useState(7);
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: [ItemTypes.TOOL],
@@ -113,6 +115,12 @@ const Zone: React.FC<ZoneProps> = (props) => {
             setColorNum(4);
         } else if (name === "Orange") {
             setColorNum(5);
+        } else if (name === "LightTint") {
+            setTintNum(1);
+        } else if (name === "MediumTint") {
+            setTintNum(2);
+        } else if (name === "DarkTint") {
+            setTintNum(3);
         }
     };
 
@@ -123,6 +131,8 @@ const Zone: React.FC<ZoneProps> = (props) => {
             ItemTypes.CARS,
             ItemTypes.BACKS
         ],
+        //,ItemTypes.DRAGS,
+
         //canDrop: () => canMovePic(x, y),
         //move: () => moveTool(item.title, item.top, item.left),
         drop: (
@@ -167,11 +177,18 @@ const Zone: React.FC<ZoneProps> = (props) => {
         // if(tools[aah])
         //setColor(0);
         //setBackgroundIndex(0);
+        // if (title === "WipeCar" || title === "ShineCar") {
+        //     setTools({
+        //         ["d"]: { top: top, left: left, title: title },
+        //         ...tools
+        //     });
+        // } else {
         setAah(aah + "a");
         setTools({
             ...tools,
             [aah]: { top: top, left: left, title: title }
         });
+        //}
 
         //setSquare((square) => [t[0], ...square]);
     };
@@ -229,8 +246,8 @@ const Zone: React.FC<ZoneProps> = (props) => {
                         ref={drop}
                         className="toolncar"
                         style={{
-                            backgroundImage: `url(${cars[colorNum][tireNum]}`,
-                            //backgroundImage: "url(/image/RedCar.png)",
+                            backgroundImage: `url(${cars[colorNum][tireNum][tintNum]}`,
+                            //backgroundImage: `url(${"RedCar.png"})`,
                             width: 650,
                             height: 400
                         }}
@@ -244,6 +261,9 @@ const Zone: React.FC<ZoneProps> = (props) => {
                                 title={tools[key].title}
                             />
                         ))}
+                        {/* {isOver && !canDrop && <Overlay color="red" />}
+                        {!isOver && canDrop && <Overlay color="yellow" />}
+                        {isOver && canDrop && <Overlay color="green" />} */}
                     </div>
                 </div>
                 <div>

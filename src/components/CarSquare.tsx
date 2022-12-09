@@ -21,8 +21,7 @@ const CarSquare: React.FC<CarSquareProps> = (props) => {
         description === "TanDirt" ||
         description === "WhitePoop" ||
         description === "BrownPoop" ||
-        description === "GreenPoop" ||
-        description === "WipeCar"
+        description === "GreenPoop"
     ) {
         const [{ isDragging }, drag] = useDrag({
             item: {
@@ -112,16 +111,50 @@ const CarSquare: React.FC<CarSquareProps> = (props) => {
                 {pic}
             </span>
         );
-    } else if (
-        description === "Wing" ||
-        description === "ShineCar" ||
-        description === "LightTint" ||
-        description === "MediumTint" ||
-        description === "DarkTint"
-    ) {
+    } else if (description === "Wing") {
         const [{ isDragging }, drag] = useDrag({
             item: {
                 type: ItemTypes.ONEPOS,
+                pic: pic,
+                top: top,
+                left: left,
+                title: title,
+                description: description
+            },
+            collect: (monitor: DragSourceMonitor) => ({
+                isDragging: !!monitor.isDragging()
+            })
+        });
+        return (
+            <span className="getinlineplz">
+                <span
+                    ref={drag}
+                    style={{
+                        position: "relative",
+                        padding: "0.5 rem 1rem",
+                        opacity: isDragging ? 0.5 : 1,
+                        fontSize: 10,
+                        fontWeight: "bold",
+                        cursor: "move",
+                        textAlign: "center",
+                        left: left,
+                        top: top
+                    }}
+                >
+                    {/* <header>{pic}</header> */}
+                    <img
+                        src={require("./images/" + pic + ".png")}
+                        width="70"
+                        height="50"
+                    />
+                </span>
+                {pic}
+            </span>
+        );
+    } else if (description === "ShineCar" || description === "WipeCar") {
+        const [{ isDragging }, drag] = useDrag({
+            item: {
+                type: ItemTypes.DRAGS,
                 pic: pic,
                 top: top,
                 left: left,
@@ -168,7 +201,10 @@ const CarSquare: React.FC<CarSquareProps> = (props) => {
         description === "SlashTires" ||
         description === "BreakWindows" ||
         description === "FillTires" ||
-        description === "RepairWindows"
+        description === "RepairWindows" ||
+        description === "LightTint" ||
+        description === "MediumTint" ||
+        description === "DarkTint"
     ) {
         const [{ isDragging }, drag] = useDrag({
             item: {
