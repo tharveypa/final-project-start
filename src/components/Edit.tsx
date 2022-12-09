@@ -1,33 +1,44 @@
 import React from "react";
 import CarSquare from "./CarSquare";
 /*
-import BrownDirt from "./images/browndirt.png";
-import BlackDirt from "./images/blackdirt.png";
-import TanDirt from "./images/tandirt.png";
-import WhitePoop from "./images/whitepoop.png";
-import BrownPoop from "./images/brownpoop.png";
-import GreenPoop from "./images/greenpoop.png";
-import SlashTires from "./images/slash.png";
-import BreakWindows from "./images/hammer.png";
+import City from "./images/city.png";
+import Forest from "./images/forest.png";
+import Street from "./images/street.png";
+import Dump from "./images/dump.png";
+import Mountain from "./images/mountain.png";
+import Alley from "./images/alley.png";
+import Cave from "./images/cave.png";
+import Garage from "./images/garage.png";
 */
 
 const str = [
-    "BrownDirt",
-    "BlackDirt",
-    "TanDirt",
-    "WhitePoop",
-    "BrownPoop",
-    "GreenPoop",
-    "SlashTires",
-    "BreakWindows"
+    "City",
+    "Forest",
+    "Street",
+    "Dump",
+    "Mountain",
+    "Alley",
+    "Cave",
+    "Garage"
+];
+const edit = [
+    "city",
+    "forest",
+    "street",
+    "dump",
+    "mountain",
+    "alley",
+    "cave",
+    "garage"
 ];
 
-const Destroy = () => {
+const Edit = () => {
     return (
         <div>
-            <h1>Destroy Mode</h1>
+            <h1>Edit Mode</h1>
             <p>
                 {str.map(
+
                     (t: string, i: number): JSX.Element => (
                         <div key={t.toString()}>
                             {console.log(t)}
@@ -46,4 +57,4 @@ const Destroy = () => {
     );
 };
 
-export default Destroy;
+export default Edit;

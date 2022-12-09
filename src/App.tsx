@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import PimpVsDestroy from "./components/PimpVsDestroy";
+//import PimpVsDestroy from "./components/PimpVsDestroy";
 import Board from "./Board";
 //import Car from "./components/Car";
 //import DirtTool from "./components/Destroy Tools/DirtTool";
@@ -36,13 +36,14 @@ function App(): JSX.Element {
             <header className="App-header">CAR APP </header>
             {/* <Board pics={[]} picPosition={[0, 0]}></Board> */}
             <div>
+                {/*<PimpVsDestroy></PimpVsDestroy>*/}
+                <div></div>
                 <Board
                     tools={[
                         "Wipe Car",
                         "Shine Car",
                         "Fill Tires",
-                        "Repair Windows",
-                        "etc"
+                        "Repair Windows"
                     ]}
                 />
                 {/* <CarSpace

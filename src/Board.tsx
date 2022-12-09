@@ -106,77 +106,31 @@ const Board: React.FC<BoardProps> = (props) => {
     return (
         <>
             <div>
+                {/* eslint-disable-next-line no-extra-parens*/}
                 {Object.keys(cars).map((key: string) => (
                     <Button key={key}>Car {key}</Button>
                 ))}
             </div>
             <DndProvider backend={HTML5Backend}>
-                <div
-                // style={{
-                //     width: "500px",
-                //     height: "500px",
-                //     display: "flex",
-                //     flexWrap: "wrap"
-                // }}
-                >
-                    {/* <Col>
-                        Choose a pic
-                        {tools.map(
+                <div>
+                    <PimpVsDestroy></PimpVsDestroy>
+                    <div className="getinlineplz">
+                        <Zone
+                            x={0}
+                            y={0}
+                            toolery={toolss}
+                            currAah={aah}
+                            saveCar={saveCar}
+                        />
+                    </div>
+                    <div>
+                        {pos.map(
                             // eslint-disable-next-line no-extra-parens
-                            (p: string): JSX.Element => (
-                                <Pic
-                                    key={p}
-                                    pic={p}
-                                    top={0}
-                                    left={0}
-                                    title={p}
-                                />
+                            (e: number): JSX.Element => (
+                                <div key={e}> {e} </div>
                             )
                         )}
-                    </Col> */}
-                    <PimpVsDestroy></PimpVsDestroy>
-                    <Col>
-                        {/*  <PimpVsDestroy></PimpVsDestroy> */}
-                        {/* hey */}
-                        {
-                            //squares[0]
-                        }
-                        <div ref={containerRef} className="container">
-                            {/* <Car
-                    saveCar={props.saveCar}
-                ></Car> */}
-                            <Zone
-                                x={0}
-                                y={0}
-                                toolery={toolss}
-                                currAah={aah}
-                                saveCar={saveCar}
-                            />
-                            <div>
-                                {pos.map(
-                                    // eslint-disable-next-line no-extra-parens
-                                    (e: number): JSX.Element => (
-                                        <div key={e}> {e} </div>
-                                    )
-                                )}
-                            </div>
-                        </div>
-                        {/* <div
-                            //key={i}
-                            style={{ width: "300px", height: "300px" }}
-                        >
-                            <BoardSquare
-                                x={0}
-                                y={0}
-                                toolery={tools}
-                                saveCar={saveCar}
-                            >
-                                {
-                                    //renderPiece(x, y, "yeet", picPosition)
-                                }
-                            </BoardSquare>
-                        </div> */}
-                    </Col>
+                    </div>
                 </div>
             </DndProvider>
         </>

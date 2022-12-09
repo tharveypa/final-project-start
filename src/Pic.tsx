@@ -1,6 +1,14 @@
 import React, { Fragment } from "react";
 import { DragSourceMonitor, useDrag } from "react-dnd";
 import { ItemTypes } from "./constants";
+//import BirdPoop from "./components/images/birdpoop.png";
+//import WipeCar from "./components/images/towel.png";
+//import ShineCar from "./components/images/shine.png";
+//import FillTires from "./components/images/pump.png";
+//import RepairWindows from "./components/images/glassrepair.png";
+//import Dirt from "./components/images/dirt.png";
+//import SlashTires from "./components/images/slash.png";
+//import BreakWindows from "./components/images/hammer.png";
 
 type PicProps = {
     pic: string;
@@ -24,6 +32,10 @@ const Pic: React.FC<PicProps> = (props) => {
         })
     });
 
+    //const PimpTools = [WipeCar, ShineCar, FillTires, RepairWindows];
+    //const DestroyTools = [Dirt, BirdPoop, SlashTires, BreakWindows];
+    const PimpStr = ["Wipe Car", "Shine Car", "Fill Tires", "Repair Windows"];
+
     return (
         <Fragment>
             <div
@@ -43,11 +55,7 @@ const Pic: React.FC<PicProps> = (props) => {
             >
                 {/*♘*/}
                 <p>{pic + " and " + top}</p>
-                <img
-                    src={require("./bosun_tally.jpg")}
-                    width="30"
-                    height="30"
-                />
+                <img src={pic} />
             </div>
         </Fragment>
     );

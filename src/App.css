@@ -44,7 +44,6 @@
 }
 
 .toolncar {
-    display: inline-block;
     font-size: large;
     font-weight: 500;
     border: 1px solid black
@@ -58,10 +57,11 @@
 }
 
 .container {
+    display: inline-block;
     position: relative;
-    border: 1px solid black;
+    border: 5px solid black;
     /* background-image: url("bluecar.png"); */
-    height: 1000px;
+    height: 700px;
     width: 1000px;
     overflow: hidden;
 }
@@ -82,4 +82,10 @@
     width: 40px;
     cursor: pointer;
     filter: drop-shadow(0 6mm 4mm red);
+}
+
+.getinlineplz {
+    display: inline-block;
+    font-size: large;
+    font-weight: 500;
 }

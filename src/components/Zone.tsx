@@ -44,6 +44,7 @@ const styles: CSSProperties = {
     //position: "relative"
 };
 type CarChanges = Record<string, ToolPos>;
+//type Changes = itemTy
 type ZoneProps = {
     x: number;
     y: number;
@@ -60,7 +61,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
     const [aah, setAah] = useState<string>("");
     const [tools, setTools] = useState<CarChanges>({});
     const [{ isOver, canDrop }, drop] = useDrop({
-        accept: ItemTypes.DIRT,
+        accept: ItemTypes.TOOL,
         //move: () => moveTool(item.title, item.top, item.left),
         drop: (
             item: {
@@ -72,6 +73,8 @@ const Zone: React.FC<ZoneProps> = (props) => {
             },
             monitor: DropTargetMonitor
         ) => {
+            // if (tl)
+            // addBackground(item.pic, item.type)
             const delta = monitor.getDifferenceFromInitialOffset() as XYCoord;
             const left = Math.round(item.left + delta.x);
             const top = Math.round(item.top + delta.y);
@@ -108,10 +111,10 @@ const Zone: React.FC<ZoneProps> = (props) => {
         //const t = toolery.filter((toolname) => title === toolname);
         //const exist = Object.keys(tools).map((toolna) => title === toolname);
         // if(tools[aah])
-        setAah(currAah + "a");
+        setAah(aah + "a");
         setTools({
-            ...toolery,
-            [currAah]: { top: top, left: left, title: title }
+            ...tools,
+            [aah]: { top: top, left: left, title: title }
         });
 
         //setSquare((square) => [t[0], ...square]);
@@ -150,23 +153,19 @@ const Zone: React.FC<ZoneProps> = (props) => {
     const clear = () => {
         setTools({});
     };
-    // if (effects[0] !== tools["a"].title) addTool(effects[0]);
+    const [backgroundIndex, setBackgroundIndex] = useState(0);
     return (
         <>
             {" "}
             <div>
-                <div ref={dropp} className="toolncar">
+                <div
+                    ref={dropp}
+                    className="toolncar"
+                    // style={{
+                    //     backgroundImage: `url(${backgrounds[backgroundIndex]})`
+                    // }}
+                >
                     <div ref={drop} style={styles}>
-                        <img src={RedCar} alt="car model" />
-                        {/* <BoardSquare
-                            x={0}
-                            y={0}
-                            toolery={tools}
-                            currAah={aah}
-                            saveCar={saveCar}
-                            setAah={setAah}
-                            setTools={setTools}
-                        ></BoardSquare> */}
                         {Object.keys(tools).map((key: string) => (
                             <Tool
                                 key={key}
@@ -176,6 +175,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
                                 title={tools[key].title}
                             />
                         ))}
+                        <img src={RedCar} alt="car model" />
                     </div>
                 </div>
                 <div>
