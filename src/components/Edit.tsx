@@ -12,14 +12,14 @@ import Garage from "./images/garage.png";
 */
 
 const str = [
-    "city",
-    "forest",
-    "street",
-    "dump",
-    "mountain",
-    "alley",
-    "cave",
-    "garage"
+    "City",
+    "Forest",
+    "Street",
+    "Dump",
+    "Mountain",
+    "Alley",
+    "Cave",
+    "Garage"
 ];
 
 /*

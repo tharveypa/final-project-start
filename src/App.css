@@ -47,8 +47,7 @@
     font-size: large;
     font-weight: 500;
     border: 1px solid black;
-    background-image: "./images/City.png"
-
+    background-image: "./images/City.png";
 }
 .toolkit {
     position: relative;
@@ -89,4 +88,5 @@
     display: inline-block;
     font-size: large;
     font-weight: 500;
+    float: middle;
 }

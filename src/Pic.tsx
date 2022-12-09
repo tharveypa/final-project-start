@@ -44,7 +44,7 @@ const Pic: React.FC<PicProps> = (props) => {
                 style={{
                     position: "relative",
                     border: "1px dashed gray",
-                    padding: "0.5 rem 1rem",
+                    //padding: "0.5 rem 1rem",
                     opacity: isDragging ? 1 : 0.5,
                     fontSize: 10,
                     fontWeight: "bold",

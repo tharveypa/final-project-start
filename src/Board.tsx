@@ -90,19 +90,29 @@ const Board: React.FC<BoardProps> = (props) => {
     //         squares.push(renderSquare(j, i, pics, picPosition));
     //     }
     // }
-    function saveCar(toolname: string, changes: CarChanges) {
-        setCarId(carId + 1);
-        setCars({
-            ...cars,
-            [carId]: {
-                ...cars[carId],
-                [toolname]: {
-                    top: changes[toolname].top,
-                    left: changes[toolname].left,
-                    title: changes[toolname].title
-                }
-            }
+    function deepCopytTools(changes: CarChanges): CarChanges {
+        // Need to describe how to clone each element
+        const copy: CarChanges = {};
+        Object.keys(changes).map((aha: string) => {
+            copy[aha].top = changes[aha].top;
+            copy[aha].left = changes[aha].left;
+            copy[aha].title = changes[aha].title;
         });
+        return copy;
+    }
+    function saveCar(toolname: number, changes: CarChanges) {
+        setCarId(carId + 1);
+        const copies: Record<number, CarChanges> = {};
+        // Object.keys(cars).map((aha: number) => {
+        //     copies[aha] = deepCopytTools(cars[aha]);
+        // });
+        const newcopy = deepCopytTools(changes);
+        // setCars({
+        //     ...cars,
+        //     [carId]: {
+        //         newcopy
+        //     }
+        // });
     }
     return (
         <>
@@ -122,16 +132,11 @@ const Board: React.FC<BoardProps> = (props) => {
             </div>
             <DndProvider backend={HTML5Backend}>
                 <div>
-                    <PimpVsDestroy />
-
+                    <div style={{ float: "left", border: "1px solid black" }}>
+                        <PimpVsDestroy />
+                    </div>
                     <div className="getinlineplz">
-                        <Zone
-                            x={10}
-                            y={0}
-                            toolery={toolss}
-                            currAah={aah}
-                            saveCar={saveCar}
-                        />
+                        <Zone x={10} y={0} toolery={toolss} saveCar={saveCar} />
                     </div>
                     <div>
                         {pos.map(

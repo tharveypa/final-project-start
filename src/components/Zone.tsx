@@ -18,40 +18,9 @@ import type { ToolPos } from "./interfaces";
 // import { useDrop } from "react-dnd";
 import Tool from "./Tool";
 import { Button } from "react-bootstrap";
-// // import { ItemTypes } from "../constants";DragItem,
-// import Car from "./Car";
-import RedCar from "./images/RedCar.png";
-import City from "./images/City.png";
-import Forest from "./images/Forest.png";
-import Street from "./images/Street.png";
-import Dump from "./images/Dump.png";
-import Mountain from "./images/Mountain.png";
-import Alley from "./images/Alley.png";
-import Cave from "./images/Cave.png";
-import Garage from "./images/Garage.png";
-// import RedCarLeftTire from "./images/redcar left tire.png";
-// import RedCarRightTire from "./images/redcar right tire.png";
-import RedCarBothTires from "./images/RedCarBothTires.png";
-import BlueCar from "./images/BlueCar.png";
-// import BlueCarLeftTire from "./images/bluecar left tire.png";
-// import BlueCarRightTire from "./images/bluecar right tire.png";
-import BlueCarBothTires from "./images/BlueCarBothTires.png";
-import GreenCar from "./images/GreenCar.png";
-// import GreenCarLeftTire from "./images/greencar left tire.png";
-// import GreenCarRightTire from "./images/greencar right tire.png";
-import GreenCarBothTires from "./images/GreenCarBothTires.png";
-import YellowCar from "./images/YellowCar.png";
-import YellowCarBothTires from "./images/YellowCarBothTires.png";
-import PurpleCar from "./images/PurpleCar.png";
-import PurpleCarBothTires from "./images/PurpleCarBothTires.png";
-import OrangeCar from "./images/OrangeCar.png";
-import OrangeCarBothTires from "./images/OrangeCarBothTires.png";
 
-const cars = [
-    [RedCar, RedCarBothTires],
-    [GreenCar, GreenCarBothTires],
-    [BlueCar, BlueCarBothTires]
-];
+import { backgrounds, cars } from "./interfacing/ImageRenders";
+
 const styles: CSSProperties = {
     //width: "200px",
     //height: "300px",
@@ -63,40 +32,29 @@ type ZoneProps = {
     x: number;
     y: number;
     toolery: CarChanges;
-    currAah: string;
-    saveCar: (toolname: string, changes: CarChanges) => void;
+    // backgrounds: string[];
+    // cars: string[][];
+
+    //moreSaves: (currsaves: number) => void;
+    saveCar: (carId: number, changes: CarChanges) => void;
     //setAah: (aah: string) => void;
     //setTools: (tools: CarChanges) => void;
 };
 
 const Zone: React.FC<ZoneProps> = (props) => {
-    const backgrounds = [
-        City,
-        Forest,
-        Street,
-        Dump,
-        Mountain,
-        Alley,
-        Cave,
-        Garage
-    ];
-    const cars = [
-        [RedCar, RedCarBothTires],
-        [BlueCar, BlueCarBothTires],
-        [GreenCar, GreenCarBothTires],
-        [YellowCar, YellowCarBothTires],
-        [PurpleCar, PurpleCarBothTires],
-        [OrangeCar, OrangeCarBothTires]
-    ];
-
-    const { x, y, saveCar, toolery, currAah } = props;
+    const { x, y, saveCar, toolery } = props;
     //const [square, setSquare] = useState<string[]>([]);
     const [aah, setAah] = useState<string>("");
     const [tools, setTools] = useState<CarChanges>({});
+    const [savedtools, setSavedTools] = useState<CarChanges>({});
     const [backgroundIndex, setBackgroundIndex] = useState<number>(0);
+    //const [carState,setCarState]=useState<string>("");
     const [color, setColor] = useState<number>(0);
+    const [colorNum, setColorNum] = useState(0);
+    const [tireNum, setTireNum] = useState(0);
+    const [background, setBackground] = useState(7);
     const [{ isOver, canDrop }, drop] = useDrop({
-        accept: [ItemTypes.ONEPOS, ItemTypes.CARS, ItemTypes.BACKS],
+        accept: [ItemTypes.TOOL],
         //move: () => moveTool(item.title, item.top, item.left),
         drop: (
             item: {
@@ -108,16 +66,6 @@ const Zone: React.FC<ZoneProps> = (props) => {
             },
             monitor: DropTargetMonitor
         ) => {
-            if (item.type === ItemTypes.BACKS) {
-                addBackground(item.title);
-            } else if (item.type === ItemTypes.CARS) {
-                changeCarImage(item.title);
-            }
-            /* 
-            else if (item.type === ItemTypes.ONEPOS) {
-                //putOnCar(something something)
-            }
-            */
             const delta = monitor.getDifferenceFromInitialOffset() as XYCoord;
             const left = Math.round(item.left + delta.x);
             const top = Math.round(item.top + delta.y);
@@ -129,7 +77,6 @@ const Zone: React.FC<ZoneProps> = (props) => {
             canDrop: !!monitor.canDrop()
         })
     });
-    const [background, setBackground] = useState(NaN);
     const addBackground = (name: string) => {
         if (name === "City") {
             setBackground(0);
@@ -149,8 +96,6 @@ const Zone: React.FC<ZoneProps> = (props) => {
             setBackground(7);
         }
     };
-    const [colorNum, setColorNum] = useState(0);
-    const [tireNum, setTireNum] = useState(0);
     const changeCarImage = (name: string) => {
         if (name === "FillTires") {
             setTireNum(0);
@@ -173,10 +118,10 @@ const Zone: React.FC<ZoneProps> = (props) => {
 
     const [{ isOverr, canDropp }, dropp] = useDrop({
         accept: [
-            ItemTypes.DROPS
-            // ItemTypes.ONEPOS,
-            // ItemTypes.CARS,
-            // ItemTypes.BACKS
+            ItemTypes.DROPS,
+            ItemTypes.ONEPOS,
+            ItemTypes.CARS,
+            ItemTypes.BACKS
         ],
         //canDrop: () => canMovePic(x, y),
         //move: () => moveTool(item.title, item.top, item.left),
@@ -190,12 +135,21 @@ const Zone: React.FC<ZoneProps> = (props) => {
             },
             monitor: DropTargetMonitor
         ) => {
+            if (item.type === ItemTypes.BACKS) {
+                addBackground(item.title);
+                console.log("back");
+            } else if (item.type === ItemTypes.CARS) {
+                changeCarImage(item.title);
+            } else if (item.type === ItemTypes.ONEPOS) {
+                //putOnCar(something something)
+            } else {
+                addToolToBoard(item.pic, item.top, item.left, item.title);
+            }
             //monitor.getClientOffset
-            const delta = monitor.getDifferenceFromInitialOffset() as XYCoord;
-            const leftt = Math.round(delta.x);
-            const topp = Math.round(delta.y);
-            console.log(item.left, item.top);
-            addToolToBoard(item.pic, topp, leftt, item.title);
+            // const delta = monitor.getDifferenceFromInitialOffset() as XYCoord;
+            // const leftt = Math.round(delta.x);
+            // const topp = Math.round(delta.y);
+            // console.log(item.left, item.top);
         },
         collect: (monitor) => ({
             isOverr: !!monitor.isOver(),
@@ -211,8 +165,8 @@ const Zone: React.FC<ZoneProps> = (props) => {
         //const t = toolery.filter((toolname) => title === toolname);
         //const exist = Object.keys(tools).map((toolna) => title === toolname);
         // if(tools[aah])
-        setColor(0);
-        setBackgroundIndex(0);
+        //setColor(0);
+        //setBackgroundIndex(0);
         setAah(aah + "a");
         setTools({
             ...tools,
@@ -222,7 +176,11 @@ const Zone: React.FC<ZoneProps> = (props) => {
         //setSquare((square) => [t[0], ...square]);
     };
     const saveChanges = () => {
-        saveCar(aah, tools);
+        //  {left: tools[key].left, top: tools[key].top, title: {tools[key].title}
+        // const savedtools={};
+        // Object.keys(tools).map((aha: string) => );
+        const copy = JSON.parse(JSON.stringify(tools)) as typeof tools;
+        //saveCar(currSaves, copy);
     };
 
     const moveTool = useCallback(
@@ -271,7 +229,8 @@ const Zone: React.FC<ZoneProps> = (props) => {
                         ref={drop}
                         className="toolncar"
                         style={{
-                            backgroundImage: `url(${cars[0][0]}`,
+                            backgroundImage: `url(${cars[colorNum][tireNum]}`,
+                            //backgroundImage: "url(/image/RedCar.png)",
                             width: 650,
                             height: 400
                         }}

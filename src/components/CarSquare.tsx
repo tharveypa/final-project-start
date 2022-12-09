@@ -151,7 +151,7 @@ const CarSquare: React.FC<CarSquareProps> = (props) => {
                     {/* <header>{pic}</header> */}
                     <img
                         src={require("./images/" + pic + ".png")}
-                        width="50"
+                        width="70"
                         height="50"
                     />
                 </span>

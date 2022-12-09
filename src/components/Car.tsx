@@ -128,12 +128,12 @@ export const Car: React.FC<CarProps> = (props) => {
                                 backgroundImage: `url(${backgrounds[backgroundIndex]})`
                             }}
                         >
-                            {/* <div ref={drop} className="car">*/}
+                            {/* <div ref={drop} className="car">
                             <img
                                 src={cars[colorNum][tireNum]}
                                 alt="car model"
                             />
-                            {/* </div>  */}
+                            {/* </div>  
                             {colorNum == 0 && (
                                 <img src={RedCar} alt="red car" />
                             )}
@@ -142,7 +142,7 @@ export const Car: React.FC<CarProps> = (props) => {
                             )}
                             {colorNum == 2 && (
                                 <img src={GreenCar} alt="green car" />
-                            )}
+                            )} */}
                             {/* <div ref={boxRef} className="box">
                         <img src={Dirt} alt="dirt" />
                     </div>*/}
@@ -169,11 +169,11 @@ export const Car: React.FC<CarProps> = (props) => {
                             <Button onClick={() => addEffect(0, 0, "meep")}>
                                 addEffect
                             </Button>
-                            <Button
+                            {/* <Button
                                 onClick={() => setColorNum((colorNum + 1) % 3)}
                             >
                                 Change Color (Red/Blue/Green)
-                            </Button>
+                            </Button> */}
                             <Button
                                 onClick={() =>
                                     setBackgroundIndex(
