@@ -129,7 +129,8 @@ const Zone: React.FC<ZoneProps> = (props) => {
             ItemTypes.DROPS,
             ItemTypes.ONEPOS,
             ItemTypes.CARS,
-            ItemTypes.BACKS
+            ItemTypes.BACKS,
+            ItemTypes.DRAGS
         ],
         //,ItemTypes.DRAGS,
 
@@ -147,11 +148,10 @@ const Zone: React.FC<ZoneProps> = (props) => {
         ) => {
             if (item.type === ItemTypes.BACKS) {
                 addBackground(item.title);
-                console.log("back");
             } else if (item.type === ItemTypes.CARS) {
                 changeCarImage(item.title);
             } else if (item.type === ItemTypes.ONEPOS) {
-                //putOnCar(something something)
+                addToolToBoard(item.pic, item.top, item.left, "WingSide");
             } else {
                 addToolToBoard(item.pic, item.top, item.left, item.title);
             }
@@ -177,21 +177,33 @@ const Zone: React.FC<ZoneProps> = (props) => {
         // if(tools[aah])
         //setColor(0);
         //setBackgroundIndex(0);
-        // if (title === "WipeCar" || title === "ShineCar") {
-        //     setTools({
-        //         ["d"]: { top: top, left: left, title: title },
-        //         ...tools
-        //     });
-        // } else {
-        setAah(aah + "a");
-        setTools({
-            ...tools,
-            [aah]: { top: top, left: left, title: title }
-        });
-        //}
+        if (title === "WipeCar" || title === "ShineCar") {
+            console.log(title);
+            const copy: CarChanges = {};
+            setTools({
+                ["drag"]: { top: top, left: left, title: title },
+                ...tools
+            });
+        } else if (title === "WingSide") {
+            setTools({
+                ["wing"]: { top: 31, left: 496, title: title },
+                ...tools
+            });
+        } else {
+            setAah(aah + "a");
+            setTools({
+                ...tools,
+                [aah]: { top: top, left: left, title: title }
+            });
+        }
 
         //setSquare((square) => [t[0], ...square]);
     };
+    // const removeToolFromBoard = (
+    //     toolid: string
+    // ) => {
+    //     Object.keys(tools).map((aha: string) => () );
+    // };
     const saveChanges = () => {
         //  {left: tools[key].left, top: tools[key].top, title: {tools[key].title}
         // const savedtools={};
@@ -233,7 +245,6 @@ const Zone: React.FC<ZoneProps> = (props) => {
 
     return (
         <>
-            {" "}
             <div>
                 <div
                     ref={dropp}

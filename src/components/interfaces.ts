@@ -15,3 +15,9 @@ export interface CarProps {
     tirefill: boolean;
     window: boolean;
 }
+
+export interface Cars {
+    makeup: number[];
+    background: number;
+    effects: Record<string, ToolPos>;
+}
