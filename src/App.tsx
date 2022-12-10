@@ -69,10 +69,6 @@ function App(): JSX.Element {
                     </Col>
                 </Row> */}
             </div>
-            <p>
-                Edit <code>src/App.tsx</code> and save. This page will
-                automatically reload.
-            </p>
         </div>
     );
 }

@@ -267,9 +267,9 @@ const Zone: React.FC<ZoneProps> = (props) => {
                     </div>
                 </div>
                 <div>
-                    <Button onClick={() => addTool("meep")}>Add Effect</Button>
+                    {/* <Button onClick={() => addTool("meep")}>Add Effect</Button> */}
                     <Button onClick={clear}>Clear Car</Button>
-                    <Button onClick={saveChanges}>Save Car</Button>
+                    {/* <Button onClick={saveChanges}>Save Car</Button> */}
                 </div>
             </div>
         </>
