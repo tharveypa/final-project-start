@@ -59,14 +59,7 @@ function App(): JSX.Element {
                         <PimpVsDestroy />
                     </div>
                     <div className="container">
-                        <Board
-                            tools={[
-                                "Wipe Car",
-                                "Shine Car",
-                                "Fill Tires",
-                                "Repair Windows"
-                            ]}
-                        />
+                        <Board x={pos[0]} y={pos[1]} />
                         <div>
                             {pos.map(
                                 // eslint-disable-next-line no-extra-parens

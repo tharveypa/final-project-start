@@ -20,6 +20,7 @@ const CarSquare: React.FC<CarSquareProps> = (props) => {
         description === "BlackDirt" ||
         description === "TanDirt" ||
         description === "WhitePoop" ||
+        description === "ShineCar" ||
         description === "BrownPoop" ||
         description === "GreenPoop"
     ) {
@@ -151,7 +152,7 @@ const CarSquare: React.FC<CarSquareProps> = (props) => {
                 {pic}
             </span>
         );
-    } else if (description === "ShineCar" || description === "WipeCar") {
+    } else if (description === "WipeCar") {
         const [{ isDragging }, drag] = useDrag({
             item: {
                 type: ItemTypes.DRAGS,

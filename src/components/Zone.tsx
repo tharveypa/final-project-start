@@ -103,7 +103,8 @@ const Zone: React.FC<ZoneProps> = (props) => {
             setTireNum(0);
         } else if (name === "SlashTires") {
             setTireNum(1);
-        } else if (name === "Red") {
+        }
+        if (name === "Red") {
             setColorNum(0);
         } else if (name === "Blue") {
             setColorNum(1);
@@ -115,7 +116,8 @@ const Zone: React.FC<ZoneProps> = (props) => {
             setColorNum(4);
         } else if (name === "Orange") {
             setColorNum(5);
-        } else if (name === "LightTint") {
+        }
+        if (name === "LightTint") {
             setTintNum(1);
         } else if (name === "MediumTint") {
             setTintNum(2);
@@ -159,7 +161,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
             // const delta = monitor.getDifferenceFromInitialOffset() as XYCoord;
             // const leftt = Math.round(delta.x);
             // const topp = Math.round(delta.y);
-            // console.log(item.left, item.top);
+            console.log("here you are(" + y + "," + x + ")");
         },
         collect: (monitor) => ({
             isOverr: !!monitor.isOver(),

@@ -54,11 +54,12 @@ export const renderPiece = (
 type CarChanges = Record<string, ToolPos>;
 type Cars = Record<number, CarChanges>;
 type BoardProps = {
-    tools: string[];
+    x: number;
+    y: number;
 };
 const Board: React.FC<BoardProps> = (props) => {
     const [toolss, setTools] = useState<CarChanges>({});
-    const { tools } = props;
+    const { x, y } = props;
     const [aah, setAah] = useState<string>("");
     const squares = [];
     const [carId, setCarId] = useState<number>(0);
@@ -112,7 +113,7 @@ const Board: React.FC<BoardProps> = (props) => {
             </div>
             <div>
                 <div className="getinlineplz">
-                    <Zone x={10} y={0} toolery={toolss} saveCar={saveCar} />
+                    <Zone x={x} y={y} toolery={toolss} saveCar={saveCar} />
                 </div>
             </div>
         </>
