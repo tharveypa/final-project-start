@@ -88,5 +88,5 @@
     display: inline-block;
     font-size: large;
     font-weight: 500;
-    float: middle;
+    /* float: middle; */
 }

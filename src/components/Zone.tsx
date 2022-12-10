@@ -14,20 +14,14 @@ import Dirt from "./images/dirt.png";
 import update from "immutability-helper";
 import { ItemTypes } from "../constants";
 import type { ToolPos } from "./interfaces";
-// import type { DropTargetMonitor, XYCoord } from "react-dnd";
-// import { useDrop } from "react-dnd";
+
 import Tool from "./Tool";
 import { Button } from "react-bootstrap";
 import Overlay from "../Overlay";
 import { backgrounds, cars } from "./interfacing/ImageRenders";
 
 import "./images/RedCar.png";
-const styles: CSSProperties = {
-    //width: "200px",
-    //height: "300px",
-    //border: "1px solid black",
-    //position: "relative"
-};
+
 type CarChanges = Record<string, ToolPos>;
 type ZoneProps = {
     x: number;
@@ -265,6 +259,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
                             height: 400
                         }}
                     >
+                        {/* eslint-disable-next-line no-extra-parens */}
                         {Object.keys(tools).map((key: string) => (
                             <Tool
                                 key={key}
