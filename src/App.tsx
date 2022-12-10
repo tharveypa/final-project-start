@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
-//import PimpVsDestroy from "./components/PimpVsDestroy";
+import PimpVsDestroy from "./components/PimpVsDestroy";
 import Board from "./Board";
-//import Car from "./components/Car";
-//import DirtTool from "./components/Destroy Tools/DirtTool";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 import CarSpace from "./components/CarSpace";
 import { Col, Row } from "react-bootstrap";
 import type { ToolPos } from "./components/interfaces";
@@ -15,6 +15,7 @@ import ToolinBox from "./components/ToolinBox";
 
 function App(): JSX.Element {
     const [savedCars, setSavedCars] = useState<Record<number, CarChanges>>({});
+
     function saveCar(car: number, toolname: string, changes: CarChanges) {
         setSavedCars({
             ...savedCars,
@@ -28,6 +29,22 @@ function App(): JSX.Element {
             }
         });
     }
+    const [pos, setPos] = useState<number[]>([]);
+    const containerRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        if (!containerRef.current) return;
+        const container = containerRef.current;
+        const MouseTracker = (e: MouseEvent) => {
+            setPos([e.clientX, e.clientY]);
+        };
+        container.addEventListener("mousemove", MouseTracker);
+
+        const cleanup = () => {
+            container.removeEventListener("mousemove", MouseTracker);
+        };
+
+        return cleanup;
+    }, []);
     return (
         <div className="App">
             <header className="App-header">
@@ -37,37 +54,22 @@ function App(): JSX.Element {
             <header className="App-header">CAR APP </header>
             {/* <Board pics={[]} picPosition={[0, 0]}></Board> */}
             <div>
-                {/*<PimpVsDestroy></PimpVsDestroy>*/}
-                <div></div>
-                {
-                    <Board
-                        tools={[
-                            "Wipe Car",
-                            "Shine Car",
-                            "Fill Tires",
-                            "Repair Windows"
-                        ]}
-                    />
-                }
-                {/* <CarSpace
-                    saveCar={saveCar}
-                    tools={[
-                        "Wipe Car",
-                        "Shine Car",
-                        "Fill Tires",
-                        "Repair Windows",
-                        "etc"
-                    ]}
-                ></CarSpace> */}
-                {/* <Row></Row>
-                <Row>
-                    <Col>
-                        <PimpVsDestroy></PimpVsDestroy>
-                    </Col>
-                    <Col>
-                        
-                    </Col>
-                </Row> */}
+                <DndProvider backend={HTML5Backend}>
+                    <div style={{ float: "left" }}>
+                        <PimpVsDestroy />
+                    </div>
+                    <div className="container">
+                        <Board x={pos[0]} y={pos[1]} />
+                        <div>
+                            {pos.map(
+                                // eslint-disable-next-line no-extra-parens
+                                (e: number): JSX.Element => (
+                                    <div key={e}> {e} </div>
+                                )
+                            )}
+                        </div>
+                    </div>
+                </DndProvider>
             </div>
         </div>
     );

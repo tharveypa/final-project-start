@@ -54,31 +54,16 @@ export const renderPiece = (
 type CarChanges = Record<string, ToolPos>;
 type Cars = Record<number, CarChanges>;
 type BoardProps = {
-    tools: string[];
+    x: number;
+    y: number;
 };
 const Board: React.FC<BoardProps> = (props) => {
     const [toolss, setTools] = useState<CarChanges>({});
-    const { tools } = props;
+    const { x, y } = props;
     const [aah, setAah] = useState<string>("");
     const squares = [];
     const [carId, setCarId] = useState<number>(0);
     const [cars, setCars] = useState<Cars>({});
-    const [pos, setPos] = useState<number[]>([]);
-    const containerRef = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-        if (!containerRef.current) return;
-        const container = containerRef.current;
-        const MouseTracker = (e: MouseEvent) => {
-            setPos([e.clientX, e.clientY]);
-        };
-        container.addEventListener("mousemove", MouseTracker);
-
-        const cleanup = () => {
-            container.removeEventListener("mousemove", MouseTracker);
-        };
-
-        return cleanup;
-    }, []);
     //squares.push(renderSquare(0, picPosition, pics));
     //for (let i = 0; i < 2; i++) {
     //squares.push(renderSquare(0, 0, tools));
@@ -102,7 +87,11 @@ const Board: React.FC<BoardProps> = (props) => {
     }
     function saveCar(toolname: number, changes: CarChanges) {
         setCarId(carId + 1);
-        const copies: Record<number, CarChanges> = {};
+        //         const copies: Record<number, CarChanges> = Object.fromEntries(
+        //     // Convert the array to an array of pairs, where each pair has the abbreviation
+        //     // and the state.
+        //     usaStates.map((state: State): [string, State] => [state.abbreviation, state])
+        // );
         // Object.keys(cars).map((aha: number) => {
         //     copies[aha] = deepCopytTools(cars[aha]);
         // });
@@ -123,31 +112,10 @@ const Board: React.FC<BoardProps> = (props) => {
                 ))}
             </div>
             <div>
-                {pos.map(
-                    // eslint-disable-next-line no-extra-parens
-                    (e: number): JSX.Element => (
-                        <div key={e}> {e} </div>
-                    )
-                )}
-            </div>
-            <DndProvider backend={HTML5Backend}>
-                <div>
-                    <div style={{ float: "left", border: "1px solid black" }}>
-                        <PimpVsDestroy />
-                    </div>
-                    <div className="getinlineplz">
-                        <Zone x={10} y={0} toolery={toolss} saveCar={saveCar} />
-                    </div>
-                    <div>
-                        {pos.map(
-                            // eslint-disable-next-line no-extra-parens
-                            (e: number): JSX.Element => (
-                                <div key={e}> {e} </div>
-                            )
-                        )}
-                    </div>
+                <div className="getinlineplz">
+                    <Zone x={x} y={y} toolery={toolss} saveCar={saveCar} />
                 </div>
-            </DndProvider>
+            </div>
         </>
     );
 };

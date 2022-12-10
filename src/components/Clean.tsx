@@ -8,6 +8,7 @@ const Clean = () => {
     return (
         <div>
             <h1>Clean Mode</h1>
+
             <p>
                 {str.map(
                     // eslint-disable-next-line no-extra-parens
