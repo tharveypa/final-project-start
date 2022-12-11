@@ -1,19 +1,19 @@
 import React from "react";
 import drag from "../DragClothes";
 
-// const cropTop1: React.FC = () => {
-//     drag("cropTop1");
+const pants4: React.FC = () => {
+    drag("pants4");
 
-//     return (
-//         <div id="cropTop1" className="cropTop1">
-//             <img
-//                 draggable="false"
-//                 src={require("./cropTop1")}
-//                 width="100"
-//                 height="100"
-//             />
-//         </div>
-//     );
-// };
+    return (
+        <div id="pants4" className="pants4">
+            <img
+                draggable="false"
+                src={require("./pants4")}
+                width="100"
+                height="100"
+            />
+        </div>
+    );
+};
 
-// export default cropTop1;
+export default pants4;
