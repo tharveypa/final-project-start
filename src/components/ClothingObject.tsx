@@ -36,7 +36,9 @@ function ClothingObject({ clothing }: { clothing: Clothing }): JSX.Element {
                 alt={"clothing"}
                 style={{
                     ...StyleSheet,
-                    position: "absolute"
+                    position: "absolute",
+                    height: clothing.height,
+                    width: clothing.width
                 }}
             />
         );

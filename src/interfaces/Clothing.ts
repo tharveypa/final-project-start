@@ -3,4 +3,6 @@ export interface Clothing {
     id: number;
     image: string;
     shown: boolean;
+    height: number;
+    width: number;
 }
