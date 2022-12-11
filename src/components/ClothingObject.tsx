@@ -5,39 +5,37 @@ import itemTypes from "../interfaces/itemTypes";
 
 import "./ClothingObject.css";
 
-function ElementObject({ element }: { element: Clothing }): JSX.Element {
+function ClothingObject({ clothing }: { clothing: Clothing }): JSX.Element {
     const [, drag] = useDrag({
         item: {
             type: itemTypes.CLOTHING,
-            ID: element.id
+            ID: clothing.id
         },
         collect: (monitor: { isDragging: () => unknown }) => ({
             isDragging: !!monitor.isDragging()
         })
     });
 
-    if (element.shown != true) {
+    if (clothing.shown != true) {
         return (
             <div>
                 <img
-                    id={element.id.toString()}
+                    id={clothing.id.toString()}
                     ref={drag}
-                    src={element.image}
-                    alt={"element"}
+                    src={clothing.image}
+                    alt={"clothing"}
                 />
             </div>
         );
     } else {
         return (
             <img
-                id={element.id.toString()}
+                id={clothing.id.toString()}
                 ref={drag}
-                src={element.image}
-                alt={"element"}
+                src={clothing.image}
+                alt={"clothing"}
                 style={{
                     ...StyleSheet,
-                    top: element.top,
-                    left: element.left,
                     position: "absolute"
                 }}
             />
@@ -45,4 +43,4 @@ function ElementObject({ element }: { element: Clothing }): JSX.Element {
     }
 }
 
-export default ElementObject;
+export default ClothingObject;

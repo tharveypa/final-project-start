@@ -1,5 +1,5 @@
 .temp {
     background-image: url("mannequin.png");
-    height: 60vh;
-    width: 400px;
+    height: 80vh;
+    width: flex;
 }
