@@ -51,7 +51,7 @@ function ElementList() {
                 <div className="row-adj">
                     <div className="column-sidebar" background-color="primary">
                         <p>
-                            <strong> Element List</strong>
+                            <strong> Clothing Selection</strong>
                         </p>
                         <p>
                             <button onClick={() => Alphabetical()}></button>
