@@ -2,7 +2,7 @@ import React from "react";
 import { useDrag } from "react-dnd";
 import { Clothing } from "../interfaces/Clothing";
 import itemTypes from "../interfaces/itemTypes";
-
+//comment for changes
 import "./ClothingObject.css";
 
 function ClothingObject({ clothing }: { clothing: Clothing }): JSX.Element {
