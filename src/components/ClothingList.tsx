@@ -25,7 +25,6 @@ function ElementList() {
         const x = proplist.map((element: Clothing): Clothing => element);
         setProplist(x.sort((a, b) => a.name.localeCompare(b.name)));
     }
-
     function Reset() {
         setProplist(clothing);
     }
