@@ -49,7 +49,7 @@ type ZoneProps = {
 };
 
 const Zone: React.FC<ZoneProps> = (props) => {
-    const { x, y, saveCar, toolery, color, tire, tint, back } = props;
+    const { x, y, carId, toolery, color, tire, tint, back, saveCar } = props;
     //const [square, setSquare] = useState<string[]>([]);
     const [aah, setAah] = useState<string>("a");
     const [tools, setTools] = useState<CarChanges>({});
@@ -154,8 +154,6 @@ const Zone: React.FC<ZoneProps> = (props) => {
                 addBackground(item.title);
             } else if (item.type === ItemTypes.CARS) {
                 changeCarImage(item.title);
-            } else if (item.type === ItemTypes.ONEPOS) {
-                addToolToBoard(item.pic, item.top, item.left, "WingSide");
             } else {
                 addToolToBoard(item.pic, item.top, item.left, item.title);
             }
@@ -188,9 +186,21 @@ const Zone: React.FC<ZoneProps> = (props) => {
                 ["drag"]: { top: top, left: left, title: title },
                 ...tools
             });
+        } else if (title === "BreakWindows") {
+            if (tools["window1"]) {
+                setTools({
+                    ["window2"]: { top: 75, left: 241, title: "Crack" },
+                    ...tools
+                });
+            } else {
+                setTools({
+                    ["window1"]: { top: 77, left: 419, title: "Crack" },
+                    ...tools
+                });
+            }
         } else if (title === "WingSide") {
             setTools({
-                ["wing"]: { top: 31, left: 496, title: title },
+                ["wing"]: { top: 31, left: 496, title: "WingSide" },
                 ...tools
             });
         } else {
@@ -209,11 +219,11 @@ const Zone: React.FC<ZoneProps> = (props) => {
     //     Object.keys(tools).map((aha: string) => () );
     // };
     const saveChanges = () => {
+        saveCar(carId, colorNum, tireNum, tintNum, background, tools);
         //  {left: tools[key].left, top: tools[key].top, title: {tools[key].title}
         // const savedtools={};
         // Object.keys(tools).map((aha: string) => );
-        const copy = JSON.parse(JSON.stringify(tools)) as typeof tools;
-        //saveCar(currSaves, copy);
+        //const copy = JSON.parse(JSON.stringify(tools)) as typeof tools;
     };
 
     const moveTool = useCallback(
@@ -293,7 +303,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
                 <div>
                     {/* <Button onClick={() => addTool("meep")}>Add Effect</Button> */}
                     <Button onClick={reset}>Reset Car</Button>
-                    {/* <Button onClick={saveChanges}>Save Car</Button> */}
+                    <Button onClick={saveChanges}>Save Car</Button>
                 </div>
             </div>
         </>

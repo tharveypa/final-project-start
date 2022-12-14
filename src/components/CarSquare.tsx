@@ -112,7 +112,7 @@ const CarSquare: React.FC<CarSquareProps> = (props) => {
                 {pic}
             </span>
         );
-    } else if (description === "Wing") {
+    } else if (description === "Wing" || description === "BreakWindows") {
         const [{ isDragging }, drag] = useDrag({
             item: {
                 type: ItemTypes.ONEPOS,
@@ -200,7 +200,6 @@ const CarSquare: React.FC<CarSquareProps> = (props) => {
         description === "Purple" ||
         description === "Orange" ||
         description === "SlashTires" ||
-        description === "BreakWindows" ||
         description === "FillTires" ||
         description === "RepairWindows" ||
         description === "LightTint" ||
