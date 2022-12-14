@@ -11,8 +11,7 @@ ReactDOM.render(
         <div
             style={{
                 width: "100%",
-                height: "100%",
-                border: "1px solid gray"
+                height: "100%"
             }}
         >
             <App />
