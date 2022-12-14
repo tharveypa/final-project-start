@@ -7,7 +7,7 @@ import BoardSquare from "./BoardSquare";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import CarSquare from "./components/CarSquare";
 import PimpVsDestroy from "./components/PimpVsDestroy";
-import type { ToolPos } from "./components/interfaces";
+import type { ToolPos, Car } from "./components/interfaces";
 import Zone from "./components/Zone";
 
 export const renderPiece = (
@@ -50,18 +50,94 @@ export const renderPiece = (
 //         </>
 //     );
 // };
-
+type Cars = Record<string, Car>;
 type CarChanges = Record<string, ToolPos>;
-type Cars = Record<number, CarChanges>;
 type BoardProps = {
     x: number;
     y: number;
 };
 const Board: React.FC<BoardProps> = (props) => {
-    const [toolss, setTools] = useState<CarChanges>({});
+    //const [toolss, setTools] = useState<CarChanges>({});
     const { x, y } = props;
-    const [carId, setCarId] = useState<number>(0);
-    const [cars, setCars] = useState<Cars>({});
+    const [carId, setCarId] = useState<string>("$");
+    const [displayCars, setDisplayCars] = useState<number[]>([0]);
+    const [cars, setCars] = useState<Record<string, Car>>({
+        ["mo"]: {
+            color: 0,
+            tint: 0,
+            tire: 0,
+            background: 0,
+            effects: {}
+        }
+    });
+    //const [savedCars, setSavedCars] = useState<CarChanges[]>([]);
+    const [displayId, setDisplayId] = useState<null | number>(null);
+
+    function saveCar(
+        carId: string,
+        color: number,
+        tire: number,
+        tint: number,
+        background: number,
+        changes: CarChanges
+    ) {
+        const newcopy = deepCopytTools(changes);
+        setCars({
+            // ...cars,
+            // [carId]: { color, tint, tire, background, newcopy }
+            ...cars,
+            [carId]: {
+                color: color,
+                tint: tint,
+                tire: tire,
+                background: background,
+                effects: newcopy
+            }
+        });
+        // setSavedCars({
+        //     ...savedCars,
+        //     [car]: {
+        //         ...savedCars[car],
+        //         [toolname]: {
+        //             top: changes[toolname].top,
+        //             left: changes[toolname].left,
+        //             title: changes[toolname].title
+        //         }
+        //     }
+        // });
+    }
+    function addCar(cars: Record<string, Car>): Record<string, Car> {
+        setCarId(carId + "$");
+        return {
+            ...cars,
+            [carId]: {
+                color: 0,
+                tint: 0,
+                tire: 0,
+                background: 7,
+                effects: {
+                    [""]: {
+                        top: 0,
+                        left: 0,
+                        title: ""
+                    }
+                }
+            }
+        };
+    }
+    function addCarChanges(
+        cars: Record<string, Car>,
+        carName: number,
+        newCar: Car
+    ): Record<string, Car> {
+        return {
+            ...cars,
+            [carName]: {
+                ...newCar
+                //effects: newCar.effects
+            }
+        };
+    }
     //squares.push(renderSquare(0, picPosition, pics));
     //for (let i = 0; i < 2; i++) {
     //squares.push(renderSquare(0, 0, tools));
@@ -83,36 +159,43 @@ const Board: React.FC<BoardProps> = (props) => {
         });
         return copy;
     }
-    function saveCar(toolname: number, changes: CarChanges) {
-        setCarId(carId + 1);
-        //         const copies: Record<number, CarChanges> = Object.fromEntries(
-        //     // Convert the array to an array of pairs, where each pair has the abbreviation
-        //     // and the state.
-        //     usaStates.map((state: State): [string, State] => [state.abbreviation, state])
-        // );
-        // Object.keys(cars).map((aha: number) => {
-        //     copies[aha] = deepCopytTools(cars[aha]);
-        // });
-        const newcopy = deepCopytTools(changes);
-        // setCars({
-        //     ...cars,
-        //     [carId]: {
-        //         newcopy
-        //     }
-        // });
-    }
+
     return (
         <>
             <div>
                 {/* eslint-disable-next-line no-extra-parens*/}
                 {Object.keys(cars).map((key: string) => (
-                    <Button key={key}>Car {key}</Button>
+                    <Button key={key}>Car{key}</Button>
                 ))}
             </div>
             <div>
-                <div className="getinlineplz">
-                    <Zone x={x} y={y} toolery={toolss} saveCar={saveCar} />
-                </div>
+                <DndProvider backend={HTML5Backend}>
+                    <div className="getinlineplz">
+                        {
+                            // eslint-disable-next-line no-extra-parens
+                            Object.keys(cars).map((key: string) => (
+                                <Zone
+                                    key={key}
+                                    x={x}
+                                    y={y}
+                                    carId={key}
+                                    toolery={cars[key].effects}
+                                    color={cars[key].color}
+                                    tire={cars[key].tire}
+                                    tint={cars[key].tint}
+                                    back={cars[key].background}
+                                    saveCar={saveCar}
+                                />
+                            ))
+                        }
+                    </div>
+                    <div style={{ float: "left" }}>
+                        <PimpVsDestroy />
+                    </div>
+                </DndProvider>
+            </div>
+            <div>
+                <Button onClick={() => setCars(addCar(cars))}> Add Car</Button>
             </div>
         </>
     );

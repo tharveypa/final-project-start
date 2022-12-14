@@ -26,29 +26,37 @@ type CarChanges = Record<string, ToolPos>;
 type ZoneProps = {
     x: number;
     y: number;
+    carId: string;
     toolery: CarChanges;
+    color: number;
+    tire: number;
+    tint: number;
+    back: number;
     // backgrounds: string[];
     // cars: string[][];
 
     //moreSaves: (currsaves: number) => void;
-    saveCar: (carId: number, changes: CarChanges) => void;
+    saveCar: (
+        carId: string,
+        color: number,
+        tire: number,
+        tint: number,
+        back: number,
+        changes: CarChanges
+    ) => void;
     //setAah: (aah: string) => void;
     //setTools: (tools: CarChanges) => void;
 };
 
 const Zone: React.FC<ZoneProps> = (props) => {
-    const { x, y, saveCar, toolery } = props;
+    const { x, y, saveCar, toolery, color, tire, tint, back } = props;
     //const [square, setSquare] = useState<string[]>([]);
     const [aah, setAah] = useState<string>("a");
     const [tools, setTools] = useState<CarChanges>({});
-    const [savedtools, setSavedTools] = useState<CarChanges>({});
-    const [backgroundIndex, setBackgroundIndex] = useState<number>(0);
-    //const [carState,setCarState]=useState<string>("");
-    const [color, setColor] = useState<number>(0);
-    const [colorNum, setColorNum] = useState(0);
-    const [tireNum, setTireNum] = useState(0);
-    const [tintNum, setTintNum] = useState(0);
-    const [background, setBackground] = useState(7);
+    const [colorNum, setColorNum] = useState(color);
+    const [tireNum, setTireNum] = useState(tire);
+    const [tintNum, setTintNum] = useState(tint);
+    const [background, setBackground] = useState(back);
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: [ItemTypes.TOOL],
         //move: () => moveTool(item.title, item.top, item.left),
@@ -235,9 +243,17 @@ const Zone: React.FC<ZoneProps> = (props) => {
         setTools({ ...tools, [aah]: { top: 0, left: 0, title: t } });
         //setTools({});
     };
-    const clear = () => {
+    const reset = () => {
+        setBackground(7);
+        setTireNum(0);
+        setColorNum(0);
+        setTintNum(0);
+        setAah("a");
         setTools({});
     };
+    function isClose(x: number, y: number, cy: number, cx: number) {
+        return (x + 10 >= cx || x - 10 <= cx) && (y + 10 >= cy || y - 10 <= cy);
+    }
 
     return (
         <>
@@ -276,7 +292,7 @@ const Zone: React.FC<ZoneProps> = (props) => {
                 </div>
                 <div>
                     {/* <Button onClick={() => addTool("meep")}>Add Effect</Button> */}
-                    <Button onClick={clear}>Clear Car</Button>
+                    <Button onClick={reset}>Reset Car</Button>
                     {/* <Button onClick={saveChanges}>Save Car</Button> */}
                 </div>
             </div>
