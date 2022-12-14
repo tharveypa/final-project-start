@@ -14,21 +14,6 @@ import CarSquare from "./components/CarSquare";
 import ToolinBox from "./components/ToolinBox";
 
 function App(): JSX.Element {
-    const [savedCars, setSavedCars] = useState<Record<number, CarChanges>>({});
-
-    function saveCar(car: number, toolname: string, changes: CarChanges) {
-        setSavedCars({
-            ...savedCars,
-            [car]: {
-                ...savedCars[car],
-                [toolname]: {
-                    top: changes[toolname].top,
-                    left: changes[toolname].left,
-                    title: changes[toolname].title
-                }
-            }
-        });
-    }
     const [pos, setPos] = useState<number[]>([]);
     const containerRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
@@ -52,25 +37,20 @@ function App(): JSX.Element {
             </header>
 
             <header className="App-header">CAR APP </header>
-            {/* <Board pics={[]} picPosition={[0, 0]}></Board> */}
+            {/* <div className="container"></div>
             <div>
-                <DndProvider backend={HTML5Backend}>
-                    <div style={{ float: "left" }}>
-                        <PimpVsDestroy />
-                    </div>
-                    <div className="container">
-                        <Board x={pos[0]} y={pos[1]} />
-                        <div>
-                            {pos.map(
-                                // eslint-disable-next-line no-extra-parens
-                                (e: number): JSX.Element => (
-                                    <div key={e}> {e} </div>
-                                )
-                            )}
-                        </div>
-                    </div>
-                </DndProvider>
+                {pos.map(
+                    // eslint-disable-next-line no-extra-parens
+                    (e: number): JSX.Element => (
+                        <div key={e}> {e} </div>
+                    )
+                )}
+            </div> */}
+            <div>
+                <Board x={pos[0]} y={pos[1]} />
             </div>
+
+            {/* <Board pics={[]} picPosition={[0, 0]}></Board> */}
         </div>
     );
 }

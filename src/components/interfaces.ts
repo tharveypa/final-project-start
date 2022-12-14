@@ -15,9 +15,10 @@ export interface CarProps {
     tirefill: boolean;
     window: boolean;
 }
-
-export interface Cars {
-    makeup: number[];
+export interface Car {
+    color: number;
+    tint: number;
+    tire: number;
     background: number;
     effects: Record<string, ToolPos>;
 }
