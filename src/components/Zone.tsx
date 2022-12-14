@@ -39,7 +39,7 @@ type ZoneProps = {
 const Zone: React.FC<ZoneProps> = (props) => {
     const { x, y, saveCar, toolery } = props;
     //const [square, setSquare] = useState<string[]>([]);
-    const [aah, setAah] = useState<string>("");
+    const [aah, setAah] = useState<string>("a");
     const [tools, setTools] = useState<CarChanges>({});
     const [savedtools, setSavedTools] = useState<CarChanges>({});
     const [backgroundIndex, setBackgroundIndex] = useState<number>(0);

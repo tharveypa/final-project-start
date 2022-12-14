@@ -60,8 +60,6 @@ type BoardProps = {
 const Board: React.FC<BoardProps> = (props) => {
     const [toolss, setTools] = useState<CarChanges>({});
     const { x, y } = props;
-    const [aah, setAah] = useState<string>("");
-    const squares = [];
     const [carId, setCarId] = useState<number>(0);
     const [cars, setCars] = useState<Cars>({});
     //squares.push(renderSquare(0, picPosition, pics));
