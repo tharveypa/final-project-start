@@ -60,6 +60,7 @@ const Board: React.FC<BoardProps> = (props) => {
     //const [toolss, setTools] = useState<CarChanges>({});
     const { x, y } = props;
     const [carId, setCarId] = useState<string>("$");
+    const [view, setView] = useState<boolean>(true);
     const [currId, setCurrId] = useState<string>("$");
     const [displayCars, setDisplayCars] = useState<number[]>([0]);
     const [cars, setCars] = useState<Record<string, Car>>({
@@ -182,7 +183,7 @@ const Board: React.FC<BoardProps> = (props) => {
             <div>
                 <DndProvider backend={HTML5Backend}>
                     <div className="getinlineplz">
-                        {
+                        {view &&
                             // eslint-disable-next-line no-extra-parens
                             Object.keys(cars).map((key: string) => {
                                 if (key === currId)
@@ -200,16 +201,37 @@ const Board: React.FC<BoardProps> = (props) => {
                                             saveCar={saveCar}
                                         />
                                     );
-                            })
-                        }
+                            })}
+
+                        {!view &&
+                            // eslint-disable-next-line no-extra-parens
+                            Object.keys(cars).map((key: string) => {
+                                return (
+                                    <Zone
+                                        key={key}
+                                        x={x}
+                                        y={y}
+                                        carId={key}
+                                        toolery={cars[key].effects}
+                                        color={cars[key].color}
+                                        tire={cars[key].tire}
+                                        tint={cars[key].tint}
+                                        back={cars[key].background}
+                                        saveCar={saveCar}
+                                    />
+                                );
+                            })}
                     </div>
                     <div style={{ float: "left" }}>
                         <PimpVsDestroy />
                     </div>
                 </DndProvider>
+                {/* <div style={{ float: "right" }}></div> */}
             </div>
             <div>
                 <Button onClick={() => setCars(addCar(cars))}> Add Car</Button>
+
+                <Button onClick={() => setView(!view)}> Change View</Button>
             </div>
         </>
     );

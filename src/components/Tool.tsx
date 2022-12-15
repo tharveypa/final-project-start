@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { CSSProperties, Fragment } from "react";
+import React, { CSSProperties, Fragment, useState } from "react";
 import type { FC, ReactNode } from "react";
 import { DragSourceMonitor, useDrag } from "react-dnd";
 import "../App.css";
 import { ItemTypes } from "../constants";
 import RedCar from "./images/redcar.png";
 import WipeCar from "./images/towel.png";
+import { destroys } from "./interfacing/ImageRenders";
 // CSSProperties,
 const style: CSSProperties = {
     position: "absolute",
@@ -53,9 +54,9 @@ export const Tool: FC<ToolProps> = (props) => {
                     fontWeight: "bold",
                     cursor: "move",
                     textAlign: "center",
-                    //background: "white",
-                    width: "30px",
-                    height: "30px",
+                    // backgroundImage: `url(${destroys[title]}`,
+                    width: "0px",
+                    height: "0px",
                     left: left,
                     top: top
                 }}

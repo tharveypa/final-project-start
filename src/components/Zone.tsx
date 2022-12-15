@@ -179,7 +179,22 @@ const Zone: React.FC<ZoneProps> = (props) => {
         // if(tools[aah])
         //setColor(0);
         //setBackgroundIndex(0);
-        if (title === "WipeCar" || title === "ShineCar") {
+        // const chooseBack = (title: string) => {
+        //     if (title === "BrownDirt") {
+        //         setDestroy(0);
+        //     } else if (title === "BlackDirt") {
+        //         setDestroy(1);
+        //     } else if (title === "TanDirt") {
+        //         setDestroy(2);
+        //     } else if (title === "WhitePoop") {
+        //         setDestroy(3);
+        //     } else if (title === "BrownPoop") {
+        //         setDestroy(4);
+        //     } else if (title === "GreenPoop") {
+        //         setDestroy(5);
+        //     }
+        // };
+        if (title === "WipeCar") {
             console.log(title);
             const copy: CarChanges = {};
             setTools({

@@ -32,11 +32,10 @@ function App(): JSX.Element {
     }, []);
     return (
         <div className="App">
-            <header className="App-header">
-                UD CISC275 with React Hooks and TypeScript
-            </header>
-
+            <header className="App-header">CISC275 Final Project</header>
+            <p>By: Andrew Geraci, Victor Udo, and Emmanuel Mbah</p>
             <header className="App-header">CAR APP </header>
+
             {/* <div className="container"></div>
             <div>
                 {pos.map(

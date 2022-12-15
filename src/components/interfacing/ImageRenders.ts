@@ -61,6 +61,13 @@ import GreenCarMediumTint from "../images/GreenCarMediumTint.png";
 import GreenCarDarkTint from "../images/GreenCarDarkTint.png";
 import GreenCarLightTint from "../images/GreenCarLightTint.png";
 
+import BrownDirt from "../images/BrownDirt.png";
+import BlackDirt from "../images/BlackDirt.png";
+import TanDirt from "../images/TanDirt.png";
+import WhitePoop from "../images/WhitePoop.png";
+import BrownPoop from "../images/BrownPoop.png";
+import GreenPoop from "../images/GreenPoop.png";
+
 export const cars = [
     [
         [RedCar, RedCarLightTint, RedCarMediumTint, RedCarDarkTint],
@@ -127,3 +134,12 @@ export const backgrounds = [
     Cave,
     Garage
 ];
+
+export const destroys: Record<string, string> = {
+    ["BrownDirt"]: BrownDirt,
+    ["BlackDirt"]: BlackDirt,
+    ["TanDirt"]: TanDirt,
+    ["WhitePoop"]: WhitePoop,
+    ["BrownPoop"]: BrownPoop,
+    ["GreenPoop"]: GreenPoop
+};

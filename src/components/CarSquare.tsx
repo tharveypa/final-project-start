@@ -60,7 +60,7 @@ const CarSquare: React.FC<CarSquareProps> = (props) => {
                         height="50"
                     />
                 </span>
-                {pic}
+                {/* {pic} */}
             </span>
         );
     } else if (
@@ -109,7 +109,7 @@ const CarSquare: React.FC<CarSquareProps> = (props) => {
                         height="50"
                     />
                 </span>
-                {pic}
+                {/* {pic} */}
             </span>
         );
     } else if (description === "Wing" || description === "BreakWindows") {
@@ -149,7 +149,7 @@ const CarSquare: React.FC<CarSquareProps> = (props) => {
                         height="50"
                     />
                 </span>
-                {pic}
+                {/* {pic} */}
             </span>
         );
     } else if (description === "WipeCar") {
@@ -189,7 +189,7 @@ const CarSquare: React.FC<CarSquareProps> = (props) => {
                         height="50"
                     />
                 </span>
-                {pic}
+                {/* {pic} */}
             </span>
         );
     } else if (
@@ -242,7 +242,7 @@ const CarSquare: React.FC<CarSquareProps> = (props) => {
                         height="50"
                     />
                 </span>
-                {pic}
+                {/* {pic} */}
             </span>
         );
     }
