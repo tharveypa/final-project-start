@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import Pic from "./Pic";
 import { DndProvider } from "react-dnd";
@@ -10,15 +11,13 @@ const renderPiece = (x: number, y: number, [picX, picY]: [number, number]) => {
     }
 };
 
-const renderSquare = (i: number, picPosition: [number, number]) => {
+const renderSquare = (i: number, j: number, picPosition: [number, number]) => {
     const x = i;
-    const y = 0;
+    const y = j;
 
     return (
-        <div key={i} style={{ width: "50%", height: "100%" }}>
-            <BoardSquare x={x} y={y}>
-                {renderPiece(x, y, picPosition)}
-            </BoardSquare>
+        <div key={i} style={{ width: "25%", height: "25%" }}>
+            <BoardSquare x={x} y={y}></BoardSquare>
         </div>
     );
 };
@@ -30,8 +29,10 @@ type BoardProps = {
 const Board: React.FC<BoardProps> = (props) => {
     const { picPosition } = props;
     const squares = [];
-    for (let i = 0; i < 2; i++) {
-        squares.push(renderSquare(i, picPosition));
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            squares.push(renderSquare(i, j, picPosition));
+        }
     }
     return (
         <DndProvider backend={HTML5Backend}>

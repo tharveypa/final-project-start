@@ -5,6 +5,7 @@ const emitChange = () => {
     observer && observer(picPosition);
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const observe = (o: any) => {
     if (observer) {
         throw new Error("Multiple observers not implemented.");
@@ -19,9 +20,14 @@ export const movePic = (toX: number, toY: number) => {
     emitChange();
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const canMovePic = (toX: number, toY: number) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [x, y] = picPosition;
     const dx = toX - x;
 
-    return Math.abs(dx) === 1;
+    // move vertically
+    const dy = toY - y;
+
+    return Math.abs(dx) >= 1 || Math.abs(dy) >= 1;
 };
